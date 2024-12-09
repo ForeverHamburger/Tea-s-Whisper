@@ -1,0 +1,28 @@
+ext {  //extend
+    // false: 集成模式
+    // true ：组件模式
+    isModule = true
+    android = [
+            compileSdkVersion: 34,
+            minSdkVersion    : 28,
+            targetSdkVersion : 34,
+            versionCode      : 1,
+            versionName      : "1.0",
+            applicationId : "com.xuptggg.teaswhisper"
+    ]
+
+    applicationId = ["app"  : "com.xuptggg.teaswhisper"
+                     ,"base" : "com.xuptggg.module.libbase"
+                     ,"router" : "com.xuptggg.module.librouter"
+                     ,"guidepage" : "com.xuptggg.guidepage"
+                     ,"navigation" : "com.xuptggg.navigation"]
+
+    dependencies = [
+            glide : 'com.github.bumptech.glide:glide:4.16.0',
+            eventbus : 'org.greenrobot:eventbus:3.3.1',
+            gson : 'com.google.code.gson:gson:2.10.1'
+    ]
+    libARouter = 'com.alibaba:arouter-api:1.5.2'
+    libARouterCompiler = 'com.alibaba:arouter-compiler:1.5.2'
+    libEventBusCompiler = 'org.greenrobot:eventbus-annotation-processor:3.3.1'
+}

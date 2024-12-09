@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/modulesBase" />
+            <option value="$PROJECT_DIR$/modulesBase/libBase" />
+            <option value="$PROJECT_DIR$/modulesBase/libRouter" />
+            <option value="$PROJECT_DIR$/modulesCore" />
+            <option value="$PROJECT_DIR$/modulesCore/guidepage" />
+            <option value="$PROJECT_DIR$/modulesCore/login" />
+            <option value="$PROJECT_DIR$/modulesCore/navigation" />
+            <option value="$PROJECT_DIR$/modulesPublic" />
+            <option value="$PROJECT_DIR$/modulesPublic/moduleUltrasonic" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,36 @@
+plugins {
+    alias(libs.plugins.android.library)
+}
+def cfg = rootProject.ext
+
+android {
+    namespace 'com.xuptggg.moduleultrasonic'
+    compileSdk cfg.android.compileSdkVersion
+
+    defaultConfig {
+        minSdk cfg.android.minSdkVersion
+        targetSdk cfg.android.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':modulesBase:libBase')
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

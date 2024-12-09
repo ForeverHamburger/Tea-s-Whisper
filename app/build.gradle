@@ -1,0 +1,45 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+def cfg = rootProject.ext
+
+
+android {
+    namespace 'com.xuptggg.teaswhisper'
+    compileSdk cfg.android.compileSdkVersion
+
+    defaultConfig {
+        applicationId cfg.android.applicationId
+        minSdk cfg.android.minSdkVersion
+        targetSdk cfg.android.targetSdkVersion
+        versionCode cfg.android.versionCode
+        versionName cfg.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':modulesBase:libBase')
+
+    if (!isModule.booleanValue()) {
+        implementation project(':modulesCore:login')
+        implementation project(':modulesCore:guidepage')
+        implementation project(':modulesCore:navigation')
+    }
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
