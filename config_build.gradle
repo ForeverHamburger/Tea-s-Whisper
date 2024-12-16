@@ -1,23 +1,8 @@
-//plugins {
-//    alias(libs.plugins.android.application)
-//}
 def cfg = rootProject.ext
-if (isModule.booleanValue()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-
-apply from: "${rootProject.rootDir}/config_build.gradle"
-
 android {
-    namespace 'com.xuptggg.module.login'
     compileSdk cfg.android.compileSdkVersion
 
     defaultConfig {
-        if (isModule.booleanValue()) {
-            applicationId cfg.applicationId.login
-        }
         minSdk cfg.android.minSdkVersion
         targetSdk cfg.android.targetSdkVersion
         versionCode cfg.android.versionCode
@@ -43,22 +28,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    sourceSets {
-        main {
-            if (isModule) {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
-            }
-        }
-    }
 }
 
 dependencies {
 
     implementation project(':modulesBase:libBase')
-
     implementation libs.appcompat
     implementation libs.material
     testImplementation libs.junit
