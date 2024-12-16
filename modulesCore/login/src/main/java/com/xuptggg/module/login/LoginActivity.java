@@ -8,6 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
+@Route(path = "/login/LoginActivity")
 public class LoginActivity extends AppCompatActivity {
 
     @Override

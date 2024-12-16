@@ -31,8 +31,7 @@ dependencies {
     api cfg.dependencies.glide
     api cfg.dependencies.eventbus
     api cfg.dependencies.gson
-
-    api project(":modulesBase:libRouter")
+    api cfg.libARouter
 
     implementation libs.appcompat
     implementation libs.material

@@ -22,6 +22,12 @@ android {
         versionName cfg.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -50,7 +56,8 @@ dependencies {
 
     implementation project(':modulesBase:libBase')
 
-
+    implementation libs.appcompat
+    implementation libs.material
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
