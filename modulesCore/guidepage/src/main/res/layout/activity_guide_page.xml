@@ -5,6 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuidePageActivity">
+    tools:context=".view.GuidePageActivity">
+
+    <com.jem.liquidswipe.LiquidSwipeViewPager
+        android:id="@+id/vp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

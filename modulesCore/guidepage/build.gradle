@@ -6,6 +6,7 @@ if (isModule.booleanValue()) {
 }
 
 apply from: "${rootProject.rootDir}/config_build.gradle"
+
 android {
     namespace 'com.xuptggg.guidepage'
 
@@ -50,8 +51,12 @@ android {
             }
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-
+    implementation 'com.github.Chrisvin:LiquidSwipe:1.3'
 }
