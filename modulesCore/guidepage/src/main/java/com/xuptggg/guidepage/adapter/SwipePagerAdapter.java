@@ -1,27 +1,18 @@
 package com.xuptggg.guidepage.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.jem.liquidswipe.base.LiquidSwipeLayout;
 import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider;
 import com.xuptggg.guidepage.R;
-import com.xuptggg.guidepage.view.DummyFragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SwipePagerAdapter extends PagerAdapter {
