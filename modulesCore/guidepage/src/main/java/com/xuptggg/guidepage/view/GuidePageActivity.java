@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager.widget.ViewPager;
 
 import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider;
 import com.xuptggg.guidepage.R;
@@ -27,7 +28,6 @@ import java.util.List;
 
 public class GuidePageActivity extends AppCompatActivity implements IGuideContract.IGuideView {
     private ActivityGuidePageBinding binding;
-
     private IGuideContract.IGuidePresenter mPresenter;
     private List<Integer> backgroundColorArray;
     private List<Integer> resourceArray;
@@ -43,6 +43,7 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
         setPresenter(new GuidePresenter(this, new GuideModel()));
         mPresenter.getGuideInfo("Guide");
 
+        binding.vpGuide.setOffscreenPageLimit(4);
 
     }
 

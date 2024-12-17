@@ -51,7 +51,6 @@ public class SwipePagerAdapter extends PagerAdapter {
         TextView head = layout.findViewById(R.id.tv_dummy_head);
         TextView content = layout.findViewById(R.id.tv_dummy_content);
         ImageView indicator = layout.findViewById(R.id.iv_dummy_indicator);
-        TextView skip = layout.findViewById(R.id.tv_dummy_skip);
         ImageView background1 = layout.findViewById(R.id.iv_dummy_background1);
         ImageView background2 = layout.findViewById(R.id.iv_dummy_background2);
 
@@ -68,7 +67,6 @@ public class SwipePagerAdapter extends PagerAdapter {
             subHead.setTextColor(Color.WHITE);
             head.setTextColor(Color.WHITE);
             content.setTextColor(Color.WHITE);
-            skip.setTextColor(Color.WHITE);
         }
 
         LiquidSwipeLayout liquidSwipeLayout = (LiquidSwipeLayout) layout;
