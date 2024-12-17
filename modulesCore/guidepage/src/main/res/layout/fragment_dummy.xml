@@ -7,18 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#A5CEBD">
 
-    <TextView
-        android:id="@+id/tv_dummy_skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="跳过"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/guide_title_font"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <ImageView
         android:id="@+id/iv_dummy_background1"
         android:layout_width="wrap_content"
