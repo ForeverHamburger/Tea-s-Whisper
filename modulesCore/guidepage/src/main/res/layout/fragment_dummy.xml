@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.jem.liquidswipe.layout.LiquidSwipeConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F00">
+    android:background="#A5CEBD">
+
+    <TextView
+        android:id="@+id/tv_dummy_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳过"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/guide_title_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_dummy_background1"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:src="@drawable/pic_bg1"
+        android:layout_marginRight="200dp"
+        android:layout_marginBottom="-30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontalBottomGuideLine"/>
+
+    <ImageView
+        android:id="@+id/iv_dummy_background2"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:src="@drawable/pic_bg2"
+        android:layout_marginRight="-200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontalBottomGuideLine"/>
+
+    <ImageView
+        android:id="@+id/iv_dummy_picture"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/pic_tea_show1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontalBottomGuideLine"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalBottomGuideLine"
@@ -13,18 +56,53 @@
         app:layout_constraintGuide_percent="0.6"
         android:orientation="horizontal"/>
 
+    <TextView
+        android:id="@+id/tv_dummy_subheading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="赌书消得"
+        android:textSize="30sp"
+        android:fontFamily="@font/guide_title_font"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horizontalBottomGuideLine" />
 
+    <TextView
+        android:id="@+id/tv_dummy_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="泼茶香"
+        android:textSize="60sp"
+        android:fontFamily="@font/guide_head_font"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="0dp"
+        android:textStyle="italic|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dummy_subheading" />
 
     <TextView
         android:id="@+id/tv_dummy_content"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#FFF"
-        app:layout_constraintTop_toBottomOf="@id/horizontalBottomGuideLine"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:text="        谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳。\n
+       被酒莫惊春睡重，赌书消得泼茶香，当时只道是寻常。"
+        android:textSize="20sp"
+        android:fontFamily="@font/guide_content_font"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dummy_head" />
+
+    <ImageView
+        android:id="@+id/iv_dummy_indicator"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/indicator1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </com.jem.liquidswipe.layout.LiquidSwipeConstraintLayout>
