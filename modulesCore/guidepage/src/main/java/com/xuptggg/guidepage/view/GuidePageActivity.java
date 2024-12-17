@@ -14,18 +14,25 @@ import androidx.core.view.WindowInsetsCompat;
 import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider;
 import com.xuptggg.guidepage.R;
 import com.xuptggg.guidepage.adapter.SwipePagerAdapter;
+import com.xuptggg.guidepage.contract.IGuideContract;
 import com.xuptggg.guidepage.databinding.ActivityGuidePageBinding;
+import com.xuptggg.guidepage.model.GuideInfo;
+import com.xuptggg.guidepage.model.GuideModel;
+import com.xuptggg.guidepage.presenter.GuidePresenter;
+import com.xuptggg.guidepage.presenter.HomePagePresenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GuidePageActivity extends AppCompatActivity {
+public class GuidePageActivity extends AppCompatActivity implements IGuideContract.IGuideView {
     private ActivityGuidePageBinding binding;
 
+    private IGuideContract.IGuidePresenter mPresenter;
     private List<Integer> backgroundColorArray;
     private List<Integer> resourceArray;
     private List<String> titleArray;
+    private LiquidSwipeClipPathProvider[] liquidSwipeClipPathProviders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +45,21 @@ public class GuidePageActivity extends AppCompatActivity {
             return insets;
         });
 
-        LiquidSwipeClipPathProvider[] liquidSwipeClipPathProviders = new LiquidSwipeClipPathProvider[5];
+        liquidSwipeClipPathProviders = new LiquidSwipeClipPathProvider[5];
         for (int i = 0; i < 5; i++) {
             liquidSwipeClipPathProviders[i] = new LiquidSwipeClipPathProvider();
         }
 
+        setPresenter(new GuidePresenter(this, new GuideModel()));
+    }
+
+    @Override
+    public void setPresenter(IGuideContract.IGuidePresenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void showGuideInfomation(List<GuideInfo> guideInfos) {
         backgroundColorArray = new ArrayList<>(Arrays.asList(
                 Color.parseColor("#6200EE"),
                 Color.parseColor("#9FD29D"),
@@ -73,6 +90,7 @@ public class GuidePageActivity extends AppCompatActivity {
                 ,titleArray);
 
         binding.vpGuide.setAdapter(swipePagerAdapter);
+
         binding.vpGuide.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -83,5 +101,10 @@ public class GuidePageActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void showError() {
+
     }
 }
