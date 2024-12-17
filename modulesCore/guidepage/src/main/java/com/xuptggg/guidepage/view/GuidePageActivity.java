@@ -1,5 +1,6 @@
 package com.xuptggg.guidepage.view;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -19,7 +20,6 @@ import com.xuptggg.guidepage.databinding.ActivityGuidePageBinding;
 import com.xuptggg.guidepage.model.GuideInfo;
 import com.xuptggg.guidepage.model.GuideModel;
 import com.xuptggg.guidepage.presenter.GuidePresenter;
-import com.xuptggg.guidepage.presenter.HomePagePresenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,18 +39,11 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
         EdgeToEdge.enable(this);
         binding = ActivityGuidePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        liquidSwipeClipPathProviders = new LiquidSwipeClipPathProvider[5];
-        for (int i = 0; i < 5; i++) {
-            liquidSwipeClipPathProviders[i] = new LiquidSwipeClipPathProvider();
-        }
 
         setPresenter(new GuidePresenter(this, new GuideModel()));
+        mPresenter.getGuideInfo("Guide");
+
+
     }
 
     @Override
@@ -58,48 +51,23 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
         mPresenter = presenter;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void showGuideInfomation(List<GuideInfo> guideInfos) {
-        backgroundColorArray = new ArrayList<>(Arrays.asList(
-                Color.parseColor("#6200EE"),
-                Color.parseColor("#9FD29D"),
-                Color.parseColor("#AFE1F0"),
-                Color.parseColor("#F6D336"),
-                Color.parseColor("#FA796B")
-        ));
-
-        resourceArray = new ArrayList<>(Arrays.asList(
-//                R.raw.mountain,
-//                R.raw.map,
-//                R.raw.luggage,
-//                R.raw.camera,
-//                R.raw.van
-        ));
-
-        titleArray = new ArrayList<>(Arrays.asList(
-                "Hello fellow developer",
-                "If you like this library",
-                "Then do star it",
-                "And check out my other libraries",
-                "Cheers ^_^"
-        ));
-
+        liquidSwipeClipPathProviders = new LiquidSwipeClipPathProvider[5];
+        for (int i = 0; i < 5; i++) {
+            liquidSwipeClipPathProviders[i] = new LiquidSwipeClipPathProvider();
+        }
         SwipePagerAdapter swipePagerAdapter = new SwipePagerAdapter(this,liquidSwipeClipPathProviders
-                ,backgroundColorArray
-                ,resourceArray
-                ,titleArray);
-
+                ,guideInfos);
         binding.vpGuide.setAdapter(swipePagerAdapter);
 
-        binding.vpGuide.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                float waveCenterY = event.getY();
-                for (LiquidSwipeClipPathProvider provider : liquidSwipeClipPathProviders) {
-                    provider.setWaveCenterY(waveCenterY);
-                }
-                return false;
+        binding.vpGuide.setOnTouchListener((v, event) -> {
+            float waveCenterY = event.getY();
+            for (LiquidSwipeClipPathProvider provider : liquidSwipeClipPathProviders) {
+                provider.setWaveCenterY(waveCenterY);
             }
+            return false;
         });
     }
 
