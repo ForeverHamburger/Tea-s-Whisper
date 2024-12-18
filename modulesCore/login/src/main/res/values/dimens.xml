@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_basic">20dp</dimen>
+    <dimen name="dp_zero">0dp</dimen>
+    <dimen name="dp_marginTop_big">20dp</dimen>
+    <dimen name="dp_marginTop_small">10dp</dimen>
+    <dimen name="dp_cardCornerRadius">10dp</dimen>
+    <dimen name="text_size_title">50sp</dimen>
+</resources>
