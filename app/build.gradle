@@ -15,7 +15,13 @@ android {
         versionCode cfg.android.versionCode
         versionName cfg.android.versionName
 
+        buildConfigField("boolean","isModule",String.valueOf(cfg.isModule))
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
