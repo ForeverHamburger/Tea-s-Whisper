@@ -25,11 +25,12 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/iv_guide_button"
+        android:id="@+id/btn_guide_gotologin"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:background="@drawable/btn_click_gotologin"
         android:text="前往注册"
+        android:visibility="gone"
         android:fontFamily="@font/guide_title_font"
         style="?borderlessButtonStyle"
         android:textSize="20dp"

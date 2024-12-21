@@ -1,5 +1,6 @@
 package com.xuptggg.guidepage.view;
 
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
@@ -9,16 +10,20 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider;
+import com.tencent.mmkv.MMKV;
 import com.xuptggg.guidepage.adapter.SwipePagerAdapter;
 import com.xuptggg.guidepage.contract.IGuideContract;
 import com.xuptggg.guidepage.databinding.ActivityGuidePageBinding;
 import com.xuptggg.guidepage.model.GuideInfo;
 import com.xuptggg.guidepage.model.GuideModel;
 import com.xuptggg.guidepage.presenter.GuidePresenter;
+import com.xuptggg.guidepage.util.AnimationUtils;
 
 import java.util.List;
 
+@Route(path = "/guidepage/GuidePageActivity")
 public class GuidePageActivity extends AppCompatActivity implements IGuideContract.IGuideView {
     private ActivityGuidePageBinding binding;
     private IGuideContract.IGuidePresenter mPresenter;
@@ -44,7 +49,9 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
             public void onPageSelected(int position) {
                 if (position == 3) {
                     binding.btnGuideGotologin.setVisibility(View.VISIBLE);
+                    AnimationUtils.FadeInAnimation(binding.btnGuideGotologin);
                 } else {
+                    AnimationUtils.FadeOutAnimation(binding.btnGuideGotologin);
                     binding.btnGuideGotologin.setVisibility(View.GONE);
                 }
             }
