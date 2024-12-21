@@ -33,6 +33,7 @@ android {
 dependencies {
 
     implementation project(':modulesBase:libBase')
+    implementation libs.mmkv.v201
     implementation libs.appcompat
     implementation libs.material
     testImplementation libs.junit

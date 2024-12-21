@@ -21,6 +21,7 @@ android {
     }
 
     buildFeatures {
+        viewBinding = true
         buildConfig true
     }
 
@@ -44,7 +45,7 @@ dependencies {
         implementation project(':modulesCore:guidepage')
         implementation project(':modulesCore:navigation')
     }
-
+    implementation libs.mmkv.v201
     implementation libs.appcompat
     implementation libs.material
     testImplementation libs.junit
