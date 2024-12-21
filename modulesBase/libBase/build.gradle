@@ -32,6 +32,7 @@ dependencies {
     api cfg.dependencies.eventbus
     api cfg.dependencies.gson
     api cfg.libARouter
+    annotationProcessor cfg.libARouterCompiler
 
     implementation libs.appcompat
     implementation libs.material

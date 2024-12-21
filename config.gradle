@@ -1,7 +1,7 @@
 ext {  //extend
     // false: 集成模式
     // true ：组件模式
-    isModule = true
+    isModule = false
     android = [
             compileSdkVersion: 34,
             minSdkVersion    : 28,
@@ -25,5 +25,6 @@ ext {  //extend
 
     libARouter = 'com.alibaba:arouter-api:1.5.2'
     libARouterCompiler = 'com.alibaba:arouter-compiler:1.5.2'
+
     libEventBusCompiler = 'org.greenrobot:eventbus-annotation-processor:3.3.1'
 }

@@ -8,10 +8,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.tencent.mmkv.MMKV;
 import com.xuptggg.teaswhisper.databinding.ActivityMainBinding;
-
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
@@ -29,8 +29,20 @@ public class MainActivity extends AppCompatActivity {
 
         MMKV.initialize(this);
 
+        //ifFirstLaunch();
 
         ARouter.getInstance().build("/guidepage/GuidePageActivity").navigation();
 
+    }
+
+    private void ifFirstLaunch() {
+        MMKV mmkv = MMKV.mmkvWithID("Tea's Whisper");
+
+        if(mmkv.getBoolean("first_enter", false)){
+            mmkv.putBoolean("first_enter", false);
+        } else {
+            mmkv.putBoolean("first_enter", true);
+            ARouter.getInstance().build("/guidepage/GuidePageActivity").navigation();
+        }
     }
 }
