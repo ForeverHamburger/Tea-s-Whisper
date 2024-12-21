@@ -21,7 +21,5 @@ public class TeasWhisper extends Application {
 
     private boolean isModule() {
         return !BuildConfig.isModule;
-
-
     }
 }
