@@ -3,21 +3,19 @@ plugins {
 }
 def cfg = rootProject.ext
 
+apply from: "${rootProject.rootDir}/config_build.gradle"
 
 android {
     namespace 'com.xuptggg.teaswhisper'
-    compileSdk cfg.android.compileSdkVersion
+
 
     defaultConfig {
-        applicationId cfg.android.applicationId
-        minSdk cfg.android.minSdkVersion
-        targetSdk cfg.android.targetSdkVersion
-        versionCode cfg.android.versionCode
-        versionName cfg.android.versionName
 
-
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildFeatures {
@@ -50,6 +48,9 @@ dependencies {
         implementation project(':modulesCore:guidepage')
         implementation project(':modulesCore:navigation')
     }
+
+    api 'com.alibaba:arouter-api:1.5.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
     implementation libs.mmkv.v201
     implementation libs.appcompat
     implementation libs.material

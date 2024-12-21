@@ -8,6 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
+@Route(path = "/navigation/NavigationActivity")
 public class NavigationActivity extends AppCompatActivity {
 
     @Override
