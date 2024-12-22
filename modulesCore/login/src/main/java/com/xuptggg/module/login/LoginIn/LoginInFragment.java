@@ -38,10 +38,17 @@ public class LoginInFragment extends Fragment implements LoginInContract.View{
                 Toast.makeText(getContext(),"忘记密码",Toast.LENGTH_SHORT).show();
             }
         });
+        //绘制超链接下划线
         String text = getString(R.string.login_forget_password);
         SpannableString spannableString = new SpannableString(text);
         spannableString.setSpan(new UnderlineSpan(), 0, text.length(), 0);
         binding.textViewForget.setText(spannableString);
+        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.onLoginClick();
+            }
+        });
     }
 
     @Override

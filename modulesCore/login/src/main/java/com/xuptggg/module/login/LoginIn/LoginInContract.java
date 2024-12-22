@@ -11,6 +11,8 @@ public interface LoginInContract {
         void getLoginInInfo(String ip);
         void onstart();
         void unSubscribe();
+
+        void onLoginClick();
     }
     interface View extends BaseView<Presenter> {
         void showError();

@@ -29,6 +29,12 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
     }
 
     @Override
+    public void onLoginClick() {
+
+
+    }
+
+    @Override
     public void onSuccess( String data) {
         if (mView!=null&&mView.isACtive()) {
 //            mView.setStarData(data);

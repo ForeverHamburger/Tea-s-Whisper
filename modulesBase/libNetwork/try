@@ -1,0 +1,27 @@
+使用：
+首先实现接口MyDataListener
+在要使用的地方使用
+
+    private void doGetRequest() {
+        String url = "https://your_get_request_url_here";
+        RequestParams params = new RequestParams();
+        // 可添加GET请求参数，示例如下，如果没有参数可省略这部分添加操作
+        params.put("param1", "value1");
+        params.put("param2", "value2");
+
+        MyDataHandle handle = new MyDataHandle(new MyDataListener1());
+        MyOkHttpClient.get(url, params, handle);
+    }
+
+    private void doPostRequest() {
+        String url = "https://your_post_request_url_here";
+        RequestParams params = new RequestParams();
+        // 添加POST请求参数，示例如下，根据实际业务需求修改参数内容
+        params.put("key1", "post_value1");
+        params.put("key2", "post_value2");
+
+        MyDataHandle handle = new MyDataHandle(new MyDataListener1());
+
+        Request request = MyOkHttpClient.getOkHttpClient().newCall(MyOkHttpClient.get(url, params, handle).request());
+        MyOkHttpClient.post(request, handle);
+    }
