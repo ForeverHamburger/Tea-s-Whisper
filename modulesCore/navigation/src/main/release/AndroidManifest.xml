@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".NavigationActivity"
+            android:name=".view.NavigationActivity"
             android:exported="true">
         </activity>
     </application>
