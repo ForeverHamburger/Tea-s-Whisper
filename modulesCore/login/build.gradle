@@ -59,4 +59,5 @@ android {
 
 dependencies {
 
+    implementation project(':modulesBase:libNetwork')
 }

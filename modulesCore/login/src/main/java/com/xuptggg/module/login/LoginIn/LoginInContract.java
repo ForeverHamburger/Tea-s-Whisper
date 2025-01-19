@@ -5,14 +5,14 @@ import com.xuptggg.module.login.base.LoadTasksCallBack;
 
 public interface LoginInContract {
     interface Model {
-        void getLoginInInfo(String ip, LoadTasksCallBack callBack);
+        void getLoginInInfo(String username, String password, LoadTasksCallBack callBack);
     }
     interface Presenter {
-        void getLoginInInfo(String ip);
+        void getLoginInInfo(String username, String password);
         void onstart();
         void unSubscribe();
 
-        void onLoginClick();
+        void onLoginClick(String username, String password);
     }
     interface View extends BaseView<Presenter> {
         void showError();

@@ -1,5 +1,10 @@
 package com.xuptggg.module.login.LoginIn;
 
+import static android.provider.Settings.System.getString;
+
+import android.widget.Toast;
+
+import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
 public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCallBack<String> {
@@ -12,14 +17,14 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
         mView.setPresenter(this);
     }
     @Override
-    public void getLoginInInfo(String ip) {
+    public void getLoginInInfo(String username, String password) {
 
-        mModel.getLoginInInfo(ip, this);
+        mModel.getLoginInInfo(username, password, this);
     }
 
     @Override
     public void onstart() {
-        getLoginInInfo("");
+//        getLoginInInfo("lbd", "dsb");
     }
 
     @Override
@@ -27,15 +32,14 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
         mModel = null;
         mView = null;
     }
-
     @Override
-    public void onLoginClick() {
-
+    public void onLoginClick(String username, String password) {
+        getLoginInInfo(username, password);
 
     }
-
     @Override
     public void onSuccess( String data) {
+        System.out.println("LoginInPresenter onSuccess"+data);
         if (mView!=null&&mView.isACtive()) {
 //            mView.setStarData(data);
         }
@@ -43,6 +47,7 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
 
     @Override
     public void onFailed() {
+        System.out.println("Error");
 
     }
 }
