@@ -12,4 +12,9 @@
         <item name="android:background">@color/transparent</item>
     </style>
 
+    <style name="BnvStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">18dp</item>
+    </style>
+
 </resources>

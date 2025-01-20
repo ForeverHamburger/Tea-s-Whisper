@@ -8,6 +8,11 @@
         android:id="@+id/navigation_comments"
         android:icon="@drawable/ic_comments"
         android:title="论坛" />
+
+    <item
+        android:id="@+id/navigation"
+        android:title="检测" />
+
     <item
         android:id="@+id/navigation_ai_dialogue"
         android:icon="@drawable/ic_ai_dialogue"

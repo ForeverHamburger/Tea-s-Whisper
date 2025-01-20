@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
+            android:backgroundTint="@color/dark_green"
             app:fabAlignmentMode="center"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="40dp"
@@ -41,10 +42,14 @@
             android:id="@+id/bnv_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|center"
+            android:background="@color/transparent"
             app:elevation="0dp"
-            app:menu="@menu/bottom_navigation_menu"
-            android:background="@color/transparent" />
+            app:itemBackground="@color/transparent"
+            app:itemTextAppearanceActive="@style/BnvStyle"
+            app:layout_anchor="@+id/bab_navigation"
+            app:layout_anchorGravity="center"
+            app:menu="@menu/bottom_navigation_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

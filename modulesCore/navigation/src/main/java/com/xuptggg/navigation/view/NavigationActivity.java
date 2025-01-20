@@ -32,6 +32,7 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             return insets;
         });
 
+        binding.bnvNavigation.setItemIconTintList(null);
     }
 
     @Override
