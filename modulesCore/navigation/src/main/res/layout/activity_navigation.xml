@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,32 +26,37 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
+            android:id="@+id/bab_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="40dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:hideOnScroll="true" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:fabAlignmentMode="center"
-            android:layout_alignParentBottom="true"
-            app:fabCradleMargin="8dp"
-            app:fabCradleRoundedCornerRadius="20dp"
-            app:fabCradleVerticalOffset="10dp"
-            app:hideOnScroll="true"/>
+            app:elevation="0dp"
+            app:menu="@menu/bottom_navigation_menu"
+            android:background="@color/transparent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            app:layout_anchor="@id/bottomAppBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/floatingbuttonName"
-            android:src="@drawable/ic_detection"
-            app:tint="@color/white"
-            app:backgroundTint="@color/dark_green"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
-            app:fabSize="normal" />
+            android:contentDescription="@string/floatingbuttonName"
+            android:src="@drawable/ic_detect"
+            app:backgroundTint="@color/dark_green"
+            app:layout_anchor="@id/bab_navigation" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
