@@ -3,6 +3,7 @@ package com.xuptggg.module.login.LoginIn;
 import com.example.libnetwork.MyOkHttpClient;
 import com.example.libnetwork.listener.MyDataHandle;
 import com.example.libnetwork.listener.MyDataListener;
+import com.example.libnetwork.request.MyRequest;
 import com.example.libnetwork.request.RequestParams;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
@@ -24,19 +25,30 @@ public class LoginInModel implements LoginInContract.Model {
                     callBack.onSuccess((String) responseObj);
                 } else {
                     // 如果响应结果不是 String 类型，视为请求失败
-                    callBack.onFailed();
+                    callBack.onFailed("no");
                 }
             }
 
             @Override
             public void onFailure(Object reasonObj) {
-                // 调用 LoadTasksCallBack 的 onFailed 方法
-                callBack.onFailed();
+//                // 调用 LoadTasksCallBack 的 onFailed 方法
+//                callBack.onFailed();
+                if (reasonObj instanceof String) {
+                    // 将响应结果转换为 String 类型并传递给 LoadTasksCallBack 的 onSuccess 方法
+                    callBack.onFailed((String) reasonObj);
+                } else {
+                    // 如果响应结果不是 String 类型，视为请求失败
+                    callBack.onFailed(reasonObj.toString());
+                }
             }
         });
 
         // 发起 GET 请求，使用之前封装好的 MyOkHttpClient
-        MyOkHttpClient.get("https://api.example.com/login", params, handle);
+//        MyOkHttpClient.get("http://202.182.125.24:15265/code", params, handle);
+        //test 接口验证码
+        RequestParams params1 = new RequestParams();
+        params1.put("email", "1120774555@qq.com");
+        MyOkHttpClient.post(MyRequest.PostRequest("https://202.182.125.24:15265/code", params1), handle);
     }
 
     public static void getSomeDate() {

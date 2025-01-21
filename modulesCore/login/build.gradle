@@ -58,6 +58,6 @@ android {
 }
 
 dependencies {
-
+    implementation libs.okhttp
     implementation project(':modulesBase:libNetwork')
 }

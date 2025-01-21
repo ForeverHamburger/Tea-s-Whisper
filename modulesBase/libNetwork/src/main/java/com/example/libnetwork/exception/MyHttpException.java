@@ -11,6 +11,14 @@ public class MyHttpException extends Exception {
         this.emsg = emsg;
     }
 
+    @Override
+    public String toString() {
+        return "MyHttpException{" +
+                "ecode=" + ecode +
+                ", emsg=" + emsg +
+                '}';
+    }
+
     public int getEcode() {
         return ecode;
     }

@@ -6,6 +6,8 @@
     <string name="login_password">请输入密码</string>
     <string name="login_remember_password">记住密码</string>
     <string name="login_forget_password">忘记密码?</string>
+    <string name="login_forget_to_register_before">没有账号？</string>
+    <string name="login_forget_to_register_after">去注册</string>
     <!--错误-->
     <string name="please_input_phone">请输入账号</string>
     <string name="please_input_the_correct_phone_number">请输入正确的手机号</string>

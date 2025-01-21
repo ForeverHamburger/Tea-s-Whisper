@@ -2,10 +2,12 @@ package com.xuptggg.module.login.LoginIn;
 
 import static android.provider.Settings.System.getString;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,11 +49,12 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                 Toast.makeText(getContext(), "忘记密码", Toast.LENGTH_SHORT).show();
             }
         });
-        //绘制超链接下划线
-        String text = getString(R.string.login_forget_password);
-        SpannableString spannableString = new SpannableString(text);
-        spannableString.setSpan(new UnderlineSpan(), 0, text.length(), 0);
-        binding.textViewForget.setText(spannableString);
+        String text_forget_password = getString(R.string.login_forget_password);
+        String text_to_register_before = getString(R.string.login_forget_to_register_before);
+        String text_to_register_after = getString(R.string.login_forget_to_register_after);
+
+        binding.textViewToRegister.setText(combineAndUnderline(text_to_register_before, text_to_register_after));
+        binding.textViewForget.setText(combineAndUnderline("",text_forget_password));
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +106,24 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             }
         });
     }
+    public static SpannableString combineAndUnderline(String firstPart, String secondPart) {
+        // 为第一个字符串创建 SpannableString 并添加下划线
+        SpannableString spannableFirstPart = new SpannableString(firstPart);
+        spannableFirstPart.setSpan(new UnderlineSpan(), 0, firstPart.length(), 0);
 
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.BLACK);
+        spannableFirstPart.setSpan(colorSpan, 0, firstPart.length(), 0);
+
+        // 为第二个字符串创建 SpannableString 并添加下划线
+        SpannableString spannableSecondPart = new SpannableString(secondPart);
+        spannableSecondPart.setSpan(new UnderlineSpan(), 0, secondPart.length(), 0);
+        // 拼接两个 SpannableString
+        SpannableString finalSpannableString = new SpannableString(firstPart + secondPart);
+        // 仅对拼接后的后半段添加下划线
+        finalSpannableString.setSpan(new UnderlineSpan(), firstPart.length(), firstPart.length() + secondPart.length(), 0);
+
+        return finalSpannableString;
+    }
     private boolean processLogin(String username, String password) {
         InputValidator validator = new InputValidator();
         if (!validator.validateAccount(username)) {
