@@ -1,4 +1,4 @@
-package com.xuptggg.detection;
+package com.xuptggg.detection.view;
 
 import android.os.Bundle;
 
@@ -8,7 +8,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class DetectionActivity extends AppCompatActivity {
+import com.xuptggg.detection.R;
+import com.xuptggg.detection.contract.IDetectionContract;
+import com.xuptggg.detection.model.DetectionInfo;
+
+import java.util.List;
+
+public class DetectionActivity extends AppCompatActivity implements IDetectionContract.IDetectionView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +26,22 @@ public class DetectionActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+    }
+
+    @Override
+    public void setPresenter(IDetectionContract.IDetectionPresenter presenter) {
+
+    }
+
+    @Override
+    public void showDetectionInfomation(DetectionInfo detectionInfos) {
+
+    }
+
+    @Override
+    public void showError() {
+
     }
 }

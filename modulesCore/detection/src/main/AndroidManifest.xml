@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeasWhisper">
         <activity
-            android:name=".DetectionActivity"
+            android:name=".view.DetectionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
