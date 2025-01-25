@@ -30,7 +30,6 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
-
     }
 
     buildTypes {
@@ -43,7 +42,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
     sourceSets {
         main {
             if (isModule) {
@@ -56,5 +58,6 @@ android {
 }
 
 dependencies {
-
+    implementation libs.okhttp
+    implementation project(':modulesBase:libNetwork')
 }
