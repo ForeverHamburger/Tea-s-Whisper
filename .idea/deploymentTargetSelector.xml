@@ -22,6 +22,9 @@
       <SelectionState runConfigName="modulesCore.guidepage">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="modulesCore.detection">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

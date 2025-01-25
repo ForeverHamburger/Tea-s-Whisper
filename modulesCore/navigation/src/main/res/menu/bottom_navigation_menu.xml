@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="首页" />
+    <item
+        android:id="@+id/navigation_comments"
+        android:icon="@drawable/ic_comments"
+        android:title="论坛" />
+
+    <item
+        android:id="@+id/navigation"
+        android:title="检测" />
+
+    <item
+        android:id="@+id/navigation_ai_dialogue"
+        android:icon="@drawable/ic_ai_dialogue"
+        android:title="AI对话" />
+
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@drawable/ic_mine"
+        android:title="我的" />
+</menu>

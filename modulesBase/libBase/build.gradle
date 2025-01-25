@@ -32,12 +32,8 @@ dependencies {
     api cfg.dependencies.eventbus
     api cfg.dependencies.gson
     api cfg.libARouter
+    annotationProcessor cfg.libARouterCompiler
 
-//    implementation libs.appcompat
-//    implementation libs.material
-//    testImplementation libs.junit
-//    androidTestImplementation libs.ext.junit
-//    androidTestImplementation libs.espresso.core
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

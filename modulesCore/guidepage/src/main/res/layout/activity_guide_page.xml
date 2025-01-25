@@ -5,6 +5,39 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuidePageActivity">
+    tools:context=".view.GuidePageActivity">
+
+    <com.jem.liquidswipe.LiquidSwipeViewPager
+        android:id="@+id/vp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tv_guide_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳过"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/guide_title_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_guide_gotologin"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_click_gotologin"
+        android:text="前往注册"
+        android:visibility="gone"
+        android:fontFamily="@font/guide_title_font"
+        style="?borderlessButtonStyle"
+        android:textSize="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/indicator1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

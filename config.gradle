@@ -15,7 +15,8 @@ ext {  //extend
                      ,"base" : "com.xuptggg.module.libbase"
                      ,"router" : "com.xuptggg.module.librouter"
                      ,"guidepage" : "com.xuptggg.guidepage"
-                     ,"navigation" : "com.xuptggg.navigation"]
+                     ,"navigation" : "com.xuptggg.navigation"
+                     ,"detection" : "com.xuptggg.detection"]
 
     dependencies = [
             glide : 'com.github.bumptech.glide:glide:4.16.0',
@@ -25,5 +26,6 @@ ext {  //extend
 
     libARouter = 'com.alibaba:arouter-api:1.5.2'
     libARouterCompiler = 'com.alibaba:arouter-compiler:1.5.2'
+
     libEventBusCompiler = 'org.greenrobot:eventbus-annotation-processor:3.3.1'
 }
