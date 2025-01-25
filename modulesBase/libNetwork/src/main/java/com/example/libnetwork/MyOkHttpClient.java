@@ -7,7 +7,17 @@ import com.example.libnetwork.request.MyRequest;
 import com.example.libnetwork.request.RequestParams;
 import com.example.libnetwork.response.JsonCallback;
 
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -36,7 +46,6 @@ public class MyOkHttpClient {
 
         mOkHttpClient = mOkHttpClientBuilder.build();
     }
-
     // 获取配置好的OkHttpClient实例的方法，外部其他类可以通过调用这个方法获取到已经完成各种配置的OkHttpClient对象，
     // 用于进一步的网络请求操作或者其他基于OkHttpClient的扩展功能开发。
     public static OkHttpClient getOkHttpClient() {

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">login</string>
     <string name="login_title">登录</string>
+    <string name="register_title">注册</string>
     <string name="login_account">请输入邮箱</string>
     <string name="login_account_hint">请输入昵称</string>
     <string name="login_password">请输入密码</string>

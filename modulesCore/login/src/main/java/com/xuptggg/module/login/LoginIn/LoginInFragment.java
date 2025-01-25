@@ -106,6 +106,42 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             }
         });
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+//        binding = null;
+        mPresenter.unSubscribe();
+        mPresenter = null;
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+//    @Override
+//    public void setStarData(musicData starData) {
+//        requireActivity().runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
+//
+//    }
+
+    @Override
+    public Boolean isACtive() {
+        //判断是否加入到Activity
+        return isAdded();
+    }
+
+    @Override
+    public void setPresenter(LoginInContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    //辅助方法
     public static SpannableString combineAndUnderline(String firstPart, String secondPart) {
         // 为第一个字符串创建 SpannableString 并添加下划线
         SpannableString spannableFirstPart = new SpannableString(firstPart);
@@ -152,44 +188,4 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
         }
         return true;
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-//        binding = null;
-        mPresenter.unSubscribe();
-        mPresenter = null;
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-//    @Override
-//    public void setStarData(musicData starData) {
-//        requireActivity().runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-//
-//    }
-
-    @Override
-    public Boolean isACtive() {
-        //判断是否加入到Activity
-        return isAdded();
-    }
-
-    @Override
-    public void setPresenter(LoginInContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
-
-    public void Validator(String username, String password) {
-
-    }
-
 }

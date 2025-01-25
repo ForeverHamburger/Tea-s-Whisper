@@ -18,7 +18,7 @@
         <item name="boxCornerRadiusBottomEnd">@dimen/dp_cardCornerRadius</item>
     </style>
     <style name="MyHintTextStyle" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">@color/color_basic1</item>
+        <item name="android:textColor">@color/light_green</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">italic</item>
     </style>

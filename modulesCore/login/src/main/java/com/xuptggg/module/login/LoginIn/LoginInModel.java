@@ -1,6 +1,7 @@
 package com.xuptggg.module.login.LoginIn;
 
 import com.example.libnetwork.MyOkHttpClient;
+import com.example.libnetwork.URL;
 import com.example.libnetwork.listener.MyDataHandle;
 import com.example.libnetwork.listener.MyDataListener;
 import com.example.libnetwork.request.MyRequest;
@@ -48,7 +49,7 @@ public class LoginInModel implements LoginInContract.Model {
         //test 接口验证码
         RequestParams params1 = new RequestParams();
         params1.put("email", "1120774555@qq.com");
-        MyOkHttpClient.post(MyRequest.PostRequest("https://202.182.125.24:15265/code", params1), handle);
+        MyOkHttpClient.post(MyRequest.PostRequest(URL.LOGIN_CODE_URL, params1), handle);
     }
 
     public static void getSomeDate() {
