@@ -1,4 +1,4 @@
-package com.example.libnetwork;
+package com.xuptggg.libnetwork;
 
 public class URL {
     public static final String LOGIN_BASE_URL = "https://221.181.185.242:18080/";

@@ -5,7 +5,7 @@ plugins {
 def cfg = rootProject.ext
 
 android {
-    namespace 'com.example.libnetwork'
+    namespace cfg.applicationId.network
     compileSdk cfg.android.compileSdkVersion
 
     defaultConfig {

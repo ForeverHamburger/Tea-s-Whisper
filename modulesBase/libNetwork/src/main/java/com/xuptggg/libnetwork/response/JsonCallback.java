@@ -1,13 +1,13 @@
-package com.example.libnetwork.response;
+package com.xuptggg.libnetwork.response;
 
 
 import android.os.Handler;
 import android.os.Looper;
 
-import com.example.libnetwork.exception.MyHttpException;
-import com.example.libnetwork.listener.MyDataHandle;
-import com.example.libnetwork.listener.MyDataListener;
 import com.google.gson.Gson;
+import com.xuptggg.libnetwork.exception.MyHttpException;
+import com.xuptggg.libnetwork.listener.MyDataHandle;
+import com.xuptggg.libnetwork.listener.MyDataListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
