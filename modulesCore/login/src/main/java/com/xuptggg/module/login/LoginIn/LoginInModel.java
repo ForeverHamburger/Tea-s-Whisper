@@ -8,6 +8,8 @@ import com.example.libnetwork.request.MyRequest;
 import com.example.libnetwork.request.RequestParams;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
+import org.json.JSONObject;
+
 
 public class LoginInModel implements LoginInContract.Model {
     @Override
@@ -21,11 +23,11 @@ public class LoginInModel implements LoginInContract.Model {
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                if (responseObj instanceof String) {
-                    // 将响应结果转换为 String 类型并传递给 LoadTasksCallBack 的 onSuccess 方法
-                    callBack.onSuccess((String) responseObj);
+                if (responseObj instanceof JSONObject) {
+                    // 将响应结果转换为 JSONObject 类型并传递给 LoadTasksCallBack 的 onSuccess 方法
+                    callBack.onSuccess( responseObj.toString());
                 } else {
-                    // 如果响应结果不是 String 类型，视为请求失败
+                    // 如果响应结果不是 JSONObject 类型，视为请求失败
                     callBack.onFailed("no");
                 }
             }
@@ -43,12 +45,10 @@ public class LoginInModel implements LoginInContract.Model {
                 }
             }
         });
-
-        // 发起 GET 请求，使用之前封装好的 MyOkHttpClient
-//        MyOkHttpClient.get("http://202.182.125.24:15265/code", params, handle);
         //test 接口验证码
         RequestParams params1 = new RequestParams();
         params1.put("email", "1120774555@qq.com");
+        System.out.println("params1 = " + params1.urlParams);
         MyOkHttpClient.post(MyRequest.PostRequest(URL.LOGIN_CODE_URL, params1), handle);
     }
 

@@ -9,6 +9,7 @@ import com.example.libnetwork.listener.MyDataHandle;
 import com.example.libnetwork.listener.MyDataListener;
 import com.google.gson.Gson;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -46,7 +47,14 @@ public class JsonCallback implements Callback {
         // 创建一个与主线程关联的 Handler，用于将结果切换到 UI 线程
         this.mHandler = new Handler(Looper.getMainLooper());
     }
-
+    private boolean isValidJson(String json) {
+        try {
+            new JSONObject(json);
+            return true;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
     // 当网络请求失败时的回调方法
     @Override
     public void onFailure(final Call call, final IOException ioexception) {
