@@ -1,4 +1,4 @@
-package com.example.libnetwork.exception;
+package com.xuptggg.libnetwork.exception;
 
 //自定义异常类,返回ecode,emsg到业务层
 public class MyHttpException extends Exception {

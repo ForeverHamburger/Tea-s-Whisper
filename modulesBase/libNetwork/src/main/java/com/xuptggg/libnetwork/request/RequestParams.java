@@ -1,4 +1,4 @@
-package com.example.libnetwork.request;
+package com.xuptggg.libnetwork.request;
 
 import java.util.HashMap;
 import java.util.Map;

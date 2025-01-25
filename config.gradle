@@ -13,7 +13,8 @@ ext {  //extend
 
     applicationId = ["app"  : "com.xuptggg.teaswhisper"
                      ,"base" : "com.xuptggg.module.libbase"
-                     ,"router" : "com.xuptggg.module.librouter"
+                     ,"login" : "com.xuptggg.module.login"
+                     ,"network" : "com.xuptggg.libnetwork"
                      ,"guidepage" : "com.xuptggg.guidepage"
                      ,"navigation" : "com.xuptggg.navigation"
                      ,"detection" : "com.xuptggg.detection"]

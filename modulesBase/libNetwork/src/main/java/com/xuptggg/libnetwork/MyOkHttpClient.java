@@ -1,11 +1,10 @@
-package com.example.libnetwork;
+package com.xuptggg.libnetwork;
 
 
-
-import com.example.libnetwork.listener.MyDataHandle;
-import com.example.libnetwork.request.MyRequest;
-import com.example.libnetwork.request.RequestParams;
-import com.example.libnetwork.response.JsonCallback;
+import com.xuptggg.libnetwork.listener.MyDataHandle;
+import com.xuptggg.libnetwork.request.MyRequest;
+import com.xuptggg.libnetwork.request.RequestParams;
+import com.xuptggg.libnetwork.response.JsonCallback;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
