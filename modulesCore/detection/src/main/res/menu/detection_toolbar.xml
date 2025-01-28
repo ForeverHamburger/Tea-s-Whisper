@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_history"
+            app:showAsAction="always"
+            android:title="历史记录"
+            android:icon="@drawable/icon_menu_history"/>
+        <item
+            android:id="@+id/menu_share"
+            app:showAsAction="always"
+            android:icon="@drawable/icon_menu_share"
+            android:title="分享"/>
+    </group>
+</menu>

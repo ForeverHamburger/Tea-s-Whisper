@@ -20,6 +20,7 @@ import java.util.List;
 
 public class DetectionActivity extends AppCompatActivity implements IDetectionContract.IDetectionView {
     private ActivityDetectionBinding binding;
+    private boolean isStartDetection = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,15 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
         binding.ivCup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isStartDetection) {
+                    binding.tvDetectionState.setText("点击开始识茶");
+                    binding.tvDetectionAttach.setVisibility(View.VISIBLE);
+                    isStartDetection = false;
+                } else {
+                    binding.tvDetectionState.setText("录音中");
+                    binding.tvDetectionAttach.setVisibility(View.INVISIBLE);
+                    isStartDetection = true;
+                }
                 binding.rippleView.toggleAnimations();
             }
         });
