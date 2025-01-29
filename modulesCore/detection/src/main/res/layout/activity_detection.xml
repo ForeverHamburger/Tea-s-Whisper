@@ -9,13 +9,24 @@
     tools:context=".view.DetectionActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_my_page"
+        android:id="@+id/tb_detection"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:menu="@menu/detection_toolbar"
+        app:navigationIcon="@drawable/icon_menu_navigation"
         style="@style/myToolbarNavigationButtonStyle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/string_detection_title"
+            android:textSize="20sp"
+            android:fontFamily="@font/guide_title_font"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <com.xuptggg.detection.view.RippleView
         android:id="@+id/ripple_view"

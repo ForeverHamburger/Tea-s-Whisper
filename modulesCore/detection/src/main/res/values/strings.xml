@@ -3,4 +3,5 @@
     <string name="string_detection_attach">自动识别茶品</string>
     <string name="string_detection_state">点击开始识茶</string>
     <string name="string_wish">今宵更有湘江月，照出菲菲满碗花。</string>
+    <string name="string_detection_title">听声识茶</string>
 </resources>
