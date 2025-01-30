@@ -6,7 +6,7 @@
     android:background="@drawable/detection_gradient_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DetectionActivity">
+    tools:context=".function.view.DetectionActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_detection"
@@ -28,7 +28,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <com.xuptggg.detection.view.RippleView
+    <com.xuptggg.detection.function.view.RippleView
         android:id="@+id/ripple_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,6 +1,6 @@
-package com.xuptggg.detection.model;
+package com.xuptggg.detection.function.model;
 
-import com.xuptggg.detection.contract.IDetectionContract;
+import com.xuptggg.detection.function.contract.IDetectionContract;
 
 import java.util.ArrayList;
 import java.util.List;

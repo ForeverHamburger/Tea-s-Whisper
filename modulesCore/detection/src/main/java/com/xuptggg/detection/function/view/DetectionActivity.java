@@ -1,9 +1,7 @@
-package com.xuptggg.detection.view;
+package com.xuptggg.detection.function.view;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +10,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.xuptggg.detection.R;
-import com.xuptggg.detection.contract.IDetectionContract;
+import com.xuptggg.detection.function.contract.IDetectionContract;
 import com.xuptggg.detection.databinding.ActivityDetectionBinding;
-import com.xuptggg.detection.model.DetectionInfo;
-
-import java.util.List;
+import com.xuptggg.detection.function.model.DetectionInfo;
 
 public class DetectionActivity extends AppCompatActivity implements IDetectionContract.IDetectionView {
     private ActivityDetectionBinding binding;

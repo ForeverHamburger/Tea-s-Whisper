@@ -1,4 +1,4 @@
-package com.xuptggg.detection.model;
+package com.xuptggg.detection.function.model;
 
 public interface LoadDetectionInfoCallBack<T> {
     void onSuccess(T t);

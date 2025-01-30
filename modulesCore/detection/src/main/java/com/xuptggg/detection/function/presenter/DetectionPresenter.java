@@ -1,10 +1,8 @@
-package com.xuptggg.detection.presenter;
+package com.xuptggg.detection.function.presenter;
 
-import com.xuptggg.detection.contract.IDetectionContract;
-import com.xuptggg.detection.model.DetectionInfo;
-import com.xuptggg.detection.model.LoadDetectionInfoCallBack;
-
-import java.util.List;
+import com.xuptggg.detection.function.contract.IDetectionContract;
+import com.xuptggg.detection.function.model.DetectionInfo;
+import com.xuptggg.detection.function.model.LoadDetectionInfoCallBack;
 
 public class DetectionPresenter implements IDetectionContract.IDetectionPresenter, LoadDetectionInfoCallBack<DetectionInfo> {
     private IDetectionContract.IDetectionModel model;

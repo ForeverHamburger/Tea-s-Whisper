@@ -1,4 +1,4 @@
-package com.xuptggg.detection.view;
+package com.xuptggg.detection.function.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
