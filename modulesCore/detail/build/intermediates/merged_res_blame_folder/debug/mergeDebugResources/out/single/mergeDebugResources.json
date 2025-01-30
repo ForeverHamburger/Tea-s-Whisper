@@ -1,0 +1,150 @@
+[
+    {
+        "merged": "com.xuptggg.detail-debug-34:/layout_activity_detail.xml.flat",
+        "source": "com.xuptggg.detail-main-36:/layout/activity_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_pic_detail_guide.png.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\pic_detail_guide.png"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\font_head_font.otf.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\font\\head_font.otf"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_bg_rounded_corner.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\bg_rounded_corner.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_button_selector.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\button_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_pic_detail_history.png.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\pic_detail_history.png"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_arrow_down.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\arrow_down.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_bg_tea_card.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\bg_tea_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\font_title_font.ttf.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\font\\title_font.ttf"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_rounded_corners.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\rounded_corners.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_bg_guide_rounded.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\bg_guide_rounded.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_icon_menu_navigation.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\icon_menu_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_button_background.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\button_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_pic_detail_progress.png.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\pic_detail_progress.png"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_detail_background.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\detail_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_ic_like.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\ic_like.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_ic_like_select.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\ic_like_select.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_button_background_pressed.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\button_background_pressed.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\layout_activity_detail.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\layout\\activity_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\layout_fragment_tea_detail.xml.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\layout\\fragment_tea_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_tea_test.png.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\tea_test.png"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\drawable_pic_title_background.png.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\drawable\\pic_title_background.png"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\font_content_font.ttf.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\font\\content_font.ttf"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-debug-34:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    }
+]

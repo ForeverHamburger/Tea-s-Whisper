@@ -1,0 +1,4 @@
+#Thu Feb 27 15:52:07 CST 2025
+base.0=E\:\\STUDY\\Android\\TeasWhisper\\modulesCore\\detail\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

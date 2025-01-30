@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="E:\STUDY\Android\TeasWhisper\modulesCore\detail"
+    name=":modulesCore:detail"
+    type="APP"
+    maven="Tea&apos;s Whisper.modulesCore:detail:unspecified"
+    agpVersion="8.4.0"
+    buildFolder="build"
+    bootClassPath="E:\Android Study\AndroidSdk\platforms\android-34\android.jar;E:\Android Study\AndroidSdk\build-tools\34.0.0\core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="debug"/>
+</lint-module>

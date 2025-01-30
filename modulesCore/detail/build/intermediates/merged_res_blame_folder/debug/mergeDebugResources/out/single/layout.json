@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-mergeDebugResources-33:\\layout\\activity_detail.xml",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\layout\\activity_detail.xml"
+    },
+    {
+        "merged": "com.xuptggg.detail-mergeDebugResources-33:/layout/activity_detail.xml",
+        "source": "com.xuptggg.detail-main-36:/layout/activity_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-mergeDebugResources-33:\\layout\\fragment_tea_detail.xml",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-36:\\layout\\fragment_tea_detail.xml"
+    }
+]
