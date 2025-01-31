@@ -1,4 +1,4 @@
-package com.xuptggg.detection.history;
+package com.xuptggg.detection.history.view;
 
 import android.os.Bundle;
 
@@ -17,10 +17,12 @@ public class DetectionHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_detection_history);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.detection_history), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
     }
 }

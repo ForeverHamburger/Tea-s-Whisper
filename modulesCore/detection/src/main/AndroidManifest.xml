@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeasWhisper" >
         <activity
-            android:name=".history.DetectionHistoryActivity"
+            android:name=".history.view.DetectionHistoryActivity"
             android:exported="false" />
         <activity
             android:name=".function.view.DetectionActivity"

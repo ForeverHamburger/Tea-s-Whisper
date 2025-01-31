@@ -1,6 +1,6 @@
 package com.xuptggg.detection.function.contract;
 
-import com.xuptggg.detection.function.base.BaseView;
+import com.xuptggg.detection.base.BaseView;
 import com.xuptggg.detection.function.model.DetectionInfo;
 import com.xuptggg.detection.function.model.LoadDetectionInfoCallBack;
 
