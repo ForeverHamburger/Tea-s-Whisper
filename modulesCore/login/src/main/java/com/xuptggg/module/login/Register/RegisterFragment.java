@@ -1,5 +1,7 @@
 package com.xuptggg.module.login.Register;
 
+import static com.xuptggg.module.login.LoginIn.LoginInFragment.combineAndUnderline;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,9 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        String text_to_register_before = getString(R.string.login_have_to_register_before);
+        String text_to_register_after = getString(R.string.login_have_to_register_after);
+        binding.textViewToRegister.setText(combineAndUnderline(text_to_register_before, text_to_register_after));
 
     }
 
