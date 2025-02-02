@@ -9,7 +9,6 @@
     android:layout_marginVertical="4dp"
     android:padding="12dp">
 
-    <!-- 歌曲封面 -->
     <ImageView
         android:id="@+id/iv_leaves"
         android:layout_width="56dp"
