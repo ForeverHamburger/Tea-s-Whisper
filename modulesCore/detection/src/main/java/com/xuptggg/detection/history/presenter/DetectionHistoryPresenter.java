@@ -4,11 +4,13 @@ import com.xuptggg.detection.history.contract.IDetectionHistoryContract;
 import com.xuptggg.detection.history.model.DetectionHistoryInfo;
 import com.xuptggg.detection.history.model.LoadDetectionInfoCallBack;
 
-public class DetectionPresenter implements IDetectionHistoryContract.IDetectionPresenter, LoadDetectionInfoCallBack<DetectionHistoryInfo> {
+import java.util.List;
+
+public class DetectionHistoryPresenter implements IDetectionHistoryContract.IDetectionPresenter, LoadDetectionInfoCallBack<List<DetectionHistoryInfo>> {
     private IDetectionHistoryContract.IDetectionModel model;
     private IDetectionHistoryContract.IDetectionView view;
 
-    public DetectionPresenter(IDetectionHistoryContract.IDetectionModel model, IDetectionHistoryContract.IDetectionView view) {
+    public DetectionHistoryPresenter(IDetectionHistoryContract.IDetectionModel model, IDetectionHistoryContract.IDetectionView view) {
         this.model = model;
         this.view = view;
     }
@@ -20,8 +22,8 @@ public class DetectionPresenter implements IDetectionHistoryContract.IDetectionP
 
 
     @Override
-    public void onSuccess(DetectionHistoryInfo detectionHistoryInfo) {
-
+    public void onSuccess(List<DetectionHistoryInfo> detectionHistoryInfo) {
+        view.showDetectionInfomation(detectionHistoryInfo);
     }
 
     @Override

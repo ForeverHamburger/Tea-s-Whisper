@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/modulesCore/chat" />
             <option value="$PROJECT_DIR$/modulesCore/detection" />
             <option value="$PROJECT_DIR$/modulesCore/guidepage" />
+            <option value="$PROJECT_DIR$/modulesCore/individual" />
             <option value="$PROJECT_DIR$/modulesCore/login" />
             <option value="$PROJECT_DIR$/modulesCore/navigation" />
             <option value="$PROJECT_DIR$/modulesPublic" />

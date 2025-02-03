@@ -1,10 +1,13 @@
 package com.xuptggg.detection.function.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -13,6 +16,7 @@ import com.xuptggg.detection.R;
 import com.xuptggg.detection.function.contract.IDetectionContract;
 import com.xuptggg.detection.databinding.ActivityDetectionBinding;
 import com.xuptggg.detection.function.model.DetectionInfo;
+import com.xuptggg.detection.history.view.DetectionHistoryActivity;
 
 public class DetectionActivity extends AppCompatActivity implements IDetectionContract.IDetectionView {
     private ActivityDetectionBinding binding;
@@ -27,6 +31,17 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        binding.tbDetection.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.menu_history) {
+                    Intent intent = new Intent(DetectionActivity.this,DetectionHistoryActivity.class);
+                    startActivity(intent);
+                }
+                return false;
+            }
         });
 
         binding.ivCup.setOnClickListener(new View.OnClickListener() {

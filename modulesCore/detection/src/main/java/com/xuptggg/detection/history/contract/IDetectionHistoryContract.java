@@ -4,6 +4,8 @@ import com.xuptggg.detection.base.BaseView;
 import com.xuptggg.detection.history.model.DetectionHistoryInfo;
 import com.xuptggg.detection.history.model.LoadDetectionInfoCallBack;
 
+import java.util.List;
+
 public interface IDetectionHistoryContract {
     interface IDetectionModel<T> {
         void execute(T data, LoadDetectionInfoCallBack callBack);
@@ -12,7 +14,7 @@ public interface IDetectionHistoryContract {
         void getDetectionInfo(String info);
     }
     interface IDetectionView extends BaseView<IDetectionPresenter> {
-        void showDetectionInfomation(DetectionHistoryInfo detectionHistoryInfos);
+        void showDetectionInfomation(List<DetectionHistoryInfo> detectionHistoryInfos);
         void showError();
     }
 }

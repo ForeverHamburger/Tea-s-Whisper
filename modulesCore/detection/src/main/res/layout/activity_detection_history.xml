@@ -5,7 +5,7 @@
     android:id="@+id/detection_history"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/detection_gradient_background">
 
     <!-- 标题栏 -->
 
@@ -16,6 +16,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#FFFFFF"
         android:elevation="4dp"
+        app:navigationIcon="@drawable/icon_menu_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

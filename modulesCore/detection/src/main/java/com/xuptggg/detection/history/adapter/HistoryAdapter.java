@@ -64,7 +64,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         return historyInfos.size();
     }
 
-    // 更新数据方法（建议使用DiffUtil优化）
     public void updateData(List<DetectionHistoryInfo> newList) {
         historyInfos.clear();
         historyInfos.addAll(newList);
