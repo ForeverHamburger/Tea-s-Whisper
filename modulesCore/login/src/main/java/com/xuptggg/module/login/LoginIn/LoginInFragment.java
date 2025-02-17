@@ -2,6 +2,10 @@ package com.xuptggg.module.login.LoginIn;
 
 import static android.provider.Settings.System.getString;
 
+import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
+import static com.xuptggg.module.login.base.ValidationUtil.PHONE_REGEX_CN;
+import static com.xuptggg.module.login.base.ValidationUtil.validateEmail;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,6 +13,7 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +25,14 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.R;
+import com.xuptggg.module.login.Register.RegisterFragment;
+import com.xuptggg.module.login.Register.RegisterModel;
+import com.xuptggg.module.login.Register.RegisterPresenter;
 import com.xuptggg.module.login.base.InputValidator;
+import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.databinding.FragmentLoginInBinding;
+
+import java.util.regex.Pattern;
 
 public class LoginInFragment extends Fragment implements LoginInContract.View {
     private FragmentLoginInBinding binding;
@@ -66,23 +77,21 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                 mPresenter.onLoginClick(username, password);
             }
         });
+        // 账号输入框焦点改变监听
         binding.editTextUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    String username = binding.editTextUsername.getText().toString();
+                    String username = binding.editTextUsername.getText().toString().trim();
                     // 移除之前可能存在的错误提示
                     binding.tlUsername.setError(null);
-                    InputValidator validator = new InputValidator();
-                    if (!validator.validateAccount(username)) {
-                        binding.tlUsername.setError("账号格式不正确");
-                    } else if (username.isEmpty()) {
+                    if (username == null || username.trim().isEmpty()) {
                         binding.tlUsername.setError("账号不能为空");
-                    } else if (username.length() < 6) {
-                        binding.tlUsername.setError("账号长度不能小于6位");
+                    }
+                    if (!Pattern.matches(PHONE_REGEX_CN, username)&&!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+                        binding.tlUsername.setError("账号格式错误");
                     }
                 } else {
-                    // 焦点重回时清除错误信息
                     binding.tlUsername.setError(null);
                 }
             }
@@ -92,17 +101,33 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     String password = binding.editTextPassword.getText().toString();
-                    // 移除之前可能存在的错误提示
                     binding.tlPassword.setError(null);
-                    if (password.isEmpty()) {
+                    if (password == null || password.isEmpty()) {
                         binding.tlPassword.setError("密码不能为空");
-                    } else if (password.length() < 6) {
-                        binding.tlPassword.setError("密码长度不能小于6位");
+                    }
+                    if (password.length() < 8) {
+                        binding.tlPassword.setError("密码至少需要8位");
+                    }
+                    if (!Pattern.matches(PASSWORD_REGEX, password)) {
+                        binding.tlPassword.setError("需包含字母和数字");
                     }
                 } else {
-                    // 焦点重回时清除错误信息
                     binding.tlPassword.setError(null);
                 }
+            }
+        });
+        binding.textViewToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegisterFragment registerFragment = new RegisterFragment();
+
+                RegisterPresenter registerPresenter = new RegisterPresenter(registerFragment, new RegisterModel());
+                registerFragment.setPresenter(registerPresenter);
+
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, registerFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }

@@ -48,12 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         if (loginInFragment == null) {
             loginInFragment = new LoginInFragment();
         }
-        LoginInPresenter loginInPresenter =  new LoginInPresenter(loginInFragment, new LoginInModel());
+        LoginInPresenter loginInPresenter = new LoginInPresenter(loginInFragment, new LoginInModel());
         loginInFragment.setPresenter(loginInPresenter);
         ft.add(R.id.fragment_container, loginInFragment);
         ft.commit();
-
     }
-
-
 }

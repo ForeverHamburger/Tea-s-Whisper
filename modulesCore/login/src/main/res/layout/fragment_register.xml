@@ -46,7 +46,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_username"
+        android:id="@+id/tl_email"
         style="@style/CustomTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tl_phone">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_username"
+            android:id="@+id/editText_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
@@ -86,7 +86,7 @@
         app:errorTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_username"
+        app:layout_constraintTop_toBottomOf="@+id/tl_email"
         app:passwordToggleDrawable="@drawable/shape_seeorno">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -105,6 +105,35 @@
             app:passwordToggleDrawable="@drawable/shape_seeorno" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_confirmPassword"
+        style="@style/CustomTextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:boxBackgroundMode="outline"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_password"
+        app:passwordToggleDrawable="@drawable/shape_seeorno">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/icon_password"
+            android:drawablePadding="18dp"
+            android:hint="@string/login_confirmPassword"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:errorEnabled="true"
+            app:passwordToggleDrawable="@drawable/shape_seeorno" />
+    </com.google.android.material.textfield.TextInputLayout>
     <!--    <com.google.android.material.textfield.TextInputLayout-->
     <!--        android:id="@+id/tl_verificationCode"-->
     <!--        style="@style/CustomTextInputLayoutStyle"-->
@@ -136,7 +165,7 @@
 
     <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <!-- TextInputLayout（仅包含 EditText，保留边框） -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_verificationCode"
         style="@style/CustomTextInputLayoutStyle"
@@ -147,12 +176,13 @@
         app:errorTextColor="@color/red"
         app:layout_constraintEnd_toStartOf="@+id/button_getVerificationCode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_password">
+        app:layout_constraintTop_toBottomOf="@+id/tl_confirmPassword">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_verificationCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_marginTop_small"
             android:drawableStart="@drawable/icon_password"
             android:drawablePadding="18dp"
             android:hint="@string/login_verificationCode"
@@ -168,9 +198,11 @@
         android:id="@+id/button_getVerificationCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_marginTop_small"
         android:layout_marginTop="@dimen/dp_marginTop_small"
+        android:background="@drawable/edit_shape"
         android:padding="8dp"
-        android:text="获取验证码"
+        android:text="@string/get_verification_code"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tl_verificationCode">
@@ -178,7 +210,7 @@
     </Button>
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_shape"
@@ -189,7 +221,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tl_verificationCode" />
 
     <TextView
-        android:id="@+id/textView_to_register"
+        android:id="@+id/textView_to_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_marginTop_big"
@@ -198,7 +230,6 @@
         android:textColorLink="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_login" />
-
+        app:layout_constraintTop_toBottomOf="@+id/button_register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,8 +15,10 @@ public class RegisterContract {
         void unSubscribe();
 
         void onRegisterClick(String email, String password,String phone, String verificationCode);
+
+        void getVerificationCode(String string);
     }
-    interface View extends BaseView<LoginInContract.Presenter> {
+    interface View extends BaseView<RegisterContract.Presenter> {
         void showError();
         //        void setLoginInData(musicData starData);
         Boolean isACtive();
