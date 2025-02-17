@@ -18,8 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="50dp"/>
-<!--    android:imeOptions="actionDone" 键盘显示“完成”按钮 -->
-    <EditText
+    <!--    android:imeOptions="actionDone" 键盘显示“完成”按钮 -->
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/emailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:text="请输入邮箱地址"
+        android:hint="请输入邮箱地址"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"/>
-<!--    app:pinBackground="@drawable/example_drawable"-->
+    <!--    app:pinBackground="@drawable/example_drawable"-->
 
     <TextView
         android:id="@+id/resendEmail"

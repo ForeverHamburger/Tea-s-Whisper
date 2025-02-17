@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Register.RegisterFragment">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/padding_basic"
     tools:context=".Register.RegisterFragment">
-
     <TextView
         android:id="@+id/textView_title"
         android:layout_width="wrap_content"
@@ -214,7 +221,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_shape"
-        android:text="@string/login_title"
+        android:text="@string/register_title"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -233,3 +240,4 @@
         app:layout_constraintTop_toBottomOf="@+id/button_register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

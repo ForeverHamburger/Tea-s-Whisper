@@ -17,9 +17,9 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
         mView.setPresenter(this);
     }
     @Override
-    public void getLoginInInfo(String username, String password) {
+    public void getLoginInInfo(String phoneoremail, String password) {
 
-        mModel.getLoginInInfo(username, password, this);
+        mModel.getLoginInInfo(phoneoremail, password, this);
     }
 
     @Override
@@ -33,8 +33,8 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
         mView = null;
     }
     @Override
-    public void onLoginClick(String username, String password) {
-        getLoginInInfo(username, password);
+    public void onLoginClick(String phoneoremail, String password) {
+        getLoginInInfo(phoneoremail, password);
 
     }
     @Override

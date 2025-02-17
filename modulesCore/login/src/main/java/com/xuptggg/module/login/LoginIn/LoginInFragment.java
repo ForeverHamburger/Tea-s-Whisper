@@ -28,6 +28,9 @@ import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.Register.RegisterFragment;
 import com.xuptggg.module.login.Register.RegisterModel;
 import com.xuptggg.module.login.Register.RegisterPresenter;
+import com.xuptggg.module.login.VerifyLogin.VerifyLoginFragment;
+import com.xuptggg.module.login.VerifyLogin.VerifyLoginModel;
+import com.xuptggg.module.login.VerifyLogin.VerifyLoginPresenter;
 import com.xuptggg.module.login.base.InputValidator;
 import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.databinding.FragmentLoginInBinding;
@@ -53,12 +56,9 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
         binding.tlPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
         binding.tlUsername.setErrorIconDrawable(0);
         binding.tlPassword.setErrorIconDrawable(0);
-        binding.textViewForget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.textViewForget.setOnClickListener(v -> {
 //                mPresenter.onForgetPasswordClick();
-                Toast.makeText(getContext(), "忘记密码", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getContext(), "忘记密码", Toast.LENGTH_SHORT).show();
         });
         String text_forget_password = getString(R.string.login_forget_password);
         String text_to_register_before = getString(R.string.login_forget_to_register_before);
@@ -66,29 +66,26 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
 
         binding.textViewToRegister.setText(combineAndUnderline(text_to_register_before, text_to_register_after));
         binding.textViewForget.setText(combineAndUnderline("",text_forget_password));
-        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = binding.editTextUsername.getText().toString();
-                String password = binding.editTextPassword.getText().toString();
-                if (!processLogin(username, password)) {
-                    return;
-                }
-                mPresenter.onLoginClick(username, password);
+        binding.buttonLogin.setOnClickListener(v -> {
+            String phoneoremail = binding.editTextUsername.getText().toString();
+            String password = binding.editTextPassword.getText().toString();
+            if (!processLogin(phoneoremail, password)) {
+                return;
             }
+            mPresenter.onLoginClick(phoneoremail, password);
         });
         // 账号输入框焦点改变监听
         binding.editTextUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    String username = binding.editTextUsername.getText().toString().trim();
+                    String phoneoremail = binding.editTextUsername.getText().toString().trim();
                     // 移除之前可能存在的错误提示
                     binding.tlUsername.setError(null);
-                    if (username == null || username.trim().isEmpty()) {
+                    if (phoneoremail.isEmpty() || phoneoremail.trim().isEmpty()) {
                         binding.tlUsername.setError("账号不能为空");
                     }
-                    if (!Pattern.matches(PHONE_REGEX_CN, username)&&!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+                    if (!Pattern.matches(PHONE_REGEX_CN, phoneoremail)&&!Patterns.EMAIL_ADDRESS.matcher(phoneoremail).matches()) {
                         binding.tlUsername.setError("账号格式错误");
                     }
                 } else {
@@ -116,19 +113,27 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                 }
             }
         });
-        binding.textViewToRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RegisterFragment registerFragment = new RegisterFragment();
+        binding.textViewToRegister.setOnClickListener(v -> {
+            RegisterFragment registerFragment = new RegisterFragment();
 
-                RegisterPresenter registerPresenter = new RegisterPresenter(registerFragment, new RegisterModel());
-                registerFragment.setPresenter(registerPresenter);
+            RegisterPresenter registerPresenter = new RegisterPresenter(registerFragment, new RegisterModel());
+            registerFragment.setPresenter(registerPresenter);
 
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, registerFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, registerFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+        binding.textViewLoginWithVerificationCode.setOnClickListener(v -> {
+            VerifyLoginFragment verifyLoginFragment = new VerifyLoginFragment();
+
+            VerifyLoginPresenter verifyLoginPresenter = new VerifyLoginPresenter(verifyLoginFragment, new VerifyLoginModel());
+            verifyLoginFragment.setPresenter(verifyLoginPresenter);
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, verifyLoginFragment)
+                    .addToBackStack(null)
+                    .commit();
         });
     }
     @Override
