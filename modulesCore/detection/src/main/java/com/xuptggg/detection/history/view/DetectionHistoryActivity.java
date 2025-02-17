@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.detection.R;
 import com.xuptggg.detection.databinding.ActivityDetectionHistoryBinding;
 import com.xuptggg.detection.history.adapter.HistoryAdapter;
@@ -18,6 +19,7 @@ import com.xuptggg.detection.history.model.DetectionHistoryModel;
 import com.xuptggg.detection.history.presenter.DetectionHistoryPresenter;
 
 import java.util.List;
+
 
 public class DetectionHistoryActivity extends AppCompatActivity implements IDetectionHistoryContract.IDetectionView {
 

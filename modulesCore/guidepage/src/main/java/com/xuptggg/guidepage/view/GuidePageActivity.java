@@ -71,6 +71,15 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
                 }
             }
         });
+
+        binding.tvGuideSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isModule()) {
+                    ARouter.getInstance().build("/navigation/NavigationActivity").navigation();
+                }
+            }
+        });
     }
 
     @Override

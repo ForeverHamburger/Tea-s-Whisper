@@ -13,7 +13,7 @@ public class NavigationModel implements INavigationContract.INavigationModel<Str
     public void execute(String data, LoadNavigationInfoCallBack callBack) {
         List<NavigationInfo> list = new ArrayList<>();
 
-        Fragment individualFragment = (Fragment) ARouter.getInstance().build("/Individual/IndividualFragment").navigation();
+        Fragment individualFragment = (Fragment) ARouter.getInstance().build("/individual/IndividualFragment").navigation();
         list.add(new NavigationInfo("我的",individualFragment));
 
         callBack.onSuccess(list);

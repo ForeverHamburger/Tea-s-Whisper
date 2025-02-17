@@ -49,10 +49,9 @@
             app:menu="@menu/bottom_navigation_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/fab_navigation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
             android:contentDescription="@string/floatingbuttonName"
             android:src="@drawable/ic_detect"

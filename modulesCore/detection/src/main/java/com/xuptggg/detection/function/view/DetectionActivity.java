@@ -12,12 +12,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.detection.R;
 import com.xuptggg.detection.function.contract.IDetectionContract;
 import com.xuptggg.detection.databinding.ActivityDetectionBinding;
 import com.xuptggg.detection.function.model.DetectionInfo;
 import com.xuptggg.detection.history.view.DetectionHistoryActivity;
 
+@Route(path = "/detection/DetectionActivity")
 public class DetectionActivity extends AppCompatActivity implements IDetectionContract.IDetectionView {
     private ActivityDetectionBinding binding;
     private boolean isStartDetection = false;

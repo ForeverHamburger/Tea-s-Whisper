@@ -11,16 +11,14 @@ import android.view.ViewGroup;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.individual.R;
 
-@Route(path = "/Individual/IndividualFragment")
+@Route(path = "/individual/IndividualFragment")
 public class IndividualFragment extends Fragment {
-
 
     public IndividualFragment() {
         // Required empty public constructor
     }
 
-
-    public static IndividualFragment newInstance(String param1, String param2) {
+    public static IndividualFragment newInstance() {
         IndividualFragment fragment = new IndividualFragment();
         return fragment;
     }

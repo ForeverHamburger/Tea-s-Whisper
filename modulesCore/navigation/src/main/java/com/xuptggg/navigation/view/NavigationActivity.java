@@ -2,6 +2,7 @@ package com.xuptggg.navigation.view;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +15,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.xuptggg.navigation.R;
 import com.xuptggg.navigation.contract.INavigationContract;
@@ -29,21 +32,22 @@ import java.util.List;
 public class NavigationActivity extends AppCompatActivity implements INavigationContract.INavigationView {
     private ActivityNavigationBinding binding;
     private INavigationContract.INavigationPresenter mPresenter;
+    private BottomNavigationView bnvNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setContentView(R.layout.activity_navigation);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        BottomNavigationView bnvNavigation = findViewById(R.id.bnv_navigation);
-        bnvNavigation.setItemIconTintList(null);
+
+//        bnvNavigation = findViewById(R.id.bnv_navigation);
+        binding.bnvNavigation.setItemIconTintList(null);
 
         NavigationModel navigationModel = new NavigationModel();
         setPresenter(new NavigationPresenter(navigationModel,this));
@@ -65,22 +69,28 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
                 if (menuItem.getTitle() == "首页") {
                     FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(0).getFragment());
                     replace.commit();
-                    Toast.makeText(NavigationActivity.this, "XIXI", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getTitle() == "论坛") {
-                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(1).getFragment());
-                    replace.commit();
-                    Toast.makeText(NavigationActivity.this, "AAA", Toast.LENGTH_SHORT).show();
+//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(1).getFragment());
+//                    replace.commit();
+//                    Toast.makeText(NavigationActivity.this, "AAA", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getTitle() == "AI对话") {
-                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(2).getFragment());
-                    replace.commit();
+//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(2).getFragment());
+//                    replace.commit();
                 } else if (menuItem.getTitle() == "我的") {
-                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(3).getFragment());
-                    replace.commit();
+//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(3).getFragment());
+//                    replace.commit();
                 } else if (menuItem.getTitle() == "检测") {
-                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(4).getFragment());
-                    replace.commit();
+
                 }
-                return false;
+                return true;
+            }
+        });
+
+        binding.fabNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NavigationActivity.this, "xixi", Toast.LENGTH_SHORT).show();
+                ARouter.getInstance().build("/detection/DetectionActivity").navigation();
             }
         });
     }
