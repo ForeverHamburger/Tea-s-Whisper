@@ -33,11 +33,11 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        EditText emailAddress = binding.emailAddress;
+//        EditText emailAddress = binding.emailAddress;
         // 监听键盘的“完成”按钮
-        emailAddress.setOnEditorActionListener((v, actionId, event) -> {
+        binding.tlEmailAddress.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                String email = emailAddress.getText().toString().trim();
+                String email = binding.tlEmailAddress.getText().toString().trim();
                 return sentCode(email);
             }
             return false;
@@ -47,7 +47,7 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
         pinview.setPinViewEventListener((pinview1, fromUser) -> {
             // 当用户输入完成时触发
             if (pinview.getValue().length() == 6) {
-                String email = binding.emailAddress.getText().toString();
+                String email = binding.tlEmailAddress.getText().toString();
                 String verificationCode = pinview1.getValue();
                 mPresenter.onVerifyLoginClick(email, verificationCode);
                 Toast.makeText(getContext(), "Entered: " + verificationCode, Toast.LENGTH_SHORT).show();
@@ -56,7 +56,7 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
         binding.resendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailAddress.getText().toString().trim();
+                String email = binding.tlEmailAddress.getText().toString().trim();
                 sentCode(email);
             }
         });
@@ -67,27 +67,23 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
             }
         });
     }
-    public void getVerificationCode(String email) {
-        ValidationResult result = validateEmail(email);
-        // 调用后端发送验证码
-        if (result.isValid()) {
-//            Toast.makeText(getContext(), "验证码发送中", Toast.LENGTH_SHORT).show();
-            mPresenter.getVerificationCode(email);
-        } else {
-            Toast.makeText(getContext(), result.getErrorMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    private boolean sentCode(String email) {
+    public boolean sentCode(String email) {
         if (!validateEmail(email).isValid()) {
             Toast.makeText(getContext(), "请输入正确的邮箱地址", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             Toast.makeText(getContext(), "验证码发送中", Toast.LENGTH_SHORT).show();
-            getVerificationCode(email);
+            ValidationResult result = validateEmail(email);
+            if (result.isValid()) {
+//            Toast.makeText(getContext(), "验证码发送中", Toast.LENGTH_SHORT).show();
+                mPresenter.getVerificationCode(email);
+            } else {
+                Toast.makeText(getContext(), result.getErrorMessage(), Toast.LENGTH_SHORT).show();
+            }
             return true;
         }
     }

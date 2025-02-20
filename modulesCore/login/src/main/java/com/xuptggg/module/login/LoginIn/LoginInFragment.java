@@ -24,6 +24,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.xuptggg.module.login.Forget.ForgetFragment;
+import com.xuptggg.module.login.Forget.ForgetModel;
+import com.xuptggg.module.login.Forget.ForgetPresenter;
 import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.Register.RegisterFragment;
 import com.xuptggg.module.login.Register.RegisterModel;
@@ -56,10 +59,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
         binding.tlPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
         binding.tlUsername.setErrorIconDrawable(0);
         binding.tlPassword.setErrorIconDrawable(0);
-        binding.textViewForget.setOnClickListener(v -> {
-//                mPresenter.onForgetPasswordClick();
-            Toast.makeText(getContext(), "忘记密码", Toast.LENGTH_SHORT).show();
-        });
         String text_forget_password = getString(R.string.login_forget_password);
         String text_to_register_before = getString(R.string.login_forget_to_register_before);
         String text_to_register_after = getString(R.string.login_forget_to_register_after);
@@ -132,6 +131,17 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
 
             requireActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, verifyLoginFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+        binding.textViewForget.setOnClickListener(v -> {
+            ForgetFragment forgetFragment = new ForgetFragment();
+
+            ForgetPresenter ForgetPresenter = new ForgetPresenter(forgetFragment, new ForgetModel());
+            forgetFragment.setPresenter(ForgetPresenter);
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, forgetFragment)
                     .addToBackStack(null)
                     .commit();
         });

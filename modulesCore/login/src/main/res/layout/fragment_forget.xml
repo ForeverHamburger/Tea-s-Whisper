@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Forget.ForgetFragment">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="忘记密码"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_verificationCode"
+        style="@style/CustomTextInputLayoutStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:layout_constraintEnd_toStartOf="@+id/button_getVerificationCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_verificationCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_marginTop_small"
+            android:drawableStart="@drawable/icon_password"
+            android:drawablePadding="18dp"
+            android:hint="请输入邮箱"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 获取验证码按钮（与 TextInputLayout 平行） -->
+    <Button
+        android:id="@+id/button_getVerificationCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_marginTop_small"
+        android:layout_marginTop="@dimen/dp_marginTop_small"
+        android:background="@drawable/edit_shape"
+        android:padding="8dp"
+        android:text="@string/get_verification_code"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tl_verificationCode">
+
+    </Button>
+
+    <com.goodiebag.pinview.Pinview
+        android:id="@+id/codeview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cursorVisible="true"
+        app:forceKeyboard="true"
+        app:hint="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_verificationCode"
+        app:lineColor="@color/purple_500"
+        app:lineWidth="2dp"
+        app:pinHeight="40dp"
+        app:pinLength="6"
+        app:pinWidth="40dp"
+        app:textSize="20sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_password"
+        style="@style/CustomTextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:boxBackgroundMode="outline"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codeview"
+        app:passwordToggleDrawable="@drawable/shape_seeorno">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/icon_password"
+            android:drawablePadding="18dp"
+            android:hint="@string/login_password"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:errorEnabled="true"
+            app:passwordToggleDrawable="@drawable/shape_seeorno" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_confirmPassword"
+        style="@style/CustomTextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_password"
+        app:passwordToggleDrawable="@drawable/shape_seeorno">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/icon_password"
+            android:drawablePadding="18dp"
+            android:hint="@string/login_confirmPassword"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:errorEnabled="true"
+            app:passwordToggleDrawable="@drawable/shape_seeorno" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="确认"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_confirmPassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
