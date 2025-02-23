@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/tea_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="龙井茶叶"
+        android:textSize="20sp"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/tea_origin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="产地：浙江杭州"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_marginTop="5dp" />
+
+    <ImageView
+        android:id="@+id/tea_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp" />
+</LinearLayout>

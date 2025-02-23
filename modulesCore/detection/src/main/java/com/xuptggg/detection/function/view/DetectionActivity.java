@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.detection.R;
 import com.xuptggg.detection.function.contract.IDetectionContract;
 import com.xuptggg.detection.databinding.ActivityDetectionBinding;
@@ -39,8 +40,7 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.menu_history) {
-                    Intent intent = new Intent(DetectionActivity.this,DetectionHistoryActivity.class);
-                    startActivity(intent);
+                    ARouter.getInstance().build("/detection/DetectionHistoryActivity").navigation();
                 }
                 return false;
             }

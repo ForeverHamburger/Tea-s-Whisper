@@ -16,6 +16,9 @@ public class NavigationModel implements INavigationContract.INavigationModel<Str
         Fragment individualFragment = (Fragment) ARouter.getInstance().build("/individual/IndividualFragment").navigation();
         list.add(new NavigationInfo("我的",individualFragment));
 
+        Fragment homeFragment = (Fragment) ARouter.getInstance().build("/home/HomeFragment").navigation();
+        list.add(new NavigationInfo("首页",homeFragment));
+
         callBack.onSuccess(list);
     }
 }

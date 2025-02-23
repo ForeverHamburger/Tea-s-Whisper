@@ -21,6 +21,7 @@ import com.xuptggg.detection.history.presenter.DetectionHistoryPresenter;
 import java.util.List;
 
 
+@Route(path = "/detection/DetectionHistoryActivity")
 public class DetectionHistoryActivity extends AppCompatActivity implements IDetectionHistoryContract.IDetectionView {
 
     private ActivityDetectionHistoryBinding binding;
