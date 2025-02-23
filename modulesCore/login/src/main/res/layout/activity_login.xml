@@ -11,7 +11,7 @@
         android:id="@+id/imageView_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_zero"
-        android:src="@drawable/img"
+        android:src="@drawable/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,5 +12,7 @@ public class URL {
     public static final String LOGIN_VERIFY_URL = LOGIN_BASE_URL +"api/v1/loginwithcode";
     //忘记密码时验证码
     public static final String LOGIN_FORGETCODE_URL = LOGIN_BASE_URL +"api/v1/userisexit";
+    //忘记密码
+    public static final String LOGIN_FORGET_URL = LOGIN_BASE_URL +"api/v1/findpassword";
 
 }

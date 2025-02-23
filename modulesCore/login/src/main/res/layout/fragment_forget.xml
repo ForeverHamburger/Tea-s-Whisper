@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@drawable/background_green"
     tools:context=".Forget.ForgetFragment">
 
     <TextView
@@ -145,6 +146,7 @@
         android:layout_marginTop="20dp"
         android:text="确认"
         android:textAllCaps="false"
+        android:background="@drawable/edit_shape"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
