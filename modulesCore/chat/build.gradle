@@ -1,19 +1,31 @@
-plugins {
-    alias(libs.plugins.android.application)
+//plugins {
+//    alias(libs.plugins.android.application)
+//}
+def cfg = rootProject.ext
+if (isModule.booleanValue()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
-
+apply from: "${rootProject.rootDir}/config_build.gradle"
 android {
+    compileSdk cfg.android.compileSdkVersion
     namespace 'com.example.module.chat'
-    compileSdk 34
-
     defaultConfig {
-        applicationId "com.example.module.chat"
-        minSdk 28
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
-
+        if (isModule.booleanValue()) {
+            applicationId cfg.applicationId.chat
+        }
+        minSdk cfg.android.minSdkVersion
+        targetSdk cfg.android.targetSdkVersion
+        versionCode cfg.android.versionCode
+        versionName cfg.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -26,15 +38,35 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    sourceSets {
+        main {
+            if (isModule) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            }
+        }
+    }
 }
 
 dependencies {
 
-    implementation libs.appcompat
-    implementation libs.material
-    implementation libs.activity
-    implementation libs.constraintlayout
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
+    implementation 'androidx.appcompat:appcompat:1.0.0'                 //必须 1.0.0 以上
+
+    implementation  'io.github.scwang90:refresh-layout-kernel:3.0.0-alpha'      //核心必须依赖
+    implementation  'io.github.scwang90:refresh-header-classics:3.0.0-alpha'    //经典刷新头
+    implementation  'io.github.scwang90:refresh-header-radar:3.0.0-alpha'       //雷达刷新头
+    implementation  'io.github.scwang90:refresh-header-falsify:3.0.0-alpha'     //虚拟刷新头
+    implementation  'io.github.scwang90:refresh-header-material:3.0.0-alpha'    //谷歌刷新头
+    implementation  'io.github.scwang90:refresh-header-two-level:3.0.0-alpha'   //二级刷新头
+    implementation  'io.github.scwang90:refresh-footer-ball:3.0.0-alpha'        //球脉冲加载
+    implementation  'io.github.scwang90:refresh-footer-classics:3.0.0-alpha'    //经典加载
+
+
+    implementation project(':modulesBase:libNetwork')
+
 }

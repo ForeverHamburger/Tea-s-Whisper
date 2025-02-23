@@ -73,8 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tl_verificationCode"
-        app:lineColor="@color/purple_500"
-        app:lineWidth="2dp"
+
         app:pinHeight="40dp"
         app:pinLength="6"
         app:pinWidth="40dp"

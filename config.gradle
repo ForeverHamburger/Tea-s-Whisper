@@ -17,6 +17,7 @@ ext {  //extend
                      ,"network" : "com.xuptggg.libnetwork"
                      ,"guidepage" : "com.xuptggg.guidepage"
                      ,"navigation" : "com.xuptggg.navigation"
+                     ,"chat" : "com.example.module.chat"
                      ,"detection" : "com.xuptggg.detection"]
 
     dependencies = [
