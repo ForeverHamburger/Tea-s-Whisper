@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:text="@string/string_detection_title"
             android:textSize="20sp"
-            android:fontFamily="@font/guide_title_font"/>
+            android:fontFamily="@font/title_font"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/string_detection_state"
-        android:fontFamily="@font/guide_title_font"
+        android:fontFamily="@font/title_font"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/string_detection_attach"
-        android:fontFamily="@font/guide_content_font"
+        android:fontFamily="@font/content_font"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
         android:id="@+id/tv_wish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/guide_content_font"
+        android:fontFamily="@font/content_font"
         android:text="@string/string_wish"
         android:textSize="15sp"
         android:layout_marginBottom="50dp"

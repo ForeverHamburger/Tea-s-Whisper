@@ -1,4 +1,4 @@
-package com.xuptggg.home.view;
+package com.xuptggg.home.view.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,9 +48,9 @@ public class TeaCardAdapter extends RecyclerView.Adapter<TeaCardAdapter.TeaCardV
 
         public TeaCardViewHolder(@NonNull View itemView) {
             super(itemView);
-            teaName = itemView.findViewById(R.id.tea_name);
-            teaOrigin = itemView.findViewById(R.id.tea_origin);
-            teaImage = itemView.findViewById(R.id.tea_image);
+            teaName = itemView.findViewById(R.id.tv_tea_name);
+            teaOrigin = itemView.findViewById(R.id.tv_tea_origin);
+            teaImage = itemView.findViewById(R.id.iv_tea_image);
         }
     }
 }
