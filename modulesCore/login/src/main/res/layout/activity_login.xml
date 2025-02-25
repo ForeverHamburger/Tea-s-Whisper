@@ -9,21 +9,24 @@
 
     <ImageView
         android:id="@+id/imageView_background"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/dp_zero"
         android:src="@drawable/title"
+        android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_login"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_zero"
-        app:layout_constraintHeight_percent="0.65"
         app:cardCornerRadius="@dimen/dp_cardCornerRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.72"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.fragment.app.FragmentContainerView

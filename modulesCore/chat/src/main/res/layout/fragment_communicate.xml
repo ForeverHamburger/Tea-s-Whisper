@@ -111,13 +111,15 @@
                 android:textColorHint="@color/light_green"
                 android:textSize="15sp" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ChatSend"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="8dp"
+                android:scaleType="center"
+                android:background="@null"
                 android:src="@drawable/ic_chat_sent" />
         </LinearLayout>
     </LinearLayout>

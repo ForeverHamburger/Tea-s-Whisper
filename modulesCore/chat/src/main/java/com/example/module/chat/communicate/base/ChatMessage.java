@@ -1,4 +1,4 @@
-package com.example.module.chat.communicate;
+package com.example.module.chat.communicate.base;
 
 public class ChatMessage {
     public static final int TYPE_SENT = 0;   // 右侧消息

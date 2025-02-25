@@ -1,4 +1,4 @@
-package com.example.module.chat.communicate.recycleview;
+package com.example.module.chat.communicate.recycleviewUtil;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.module.chat.communicate.ChatMessage;
+import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.databinding.ItemChatReceivedBinding;
 import com.example.module.chat.databinding.ItemChatSentBinding;
 
@@ -21,7 +21,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private List<ChatMessage> messages = new ArrayList<>();
 
     public static class SentMessageHolder extends RecyclerView.ViewHolder {
-        private final ItemChatSentBinding binding;
+        public final ItemChatSentBinding binding;
 
         public SentMessageHolder(ItemChatSentBinding binding) {
             super(binding.getRoot());
@@ -29,14 +29,14 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         private void bind(ChatMessage message) {
-//            binding.tvMessage.setText(message.getContent());
-//            binding.tvTime.setText(formatTime(message.getTimestamp()));
+            binding.tvSent.setText(message.getContent());
+            binding.tvSentTime.setText(formatTime(message.getTimestamp()));
         }
 
     }
 
     public static class ReceivedMessageHolder extends RecyclerView.ViewHolder {
-        private final ItemChatReceivedBinding binding;
+        public final ItemChatReceivedBinding binding;
 
         public ReceivedMessageHolder(ItemChatReceivedBinding binding) {
             super(binding.getRoot());
@@ -44,8 +44,8 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         private void bind(ChatMessage message) {
-//            binding.tvMessage.setText(message.getContent());
-//            binding.tvTime.setText(formatTime(message.getTimestamp()));
+            binding.tvReceived.setText(message.getContent());
+            binding.tvReceivedTime.setText(formatTime(message.getTimestamp()));
         }
 
     }
@@ -72,7 +72,6 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatMessage message = messages.get(position);
-
         if (holder instanceof SentMessageHolder) {
             ((SentMessageHolder) holder).bind(message);
         } else if (holder instanceof ReceivedMessageHolder) {
@@ -85,13 +84,14 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         return messages.size();
     }
 
-    public void setMessageDataList(ChatMessage message) {
+    public void addMessageDataList(ChatMessage message) {
         messages.add(message);
         notifyItemInserted(messages.size() - 1);
     }
 
     static String formatTime(long timestamp) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.getDefault());
         return sdf.format(new Date(timestamp));
     }
+
 }

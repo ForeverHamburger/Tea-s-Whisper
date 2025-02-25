@@ -6,15 +6,20 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.xuptggg.module.login.LoginActivity;
 import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
 import com.xuptggg.module.login.LoginIn.LoginInModel;
@@ -36,7 +41,42 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
 
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         mPresenter.onstart();
+//        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                binding.getRoot().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//
+//                int fragmentHeight =  binding.getRoot().getHeight();
+//                Log.d("FragmentHeight", "当前 Register Fragment高度：" + fragmentHeight);
+//
+//                adjustCardViewHeight(fragmentHeight);
+//            }
+//        });
         return binding.getRoot();
+    }
+
+    private void adjustCardViewHeight(int fragmentHeight) {
+        View cardView = requireActivity().findViewById(R.id.cardView_login);
+        View fragmentContainer = requireActivity().findViewById(R.id.fragment_container);
+        ConstraintLayout layout = requireActivity().findViewById(R.id.main);
+
+        // 获取屏幕总高度（更稳定）
+        int screenHeight = requireActivity().getWindow().getDecorView().getHeight();
+        if (screenHeight == 0) return; // 避免除零异常
+
+        Log.d("FragmentHeight", "当前 Register Fragment高度：" + fragmentHeight);
+        float heightPercent = (float) fragmentHeight / screenHeight;
+        Log.d("FragmentHeight", "调整 CardView 高度百分比：" + heightPercent);
+
+        // 设置 CardView 的约束
+        ConstraintLayout.LayoutParams cardParams = (ConstraintLayout.LayoutParams) cardView.getLayoutParams();
+        cardParams.matchConstraintPercentHeight = heightPercent;
+        cardView.setLayoutParams(cardParams);
+
+        // 设置 FragmentContainerView 紧跟 CardView
+        ConstraintLayout.LayoutParams fragmentParams = (ConstraintLayout.LayoutParams) fragmentContainer.getLayoutParams();
+        fragmentParams.topToBottom = cardView.getId();  // 让 FragmentContainerView 紧跟 CardView
+        fragmentContainer.setLayoutParams(fragmentParams);
     }
 
     @Override

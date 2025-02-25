@@ -55,8 +55,6 @@ public class MyOkHttpClient {
     static {
         //-------------------------------------------------------
         try {
-            // 这里假设你已经有一个表示证书的字符串
-            // 注意：实际使用时请替换为你真实的证书字符串
             String certificateStr = "-----BEGIN CERTIFICATE-----\n" +
                     "MIIDrzCCApcCFCWKkdltRgvja9jEs2Lh/goV9xm6MA0GCSqGSIb3DQEBCwUAMIGT\n" +
                     "MQswCQYDVQQGEwJDTjEQMA4GA1UECAwHU2hhYW54aTERMA8GA1UEBwwIWGlhbllh\n" +
