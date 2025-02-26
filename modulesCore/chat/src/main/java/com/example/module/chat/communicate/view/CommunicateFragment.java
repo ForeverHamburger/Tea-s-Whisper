@@ -16,11 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
 
-
+@Route(path = "/chat/CommunicateFragment")
 public class CommunicateFragment extends Fragment implements CommunicateContract.View {
     public FragmentCommunicateBinding binding;
     private CommunicateContract.Presenter mPresenter;

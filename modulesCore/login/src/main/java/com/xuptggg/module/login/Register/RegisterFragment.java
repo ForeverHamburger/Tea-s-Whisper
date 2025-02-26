@@ -41,17 +41,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
 
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         mPresenter.onstart();
-//        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                binding.getRoot().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//
-//                int fragmentHeight =  binding.getRoot().getHeight();
-//                Log.d("FragmentHeight", "当前 Register Fragment高度：" + fragmentHeight);
-//
-//                adjustCardViewHeight(fragmentHeight);
-//            }
-//        });
+
         binding.getRoot().post(new Runnable() {
             @Override
             public void run() {

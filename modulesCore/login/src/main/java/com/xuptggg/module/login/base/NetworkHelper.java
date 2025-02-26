@@ -54,6 +54,8 @@ public class NetworkHelper {
                         callBack.onFailed(msg);
                 } else if (url.equals(URL.LOGIN_SIGNUP_URL)) {
                     callBack.onSuccess("注册成功");
+                } else if (url.equals(URL.LOGIN_LOGIN_URL)) {
+                    callBack.onSuccess("登录成功");
                 }
             } else {
                 callBack.onFailed(msg);

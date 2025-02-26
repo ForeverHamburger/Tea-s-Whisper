@@ -187,6 +187,12 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
     }
 
     @Override
+    public void loginSuccess() {
+        Log.d("test", "loginSuccess: 111");
+        Toast.makeText(getActivity(), "Login Success!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void setPresenter(LoginInContract.Presenter presenter) {
         mPresenter = presenter;
     }

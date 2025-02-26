@@ -67,7 +67,7 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
             @Override
             public void onClick(View v) {
                 if(isModule()) {
-                    ARouter.getInstance().build("/navigation/NavigationActivity").navigation();
+                    ARouter.getInstance().build("/login/LoginActivity").navigation();
                 }
             }
         });
@@ -76,7 +76,7 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
             @Override
             public void onClick(View v) {
                 if (isModule()) {
-                    ARouter.getInstance().build("/navigation/NavigationActivity").navigation();
+                    ARouter.getInstance().build("/login/LoginActivity").navigation();
                 }
             }
         });
