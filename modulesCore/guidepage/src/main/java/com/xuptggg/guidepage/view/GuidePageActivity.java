@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider;
 import com.tencent.mmkv.MMKV;
+import com.xuptggg.guidepage.BuildConfig;
 import com.xuptggg.guidepage.adapter.SwipePagerAdapter;
 import com.xuptggg.guidepage.contract.IGuideContract;
 import com.xuptggg.guidepage.databinding.ActivityGuidePageBinding;
@@ -60,6 +62,24 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
             public void onPageScrollStateChanged(int state) {
             }
         });
+
+        binding.btnGuideGotologin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isModule()) {
+                    ARouter.getInstance().build("/navigation/NavigationActivity").navigation();
+                }
+            }
+        });
+
+        binding.tvGuideSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isModule()) {
+                    ARouter.getInstance().build("/navigation/NavigationActivity").navigation();
+                }
+            }
+        });
     }
 
     @Override
@@ -91,4 +111,9 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
     public void showError() {
 
     }
+
+    private boolean isModule() {
+        return !BuildConfig.isModule;
+    }
+
 }

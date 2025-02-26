@@ -47,6 +47,9 @@ dependencies {
         implementation project(':modulesCore:login')
         implementation project(':modulesCore:guidepage')
         implementation project(':modulesCore:navigation')
+        implementation project(':modulesCore:individual')
+        implementation project(':modulesCore:detection')
+        implementation project(':modulesCore:home')
     }
 
     api 'com.alibaba:arouter-api:1.5.2'
