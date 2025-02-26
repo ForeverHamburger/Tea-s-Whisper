@@ -1,12 +1,12 @@
 package com.xuptggg.module.login;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -35,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         });
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         initViews();
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     }
 
     private void initViews() {
@@ -59,17 +58,25 @@ public class LoginActivity extends AppCompatActivity {
         ft.add(R.id.fragment_container, loginInFragment);
         ft.commit();
     }
-    public void adjustCardViewHeight(int fragmentHeight) {
-        CardView cardView = binding.cardViewLogin;
-        ConstraintLayout layout = binding.main;
 
-        int screenHeight = layout.getHeight(); // 获取屏幕总高度
-        float heightPercent = (float) fragmentHeight / screenHeight; // 计算占比
+    public void adjustCardViewForFragment(int fragmentHeight) {
 
-        // 约束调整
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) cardView.getLayoutParams();
-        params.matchConstraintPercentHeight = heightPercent; // 应用计算出的高度百分比
-        cardView.setLayoutParams(params);
+        if (fragmentHeight <= 1500) {
+            fragmentHeight = 1500;
+        }
+        ConstraintLayout constraintLayout = findViewById(R.id.main);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(constraintLayout);
+        int newCardViewHeight = fragmentHeight + 200;
+        // 调整 CardView 高度
+        constraintSet.constrainHeight(R.id.cardView_login, newCardViewHeight);
+        // 调整 FragmentContainerView 高度
+        constraintSet.constrainHeight(R.id.fragment_container, fragmentHeight);
+
+//        constraintSet.connect(R.id.fragment_container, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
+//        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
+//        // **让 CardView 适当上移，避免底部挤压**
+//        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
+        constraintSet.applyTo(constraintLayout);
     }
-
 }

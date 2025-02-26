@@ -26,11 +26,12 @@
         app:cardCornerRadius="@dimen/dp_cardCornerRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.72"
+        app:layout_constraintHeight_percent="0.65"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>

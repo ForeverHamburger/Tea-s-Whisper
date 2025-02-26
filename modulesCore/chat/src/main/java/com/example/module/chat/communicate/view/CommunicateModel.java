@@ -1,4 +1,4 @@
-package com.example.module.chat.communicate;
+package com.example.module.chat.communicate.view;
 
 import com.example.module.chat.communicate.base.LoadTasksCallBack;
 

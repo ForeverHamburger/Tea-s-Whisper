@@ -13,6 +13,7 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.Forget.ForgetFragment;
 import com.xuptggg.module.login.Forget.ForgetModel;
 import com.xuptggg.module.login.Forget.ForgetPresenter;
+import com.xuptggg.module.login.LoginActivity;
 import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.Register.RegisterFragment;
 import com.xuptggg.module.login.Register.RegisterModel;
@@ -49,6 +51,14 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
 
         binding = FragmentLoginInBinding.inflate(inflater, container, false);
         mPresenter.onstart();
+        binding.getRoot().post(new Runnable() {
+            @Override
+            public void run() {
+                int fragmentHeight = binding.getRoot().findViewById(R.id.ConstraintLayout_login).getHeight();
+                Log.d("fragmentHeight", "LoginInFragment: " + fragmentHeight);
+                ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
+            }
+        });
         return binding.getRoot();
     }
 

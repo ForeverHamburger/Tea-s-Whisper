@@ -1,4 +1,4 @@
-package com.example.module.chat.communicate;
+package com.example.module.chat.communicate.view;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -21,7 +21,7 @@ import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapte
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
 
 
-public class communicateFragment extends Fragment implements CommunicateContract.View {
+public class CommunicateFragment extends Fragment implements CommunicateContract.View {
     public FragmentCommunicateBinding binding;
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;

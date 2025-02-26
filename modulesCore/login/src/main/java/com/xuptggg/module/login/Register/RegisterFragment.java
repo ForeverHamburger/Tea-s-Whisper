@@ -52,6 +52,14 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
 //                adjustCardViewHeight(fragmentHeight);
 //            }
 //        });
+        binding.getRoot().post(new Runnable() {
+            @Override
+            public void run() {
+                int fragmentHeight = binding.getRoot().findViewById(R.id.ConstraintLayout_re).getHeight();
+                Log.d("fragmentHeight", "RegisterFragment: " + fragmentHeight);
+                ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
+            }
+        });
         return binding.getRoot();
     }
 
@@ -74,11 +82,22 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         cardView.setLayoutParams(cardParams);
 
         // 设置 FragmentContainerView 紧跟 CardView
-        ConstraintLayout.LayoutParams fragmentParams = (ConstraintLayout.LayoutParams) fragmentContainer.getLayoutParams();
-        fragmentParams.topToBottom = cardView.getId();  // 让 FragmentContainerView 紧跟 CardView
+        FrameLayout.LayoutParams fragmentParams = (FrameLayout.LayoutParams) fragmentContainer.getLayoutParams();
+        fragmentParams.topMargin = cardView.getId();  // 让 FragmentContainerView 紧跟 CardView
         fragmentContainer.setLayoutParams(fragmentParams);
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        binding.getRoot().post(new Runnable() {
+            @Override
+            public void run() {
+                int fragmentHeight = binding.getRoot().findViewById(R.id.ConstraintLayout_re).getHeight();
+                Log.d("fragmentHeight", "onreRegisterFragment: " + fragmentHeight);
+                ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
+            }
+        });
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

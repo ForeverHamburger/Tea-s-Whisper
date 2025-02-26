@@ -7,6 +7,11 @@
     android:padding="@dimen/padding_basic"
     android:background="@drawable/background_green"
     tools:context=".LoginIn.LoginInFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
 
     <TextView
         android:id="@+id/textView_title"
@@ -160,4 +165,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_or"/>
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
