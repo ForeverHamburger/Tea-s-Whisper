@@ -1,19 +1,31 @@
-plugins {
-    alias(libs.plugins.android.application)
+def cfg = rootProject.ext
+if (isModule.booleanValue()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
 
+apply from: "${rootProject.rootDir}/config_build.gradle"
 android {
     namespace 'com.xuptggg.individual'
-    compileSdk 34
+    compileSdk cfg.android.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.xuptggg.individual"
-        minSdk 28
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        if (isModule.booleanValue()) {
+            applicationId cfg.applicationId.individual
+        }
+        minSdk cfg.android.minSdkVersion
+        targetSdk cfg.android.targetSdkVersion
+        versionCode cfg.android.versionCode
+        versionName cfg.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -25,6 +37,16 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            if (isModule) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            }
+        }
     }
 }
 

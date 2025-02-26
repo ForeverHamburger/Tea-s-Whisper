@@ -1,7 +1,7 @@
 ext {  //extend
     // false: 集成模式
     // true ：组件模式
-    isModule = true
+    isModule = false
     android = [
             compileSdkVersion: 34,
             minSdkVersion    : 28,
@@ -17,6 +17,8 @@ ext {  //extend
                      ,"network" : "com.xuptggg.libnetwork"
                      ,"guidepage" : "com.xuptggg.guidepage"
                      ,"navigation" : "com.xuptggg.navigation"
+                     ,"detection" : "com.xuptggg.detection"
+                     ,"individual" : "com.xupt.individual"]
                      ,"chat" : "com.example.module.chat"
                      ,"detection" : "com.xuptggg.detection"]
 

@@ -2,6 +2,7 @@ package com.xuptggg.navigation.view;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.xuptggg.navigation.R;
 import com.xuptggg.navigation.contract.INavigationContract;
@@ -33,13 +35,15 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
         EdgeToEdge.enable(this);
         binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setContentView(R.layout.activity_navigation);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        binding.bnvNavigation.setItemIconTintList(null);
+        BottomNavigationView bnvNavigation = findViewById(R.id.bnv_navigation);
+        bnvNavigation.setItemIconTintList(null);
 
         NavigationModel navigationModel = new NavigationModel();
         setPresenter(new NavigationPresenter(navigationModel,this));
@@ -61,18 +65,20 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
                 if (menuItem.getTitle() == "首页") {
                     FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(0).getFragment());
                     replace.commit();
+                    Toast.makeText(NavigationActivity.this, "XIXI", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getTitle() == "论坛") {
-//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(1).getFragment());
-//                    replace.commit();
+                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(1).getFragment());
+                    replace.commit();
+                    Toast.makeText(NavigationActivity.this, "AAA", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getTitle() == "AI对话") {
-//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(2).getFragment());
-//                    replace.commit();
+                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(2).getFragment());
+                    replace.commit();
                 } else if (menuItem.getTitle() == "我的") {
-//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(3).getFragment());
-//                    replace.commit();
+                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(3).getFragment());
+                    replace.commit();
                 } else if (menuItem.getTitle() == "检测") {
-//                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(4).getFragment());
-//                    replace.commit();
+                    FragmentTransaction replace = fragmentTransaction.replace(binding.fcvNavigation.getId(),navigationInfos.get(4).getFragment());
+                    replace.commit();
                 }
                 return false;
             }
