@@ -18,6 +18,7 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.tencent.mmkv.MMKV;
 import com.xuptggg.module.login.Forget.ForgetFragment;
 import com.xuptggg.module.login.Forget.ForgetModel;
 import com.xuptggg.module.login.Forget.ForgetPresenter;
@@ -45,6 +47,7 @@ import java.util.regex.Pattern;
 public class LoginInFragment extends Fragment implements LoginInContract.View {
     private FragmentLoginInBinding binding;
     private LoginInContract.Presenter mPresenter;
+    private boolean mIsChecked;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -155,6 +158,25 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                     .addToBackStack(null)
                     .commit();
         });
+
+        binding.checkBoxRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mIsChecked = isChecked;
+            }
+        });
+
+        MMKV mmkv = MMKV.mmkvWithID("Tea's Whisper");
+        Log.d("test", "onViewCreated: "+mmkv.getBoolean("ifChecked",false));
+        if (mmkv.getBoolean("ifChecked",false)) {
+            Log.d("test", "onViewCreated: "+222 +mmkv.getString("Username",""));
+            binding.checkBoxRemember.setChecked(true);
+            binding.editTextUsername.setText(mmkv.getString("Username",""));
+            binding.editTextPassword.setText(mmkv.getString("Password",""));
+        } else {
+            Log.d("test", "onViewCreated: "+111);
+            binding.checkBoxRemember.setChecked(false);
+        }
     }
     @Override
     public void onDestroy() {
@@ -190,6 +212,19 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
     public void loginSuccess() {
         Log.d("test", "loginSuccess: 111");
         Toast.makeText(getActivity(), "Login Success!", Toast.LENGTH_SHORT).show();
+        MMKV mmkv = MMKV.mmkvWithID("Tea's Whisper");
+
+        if (mIsChecked) {
+            // 记住密码
+            Log.d("test", "onViewCreated: "+333);
+            mmkv.putBoolean("ifChecked",true);
+            mmkv.putString("Username",binding.editTextUsername.getText().toString());
+            mmkv.putString("Password",binding.editTextPassword.getText().toString());
+        } else {
+            mmkv.putBoolean("ifChecked",false);
+            mmkv.putString("Username","");
+            mmkv.putString("Password","");
+        }
     }
 
     @Override

@@ -61,7 +61,7 @@ dependencies {
     implementation libs.okhttp
     implementation project(':modulesBase:libNetwork')
     implementation 'com.github.GoodieBag:Pinview:v1.4'
-
+    implementation libs.mmkv.v201
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 }
