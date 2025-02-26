@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -14,9 +17,11 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
 import com.xuptggg.module.login.LoginIn.LoginInModel;
 import com.xuptggg.module.login.LoginIn.LoginInPresenter;
+import com.xuptggg.module.login.databinding.ActivityLoginBinding;
 
 @Route(path = "/login/LoginActivity")
 public class LoginActivity extends AppCompatActivity {
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         initViews();
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     }
 
     private void initViews() {
@@ -48,12 +53,30 @@ public class LoginActivity extends AppCompatActivity {
         if (loginInFragment == null) {
             loginInFragment = new LoginInFragment();
         }
-        LoginInPresenter loginInPresenter =  new LoginInPresenter(loginInFragment, new LoginInModel());
+        LoginInPresenter loginInPresenter = new LoginInPresenter(loginInFragment, new LoginInModel());
         loginInFragment.setPresenter(loginInPresenter);
         ft.add(R.id.fragment_container, loginInFragment);
         ft.commit();
-
     }
 
+    public void adjustCardViewForFragment(int fragmentHeight) {
 
+        if (fragmentHeight <= 1500) {
+            fragmentHeight = 1500;
+        }
+        ConstraintLayout constraintLayout = findViewById(R.id.main);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(constraintLayout);
+        int newCardViewHeight = fragmentHeight + 200;
+        // 调整 CardView 高度
+        constraintSet.constrainHeight(R.id.cardView_login, newCardViewHeight);
+        // 调整 FragmentContainerView 高度
+        constraintSet.constrainHeight(R.id.fragment_container, fragmentHeight);
+
+//        constraintSet.connect(R.id.fragment_container, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
+//        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
+//        // **让 CardView 适当上移，避免底部挤压**
+//        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
+        constraintSet.applyTo(constraintLayout);
+    }
 }

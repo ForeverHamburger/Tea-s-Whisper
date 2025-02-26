@@ -13,6 +13,7 @@ public interface LoginInContract {
         void unSubscribe();
 
         void onLoginClick(String username, String password);
+
     }
     interface View extends BaseView<Presenter> {
         void showError();

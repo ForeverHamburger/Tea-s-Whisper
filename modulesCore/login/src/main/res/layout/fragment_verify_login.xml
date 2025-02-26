@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    tools:context=".VerifyLogin.VerifyLoginFragment">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证码登录"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+    <!--    android:imeOptions="actionDone" 键盘显示“完成”按钮 -->
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/emailAddress"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:boxBackgroundMode="outline"-->
+<!--        app:errorEnabled="true"-->
+<!--        app:hint="邮箱地址"-->
+<!--        app:hintTextColor="@color/black"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/title">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/tl_emailAddress"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:imeOptions="actionDone"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:maxLines="1"-->
+<!--            android:textSize="18sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_marginTop_small"
+        app:boxBackgroundMode="outline"
+        app:endIconDrawable="@drawable/icon_clean"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintTextAppearance="@style/MyHintTextStyle"
+        android:layout_margin="@dimen/dp_marginTop_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tl_emailAddress"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
+            android:drawableStart="@drawable/icon_email"
+            android:drawablePadding="18dp"
+            android:hint="        请输入邮箱地址"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:errorEnabled="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.goodiebag.pinview.Pinview
+        android:id="@+id/codeInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        app:pinWidth="30dp"
+        app:pinHeight="30dp"
+        app:pinLength="6"
+        app:cursorVisible="false"
+        app:forceKeyboard="true"
+        app:password="false"
+        app:layout_constraintTop_toBottomOf="@id/emailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"/>
+    <!--    app:pinBackground="@drawable/example_drawable"-->
+
+    <TextView
+        android:id="@+id/resendEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Didn't receive the code? Resend Email"
+        android:textColor="@color/red"
+        app:layout_constraintTop_toBottomOf="@id/codeInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        app:layout_constraintTop_toBottomOf="@id/resendEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

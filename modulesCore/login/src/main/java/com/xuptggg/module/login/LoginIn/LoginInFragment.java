@@ -2,6 +2,10 @@ package com.xuptggg.module.login.LoginIn;
 
 import static android.provider.Settings.System.getString;
 
+import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
+import static com.xuptggg.module.login.base.ValidationUtil.PHONE_REGEX_CN;
+import static com.xuptggg.module.login.base.ValidationUtil.validateEmail;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,6 +13,8 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,19 +25,40 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.xuptggg.module.login.Forget.ForgetFragment;
+import com.xuptggg.module.login.Forget.ForgetModel;
+import com.xuptggg.module.login.Forget.ForgetPresenter;
+import com.xuptggg.module.login.LoginActivity;
 import com.xuptggg.module.login.R;
+import com.xuptggg.module.login.Register.RegisterFragment;
+import com.xuptggg.module.login.Register.RegisterModel;
+import com.xuptggg.module.login.Register.RegisterPresenter;
+import com.xuptggg.module.login.VerifyLogin.VerifyLoginFragment;
+import com.xuptggg.module.login.VerifyLogin.VerifyLoginModel;
+import com.xuptggg.module.login.VerifyLogin.VerifyLoginPresenter;
 import com.xuptggg.module.login.base.InputValidator;
+import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.databinding.FragmentLoginInBinding;
+
+import java.util.regex.Pattern;
 
 public class LoginInFragment extends Fragment implements LoginInContract.View {
     private FragmentLoginInBinding binding;
     private LoginInContract.Presenter mPresenter;
-
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentLoginInBinding.inflate(inflater, container, false);
         mPresenter.onstart();
+        binding.getRoot().post(new Runnable() {
+            @Override
+            public void run() {
+                int fragmentHeight = binding.getRoot().findViewById(R.id.ConstraintLayout_login).getHeight();
+                Log.d("fragmentHeight", "LoginInFragment: " + fragmentHeight);
+                ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
+            }
+        });
         return binding.getRoot();
     }
 
@@ -42,47 +69,35 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
         binding.tlPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
         binding.tlUsername.setErrorIconDrawable(0);
         binding.tlPassword.setErrorIconDrawable(0);
-        binding.textViewForget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                mPresenter.onForgetPasswordClick();
-                Toast.makeText(getContext(), "忘记密码", Toast.LENGTH_SHORT).show();
-            }
-        });
         String text_forget_password = getString(R.string.login_forget_password);
         String text_to_register_before = getString(R.string.login_forget_to_register_before);
         String text_to_register_after = getString(R.string.login_forget_to_register_after);
 
         binding.textViewToRegister.setText(combineAndUnderline(text_to_register_before, text_to_register_after));
         binding.textViewForget.setText(combineAndUnderline("",text_forget_password));
-        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = binding.editTextUsername.getText().toString();
-                String password = binding.editTextPassword.getText().toString();
-                if (!processLogin(username, password)) {
-                    return;
-                }
-                mPresenter.onLoginClick(username, password);
+        binding.buttonLogin.setOnClickListener(v -> {
+            String phoneoremail = binding.editTextUsername.getText().toString();
+            String password = binding.editTextPassword.getText().toString();
+            if (!processLogin(phoneoremail, password)) {
+                return;
             }
+            mPresenter.onLoginClick(phoneoremail, password);
         });
+        // 账号输入框焦点改变监听
         binding.editTextUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    String username = binding.editTextUsername.getText().toString();
+                    String phoneoremail = binding.editTextUsername.getText().toString().trim();
                     // 移除之前可能存在的错误提示
                     binding.tlUsername.setError(null);
-                    InputValidator validator = new InputValidator();
-                    if (!validator.validateAccount(username)) {
-                        binding.tlUsername.setError("账号格式不正确");
-                    } else if (username.isEmpty()) {
+                    if (phoneoremail.isEmpty() || phoneoremail.trim().isEmpty()) {
                         binding.tlUsername.setError("账号不能为空");
-                    } else if (username.length() < 6) {
-                        binding.tlUsername.setError("账号长度不能小于6位");
+                    }
+                    if (!Pattern.matches(PHONE_REGEX_CN, phoneoremail)&&!Patterns.EMAIL_ADDRESS.matcher(phoneoremail).matches()) {
+                        binding.tlUsername.setError("账号格式错误");
                     }
                 } else {
-                    // 焦点重回时清除错误信息
                     binding.tlUsername.setError(null);
                 }
             }
@@ -92,18 +107,53 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     String password = binding.editTextPassword.getText().toString();
-                    // 移除之前可能存在的错误提示
                     binding.tlPassword.setError(null);
-                    if (password.isEmpty()) {
+                    if (password == null || password.isEmpty()) {
                         binding.tlPassword.setError("密码不能为空");
-                    } else if (password.length() < 6) {
-                        binding.tlPassword.setError("密码长度不能小于6位");
+                    }
+                    if (password.length() < 8) {
+                        binding.tlPassword.setError("密码至少需要8位");
+                    }
+                    if (!Pattern.matches(PASSWORD_REGEX, password)) {
+                        binding.tlPassword.setError("需包含字母和数字");
                     }
                 } else {
-                    // 焦点重回时清除错误信息
                     binding.tlPassword.setError(null);
                 }
             }
+        });
+        binding.textViewToRegister.setOnClickListener(v -> {
+            RegisterFragment registerFragment = new RegisterFragment();
+
+            RegisterPresenter registerPresenter = new RegisterPresenter(registerFragment, new RegisterModel());
+            registerFragment.setPresenter(registerPresenter);
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, registerFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+        binding.textViewLoginWithVerificationCode.setOnClickListener(v -> {
+            VerifyLoginFragment verifyLoginFragment = new VerifyLoginFragment();
+
+            VerifyLoginPresenter verifyLoginPresenter = new VerifyLoginPresenter(verifyLoginFragment, new VerifyLoginModel());
+            verifyLoginFragment.setPresenter(verifyLoginPresenter);
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, verifyLoginFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+        binding.textViewForget.setOnClickListener(v -> {
+            ForgetFragment forgetFragment = new ForgetFragment();
+
+            ForgetPresenter ForgetPresenter = new ForgetPresenter(forgetFragment, new ForgetModel());
+            forgetFragment.setPresenter(ForgetPresenter);
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, forgetFragment)
+                    .addToBackStack(null)
+                    .commit();
         });
     }
     @Override
