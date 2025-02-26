@@ -52,8 +52,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@id/tea_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_marginTop="32dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

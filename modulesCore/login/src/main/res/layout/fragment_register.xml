@@ -4,243 +4,249 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_green"
     android:fillViewport="true"
-    android:background="@drawable/background_green"
     tools:context=".Register.RegisterFragment">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ConstraintLayout_re"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/padding_basic"
-    android:background="@drawable/background_green"
-    tools:context=".Register.RegisterFragment">
-    <TextView
-        android:id="@+id/textView_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register_title"
-        android:textSize="@dimen/text_size_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_phone"
-        style="@style/CustomTextInputLayoutStyle"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ConstraintLayout_re"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxBackgroundMode="outline"
-        app:endIconDrawable="@drawable/icon_clean"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/red"
-        app:hintTextAppearance="@style/MyHintTextStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_title">
+        android:background="@drawable/background_green"
+        android:padding="@dimen/padding_basic"
+        tools:context=".Register.RegisterFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_phone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
-            android:drawableStart="@drawable/icon_phone"
-            android:drawablePadding="18dp"
-            android:hint="@string/login_phone"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            app:errorEnabled="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_title"
+            android:textSize="@dimen/text_size_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_email"
-        style="@style/CustomTextInputLayoutStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxBackgroundMode="outline"
-        app:endIconDrawable="@drawable/icon_clean"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/red"
-        app:hintTextAppearance="@style/MyHintTextStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_phone">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_email"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
-            android:drawableStart="@drawable/icon_email"
-            android:drawablePadding="18dp"
-            android:hint="@string/login_account"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            app:errorEnabled="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <!-- 密码输入框 -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_password"
-        style="@style/CustomTextInputLayoutStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:boxBackgroundMode="outline"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_email"
-        app:passwordToggleDrawable="@drawable/shape_seeorno">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:drawableStart="@drawable/icon_password"
-            android:drawablePadding="18dp"
-            android:hint="@string/login_password"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            app:errorEnabled="true"
-            app:passwordToggleDrawable="@drawable/shape_seeorno" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_confirmPassword"
-        style="@style/CustomTextInputLayoutStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:boxBackgroundMode="outline"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_password"
-        app:passwordToggleDrawable="@drawable/shape_seeorno">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_confirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:drawableStart="@drawable/icon_password"
-            android:drawablePadding="18dp"
-            android:hint="@string/login_confirmPassword"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            app:errorEnabled="true"
-            app:passwordToggleDrawable="@drawable/shape_seeorno" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/tl_verificationCode"-->
-    <!--        style="@style/CustomTextInputLayoutStyle"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="@dimen/dp_marginTop_small"-->
-    <!--        app:boxBackgroundMode="outline"-->
-    <!--        app:errorEnabled="true"-->
-    <!--        app:errorTextColor="@color/red"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/tl_password"-->
-    <!--        app:passwordToggleDrawable="@drawable/shape_seeorno">-->
-
-    <!--        <com.google.android.material.textfield.TextInputEditText-->
-    <!--            android:id="@+id/editText_verificationCode"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:drawableStart="@drawable/icon_password"-->
-    <!--            android:drawablePadding="18dp"-->
-    <!--            android:hint="@string/login_verificationCode"-->
-    <!--            android:imeOptions="actionNext"-->
-    <!--            android:inputType="textPassword"-->
-    <!--            android:maxLength="25"-->
-    <!--            android:maxLines="1"-->
-    <!--            android:textColor="@color/black"-->
-    <!--            app:errorEnabled="true"-->
-    <!--            app:passwordToggleDrawable="@drawable/shape_seeorno" />-->
-
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_verificationCode"
-        style="@style/CustomTextInputLayoutStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:boxBackgroundMode="outline"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/red"
-        app:layout_constraintEnd_toStartOf="@+id/button_getVerificationCode"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_confirmPassword">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_verificationCode"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_phone"
+            style="@style/CustomTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp_marginTop_small"
-            android:drawableStart="@drawable/icon_password"
-            android:drawablePadding="18dp"
-            android:hint="@string/login_verificationCode"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:textColor="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:boxBackgroundMode="outline"
+            app:endIconDrawable="@drawable/icon_clean"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red"
+            app:hintTextAppearance="@style/MyHintTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_title">
 
-    <!-- 获取验证码按钮（与 TextInputLayout 平行） -->
-    <Button
-        android:id="@+id/button_getVerificationCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_marginTop_small"
-        android:layout_marginTop="@dimen/dp_marginTop_small"
-        android:background="@drawable/edit_shape"
-        android:padding="8dp"
-        android:text="@string/get_verification_code"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tl_verificationCode">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
+                android:drawableStart="@drawable/icon_phone"
+                android:drawablePadding="18dp"
+                android:hint="@string/login_phone"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:windowSoftInputMode="adjustResize"
+                app:errorEnabled="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    </Button>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_email"
+            style="@style/CustomTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:endIconDrawable="@drawable/icon_clean"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red"
+            app:hintTextAppearance="@style/MyHintTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_phone">
 
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_shape"
-        android:text="@string/register_title"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_verificationCode" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
+                android:drawableStart="@drawable/icon_email"
+                android:drawablePadding="18dp"
+                android:hint="@string/login_account"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:windowSoftInputMode="adjustResize"
+                app:errorEnabled="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- 密码输入框 -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_password"
+            style="@style/CustomTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/textView_to_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_marginTop_big"
-        android:text="@string/login_have_to_register_before"
-        android:textColor="@color/red"
-        android:textColorLink="@color/red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_register" />
+            app:boxBackgroundMode="outline"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_email"
+            app:passwordToggleDrawable="@drawable/shape_seeorno">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/icon_password"
+                android:drawablePadding="18dp"
+                android:hint="@string/login_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:windowSoftInputMode="adjustResize"
+                app:errorEnabled="true"
+                app:passwordToggleDrawable="@drawable/shape_seeorno" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_confirmPassword"
+            style="@style/CustomTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:boxBackgroundMode="outline"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_password"
+            app:passwordToggleDrawable="@drawable/shape_seeorno">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/icon_password"
+                android:drawablePadding="18dp"
+                android:hint="@string/login_confirmPassword"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:windowSoftInputMode="adjustResize"
+                app:errorEnabled="true"
+                app:passwordToggleDrawable="@drawable/shape_seeorno" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--    <com.google.android.material.textfield.TextInputLayout-->
+        <!--        android:id="@+id/tl_verificationCode"-->
+        <!--        style="@style/CustomTextInputLayoutStyle"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="@dimen/dp_marginTop_small"-->
+        <!--        app:boxBackgroundMode="outline"-->
+        <!--        app:errorEnabled="true"-->
+        <!--        app:errorTextColor="@color/red"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/tl_password"-->
+        <!--        app:passwordToggleDrawable="@drawable/shape_seeorno">-->
+
+        <!--        <com.google.android.material.textfield.TextInputEditText-->
+        <!--            android:id="@+id/editText_verificationCode"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:drawableStart="@drawable/icon_password"-->
+        <!--            android:drawablePadding="18dp"-->
+        <!--            android:hint="@string/login_verificationCode"-->
+        <!--            android:imeOptions="actionNext"-->
+        <!--            android:inputType="textPassword"-->
+        <!--            android:maxLength="25"-->
+        <!--            android:maxLines="1"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            app:errorEnabled="true"-->
+        <!--            app:passwordToggleDrawable="@drawable/shape_seeorno" />-->
+
+        <!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_verificationCode"
+            style="@style/CustomTextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red"
+            app:layout_constraintEnd_toStartOf="@+id/button_getVerificationCode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_confirmPassword">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_verificationCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_marginTop_small"
+                android:drawableStart="@drawable/icon_password"
+                android:drawablePadding="18dp"
+                android:hint="@string/login_verificationCode"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:windowSoftInputMode="adjustResize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_getVerificationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_marginTop_small"
+            android:layout_marginTop="@dimen/dp_marginTop_small"
+            android:background="@drawable/edit_shape"
+            android:padding="8dp"
+            android:text="@string/get_verification_code"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tl_verificationCode">
+
+        </Button>
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_shape"
+            android:text="@string/register_title"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_verificationCode" />
+
+        <TextView
+            android:id="@+id/textView_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_marginTop_big"
+            android:text="@string/login_have_to_register_before"
+            android:textColor="@color/red"
+            android:textColorLink="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_register" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

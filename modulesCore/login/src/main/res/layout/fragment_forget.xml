@@ -29,6 +29,9 @@
         app:boxBackgroundMode="outline"
         app:errorEnabled="true"
         app:errorTextColor="@color/red"
+        android:layout_marginTop="@dimen/dp_marginTop_small"
+        app:endIconDrawable="@drawable/icon_clean"
+        app:hintTextAppearance="@style/MyHintTextStyle"
         app:layout_constraintEnd_toStartOf="@+id/button_getVerificationCode"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
@@ -42,13 +45,12 @@
             android:drawablePadding="18dp"
             android:hint="请输入邮箱"
             android:imeOptions="actionNext"
-            android:inputType="textPassword"
+            android:windowSoftInputMode="adjustResize"
+            android:inputType="textEmailAddress"
             android:maxLength="25"
             android:maxLines="1"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- 获取验证码按钮（与 TextInputLayout 平行） -->
     <Button
         android:id="@+id/button_getVerificationCode"
         android:layout_width="wrap_content"
@@ -103,6 +105,7 @@
             android:hint="@string/login_password"
             android:imeOptions="actionNext"
             android:inputType="textPassword"
+            android:windowSoftInputMode="adjustResize"
             android:maxLength="25"
             android:maxLines="1"
             android:textColor="@color/black"
