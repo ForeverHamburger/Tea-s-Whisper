@@ -111,9 +111,4 @@ public class GuidePageActivity extends AppCompatActivity implements IGuideContra
     public void showError() {
 
     }
-
-    private boolean isModule() {
-        return !BuildConfig.isModule;
-    }
-
 }

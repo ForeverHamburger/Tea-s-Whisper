@@ -45,8 +45,6 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             return insets;
         });
 
-
-//        bnvNavigation = findViewById(R.id.bnv_navigation);
         binding.bnvNavigation.setItemIconTintList(null);
 
         NavigationModel navigationModel = new NavigationModel();
@@ -61,11 +59,8 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
 
     @Override
     public void showNavigationInfomation(List<NavigationInfo> navigationInfos) {
-// 获取 FragmentManager
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
-        // 设置底部导航栏的选择监听器
         binding.bnvNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -75,10 +70,10 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
                 // 根据导航项的标题进行不同的处理
                 if ("首页".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为首页对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
+                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
                 } else if ("论坛".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为论坛对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
+                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
                 } else if ("AI对话".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为 AI 对话对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(2).getFragment());
