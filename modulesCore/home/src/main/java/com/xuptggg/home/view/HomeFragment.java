@@ -1,9 +1,12 @@
 package com.xuptggg.home.view;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,8 +91,8 @@ public class HomeFragment extends Fragment {
         List<TeaInfo> teaInfoList = new ArrayList<>();
         teaInfoList.add(new TeaInfo("龙井茶叶", "浙江杭州", R.drawable.tea_item1));
         teaInfoList.add(new TeaInfo("碧螺春", "江苏苏州", R.drawable.tea_item2));
-        teaInfoList.add(new TeaInfo("铁观音", "福建安溪", R.drawable.tea_item1));
-        teaInfoList.add(new TeaInfo("龙井茶叶", "浙江杭州", R.drawable.tea_item1));
+        teaInfoList.add(new TeaInfo("铁观音", "福建安溪", R.drawable.tea_item3));
+        teaInfoList.add(new TeaInfo("龙井茶叶", "浙江杭州", R.drawable.tea_item4));
         teaInfoList.add(new TeaInfo("碧螺春", "江苏苏州", R.drawable.tea_item2));
 
         TeaCardAdapter teaCardAdapter = new TeaCardAdapter(teaInfoList);
@@ -110,6 +113,18 @@ public class HomeFragment extends Fragment {
         LinearSnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(binding.rvTeaCard);
 
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false);
+        binding.rvTeaHistory.setLayoutManager(layoutManager2);
+
+        List<TeaHistoryInfo> teaHistoryInfos = new ArrayList<>();
+        teaHistoryInfos.add(new TeaHistoryInfo("陆羽问泉","茶圣陆羽为寻煮茶真味，踏遍三十州辨天下水质，著成《茶经》时笑叹：“好水如镜，照见茶魂。”",R.drawable.tea_history_item1));
+        teaHistoryInfos.add(new TeaHistoryInfo("禅茶一味","唐代赵州和尚一句“吃茶去”，让三字成千年公案，禅院石阶至今留着被求道者踏出凹痕的茶碗印记。",R.drawable.tea_history_item));
+        teaHistoryInfos.add(new TeaHistoryInfo("万里茶笺","徽商江氏兄弟在茶箱夹层藏家书，竟让武夷岩茶沿着中俄茶路成了游子们的“液体乡愁”。",R.drawable.tea_history_item2));
+
+        TeaHistoryAdapter teaHistoryAdapter = new TeaHistoryAdapter(teaHistoryInfos);
+        binding.rvTeaHistory.setAdapter(teaHistoryAdapter);
+
+
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false);
         binding.rvTeaMake.setLayoutManager(layoutManager1);
 
@@ -120,19 +135,7 @@ public class HomeFragment extends Fragment {
         teaMakeInfos.add(new TeaMakeInfo("窨制","茶坯与鲜花层层叠合，淬炼\"茶引花香\"的灵动",R.drawable.tea_item1));
 
         TeaMakeAdapter teaMakeAdapter = new TeaMakeAdapter(teaMakeInfos);
-        binding.rvTeaHistory.setAdapter(teaMakeAdapter);
-
-
-        LinearLayoutManager layoutManager2 = new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false);
-        binding.rvTeaHistory.setLayoutManager(layoutManager2);
-
-        List<TeaHistoryInfo> teaHistoryInfos = new ArrayList<>();
-        teaHistoryInfos.add(new TeaHistoryInfo("陆羽问泉","茶圣陆羽为寻煮茶真味，踏遍三十州辨天下水质，著成《茶经》时笑叹：“好水如镜，照见茶魂。”",R.drawable.tea_item1));
-        teaHistoryInfos.add(new TeaHistoryInfo("禅茶一味","唐代赵州和尚一句“吃茶去”，让三字成千年公案，禅院石阶至今留着被求道者踏出凹痕的茶碗印记。",R.drawable.tea_history_item));
-        teaHistoryInfos.add(new TeaHistoryInfo("万里茶笺","徽商江氏兄弟在茶箱夹层藏家书，竟让武夷岩茶沿着中俄茶路成了游子们的“液体乡愁”。",R.drawable.tea_item2));
-
-        TeaHistoryAdapter teaHistoryAdapter = new TeaHistoryAdapter(teaHistoryInfos);
-        binding.rvTeaHistory.setAdapter(teaHistoryAdapter);
+        binding.rvTeaMake.setAdapter(teaMakeAdapter);
 
     }
 

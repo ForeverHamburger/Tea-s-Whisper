@@ -1,5 +1,6 @@
 package com.xuptggg.home.view.adapter;
 
+import android.animation.ObjectAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,41 @@ public class TeaHistoryAdapter extends RecyclerView.Adapter<TeaHistoryAdapter.Te
             title = itemView.findViewById(R.id.tv_tea_history_title);
             detail = itemView.findViewById(R.id.tv_tea_history_detail);
             image = itemView.findViewById(R.id.iv_message_icon);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ObjectAnimator scaleXDown = ObjectAnimator.ofFloat(itemView, "scaleX", 1f, 0.9f);
+                    ObjectAnimator scaleYDown = ObjectAnimator.ofFloat(itemView, "scaleY", 1f, 0.9f);
+                    scaleXDown.setDuration(100);
+                    scaleYDown.setDuration(100);
+                    scaleXDown.start();
+                    scaleYDown.start();
+                    scaleXDown.addListener(new android.animation.Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(android.animation.Animator animation) {}
+
+                        @Override
+                        public void onAnimationEnd(android.animation.Animator animation) {
+                            ObjectAnimator scaleXUp = ObjectAnimator.ofFloat(itemView, "scaleX", 0.9f, 1f);
+                            ObjectAnimator scaleYUp = ObjectAnimator.ofFloat(itemView, "scaleY", 0.9f, 1f);
+                            scaleXUp.setDuration(200);
+                            scaleYUp.setDuration(200);
+                            scaleXUp.setInterpolator(new android.view.animation.BounceInterpolator());
+                            scaleYUp.setInterpolator(new android.view.animation.BounceInterpolator());
+                            scaleXUp.start();
+                            scaleYUp.start();
+                        }
+
+                        @Override
+                        public void onAnimationCancel(android.animation.Animator animation) {}
+
+                        @Override
+                        public void onAnimationRepeat(android.animation.Animator animation) {}
+                    });
+                }
+            });
         }
+
     }
 }

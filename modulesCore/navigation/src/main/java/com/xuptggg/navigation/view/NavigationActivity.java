@@ -63,7 +63,8 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
     public void showNavigationInfomation(List<NavigationInfo> navigationInfos) {
 // 获取 FragmentManager
         FragmentManager supportFragmentManager = getSupportFragmentManager();
-
+        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+        fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
         // 设置底部导航栏的选择监听器
         binding.bnvNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -74,12 +75,10 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
                 // 根据导航项的标题进行不同的处理
                 if ("首页".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为首页对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
+                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
                 } else if ("论坛".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为论坛对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
-                    // 显示一个短时间的 Toast 消息
-                    Toast.makeText(NavigationActivity.this, "AAA", Toast.LENGTH_SHORT).show();
+                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
                 } else if ("AI对话".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为 AI 对话对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(2).getFragment());
