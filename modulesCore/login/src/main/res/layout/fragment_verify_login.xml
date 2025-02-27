@@ -43,7 +43,7 @@
 <!--            android:textSize="18sp" />-->
 <!--    </com.google.android.material.textfield.TextInputLayout>-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailAddress"
+        android:id="@+id/tl_emailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_marginTop_small"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tl_emailAddress"
+            android:id="@+id/editText_emailAddress"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
@@ -86,7 +86,7 @@
         app:forceKeyboard="true"
         app:password="false"
         android:windowSoftInputMode="adjustResize"
-        app:layout_constraintTop_toBottomOf="@id/emailAddress"
+        app:layout_constraintTop_toBottomOf="@id/tl_emailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"/>

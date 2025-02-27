@@ -1,36 +1,33 @@
 package com.xuptggg.module.login.Register;
 
-import static com.xuptggg.module.login.LoginActivity.setupSoftKeyboardListener;
 import static com.xuptggg.module.login.LoginIn.LoginInFragment.combineAndUnderline;
+import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import android.os.CountDownTimer;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
-import android.widget.Toast;
-
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.LoginActivity;
-import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
 import com.xuptggg.module.login.LoginIn.LoginInModel;
 import com.xuptggg.module.login.LoginIn.LoginInPresenter;
 import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.base.ValidationUtil;
-import com.xuptggg.module.login.databinding.FragmentLoginInBinding;
 import com.xuptggg.module.login.databinding.FragmentRegisterBinding;
+
+import java.util.regex.Pattern;
 
 
 public class RegisterFragment extends Fragment implements RegisterContract.View {
@@ -93,9 +90,11 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initError();
         String text_to_register_before = getString(R.string.login_have_to_register_before);
         String text_to_register_after = getString(R.string.login_have_to_register_after);
         binding.textViewToLogin.setText(combineAndUnderline(text_to_register_before, text_to_register_after));
+
         binding.buttonRegister.setOnClickListener(v -> {
             String email = binding.editTextEmail.getText().toString();
             String password = binding.editTextPassword.getText().toString();
@@ -141,6 +140,99 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                             .replace(R.id.fragment_container, logininFragment)
                             .addToBackStack(null)
                             .commit();
+                }
+            }
+        });
+    }
+
+    private void initError() {
+        binding.tlPhone.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
+        binding.tlPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
+        binding.tlEmail.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
+        binding.tlConfirmPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
+        binding.tlVerificationCode.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
+
+        binding.tlPhone.setErrorIconDrawable(0);
+        binding.tlPassword.setErrorIconDrawable(0);
+        binding.tlEmail.setErrorIconDrawable(0);
+        binding.tlConfirmPassword.setErrorIconDrawable(0);
+        binding.tlVerificationCode.setErrorIconDrawable(0);
+
+        binding.editTextPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String password = binding.editTextPassword.getText().toString();
+                    binding.tlPassword.setError(null);
+                    ValidationResult result = ValidationUtil.validatePassword(password);
+                    if (!result.isValid()) {
+                        binding.tlPassword.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlPassword.setError(null);
+                }
+            }
+        });
+        binding.editTextConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String ConfirmPassword = binding.editTextConfirmPassword.getText().toString();
+                    String password = binding.editTextPassword.getText().toString();
+                    binding.tlConfirmPassword.setError(null);
+                    ValidationResult result = ValidationUtil.validateConfirmPassword(password,ConfirmPassword);
+                    if (!result.isValid()) {
+                        binding.tlConfirmPassword.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlConfirmPassword.setError(null);
+                }
+            }
+        });
+        binding.editTextEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String email = binding.editTextEmail.getText().toString();
+                    binding.tlEmail.setError(null);
+                    ValidationResult result = ValidationUtil.validateEmail(email);
+                    if (!result.isValid()) {
+                        binding.tlEmail.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlEmail.setError(null);
+                }
+            }
+        });
+        binding.editTextPhone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String phone = binding.editTextPhone.getText().toString();
+                    binding.tlPhone.setError(null);
+                    ValidationResult result = ValidationUtil.validatePhone(phone);
+                    if (!result.isValid()) {
+                        binding.tlPhone.setError(result.getErrorMessage());
+                    }
+                }
+                else {
+                    binding.tlPhone.setError(null);
+                }
+            }
+        });
+
+        binding.editTextVerificationCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String VerificationCode = binding.editTextVerificationCode.getText().toString();
+                    binding.tlVerificationCode.setError(null);
+                    ValidationResult result = ValidationUtil.validateVerificationCode(VerificationCode);
+                    if (!result.isValid()) {
+                        binding.tlVerificationCode.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlVerificationCode.setError(null);
                 }
             }
         });

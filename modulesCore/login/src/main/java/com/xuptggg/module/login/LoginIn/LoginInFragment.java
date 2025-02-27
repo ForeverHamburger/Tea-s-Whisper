@@ -1,6 +1,6 @@
 package com.xuptggg.module.login.LoginIn;
 
-import static com.xuptggg.module.login.LoginActivity.setupSoftKeyboardListener;
+
 import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
 import static com.xuptggg.module.login.base.ValidationUtil.PHONE_REGEX_CN;
 
