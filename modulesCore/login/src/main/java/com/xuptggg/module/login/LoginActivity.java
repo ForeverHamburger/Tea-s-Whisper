@@ -69,17 +69,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void adjustCardViewForFragment(int fragmentHeight) {
 
-        if (fragmentHeight <= 1500) {
-            fragmentHeight = 1500;
+        if (fragmentHeight <= 1400) {
+            fragmentHeight = 1400;
         }
-        if(fragmentHeight >= 1700){
-            fragmentHeight = 1700;
+        if(fragmentHeight >= 1600){
+            fragmentHeight = 1600;
         }
 
         ConstraintLayout constraintLayout = findViewById(R.id.main);
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(constraintLayout);
-        int newCardViewHeight = fragmentHeight + 200;
+        int newCardViewHeight = fragmentHeight + 180;
         // 调整 CardView 高度
         constraintSet.constrainHeight(R.id.cardView_login, newCardViewHeight);
         // 调整 FragmentContainerView 高度

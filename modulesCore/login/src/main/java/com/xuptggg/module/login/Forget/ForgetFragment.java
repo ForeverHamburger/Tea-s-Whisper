@@ -2,10 +2,12 @@ package com.xuptggg.module.login.Forget;
 
 import static com.xuptggg.module.login.base.ValidationUtil.validateEmail;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -68,6 +70,8 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
             }
             mPresenter.onForgetClick(email, verificationCode,newPassword, confirmPassword);
         });
+        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
+        binding.textViewTitle.setTypeface(typeface);
     }
     public boolean sentCode(String email) {
         if (!validateEmail(email).isValid()) {

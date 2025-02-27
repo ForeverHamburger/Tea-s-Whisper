@@ -3,6 +3,7 @@ package com.xuptggg.module.login.Register;
 import static com.xuptggg.module.login.LoginIn.LoginInFragment.combineAndUnderline;
 import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -143,6 +145,9 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                 }
             }
         });
+        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
+        binding.textViewToLogin.setTypeface(typeface);
+        binding.textViewTitle.setTypeface(typeface);
     }
 
     private void initError() {

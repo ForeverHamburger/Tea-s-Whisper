@@ -9,11 +9,11 @@
 
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/textView_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="验证码登录"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_title"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:layout_margin="@dimen/dp_marginTop_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/textView_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_emailAddress"
@@ -96,8 +96,9 @@
         android:id="@+id/resendEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Didn't receive the code? Resend Email"
+        android:text="吗没有收到？重新发送"
         android:textColor="@color/red"
+
         app:layout_constraintTop_toBottomOf="@id/codeInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

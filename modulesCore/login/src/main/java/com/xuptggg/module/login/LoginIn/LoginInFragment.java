@@ -5,6 +5,7 @@ import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
 import static com.xuptggg.module.login.base.ValidationUtil.PHONE_REGEX_CN;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -174,6 +176,12 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             Log.d("test", "onViewCreated: "+111);
             binding.checkBoxRemember.setChecked(false);
         }
+
+        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
+        binding.textViewLoginWithVerificationCode.setTypeface(typeface);
+        binding.textViewTitle.setTypeface(typeface);
+        binding.textViewForget.setTypeface(typeface);
+        binding.textViewToRegister.setTypeface(typeface);
     }
     @Override
     public void onDestroy() {

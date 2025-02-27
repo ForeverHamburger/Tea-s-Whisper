@@ -9,12 +9,12 @@
     tools:context=".Forget.ForgetFragment">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/textView_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="忘记密码"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_title"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         app:hintTextAppearance="@style/MyHintTextStyle"
         app:layout_constraintEnd_toStartOf="@+id/button_getVerificationCode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/textView_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_email"
