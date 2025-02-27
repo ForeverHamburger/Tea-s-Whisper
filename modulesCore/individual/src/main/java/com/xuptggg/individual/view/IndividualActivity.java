@@ -50,7 +50,6 @@ public class IndividualActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        Log.d("test", "initView");
         Glide.with(this)
                 .load(R.drawable.dog)
                 .circleCrop()
