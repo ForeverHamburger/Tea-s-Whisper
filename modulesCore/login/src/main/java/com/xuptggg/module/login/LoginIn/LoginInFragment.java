@@ -25,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.textfield.TextInputLayout;
 import com.tencent.mmkv.MMKV;
 import com.xuptggg.module.login.Forget.ForgetFragment;
@@ -225,6 +226,8 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             mmkv.putString("Username","");
             mmkv.putString("Password","");
         }
+
+        ARouter.getInstance().build("/navigation/NavigationActivity").navigation();
     }
 
     @Override
