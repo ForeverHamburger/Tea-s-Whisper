@@ -7,7 +7,7 @@
       </SelectionState>
       <SelectionState runConfigName="modulesCore.login">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-18T11:49:20.309338700Z">
+        <DropdownSelection timestamp="2025-02-27T07:25:07.755549800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=47e52a7c" />

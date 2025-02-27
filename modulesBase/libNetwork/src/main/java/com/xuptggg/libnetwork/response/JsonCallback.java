@@ -63,7 +63,7 @@ public class JsonCallback implements Callback {
             @Override
             public void run() {
                 // 调用监听器的 onFailure 方法，并将网络错误封装成 MyHttpException 传递
-                mListener.onFailure(new MyHttpException(NETWORK_ERROR, ioexception + "-网络错误"));
+                mListener.onFailure(new MyHttpException(NETWORK_ERROR, ioexception + "-网络错误onFailure"));
             }
         });
     }

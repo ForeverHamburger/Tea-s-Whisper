@@ -1,5 +1,6 @@
 package com.xuptggg.module.login.Register;
 
+import static com.xuptggg.module.login.LoginActivity.setupSoftKeyboardListener;
 import static com.xuptggg.module.login.LoginIn.LoginInFragment.combineAndUnderline;
 
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.xuptggg.module.login.LoginActivity;
 import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
@@ -41,18 +43,18 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
 
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         mPresenter.onstart();
-
+        Log.d("fragmentHeight", "RegisterFragment" );
         binding.getRoot().post(new Runnable() {
             @Override
             public void run() {
                 int fragmentHeight = binding.getRoot().findViewById(R.id.ConstraintLayout_re).getHeight();
                 Log.d("fragmentHeight", "RegisterFragment: " + fragmentHeight);
+
                 ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
             }
         });
         return binding.getRoot();
     }
-
     private void adjustCardViewHeight(int fragmentHeight) {
         View cardView = requireActivity().findViewById(R.id.cardView_login);
         View fragmentContainer = requireActivity().findViewById(R.id.fragment_container);

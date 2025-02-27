@@ -1,6 +1,9 @@
 package com.xuptggg.module.login;
 
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ViewTreeObserver;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.textfield.TextInputEditText;
 import com.tencent.mmkv.MMKV;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
 import com.xuptggg.module.login.LoginIn.LoginInModel;
