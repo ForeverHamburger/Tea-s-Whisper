@@ -2,6 +2,7 @@ package com.xuptggg.module.login.LoginIn;
 
 import static android.provider.Settings.System.getString;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.xuptggg.module.login.R;
@@ -42,12 +43,13 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
         System.out.println("LoginInPresenter onSuccess"+data);
         if (mView!=null&&mView.isACtive()) {
 //            mView.setStarData(data);
+            mView.loginSuccess();
         }
     }
 
     @Override
     public void onFailed(String error) {
         System.out.println(error);
-
+        Log.d("test", "loginSuccess: 111123");
     }
 }

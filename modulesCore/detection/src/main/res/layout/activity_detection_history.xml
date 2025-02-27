@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/detection_gradient_background">
 
-    <!-- 标题栏 -->
-
-    <!-- 历史记录列表 -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"

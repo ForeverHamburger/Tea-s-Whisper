@@ -19,5 +19,6 @@ public interface LoginInContract {
         void showError();
 //        void setLoginInData(musicData starData);
         Boolean isACtive();
+        void loginSuccess();
     }
 }

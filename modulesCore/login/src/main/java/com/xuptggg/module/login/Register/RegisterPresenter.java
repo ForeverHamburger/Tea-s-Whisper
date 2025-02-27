@@ -1,5 +1,8 @@
 package com.xuptggg.module.login.Register;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
@@ -43,7 +46,7 @@ public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksC
     }
 
     @Override
-    public void onSuccess( String data) {
+    public void onSuccess(String data) {
 
         if (mView!=null&&mView.isACtive()) {
 //            mView.setStarData(data);

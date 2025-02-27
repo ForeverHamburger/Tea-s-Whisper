@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.tencent.mmkv.MMKV;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
 import com.xuptggg.module.login.LoginIn.LoginInModel;
 import com.xuptggg.module.login.LoginIn.LoginInPresenter;
@@ -33,8 +34,11 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        MMKV.initialize(this);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         initViews();
+
+
     }
 
     private void initViews() {
