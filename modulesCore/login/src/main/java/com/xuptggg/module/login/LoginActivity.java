@@ -68,6 +68,10 @@ public class LoginActivity extends AppCompatActivity {
         if (fragmentHeight <= 1500) {
             fragmentHeight = 1500;
         }
+        if(fragmentHeight >= 1700){
+            fragmentHeight = 1700;
+        }
+
         ConstraintLayout constraintLayout = findViewById(R.id.main);
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(constraintLayout);
