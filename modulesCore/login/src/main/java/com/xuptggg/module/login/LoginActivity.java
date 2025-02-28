@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        constraintSet.connect(R.id.fragment_container, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
 //        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
-//        // **让 CardView 适当上移，避免底部挤压**
+//        //让 CardView 适当上移，避免底部挤压
 //        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
         constraintSet.applyTo(constraintLayout);
     }

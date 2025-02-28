@@ -1,6 +1,6 @@
 package com.example.module.chat.communicate.view;
 
-import com.example.module.chat.communicate.base.LoadTasksCallBack;
+import com.example.module.chat.base.other.LoadTasksCallBack;
 
 public class CommunicatePresenter implements CommunicateContract.Presenter, LoadTasksCallBack<String> {
     private CommunicateContract.View mView;
@@ -11,8 +11,8 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
         mView.setPresenter(this);
     }
     @Override
-    public void getCommunicateInfo(String username, String password) {
-        mModel.getCommunicateInfo(username, password, this);
+    public void getCommunicateInfo(String message) {
+        mModel.getCommunicateInfo(message,this);
     }
     @Override
     public void unSubscribe() {
@@ -22,7 +22,7 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
     @Override
     public void onSuccess(String data) {
         if (mView != null && mView.isACtive()) {
-
+            mView.callAIAPI(data);
         }
     }
 

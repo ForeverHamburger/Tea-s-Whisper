@@ -2,7 +2,7 @@ package com.example.module.chat.base.database;
 
 import java.util.List;
 
-class Data {
+public class Data {
     private String id;
     private long created;
     private String model;

@@ -1,6 +1,6 @@
 package com.example.module.chat.base.database;
 
-class Choice {
+public class Choice {
     private int index;
     private String finish_reason;
     private Message message;

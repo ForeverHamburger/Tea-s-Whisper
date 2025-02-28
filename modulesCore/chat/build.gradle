@@ -65,7 +65,7 @@ dependencies {
     implementation  'io.github.scwang90:refresh-header-two-level:3.0.0-alpha'   //二级刷新头
     implementation  'io.github.scwang90:refresh-footer-ball:3.0.0-alpha'        //球脉冲加载
     implementation  'io.github.scwang90:refresh-footer-classics:3.0.0-alpha'    //经典加载
-
+    implementation libs.okhttp
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
     implementation project(':modulesBase:libNetwork')

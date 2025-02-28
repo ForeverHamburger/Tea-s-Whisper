@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.module.chat.base.other.NetworkHelper;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
@@ -79,7 +80,6 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         ChatMessage userMsg = new ChatMessage(ChatMessage.TYPE_SENT, message);
         adapter.addMessageDataList(userMsg);
         binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
-        // 调用 AI API 获取回复
         getAIResponse(message);
     }
 
@@ -97,9 +97,8 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         }).start();
     }
 
-    private String callAIAPI(String userInput) {
-
-        return "我是 AI，收到：" + userInput;
+    public  String callAIAPI(String userInput) {
+        return userInput;
     }
     @Override
     public void showError() {

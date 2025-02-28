@@ -1,4 +1,4 @@
-package com.example.module.chat.communicate.base;
+package com.example.module.chat.base.other;
 
 public interface LoadTasksCallBack<T> {
     void onSuccess(T data);

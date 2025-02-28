@@ -1,6 +1,6 @@
 package com.example.module.chat.base.database;
 
-class Response {
+public class MyResponse {
     private int code;
     private String msg;
     private Data data;

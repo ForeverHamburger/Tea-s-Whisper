@@ -1,6 +1,6 @@
 package com.example.module.chat.base.database;
 
-class Message {
+public class Message {
     private String role;
     private String content;
 
