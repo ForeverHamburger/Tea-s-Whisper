@@ -22,13 +22,15 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
     @Override
     public void onSuccess(String data) {
         if (mView != null && mView.isACtive()) {
-            mView.callAIAPI(data);
+            mView.aiResponse(data);
         }
     }
 
     @Override
     public void onFailed(String error) {
         System.out.println(error);
-
+        if (mView != null && mView.isACtive()) {
+            mView.aiResponse(error);
+        }
     }
 }

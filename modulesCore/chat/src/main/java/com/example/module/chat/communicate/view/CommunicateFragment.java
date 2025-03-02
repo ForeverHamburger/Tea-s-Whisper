@@ -27,6 +27,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     public FragmentCommunicateBinding binding;
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
+    String aiResponse = "";
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -84,20 +85,22 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     }
 
     private void getAIResponse(String userInput) {
-        new Thread(() -> {
-            String aiResponse = callAIAPI(userInput);
-            if (getActivity() != null) {
-                getActivity().runOnUiThread(() -> {
-                    // 添加 AI 回复
-                    ChatMessage aiMsg = new ChatMessage(ChatMessage.TYPE_RECEIVED, aiResponse);
-                    adapter.addMessageDataList(aiMsg);
-                    binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
-                });
-            }
-        }).start();
+//        new Thread(() -> {
+            mPresenter.getCommunicateInfo(userInput);
+//        }).start();
     }
 
-    public  String callAIAPI(String userInput) {
+    @Override
+    public String aiResponse(String userInput){
+        System.out.println(userInput+"aaa");
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(() -> {
+                // 添加 AI 回复
+                ChatMessage aiMsg = new ChatMessage(ChatMessage.TYPE_RECEIVED, userInput);
+                adapter.addMessageDataList(aiMsg);
+                binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+            });
+        }
         return userInput;
     }
     @Override

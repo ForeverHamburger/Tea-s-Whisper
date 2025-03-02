@@ -14,6 +14,6 @@ public interface CommunicateContract {
     interface View extends BaseView<Presenter> {
         void showError();
         Boolean isACtive();
-        String callAIAPI(String userInput);
+        String aiResponse(String userInput);
     }
 }
