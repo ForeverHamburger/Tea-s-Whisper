@@ -12,24 +12,30 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.xuptggg.detail.R;
 import com.xuptggg.detail.databinding.ActivityDetailBinding;
+import com.xuptggg.detail.utils.AnimationUtils;
 
 public class DetailActivity extends AppCompatActivity {
     private ActivityDetailBinding binding;
+    private boolean isLiked = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)   {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coordinator_detail), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        FragmentManager supportFragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+        binding.ctlDetail.setTitle("西湖龙井");
+
+        binding.fabDetailLike.setOnClickListener(v -> {
+            if (!isLiked) {
+                AnimationUtils.performLikeAnimation(this, binding.fabDetailLike);
+                isLiked = true;
+            } else {
+                AnimationUtils.performUnlikeAnimation(this, binding.fabDetailLike);
+                isLiked = false;
+            }
+        });
 
 
     }

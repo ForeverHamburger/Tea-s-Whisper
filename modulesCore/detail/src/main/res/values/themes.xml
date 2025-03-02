@@ -1,9 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TeasWhisper" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.TeasWhisper" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.TeasWhisper" parent="Base.Theme.TeasWhisper" />
+
+    <style name="BaseTextStyle" parent="android:TextAppearance.Material.Large">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/title_font</item>
+    </style>
+
+    <!-- 展开标题样式 -->
+    <style name="ExpandedTitleTextStyle" parent="BaseTextStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/title_font</item>
+    </style>
+
+    <!-- 收缩标题样式 -->
+    <style name="CollapsedTitleTextStyle" parent="BaseTextStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/title_font</item>
+    </style>
+
 </resources>
