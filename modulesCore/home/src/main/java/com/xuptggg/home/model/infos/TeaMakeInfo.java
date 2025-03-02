@@ -1,4 +1,4 @@
-package com.xuptggg.home.model;
+package com.xuptggg.home.model.infos;
 
 public class TeaMakeInfo {
     private String makeName;

@@ -1,12 +1,10 @@
 package com.xuptggg.home.view;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +15,13 @@ import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.home.R;
+import com.xuptggg.home.contract.IHomeContract;
 import com.xuptggg.home.databinding.FragmentHomeBinding;
-import com.xuptggg.home.model.TeaHistoryInfo;
-import com.xuptggg.home.model.TeaInfo;
-import com.xuptggg.home.model.TeaMakeInfo;
+import com.xuptggg.home.model.HomeModel;
+import com.xuptggg.home.model.infos.TeaHistoryInfo;
+import com.xuptggg.home.model.infos.TeaInfo;
+import com.xuptggg.home.model.infos.TeaMakeInfo;
+import com.xuptggg.home.presenter.HomePresenter;
 import com.xuptggg.home.view.adapter.TeaCardAdapter;
 import com.xuptggg.home.view.adapter.TeaHistoryAdapter;
 import com.xuptggg.home.view.adapter.TeaMakeAdapter;
@@ -33,8 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = "/home/HomeFragment")
-public class HomeFragment extends Fragment {
-
+public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
+    private IHomeContract.IHomePresenter mPresenter;
     private Banner<Integer, BannerImageAdapter<Integer>> banner;
     private FragmentHomeBinding binding;
     private RecyclerView teaRecyclerView;
@@ -67,6 +68,12 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setPresenter(new HomePresenter(new HomeModel(),this));
+        mPresenter.getHomeInfo("Tea");
+    }
 
     private void initBanner(View view) {
         List<Integer> bannerImages = new ArrayList<>();
@@ -153,5 +160,20 @@ public class HomeFragment extends Fragment {
             v.setScaleX(1 - rate * 0.3f);
             v.setScaleY(1 - rate * 0.3f);
         }
+    }
+
+    @Override
+    public void setPresenter(IHomeContract.IHomePresenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void showHomeInfomation(List<TeaInfo> individualInfos) {
+
+    }
+
+    @Override
+    public void showError() {
+
     }
 }

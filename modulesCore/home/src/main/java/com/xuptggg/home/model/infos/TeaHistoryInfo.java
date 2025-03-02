@@ -1,4 +1,4 @@
-package com.xuptggg.home.model;
+package com.xuptggg.home.model.infos;
 
 public class TeaHistoryInfo {
     private String title;

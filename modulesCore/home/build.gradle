@@ -6,6 +6,7 @@ if (isModule.booleanValue()) {
 }
 
 apply from: "${rootProject.rootDir}/config_build.gradle"
+
 android {
     namespace 'com.xuptggg.home'
     compileSdk cfg.android.compileSdkVersion
@@ -58,8 +59,10 @@ android {
 
 dependencies {
     implementation 'io.github.youth5201314:banner:2.2.3'
+    implementation project(':modulesBase:libNetwork')
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+    implementation libs.okhttp
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
