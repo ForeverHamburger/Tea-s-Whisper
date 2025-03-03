@@ -16,4 +16,13 @@ public class MyResponse {
     public Data getData() {
         return data;
     }
+
+    @Override
+    public String toString() {
+        return "MyResponse{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

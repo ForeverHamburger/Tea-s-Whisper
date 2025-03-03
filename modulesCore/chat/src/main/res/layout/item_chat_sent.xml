@@ -20,9 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:autoSizeTextType="uniform"
         android:background="@drawable/chat_sent"
+        android:maxWidth="300dp"
         android:text="sent"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sent_time" />
 </androidx.constraintlayout.widget.ConstraintLayout>

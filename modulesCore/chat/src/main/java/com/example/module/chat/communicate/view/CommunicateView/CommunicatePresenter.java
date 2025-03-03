@@ -1,8 +1,9 @@
-package com.example.module.chat.communicate.view;
+package com.example.module.chat.communicate.view.CommunicateView;
 
+import com.example.module.chat.base.database.Data;
 import com.example.module.chat.base.other.LoadTasksCallBack;
 
-public class CommunicatePresenter implements CommunicateContract.Presenter, LoadTasksCallBack<String> {
+public class CommunicatePresenter implements CommunicateContract.Presenter, LoadTasksCallBack<Data> {
     private CommunicateContract.View mView;
     private CommunicateContract.Model mModel;
     public CommunicatePresenter(CommunicateContract.View mView, CommunicateContract.Model mModel) {
@@ -11,8 +12,8 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
         mView.setPresenter(this);
     }
     @Override
-    public void getCommunicateInfo(String message) {
-        mModel.getCommunicateInfo(message,this);
+    public void getCommunicateInfo(String content, String sessionId) {
+        mModel.getCommunicateInfo(content,sessionId,this);
     }
     @Override
     public void unSubscribe() {
@@ -20,9 +21,10 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
         mView = null;
     }
     @Override
-    public void onSuccess(String data) {
+    public void onSuccess(Data data) {
         if (mView != null && mView.isACtive()) {
-            mView.aiResponse(data);
+            mView.aiResponse(data.getContent());
+            mView.setSessionId(data.getSessionID());
         }
     }
 

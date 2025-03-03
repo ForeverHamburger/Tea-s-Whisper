@@ -11,9 +11,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.module.chat.communicate.view.CommunicateFragment;
-import com.example.module.chat.communicate.view.CommunicateModel;
-import com.example.module.chat.communicate.view.CommunicatePresenter;
+import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
+import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
+import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
 import com.example.module.chat.databinding.ActivityChatBinding;
 
 @Route(path = "/chat/ChatActivity")

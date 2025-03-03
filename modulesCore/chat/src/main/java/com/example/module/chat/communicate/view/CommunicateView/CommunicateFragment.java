@@ -1,4 +1,4 @@
-package com.example.module.chat.communicate.view;
+package com.example.module.chat.communicate.view.CommunicateView;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.module.chat.base.other.NetworkHelper;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
@@ -27,7 +27,8 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     public FragmentCommunicateBinding binding;
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
-    String aiResponse = "";
+    public String sessionId;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 
         return binding.getRoot();
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -61,6 +63,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
                     binding.ChatSend.setImageTintList(ColorStateList.valueOf(Color.GRAY));
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
                 // 在文本变化之后的操作
@@ -84,25 +87,33 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         getAIResponse(message);
     }
 
-    private void getAIResponse(String userInput) {
+    private void getAIResponse(String content) {
 //        new Thread(() -> {
-            mPresenter.getCommunicateInfo(userInput);
+        mPresenter.getCommunicateInfo(content, sessionId);
+        Log.d("CommunicateFragment", "getAIResponse: " + content);
+        Log.d("CommunicateFragment", "getAIResponse: " + sessionId);
 //        }).start();
     }
 
     @Override
-    public String aiResponse(String userInput){
-        System.out.println(userInput+"aaa");
+    public String aiResponse(String content) {
+        System.out.println(content + "aiResponse");
+
         if (getActivity() != null) {
             getActivity().runOnUiThread(() -> {
                 // 添加 AI 回复
-                ChatMessage aiMsg = new ChatMessage(ChatMessage.TYPE_RECEIVED, userInput);
+                ChatMessage aiMsg = new ChatMessage(ChatMessage.TYPE_RECEIVED, content);
                 adapter.addMessageDataList(aiMsg);
                 binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
             });
         }
-        return userInput;
+        return content;
     }
+    @Override
+    public void setSessionId(String SessionId) {
+        sessionId = SessionId;
+    }
+
     @Override
     public void showError() {
 
@@ -114,7 +125,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     }
 
     @Override
-    public void setPresenter(CommunicateContract.Presenter presenter)  {
+    public void setPresenter(CommunicateContract.Presenter presenter) {
         mPresenter = presenter;
     }
 }
