@@ -10,10 +10,11 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.detail.R;
 import com.xuptggg.detail.databinding.ActivityDetailBinding;
 import com.xuptggg.detail.utils.AnimationUtils;
-
+@Route(path = "/detail/DetailActivity")
 public class DetailActivity extends AppCompatActivity {
     private ActivityDetailBinding binding;
     private boolean isLiked = false;

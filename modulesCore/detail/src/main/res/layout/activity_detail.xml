@@ -59,7 +59,6 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <!-- 顶部按钮组 -->
             <LinearLayout
                 android:id="@+id/btn_group"
                 android:layout_width="match_parent"
@@ -71,43 +70,54 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <Button
-                    android:id="@+id/btn_history"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="茗史长河"
-                    android:fontFamily="@font/title_font"
-                    android:backgroundTint="@color/tea_primary"
-                    android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btn_history"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="茗史长河"
+                android:fontFamily="@font/title_font"
+                android:background="@drawable/button_selector"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:elevation="4dp"
+                android:layout_margin="4dp" />
 
-                <Button
-                    android:id="@+id/btn_process"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="匠心制茶"
-                    android:fontFamily="@font/title_font"
-                    android:backgroundTint="@color/tea_primary"
-                    android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btn_process"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="匠心制茶"
+                android:fontFamily="@font/title_font"
+                android:background="@drawable/button_selector"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:elevation="4dp"
+                android:layout_margin="4dp" />
 
-                <Button
-                    android:id="@+id/btn_guide"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="茶味玄机"
-                    android:fontFamily="@font/title_font"
-                    android:backgroundTint="@color/tea_primary"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
+            <Button
+                android:id="@+id/btn_guide"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="茶味玄机"
+                android:fontFamily="@font/title_font"
+                android:background="@drawable/button_selector"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:elevation="4dp"
+                android:layout_margin="4dp" />
+        </LinearLayout>
 
             <ImageView
                 android:id="@+id/iv_content"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="190dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/tea_test"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_corners"
                 android:clipToOutline="true"
                 android:contentDescription="茶文化展示图"

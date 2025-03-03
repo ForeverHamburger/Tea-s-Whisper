@@ -1,7 +1,7 @@
 ext {  //extend
     // false: 集成模式
     // true ：组件模式
-    isModule = true
+    isModule = false
     android = [
             compileSdkVersion: 34,
             minSdkVersion    : 28,
@@ -21,7 +21,8 @@ ext {  //extend
                      ,"individual" : "com.xuptggg.individual"
                      ,"home":"com.xuptggg.home"
                      ,"chat" : "com.example.module.chat"
-                     ,"detail" : "com.xuptggg.detail"]
+                     ,"detail" : "com.xuptggg.detail"
+                     ,"forum" : "com.xuptggg.forum"]
 
     dependencies = [
             glide : 'com.github.bumptech.glide:glide:4.16.0',
