@@ -2,8 +2,8 @@ package com.example.module.chat.base.other;
 
 import android.util.Log;
 
-import com.example.module.chat.base.database.Data;
-import com.example.module.chat.base.database.MyResponse;
+import com.example.module.chat.base.database.communicate.Data;
+import com.example.module.chat.base.database.communicate.MyResponse;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.exception.MyHttpException;

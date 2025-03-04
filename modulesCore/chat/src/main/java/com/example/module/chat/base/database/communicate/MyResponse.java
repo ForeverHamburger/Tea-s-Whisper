@@ -1,4 +1,4 @@
-package com.example.module.chat.base.database;
+package com.example.module.chat.base.database.communicate;
 
 public class MyResponse {
     private int code;

@@ -1,6 +1,6 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
-import com.example.module.chat.base.database.Data;
+import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.other.LoadTasksCallBack;
 
 public class CommunicatePresenter implements CommunicateContract.Presenter, LoadTasksCallBack<Data> {
