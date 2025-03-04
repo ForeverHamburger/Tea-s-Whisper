@@ -22,12 +22,16 @@ import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
 
+import io.noties.markwon.Markwon;
+
 @Route(path = "/chat/CommunicateFragment")
 public class CommunicateFragment extends Fragment implements CommunicateContract.View {
     public FragmentCommunicateBinding binding;
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
     public String sessionId;
+    // 初始化 Markwon
+    private Markwon markwon;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,7 +47,9 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         super.onViewCreated(view, savedInstanceState);
 
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ChatCommunicateAdapter();
+        markwon = Markwon.create(requireContext());
+        adapter = new ChatCommunicateAdapter(markwon);
+//        adapter = new ChatCommunicateAdapter();
 //        addMessageDataList
         binding.ChatRecyclerView.setAdapter(adapter);
 

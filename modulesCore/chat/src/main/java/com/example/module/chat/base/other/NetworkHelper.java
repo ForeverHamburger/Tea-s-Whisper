@@ -24,17 +24,20 @@ public class NetworkHelper {
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
+                Log.d(TAG, "performPostRequest: " + "onSuccess");
                 handleMyResponse(url, (MyResponse) responseObj, callBack);
             }
 
             @Override
             public void onFailure(Object reasonObj) {
+                Log.d(TAG, "performPostRequest: " + "onFailure");
                 if (reasonObj != null) {
                     if (reasonObj instanceof MyHttpException) {
                         callBack.onFailed(((MyHttpException) reasonObj).getErrorMessage());
+                    } else {
+                        callBack.onFailed(reasonObj.toString());
                     }
                 }
-                callBack.onFailed(reasonObj.toString());
             }
         }, MyResponse.class);
 
@@ -44,7 +47,11 @@ public class NetworkHelper {
 
     private void handleMyResponse(String url, MyResponse responseObj, LoadTasksCallBack<Data> callBack) {
         Log.d(TAG, "Response in chat: " + responseObj);
-        Log.d(TAG, "Response in chat: " + responseObj.getData().getContent());
+        Log.d(TAG, "Response in chat:code= " + responseObj.getCode());
+        if (responseObj.getData() != null)
+            Log.d(TAG, "Response in chat: content= " + responseObj.getData().getContent());
+        else
+            Log.d(TAG, "Response in chat: " + responseObj.getMsg() + "data==null");
 
         if (responseObj == null || responseObj.toString().trim().equals("")) {
             callBack.onFailed("响应为空");

@@ -7,7 +7,7 @@ public class ChatMessage {
     private int type;       // 消息类型
     private String content; // 消息内容
     private long timestamp; // 时间戳
-
+    private CharSequence formattedContent; // 格式化后的内容（缓存）
     public ChatMessage(int type, String content) {
         this.type = type;
         this.content = content;
@@ -16,4 +16,11 @@ public class ChatMessage {
     public int getType() { return type; }
     public String getContent() { return content; }
     public long getTimestamp() { return timestamp; }
+    public CharSequence getFormattedContent() {
+        return formattedContent;
+    }
+
+    public void setFormattedContent(CharSequence formattedContent) {
+        this.formattedContent = formattedContent;
+    }
 }
