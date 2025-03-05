@@ -20,8 +20,10 @@ import com.xuptggg.individual.R;
 import com.xuptggg.individual.base.myviewpageradapter;
 import com.xuptggg.individual.databinding.ActivityIndividualBinding;
 
+
 public class IndividualActivity extends AppCompatActivity {
     ActivityIndividualBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

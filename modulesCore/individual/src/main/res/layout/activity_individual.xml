@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IndividualActivity"
+    tools:context=".view.IndividualActivity"
     android:background="@color/emerald_green">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -178,7 +178,7 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <!-- 功能入口 -->
             <com.google.android.material.card.MaterialCardView
@@ -252,9 +252,9 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!-- 底部导航 -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

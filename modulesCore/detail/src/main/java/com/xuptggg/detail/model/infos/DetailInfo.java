@@ -1,17 +1,26 @@
 package com.xuptggg.detail.model.infos;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 public class DetailInfo {
+    @SerializedName("name")
     private String teaName;
+    @SerializedName("image")
     private String imageUrl;
+
     // 茶的简介
+    @SerializedName("detail")
     private String teaBrief;
     // 茶相关历史
+    @SerializedName("history")
     private String teaHistory;
     // 制茶相关
+    @SerializedName("process")
     private String teaProcess;
     // 饮茶指南
+    @SerializedName("guide")
     private String teaGuide;
 
     public String getTeaName() {
