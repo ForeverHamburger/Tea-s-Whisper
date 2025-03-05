@@ -2,7 +2,7 @@ package com.xuptggg.home.contract;
 
 import com.xuptggg.home.base.BaseView;
 import com.xuptggg.home.model.LoadHomeInfoCallBack;
-import com.xuptggg.home.model.TeaInfo;
+import com.xuptggg.home.model.infos.TeaInfo;
 
 import java.util.List;
 

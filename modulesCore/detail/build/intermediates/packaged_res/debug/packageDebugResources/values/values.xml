@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="bright_yellow">#FFC530</color>
+    <color name="dark_green">#608B7A</color>
+    <color name="emerald_green">#A5CEBD</color>
+    <color name="light_green">#BFE1CA</color>
+    <color name="light_yellow">#FCF4E5</color>
+    <color name="red">#C62828</color>
+    <color name="tea_dark">#2E1B16</color>
+    <color name="tea_light">#D7CCC8</color>
+    <color name="tea_primary">#3E2723</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">detail</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="string_detail_bottom_test">嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好</string>
+    <string name="string_detail_content">同样是压，高档茶叶只要压扁就行，中档茶叶就要压得扁而紧，低档茶叶则要紧，手法和力度都不同。就像年纪大了，筋骨老了，能压紧就好。西湖龙井在采摘后要竹筛上进行晾晒，一般需要半天左右时间，这样可以减少茶叶中的青草味道，使水分达到炒制的要求，同时使新茶在炒制时不至于结团。然后再对晾好的新叶进行大致分类，根据叶子的品质档次来决定下一步炒制的锅温、力道等条件。所谓晾就是刚采摘下来的茶叶得在阴凉处堆放上大半天，大约相当于机械加工的退火，也就是通过堆晾，去掉茶叶里残余的大部分刚性。</string>
+    <style name="Base.Theme.TeasWhisper" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        
+        
+    </style>
+    <style name="BaseTextStyle" parent="android:TextAppearance.Material.Large">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/title_font</item>
+    </style>
+    <style name="CollapsedTitleTextStyle" parent="BaseTextStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/title_font</item>
+    </style>
+    <style name="ExpandedTitleTextStyle" parent="BaseTextStyle">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/title_font</item>
+    </style>
+    <style name="Theme.TeasWhisper" parent="Base.Theme.TeasWhisper"/>
+    <style name="detailTextStyle">
+        <item name="android:fontFamily">@font/title_font</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+    <style name="detailTitleTextStyle">
+        <item name="android:fontFamily">@font/title_font</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+</resources>

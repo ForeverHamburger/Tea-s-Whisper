@@ -52,6 +52,8 @@ dependencies {
         implementation project(':modulesCore:home')
         implementation project(':modulesCore:chat')
 
+        implementation project(':modulesCore:detail')
+        implementation project(':modulesCore:forum')
     }
 
     api 'com.alibaba:arouter-api:1.5.2'

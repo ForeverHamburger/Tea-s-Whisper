@@ -15,7 +15,9 @@
             <option value="$PROJECT_DIR$/modulesBase/libNetwork" />
             <option value="$PROJECT_DIR$/modulesCore" />
             <option value="$PROJECT_DIR$/modulesCore/chat" />
+            <option value="$PROJECT_DIR$/modulesCore/detail" />
             <option value="$PROJECT_DIR$/modulesCore/detection" />
+            <option value="$PROJECT_DIR$/modulesCore/forum" />
             <option value="$PROJECT_DIR$/modulesCore/guidepage" />
             <option value="$PROJECT_DIR$/modulesCore/home" />
             <option value="$PROJECT_DIR$/modulesCore/individual" />

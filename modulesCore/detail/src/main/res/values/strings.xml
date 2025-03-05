@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">detail</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="string_detail_content">同样是压，高档茶叶只要压扁就行，中档茶叶就要压得扁而紧，低档茶叶则要紧，手法和力度都不同。就像年纪大了，筋骨老了，能压紧就好。西湖龙井在采摘后要竹筛上进行晾晒，一般需要半天左右时间，这样可以减少茶叶中的青草味道，使水分达到炒制的要求，同时使新茶在炒制时不至于结团。然后再对晾好的新叶进行大致分类，根据叶子的品质档次来决定下一步炒制的锅温、力道等条件。所谓晾就是刚采摘下来的茶叶得在阴凉处堆放上大半天，大约相当于机械加工的退火，也就是通过堆晾，去掉茶叶里残余的大部分刚性。</string>
+    <string name="string_detail_bottom_test">嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好</string>
+</resources>

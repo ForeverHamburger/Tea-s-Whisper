@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xuptggg.detail" >
+
+    <uses-sdk android:minSdkVersion="28" />
+
+    <application>
+        <activity
+            android:name="com.xuptggg.detail.view.DetailActivity"
+            android:exported="true" >
+        </activity>
+    </application>
+
+</manifest>

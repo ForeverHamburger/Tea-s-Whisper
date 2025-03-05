@@ -1,3 +1,4 @@
+
 package com.xuptggg.detection.history.model;
 
 public interface LoadDetectionInfoCallBack<T> {
