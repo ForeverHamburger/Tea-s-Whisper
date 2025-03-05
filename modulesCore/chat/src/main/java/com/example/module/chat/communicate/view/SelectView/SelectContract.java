@@ -6,6 +6,7 @@ import com.example.module.chat.base.other.LoadTasksCallBack;
 public interface SelectContract {
     interface Model {
         void getSelectInfo(String content, String sessionId, LoadTasksCallBack callBack);
+//        void getHistoryInfo(String data);
     }
 
     interface Presenter {

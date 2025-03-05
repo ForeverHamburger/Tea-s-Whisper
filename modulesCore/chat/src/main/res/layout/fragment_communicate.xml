@@ -88,12 +88,11 @@
             android:textColor="@color/light_green"
             android:textSize="10sp"
             android:textStyle="bold" />
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/root_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:padding="5dp">
 
             <EditText
                 android:id="@+id/ChatEdit"
@@ -109,7 +108,10 @@
                 android:paddingBottom="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_green"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ChatSend"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/ChatSend"
@@ -118,10 +120,13 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:scaleType="center"
                 android:background="@null"
-                android:src="@drawable/ic_chat_sent" />
-        </LinearLayout>
-    </LinearLayout>
+                android:src="@drawable/ic_chat_sent"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

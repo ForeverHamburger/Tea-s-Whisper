@@ -1,11 +1,13 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
+import android.animation.ValueAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -16,8 +18,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.module.chat.R;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
@@ -59,20 +65,93 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
                 // 在文本变化之前的操作，这里不需要处理
             }
 
+            //            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                // 文本发生变化时调用
+//                if (s.length() > 0) {
+//                    binding.ChatSend.setVisibility(View.VISIBLE);
+//                } else {
+//                    binding.ChatSend.setImageResource(R.drawable.ic_chat_sent);
+//                    binding.ChatSend.setVisibility(View.GONE);
+//                }
+//            }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // 文本发生变化时调用
-                if (s.length() > 0) {
-                    binding.ChatSend.setColorFilter(Color.BLUE);
-                } else {
-//                    binding.ChatSend.setColorFilter(Color.GRAY);
-                    binding.ChatSend.setImageTintList(ColorStateList.valueOf(Color.GRAY));
-                }
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                binding.ChatSend.animate().cancel(); // 取消之前的动画
+                if (s.length() > 0) {
+                    // 从右侧滑入
+                    binding.ChatSend.setVisibility(View.VISIBLE);
+                    binding.ChatSend.setTranslationX(200); // 初始偏移量
+                    binding.ChatSend.animate()
+                            .translationX(0)
+                            .setDuration(400)
+                            .setInterpolator(new DecelerateInterpolator())
+                            .start();
+                } else {
+                    // 向右侧滑出
+                    binding.ChatSend.animate()
+                            .translationX(200)
+                            .setDuration(400)
+                            .withEndAction(() -> {
+                                binding.ChatSend.setVisibility(View.GONE);
+                                binding.ChatSend.setTranslationX(0); // 复位位置
+                            })
+                            .start();
+                }
                 // 在文本变化之后的操作
+//                binding.ChatSend.animate().cancel();
+//                binding.ChatEdit.animate().cancel();
+//
+//                ConstraintLayout.LayoutParams editParams = (ConstraintLayout.LayoutParams) binding.ChatEdit.getLayoutParams();
+//                int originalMargin = editParams.rightMargin; // 原始右侧边距
+//
+//                if (s.length() > 0) {
+//                    // 按钮显示动画（淡入 + 缩放）
+//                    binding.ChatSend.setVisibility(View.VISIBLE);
+//                    binding.ChatSend.setAlpha(0f);
+//                    binding.ChatSend.setScaleX(0.5f);
+//                    binding.ChatSend.setScaleY(0.5f);
+//                    binding.ChatSend.animate()
+//                            .alpha(1f)
+//                            .scaleX(1f)
+//                            .scaleY(1f)
+//                            .setDuration(300)
+//                            .setInterpolator(new OvershootInterpolator())
+//                            .start();
+//
+//                    // EditText 缩短动画（边距减小）
+//                    ValueAnimator marginAnimator = ValueAnimator.ofInt(originalMargin, 0);
+//                    marginAnimator.addUpdateListener(animation -> {
+//                        editParams.rightMargin = (int) animation.getAnimatedValue();
+//                        binding.ChatEdit.requestLayout();
+//                    });
+//                    marginAnimator.setDuration(300).start();
+//
+//                } else {
+//                    // 按钮隐藏动画（淡出 + 缩放）
+//                    binding.ChatSend.animate()
+//                            .alpha(0f)
+//                            .scaleX(0.5f)
+//                            .scaleY(0.5f)
+//                            .setDuration(200)
+//                            .setInterpolator(new AccelerateInterpolator())
+//                            .withEndAction(() -> binding.ChatSend.setVisibility(View.GONE))
+//                            .start();
+//
+//                    // EditText 伸长动画（边距恢复为按钮宽度）
+//                    int targetMargin = binding.ChatSend.getWidth(); // 按钮的宽度作为目标边距
+//                    ValueAnimator marginAnimator = ValueAnimator.ofInt(originalMargin, targetMargin);
+//                    marginAnimator.addUpdateListener(animation -> {
+//                        editParams.rightMargin = (int) animation.getAnimatedValue();
+//                        binding.ChatEdit.requestLayout();
+//                    });
+//                    marginAnimator.setDuration(300).start();
+//                }
             }
         });
 

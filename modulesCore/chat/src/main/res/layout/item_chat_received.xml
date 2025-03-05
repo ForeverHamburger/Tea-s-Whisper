@@ -44,6 +44,7 @@
         android:maxWidth="300dp"
         android:background="@drawable/chat_received"
         android:text="TextView"
+        android:textSize="20sp"
         android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@+id/cv_received"
         app:layout_constraintStart_toEndOf="@+id/cv_received"
