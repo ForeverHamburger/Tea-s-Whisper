@@ -59,6 +59,7 @@ android {
 
 dependencies {
     implementation "in.srain.cube:ultra-ptr:1.0.11"
+    implementation project(':modulesBase:libNetwork')
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

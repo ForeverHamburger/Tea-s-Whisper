@@ -2,11 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <!-- 设置填充颜色为绿色 -->
-    <solid android:color="@color/white" />
-    <!-- 设置圆角，只设置顶部的圆角 -->
-    <corners
-        android:topLeftRadius="40dp"
-        android:topRightRadius="40dp"
-        android:bottomLeftRadius="0dp"
-        android:bottomRightRadius="0dp" />
+    <solid android:color="@color/light_yellow" />
 </shape>

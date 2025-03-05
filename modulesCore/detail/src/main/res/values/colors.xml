@@ -9,6 +9,7 @@
     <color name="dark_green">#608B7A</color>
     <color name="bright_yellow">#FFC530</color>
     <color name="red">#C62828</color>
+    <color name="light_yellow">#FCF4E5</color>
 
     <color name="tea_primary">#3E2723</color> <!-- 深茶色 -->
     <color name="tea_dark">#2E1B16</color>   <!-- 强调色 -->
