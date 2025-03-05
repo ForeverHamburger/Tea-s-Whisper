@@ -148,7 +148,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="or"
+            android:text="或"
             android:layout_marginHorizontal="16dp"/>
         <View
             android:layout_width="0dp"
@@ -161,7 +161,7 @@
         android:id="@+id/textView_loginWithVerificationCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login with Verifycode"
+        android:text="验证码 登录"
         android:layout_gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package com.example.module.chat.communicate.recycleviewUtil;
 
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -16,9 +17,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import io.noties.markwon.Markwon;
+
 public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<ChatMessage> messages = new ArrayList<>();
+    private final Markwon markwon; // Markwon 实例
+
+    public ChatCommunicateAdapter(Markwon markwon) {
+        this.markwon = markwon;
+    }
 
     public static class SentMessageHolder extends RecyclerView.ViewHolder {
         public final ItemChatSentBinding binding;
@@ -28,11 +36,19 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.binding = binding;
         }
 
-        private void bind(ChatMessage message) {
-            binding.tvSent.setText(message.getContent());
+        private void bind(ChatMessage message, Markwon markwon) {
+            if (message.getFormattedContent() != null) {
+                binding.tvSent.setText(message.getFormattedContent());
+            } else {
+                if (markwon != null) {
+                    markwon.setMarkdown(binding.tvSent, message.getContent());
+                } else {
+                    binding.tvSent.setText(message.getContent());
+                }
+            }
             binding.tvSentTime.setText(formatTime(message.getTimestamp()));
+            binding.tvSent.setMovementMethod(LinkMovementMethod.getInstance());
         }
-
     }
 
     public static class ReceivedMessageHolder extends RecyclerView.ViewHolder {
@@ -43,11 +59,19 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.binding = binding;
         }
 
-        private void bind(ChatMessage message) {
-            binding.tvReceived.setText(message.getContent());
+        private void bind(ChatMessage message, Markwon markwon) {
+            if (message.getFormattedContent() != null) {
+                binding.tvReceived.setText(message.getFormattedContent());
+            } else {
+                if (markwon != null) {
+                    markwon.setMarkdown(binding.tvReceived, message.getContent());
+                } else {
+                    binding.tvReceived.setText(message.getContent());
+                }
+            }
             binding.tvReceivedTime.setText(formatTime(message.getTimestamp()));
+            binding.tvReceived.setMovementMethod(LinkMovementMethod.getInstance());
         }
-
     }
 
     @Override
@@ -72,10 +96,15 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatMessage message = messages.get(position);
+        // 如果未缓存，先解析 Markdown
+        if (message.getFormattedContent() == null) {
+            CharSequence formattedContent = markwon.toMarkdown(message.getContent());
+            message.setFormattedContent(formattedContent);
+        }
         if (holder instanceof SentMessageHolder) {
-            ((SentMessageHolder) holder).bind(message);
+            ((SentMessageHolder) holder).bind(message, markwon);
         } else if (holder instanceof ReceivedMessageHolder) {
-            ((ReceivedMessageHolder) holder).bind(message);
+            ((ReceivedMessageHolder) holder).bind(message, markwon);
         }
     }
 

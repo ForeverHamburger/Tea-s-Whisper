@@ -33,7 +33,7 @@ dependencies {
     api cfg.dependencies.gson
     api cfg.libARouter
     annotationProcessor cfg.libARouterCompiler
-
+    implementation libs.core//markdown
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

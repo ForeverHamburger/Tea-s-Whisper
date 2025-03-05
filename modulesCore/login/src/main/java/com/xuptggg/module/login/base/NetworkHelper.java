@@ -34,7 +34,7 @@ public class NetworkHelper {
     }
 
     private void handleResponse(String url, Object responseObj, LoadTasksCallBack<String> callBack) {
-        Log.d(TAG, "Response: " + responseObj);
+        Log.d(TAG, "Response in login: " + responseObj);
 
         if (responseObj == null || responseObj.toString().trim().equals("")) {
             callBack.onFailed("响应为空");

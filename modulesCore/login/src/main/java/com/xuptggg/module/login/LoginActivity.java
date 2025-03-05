@@ -1,6 +1,9 @@
 package com.xuptggg.module.login;
 
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ViewTreeObserver;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.textfield.TextInputEditText;
 import com.tencent.mmkv.MMKV;
 import com.xuptggg.module.login.LoginIn.LoginInFragment;
 import com.xuptggg.module.login.LoginIn.LoginInModel;
@@ -65,13 +69,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void adjustCardViewForFragment(int fragmentHeight) {
 
-        if (fragmentHeight <= 1500) {
-            fragmentHeight = 1500;
+        if (fragmentHeight <= 1400) {
+            fragmentHeight = 1400;
         }
+        if(fragmentHeight >= 1600){
+            fragmentHeight = 1600;
+        }
+
         ConstraintLayout constraintLayout = findViewById(R.id.main);
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(constraintLayout);
-        int newCardViewHeight = fragmentHeight + 200;
+        int newCardViewHeight = fragmentHeight + 180;
         // 调整 CardView 高度
         constraintSet.constrainHeight(R.id.cardView_login, newCardViewHeight);
         // 调整 FragmentContainerView 高度
@@ -79,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        constraintSet.connect(R.id.fragment_container, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
 //        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
-//        // **让 CardView 适当上移，避免底部挤压**
+//        //让 CardView 适当上移，避免底部挤压
 //        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
         constraintSet.applyTo(constraintLayout);
     }

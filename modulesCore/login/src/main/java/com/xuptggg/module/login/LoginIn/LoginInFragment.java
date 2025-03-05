@@ -1,16 +1,13 @@
 package com.xuptggg.module.login.LoginIn;
 
-import static android.provider.Settings.System.getString;
 
 import static com.xuptggg.module.login.base.ValidationUtil.PASSWORD_REGEX;
 import static com.xuptggg.module.login.base.ValidationUtil.PHONE_REGEX_CN;
-import static com.xuptggg.module.login.base.ValidationUtil.validateEmail;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.SpannableString;
-import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
@@ -23,9 +20,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.tencent.mmkv.MMKV;
 import com.xuptggg.module.login.Forget.ForgetFragment;
@@ -40,7 +39,6 @@ import com.xuptggg.module.login.VerifyLogin.VerifyLoginFragment;
 import com.xuptggg.module.login.VerifyLogin.VerifyLoginModel;
 import com.xuptggg.module.login.VerifyLogin.VerifyLoginPresenter;
 import com.xuptggg.module.login.base.InputValidator;
-import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.databinding.FragmentLoginInBinding;
 
 import java.util.regex.Pattern;
@@ -178,6 +176,12 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             Log.d("test", "onViewCreated: "+111);
             binding.checkBoxRemember.setChecked(false);
         }
+
+        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
+        binding.textViewLoginWithVerificationCode.setTypeface(typeface);
+        binding.textViewTitle.setTypeface(typeface);
+        binding.textViewForget.setTypeface(typeface);
+        binding.textViewToRegister.setTypeface(typeface);
     }
     @Override
     public void onDestroy() {
@@ -191,7 +195,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
     public void showError() {
 
     }
-
 //    @Override
 //    public void setStarData(musicData starData) {
 //        requireActivity().runOnUiThread(new Runnable() {

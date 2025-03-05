@@ -9,11 +9,11 @@
 
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/textView_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="验证码登录"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_title"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
 <!--            android:textSize="18sp" />-->
 <!--    </com.google.android.material.textfield.TextInputLayout>-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailAddress"
+        android:id="@+id/tl_emailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_marginTop_small"
@@ -55,10 +55,10 @@
         android:layout_margin="@dimen/dp_marginTop_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/textView_title">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tl_emailAddress"
+            android:id="@+id/editText_emailAddress"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
@@ -86,7 +86,7 @@
         app:forceKeyboard="true"
         app:password="false"
         android:windowSoftInputMode="adjustResize"
-        app:layout_constraintTop_toBottomOf="@id/emailAddress"
+        app:layout_constraintTop_toBottomOf="@id/tl_emailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"/>
@@ -96,8 +96,9 @@
         android:id="@+id/resendEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Didn't receive the code? Resend Email"
+        android:text="吗没有收到？重新发送"
         android:textColor="@color/red"
+
         app:layout_constraintTop_toBottomOf="@id/codeInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

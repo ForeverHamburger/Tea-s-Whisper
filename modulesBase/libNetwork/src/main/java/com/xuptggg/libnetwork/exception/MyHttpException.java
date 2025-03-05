@@ -26,4 +26,15 @@ public class MyHttpException extends Exception {
     public Object getEmsg() {
         return emsg;
     }
+
+    public String getErrorMessage() {
+        if (ecode == -1) {
+            return "网络请求失败";
+        } else if (ecode == -2) {
+            return "json解析失败";
+        } else if (ecode == -3) {
+            return "服务器繁忙ing";
+        }
+        return emsg.toString();
+    }
 }

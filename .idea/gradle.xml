@@ -22,6 +22,7 @@
             <option value="$PROJECT_DIR$/modulesCore/login" />
             <option value="$PROJECT_DIR$/modulesCore/navigation" />
             <option value="$PROJECT_DIR$/modulesPublic" />
+            <option value="$PROJECT_DIR$/modulesPublic/UiUtils" />
             <option value="$PROJECT_DIR$/modulesPublic/moduleUltrasonic" />
           </set>
         </option>

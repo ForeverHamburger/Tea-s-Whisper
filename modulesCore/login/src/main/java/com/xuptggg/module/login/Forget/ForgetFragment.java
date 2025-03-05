@@ -2,10 +2,12 @@ package com.xuptggg.module.login.Forget;
 
 import static com.xuptggg.module.login.base.ValidationUtil.validateEmail;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.base.ValidationUtil;
@@ -33,8 +36,10 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView();
         binding.buttonGetVerificationCode.setOnClickListener(v -> {
-            String email = binding.editTextVerificationCode.getText().toString().trim();
+            String email = binding.editTextEmail.getText().toString().trim();
 //            sentCode(email);
             ValidationResult result = ValidationUtil.validateEmail(email);
             if (!result.isValid()) {
@@ -47,7 +52,7 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
 
         // 确认按钮点击事件
         binding.confirmButton.setOnClickListener(v -> {
-            String email = binding.editTextVerificationCode.getText().toString().trim();
+            String email = binding.editTextEmail.getText().toString().trim();
             String verificationCode = binding.codeview.getValue();
             String newPassword = binding.editTextPassword.getText().toString().trim();
             String confirmPassword = binding.editTextConfirmPassword.getText().toString().trim();
@@ -65,6 +70,8 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
             }
             mPresenter.onForgetClick(email, verificationCode,newPassword, confirmPassword);
         });
+        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
+        binding.textViewTitle.setTypeface(typeface);
     }
     public boolean sentCode(String email) {
         if (!validateEmail(email).isValid()) {
@@ -103,6 +110,64 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
     @Override
     public void showError() {
 
+    }
+
+
+    public void initView() {
+        binding.tlPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
+        binding.tlEmail.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
+        binding.tlConfirmPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
+
+        binding.tlPassword.setErrorIconDrawable(0);
+        binding.tlEmail.setErrorIconDrawable(0);
+        binding.tlConfirmPassword.setErrorIconDrawable(0);
+
+        binding.editTextPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String password = binding.editTextPassword.getText().toString();
+                    binding.tlPassword.setError(null);
+                    ValidationResult result = ValidationUtil.validatePassword(password);
+                    if (!result.isValid()) {
+                        binding.tlPassword.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlPassword.setError(null);
+                }
+            }
+        });
+        binding.editTextConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String ConfirmPassword = binding.editTextConfirmPassword.getText().toString();
+                    String password = binding.editTextPassword.getText().toString();
+                    binding.tlConfirmPassword.setError(null);
+                    ValidationResult result = ValidationUtil.validateConfirmPassword(password,ConfirmPassword);
+                    if (!result.isValid()) {
+                        binding.tlConfirmPassword.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlConfirmPassword.setError(null);
+                }
+            }
+        });
+        binding.editTextEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String email = binding.editTextEmail.getText().toString();
+                    binding.tlEmail.setError(null);
+                    ValidationResult result = ValidationUtil.validateEmail(email);
+                    if (!result.isValid()) {
+                        binding.tlEmail.setError(result.getErrorMessage());
+                    }
+                } else {
+                    binding.tlEmail.setError(null);
+                }
+            }
+        });
     }
 
     @Override
