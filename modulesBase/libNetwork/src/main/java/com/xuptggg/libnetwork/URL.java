@@ -15,7 +15,8 @@ public class URL {
     //忘记密码
     public static final String LOGIN_FORGET_URL = LOGIN_BASE_URL +"api/v1/findpassword";
 
-    public static final String TEA_DETAIL_URL = LOGIN_BASE_URL + "api/v1/tea";
+    public static final String TEA_DETAIL_URL = LOGIN_BASE_URL + "api/v1/tea/detail";
+
     public static final String CHAT_URL = LOGIN_BASE_URL + "api/v1/text";
 
 
