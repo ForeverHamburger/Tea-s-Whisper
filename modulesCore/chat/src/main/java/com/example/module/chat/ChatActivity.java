@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.base.SoftKeyBoard;
+import com.example.module.chat.base.SoftKeyBoard0;
+import com.example.module.chat.base.SoftKeyBoard1;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
