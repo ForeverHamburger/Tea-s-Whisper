@@ -1,5 +1,7 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
+import static android.view.WindowInsetsAnimation.Callback.DISPATCH_MODE_STOP;
+
 import android.animation.ValueAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -8,6 +10,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsAnimationCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -24,9 +29,12 @@ import android.view.animation.OvershootInterpolator;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.R;
+import com.example.module.chat.base.SoftKeyBoard0;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
+
+import java.util.List;
 
 import io.noties.markwon.Markwon;
 
@@ -65,16 +73,6 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
                 // 在文本变化之前的操作，这里不需要处理
             }
 
-            //            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                // 文本发生变化时调用
-//                if (s.length() > 0) {
-//                    binding.ChatSend.setVisibility(View.VISIBLE);
-//                } else {
-//                    binding.ChatSend.setImageResource(R.drawable.ic_chat_sent);
-//                    binding.ChatSend.setVisibility(View.GONE);
-//                }
-//            }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -84,14 +82,16 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
             public void afterTextChanged(Editable s) {
                 binding.ChatSend.animate().cancel(); // 取消之前的动画
                 if (s.length() > 0) {
-                    // 从右侧滑入
-                    binding.ChatSend.setVisibility(View.VISIBLE);
-                    binding.ChatSend.setTranslationX(200); // 初始偏移量
-                    binding.ChatSend.animate()
-                            .translationX(0)
-                            .setDuration(400)
-                            .setInterpolator(new DecelerateInterpolator())
-                            .start();
+                    if(binding.ChatSend.getVisibility() == View.GONE) {
+                        // 从右侧滑入
+                        binding.ChatSend.setVisibility(View.VISIBLE);
+                        binding.ChatSend.setTranslationX(200); // 初始偏移量
+                        binding.ChatSend.animate()
+                                .translationX(0)
+                                .setDuration(400)
+                                .setInterpolator(new DecelerateInterpolator())
+                                .start();
+                    }
                 } else {
                     // 向右侧滑出
                     binding.ChatSend.animate()

@@ -1,6 +1,10 @@
 package com.example.module.chat;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,11 +33,37 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chat);
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            getWindow().setDecorFitsSystemWindows(true);
+//        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//        }
+//        // 1. 设置全屏模式（内容延伸到状态栏下方）
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            getWindow().setDecorFitsSystemWindows(false);
+//        } else {
+//            // 旧版本兼容
+//            getWindow().getDecorView().setSystemUiVisibility(
+//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//            );
+//        }
+//
+        // 2. 设置状态栏颜色为透明
+//        getWindow().setStatusBarColor(Color.TRANSPARENT);
+//
+        // 3. 调整布局避开状态栏（可选）
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(0, 0, 0, 0); // 顶部避开状态栏高度
             return insets;
         });
+
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         initViews();
     }
@@ -41,7 +71,9 @@ public class ChatActivity extends AppCompatActivity {
     private void initViews() {
         initFragment();
         initListener();
-        SoftKeyBoard.assistActivity(this);
+//        SoftKeyBoard.assistActivity(this);
+//        SoftKeyBoard0.assistActivity(this);
+//        SoftKeyBoard1.assistActivity(this);
     }
 
     private void initListener() {

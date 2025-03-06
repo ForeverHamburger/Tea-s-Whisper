@@ -57,20 +57,39 @@ public class SoftKeyBoard1 {
             int usableHeightSansKeyboard = mChildOfContent.getRootView().getHeight();
             int heightDifference = usableHeightSansKeyboard - usableHeightNow;
 
-            // 当高度差超过1/4屏幕高度时，视为键盘弹出
-            if (heightDifference > (usableHeightSansKeyboard/4)) {
-                // 键盘可见时调整布局高度
+            // 直接使用差值调整布局，不再处理导航栏
+            if (heightDifference > (usableHeightSansKeyboard / 4)) {
+                // 键盘可见时，直接减去高度差
                 frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
             } else {
-                // 键盘隐藏时恢复全屏高度（减去导航栏高度）
-                frameLayoutParams.height = usableHeightSansKeyboard - getNavigationBarHeight(mChildOfContent.getContext());
+                // 键盘隐藏时，恢复全屏高度（不扣除导航栏）
+                frameLayoutParams.height = usableHeightSansKeyboard;
             }
 
-            // 请求重新布局
             mChildOfContent.requestLayout();
             usableHeightPrevious = usableHeightNow;
         }
     }
+//    private void possiblyResizeChildOfContent() {
+//        int usableHeightNow = computeUsableHeight();
+//        if (usableHeightNow != usableHeightPrevious) {
+//            int usableHeightSansKeyboard = mChildOfContent.getRootView().getHeight();
+//            int heightDifference = usableHeightSansKeyboard - usableHeightNow;
+//
+//            // 当高度差超过1/4屏幕高度时，视为键盘弹出
+//            if (heightDifference > (usableHeightSansKeyboard/4)) {
+//                // 键盘可见时调整布局高度
+//                frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
+//            } else {
+//                // 键盘隐藏时恢复全屏高度（减去导航栏高度）
+//                frameLayoutParams.height = usableHeightSansKeyboard - getNavigationBarHeight(mChildOfContent.getContext());
+//            }
+//
+//            // 请求重新布局
+//            mChildOfContent.requestLayout();
+//            usableHeightPrevious = usableHeightNow;
+//        }
+//    }
 
     /**
      * 计算窗口可见区域高度
