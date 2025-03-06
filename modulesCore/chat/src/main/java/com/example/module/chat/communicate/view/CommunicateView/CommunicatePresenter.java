@@ -3,7 +3,9 @@ package com.example.module.chat.communicate.view.CommunicateView;
 import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.other.LoadTasksCallBack;
 
-public class CommunicatePresenter implements CommunicateContract.Presenter, LoadTasksCallBack<Data> {
+import java.util.List;
+
+public class CommunicatePresenter implements CommunicateContract.Presenter, LoadTasksCallBack<List<Data>> {
     private CommunicateContract.View mView;
     private CommunicateContract.Model mModel;
     public CommunicatePresenter(CommunicateContract.View mView, CommunicateContract.Model mModel) {
@@ -21,10 +23,10 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
         mView = null;
     }
     @Override
-    public void onSuccess(Data data) {
+    public void onSuccess(List<Data> data) {
         if (mView != null && mView.isACtive()) {
-            mView.aiResponse(data.getContent());
-            mView.setSessionId(data.getSessionID());
+            mView.aiResponse(data.get(0).getContent());
+            mView.setSessionId(data.get(0).getSessionID());
         }
     }
 

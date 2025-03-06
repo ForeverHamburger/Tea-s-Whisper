@@ -1,9 +1,10 @@
 package com.example.module.chat.base.database.communicate;
 
 import com.example.module.chat.base.database.BaseResponse;
-public class MyResponse extends BaseResponse<Data> {
-    // 删除 code、msg、data 字段的定义
-    // 直接复用父类 BaseResponse<Data> 的字段
+
+import java.util.List;
+
+public class MyResponse extends BaseResponse<List<Data>> {
 
     @Override
     public String toString() {

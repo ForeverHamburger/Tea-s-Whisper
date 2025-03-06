@@ -35,6 +35,7 @@ public class SelectFragment extends Fragment implements SelectContract.View {
         agentAdapter = new ChatSelectAgentAdapter();
         binding.rvAgents.setAdapter(agentAdapter);
         binding.rvHistory.setAdapter(historyAdapter);
+        mPresenter.getHistoryDataInfo();
 
     }
 

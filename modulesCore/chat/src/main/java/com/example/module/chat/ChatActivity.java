@@ -1,10 +1,6 @@
 package com.example.module.chat;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.module.chat.base.SoftKeyBoard;
-import com.example.module.chat.base.SoftKeyBoard0;
-import com.example.module.chat.base.SoftKeyBoard1;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
@@ -94,7 +87,7 @@ public class ChatActivity extends AppCompatActivity {
 //        selectFragment.setPresenter(selectPresenter);
 //        ft.add(R.id.fragment_container, selectFragment);
 //        ft.commit();
-//
+
         FragmentManager fm = getSupportFragmentManager();
         CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container);
         FragmentTransaction ft = fm.beginTransaction();

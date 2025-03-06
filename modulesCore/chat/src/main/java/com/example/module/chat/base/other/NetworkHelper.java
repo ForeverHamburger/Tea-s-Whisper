@@ -24,7 +24,7 @@ public class NetworkHelper {
 
     RequestParams mToken = new RequestParams();
 
-    public void performPostRequest(String url, RequestParams params, LoadTasksCallBack<Data> callBack) {
+    public void performPostRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
         mToken.put("Authorization", "Bearer " + apiKey);
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
