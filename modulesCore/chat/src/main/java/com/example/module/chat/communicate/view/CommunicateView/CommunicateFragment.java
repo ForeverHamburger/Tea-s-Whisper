@@ -1,21 +1,6 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
-import static android.view.WindowInsetsAnimation.Callback.DISPATCH_MODE_STOP;
-
-import android.animation.ValueAnimator;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsAnimationCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -23,18 +8,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.OvershootInterpolator;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.module.chat.R;
-import com.example.module.chat.base.SoftKeyBoard0;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
-
-import java.util.List;
 
 import io.noties.markwon.Markwon;
 
@@ -66,7 +51,13 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 //        adapter = new ChatCommunicateAdapter();
 //        addMessageDataList
         binding.ChatRecyclerView.setAdapter(adapter);
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.ChatRecyclerView, (v, insets) -> {
+            // 当键盘弹出时，自动滚动到底部
+            binding.ChatRecyclerView.post(() -> {
+                binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+            });
+            return insets;
+        });
         binding.ChatEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

@@ -110,11 +110,15 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return messages != null ? messages.size() : 0;
     }
 
     public void addMessageDataList(ChatMessage message) {
         messages.add(message);
+        notifyItemInserted(messages.size() - 1);
+    }
+    public void addAllMessageDataList(List<ChatMessage> messageList) {
+        messages.addAll(messageList);
         notifyItemInserted(messages.size() - 1);
     }
 
