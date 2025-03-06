@@ -117,9 +117,11 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         messages.add(message);
         notifyItemInserted(messages.size() - 1);
     }
+
     public void addAllMessageDataList(List<ChatMessage> messageList) {
+        int startPosition = messages.size();
         messages.addAll(messageList);
-        notifyItemInserted(messages.size() - 1);
+        notifyItemRangeInserted(startPosition, messageList.size());
     }
 
     static String formatTime(long timestamp) {

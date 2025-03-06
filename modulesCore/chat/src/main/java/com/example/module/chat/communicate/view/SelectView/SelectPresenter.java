@@ -19,6 +19,11 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     }
 
     @Override
+    public void getHistoryDataInfo() {
+        mModel.getHistoryListInfo(this);
+    }
+
+    @Override
     public void unSubscribe() {
         mModel = null;
         mView = null;

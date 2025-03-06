@@ -14,7 +14,12 @@ public class SelectModel implements SelectContract.Model {
         params.put("content", content);
         params.put("session_id", sessionId);
 
-        networkHelper.performPostRequest(URL.CHAT_URL, params, callBack);
+        networkHelper.performPostRequest(URL.CHAT_HISTORY_URL, params, callBack);
+    }
+
+    @Override
+    public void getHistoryListInfo( LoadTasksCallBack callBack) {
+
     }
 
 }

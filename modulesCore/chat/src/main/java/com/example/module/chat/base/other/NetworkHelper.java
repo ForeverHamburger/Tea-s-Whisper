@@ -2,8 +2,11 @@ package com.example.module.chat.base.other;
 
 import android.util.Log;
 
+import com.example.module.chat.base.database.BaseResponse;
 import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.database.communicate.MyResponse;
+import com.example.module.chat.base.database.select.DataItem;
+import com.example.module.chat.base.database.select.HistoryResponse;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.exception.MyHttpException;
@@ -11,6 +14,8 @@ import com.xuptggg.libnetwork.listener.MyDataHandle;
 import com.xuptggg.libnetwork.listener.MyDataListener;
 import com.xuptggg.libnetwork.request.MyRequest;
 import com.xuptggg.libnetwork.request.RequestParams;
+
+import java.util.List;
 
 public class NetworkHelper {
 
@@ -44,12 +49,36 @@ public class NetworkHelper {
         MyOkHttpClient.post(MyRequest.PostRequest(url, params, mToken), handle);
     }
 
+    public void performGetRequest(String url, RequestParams params, LoadTasksCallBack<List<DataItem>> callBack) {
+        mToken.put("Authorization", "Bearer " + apiKey);
+        MyDataHandle handle = new MyDataHandle(new MyDataListener() {
+            @Override
+            public void onSuccess(Object responseObj) {
+                Log.d(TAG, "performGetRequest: " + "onSuccess");
+                handleMyResponse(url, (HistoryResponse) responseObj, callBack);
+            }
 
-    private void handleMyResponse(String url, MyResponse responseObj, LoadTasksCallBack<Data> callBack) {
+            @Override
+            public void onFailure(Object reasonObj) {
+                Log.d(TAG, "performGetRequest: " + "onFailure");
+                if (reasonObj != null) {
+                    if (reasonObj instanceof MyHttpException) {
+                        callBack.onFailed(((MyHttpException) reasonObj).getErrorMessage());
+                    } else {
+                        callBack.onFailed(reasonObj.toString());
+                    }
+                }
+            }
+        }, HistoryResponse.class);
+
+        MyOkHttpClient.get(MyRequest.GetRequest(url, params, mToken), handle);
+    }
+
+    private <T> void handleMyResponse(String url, BaseResponse<T> responseObj, LoadTasksCallBack<T> callBack) {
         Log.d(TAG, "Response in chat: " + responseObj);
         Log.d(TAG, "Response in chat:code= " + responseObj.getCode());
         if (responseObj.getData() != null)
-            Log.d(TAG, "Response in chat: content= " + responseObj.getData().getContent());
+            Log.d(TAG, "Response in chat: content= " + responseObj.getData());
         else
             Log.d(TAG, "Response in chat: " + responseObj.getMsg() + "data==null");
 
@@ -57,9 +86,16 @@ public class NetworkHelper {
             callBack.onFailed("响应为空");
             return;
         }
+        // 统一校验 code
+        if (responseObj.getCode() != 1) {
+            callBack.onFailed(responseObj.getMsg() + " (错误码: " + responseObj.getCode() + ")");
+            return;
+        }
         //getCode校验
         if (responseObj.getCode() == 1) {
             //URL校验
+
+
             if (url.equals(URL.CHAT_URL)) {
                 //getMsg校验
                 if (responseObj.getMsg().equals("success")) {
@@ -68,6 +104,18 @@ public class NetworkHelper {
                         callBack.onSuccess(responseObj.getData());
                     else
                         callBack.onFailed("数据为空");
+                } else {
+                    callBack.onFailed(responseObj.getMsg());
+                }
+
+
+            } else if (url.equals(URL.CHAT_HISTORY_URL)) {
+                if (responseObj.getMsg().equals("success")) {
+//                    //getData校验
+//                    if (responseObj.getData() != null)
+                    callBack.onSuccess(responseObj.getData());
+//                    else
+//                        callBack.onFailed("数据为空");
                 } else {
                     callBack.onFailed(responseObj.getMsg());
                 }

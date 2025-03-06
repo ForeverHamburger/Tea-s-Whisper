@@ -21,6 +21,9 @@ import com.example.module.chat.base.SoftKeyBoard1;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
+import com.example.module.chat.communicate.view.SelectView.SelectFragment;
+import com.example.module.chat.communicate.view.SelectView.SelectModel;
+import com.example.module.chat.communicate.view.SelectView.SelectPresenter;
 import com.example.module.chat.databinding.ActivityChatBinding;
 
 @Route(path = "/chat/ChatActivity")
@@ -81,14 +84,25 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initFragment() {
+//        FragmentManager fm = getSupportFragmentManager();
+//        SelectFragment selectFragment = (SelectFragment) fm.findFragmentById(R.id.fragment_container);
+//        FragmentTransaction ft = fm.beginTransaction();
+//        if (selectFragment == null) {
+//            selectFragment = new SelectFragment();
+//        }
+//        SelectPresenter selectPresenter = new SelectPresenter(selectFragment, new SelectModel());
+//        selectFragment.setPresenter(selectPresenter);
+//        ft.add(R.id.fragment_container, selectFragment);
+//        ft.commit();
+//
         FragmentManager fm = getSupportFragmentManager();
         CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container);
         FragmentTransaction ft = fm.beginTransaction();
         if (communicateFragment == null) {
             communicateFragment = new CommunicateFragment();
         }
-        CommunicatePresenter loginInPresenter = new CommunicatePresenter(communicateFragment, new CommunicateModel());
-        communicateFragment.setPresenter(loginInPresenter);
+        CommunicatePresenter communicatePresenter = new CommunicatePresenter(communicateFragment, new CommunicateModel());
+        communicateFragment.setPresenter(communicatePresenter);
         ft.add(R.id.fragment_container, communicateFragment);
         ft.commit();
     }

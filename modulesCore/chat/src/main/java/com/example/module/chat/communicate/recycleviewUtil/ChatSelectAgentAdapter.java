@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.example.module.chat.communicate.base.ChatAgent;
-import com.example.module.chat.communicate.base.ChatHistory;
+import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.databinding.ItemAgentBinding;
-import com.example.module.chat.databinding.ItemHistoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatAgentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<ChatAgent> Agents = new ArrayList<>();
     ItemAgentBinding binding;
 
@@ -49,5 +48,14 @@ public class ChatAgentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemCount() {
         return Agents == null ? 0 : Agents.size();
+    }
+    public void addAgentDataList(ChatAgent agents) {
+        Agents.add(agents);
+        notifyItemInserted(Agents.size() - 1);
+    }
+    public void addAllMessageDataList(List<ChatAgent> agentsList) {
+        int startPosition = Agents.size();
+        Agents.addAll(agentsList);
+        notifyItemRangeInserted(startPosition, agentsList.size());
     }
 }

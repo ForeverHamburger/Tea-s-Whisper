@@ -9,11 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.module.chat.communicate.recycleviewUtil.ChatSelectAgentAdapter;
+import com.example.module.chat.communicate.recycleviewUtil.ChatSelectHistoryAdapter;
 import com.example.module.chat.databinding.FragmentSelectBinding;
 
 public class SelectFragment extends Fragment implements SelectContract.View {
     public FragmentSelectBinding binding;
     private SelectContract.Presenter mPresenter;
+    private ChatSelectHistoryAdapter historyAdapter;
+    private ChatSelectAgentAdapter agentAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -27,6 +31,10 @@ public class SelectFragment extends Fragment implements SelectContract.View {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        historyAdapter = new ChatSelectHistoryAdapter();
+        agentAdapter = new ChatSelectAgentAdapter();
+        binding.rvAgents.setAdapter(agentAdapter);
+        binding.rvHistory.setAdapter(historyAdapter);
 
     }
 

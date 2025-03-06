@@ -46,4 +46,13 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
     public int getItemCount() {
         return historys != null ? historys.size() : 0;
     }
+    public void addHistoryDataList(ChatHistory history) {
+        historys.add(history);
+        notifyItemInserted(historys.size() - 1);
+    }
+    public void addAllHistoryDataList(List<ChatHistory> historyList) {
+        int startPosition = historys.size();
+        historys.addAll(historyList);
+        notifyItemRangeInserted(startPosition, historyList.size());
+    }
 }
