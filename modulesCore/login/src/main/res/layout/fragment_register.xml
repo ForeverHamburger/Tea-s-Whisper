@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/register_title"
             android:textSize="@dimen/text_size_title"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

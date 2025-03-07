@@ -156,8 +156,6 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
         set.playTogether(heightAnim, alphaAnim, rotateAnim);
         set.setDuration(400);
         set.start();
-
-        currentExpandedSection = content;
     }
 
     private void collapseSectionWithAnimation(final TextView content, final ImageView arrow) {
@@ -193,7 +191,5 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
         });
         set.setDuration(400);
         set.start();
-
-        currentExpandedSection = null;
     }
 }

@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.xuptggg.module.login.LoginIn.LoginInFragment;
+import com.xuptggg.module.login.LoginIn.LoginInModel;
+import com.xuptggg.module.login.LoginIn.LoginInPresenter;
 import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.base.ValidationResult;
 import com.xuptggg.module.login.base.ValidationUtil;
@@ -70,6 +73,24 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
             }
             mPresenter.onForgetClick(email, verificationCode,newPassword, confirmPassword);
         });
+
+        binding.ivNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginInFragment logininFragment = new LoginInFragment();
+                LoginInPresenter loginInPresenter = new LoginInPresenter(logininFragment, new LoginInModel());
+                logininFragment.setPresenter(loginInPresenter);
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.slide_in_left,
+                                R.anim.slide_out_right
+                        )
+                        .replace(R.id.fragment_container, logininFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
         binding.textViewTitle.setTypeface(typeface);
     }
