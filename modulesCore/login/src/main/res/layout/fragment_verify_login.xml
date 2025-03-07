@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="吗没有收到？重新发送"
-        android:textColor="@color/red"
+        android:textColor="@color/dark_green"
 
         app:layout_constraintTop_toBottomOf="@id/codeInput"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,10 +106,11 @@
 
     <Button
         android:id="@+id/continueButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="登录"
         android:textColor="@color/black"
+        android:textSize="25dp"
         android:background="@drawable/edit_shape"
         app:layout_constraintTop_toBottomOf="@id/resendEmail"
         app:layout_constraintStart_toStartOf="parent"

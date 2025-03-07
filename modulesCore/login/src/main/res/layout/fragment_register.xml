@@ -219,7 +219,7 @@
             android:background="@drawable/edit_shape"
             android:padding="8dp"
             android:text="@string/get_verification_code"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tl_verificationCode">
 
@@ -232,6 +232,7 @@
             android:background="@drawable/edit_shape"
             android:text="@string/register_title"
             android:textColor="@color/black"
+            android:textSize="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tl_verificationCode" />
@@ -242,8 +243,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_marginTop_big"
             android:text="@string/login_have_to_register_before"
-            android:textColor="@color/red"
-            android:textColorLink="@color/red"
+            android:textColor="@color/dark_green"
+            android:textColorLink="@color/dark_green"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_register" />

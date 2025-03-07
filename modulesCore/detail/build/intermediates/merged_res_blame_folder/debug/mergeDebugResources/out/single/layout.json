@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-mergeDebugResources-35:\\layout\\activity_detail.xml",
+        "source": "C:\\Users\\LittleBurger\\.gradle\\daemon\\8.6\\com.xuptggg.detail-main-38:\\layout\\activity_detail.xml"
+    },
+    {
         "merged": "com.xuptggg.detail-mergeDebugResources-35:/layout/activity_detail.xml",
         "source": "com.xuptggg.detail-main-38:/layout/activity_detail.xml"
     }

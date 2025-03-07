@@ -1,6 +1,7 @@
 package com.example.module.chat;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.module.chat.base.SoftKeyBoard;
+import com.example.module.chat.base.SoftKeyboardGlobal;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
@@ -23,6 +24,38 @@ public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        SoftKeyboardGlobal.getInstance().addSoftKeyboardCallback(new SoftKeyboardGlobal.SoftKeyboardCallback() {
+            @Override
+            public void onOpen(int height) {
+                Log.d("Keyboard", "键盘弹出，高度：" + height + "px");
+            }
+
+            @Override
+            public void onClose() {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SoftKeyboardGlobal.getInstance().removeSoftKeyboardCallback(new SoftKeyboardGlobal.SoftKeyboardCallback() {
+            @Override
+            public void onOpen(int height) {
+                Log.d("Keyboard", "键盘弹出，高度：" + height + "px");
+            }
+
+            @Override
+            public void onClose() {
+
+            }
+        });
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -32,6 +65,8 @@ public class ChatActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        SoftKeyboardGlobal.getInstance().install(getApplication(),true);
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         initViews();
     }
@@ -39,7 +74,7 @@ public class ChatActivity extends AppCompatActivity {
     private void initViews() {
         initFragment();
         initListener();
-        SoftKeyBoard.assistActivity(this);
+
     }
 
     private void initListener() {

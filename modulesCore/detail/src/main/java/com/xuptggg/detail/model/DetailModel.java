@@ -24,7 +24,6 @@ public class DetailModel implements IDetailContract.IDetailModel<String> {
             public void onSuccess(Object responseObj) {
                 Log.d(TAG, "onSuccess: " + responseObj);
                 DetailInfo teaInfos = JsonParser.parseTeaInfoList((JSONObject)responseObj);
-                Log.d(TAG, "onSuccess: " + teaInfos);
                 callBack.onSuccess(teaInfos);
             }
 
@@ -41,7 +40,9 @@ public class DetailModel implements IDetailContract.IDetailModel<String> {
             }
         });
 
-        Log.d(TAG, "execute: " + "开始请求");
-        MyOkHttpClient.get(MyRequest.GetRequest(URL.TEA_DETAIL_URL,new RequestParams("name",data)),myDataHandle);
+        Log.d(TAG, "execute: " + "开始请求" + data);
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("name",data);
+        MyOkHttpClient.get(MyRequest.GetRequest(URL.TEA_DETAIL_URL,requestParams),myDataHandle);
     }
 }
