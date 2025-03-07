@@ -178,10 +178,7 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
         }
 
         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
-        binding.textViewLoginWithVerificationCode.setTypeface(typeface);
         binding.textViewTitle.setTypeface(typeface);
-        binding.textViewForget.setTypeface(typeface);
-        binding.textViewToRegister.setTypeface(typeface);
     }
     @Override
     public void onDestroy() {

@@ -1,6 +1,7 @@
 package com.example.module.chat;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +9,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.module.chat.base.SoftKeyboardGlobal;
+import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
+import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
+import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
 import com.example.module.chat.communicate.view.SelectView.SelectFragment;
 import com.example.module.chat.communicate.view.SelectView.SelectModel;
 import com.example.module.chat.communicate.view.SelectView.SelectPresenter;

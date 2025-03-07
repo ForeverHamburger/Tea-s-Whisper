@@ -5,13 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_brown"
     tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView_background"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dp_zero"
-        android:src="@drawable/title"
+        android:src="@drawable/title1"
         android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
