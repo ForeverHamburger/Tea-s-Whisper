@@ -8,6 +8,16 @@
     android:background="@drawable/background_green"
     tools:context=".Forget.ForgetFragment">
 
+    <ImageView
+        android:id="@+id/iv_navigation"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/icon_navigation"
+        app:layout_constraintBottom_toBottomOf="@id/textView_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_title" />
+
     <TextView
         android:id="@+id/textView_title"
         android:layout_width="wrap_content"
@@ -16,7 +26,7 @@
         android:text="忘记密码"
         android:textSize="@dimen/text_size_title"
         android:textStyle="bold"
-
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -48,7 +48,6 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
             public void run() {
                 int fragmentHeight = binding.getRoot().findViewById(R.id.ConstraintLayout_re).getHeight();
                 Log.d("fragmentHeight", "RegisterFragment: " + fragmentHeight);
-
                 ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
             }
         });
@@ -139,6 +138,10 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                     LoginInPresenter loginInPresenter = new LoginInPresenter(logininFragment, new LoginInModel());
                     logininFragment.setPresenter(loginInPresenter);
                     requireActivity().getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.slide_in_bottom,
+                                    R.anim.slide_out_bottom
+                            )
                             .replace(R.id.fragment_container, logininFragment)
                             .addToBackStack(null)
                             .commit();
@@ -146,7 +149,6 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
             }
         });
         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
-        binding.textViewToLogin.setTypeface(typeface);
         binding.textViewTitle.setTypeface(typeface);
     }
 

@@ -131,6 +131,10 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             registerFragment.setPresenter(registerPresenter);
 
             requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_bottom,
+                            R.anim.slide_out_bottom
+                    )
                     .replace(R.id.fragment_container, registerFragment)
                     .addToBackStack(null)
                     .commit();
@@ -142,6 +146,10 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             verifyLoginFragment.setPresenter(verifyLoginPresenter);
 
             requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_right,
+                            R.anim.slide_out_left
+                    )
                     .replace(R.id.fragment_container, verifyLoginFragment)
                     .addToBackStack(null)
                     .commit();
@@ -153,6 +161,10 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             forgetFragment.setPresenter(ForgetPresenter);
 
             requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_right,
+                            R.anim.slide_out_left
+                    )
                     .replace(R.id.fragment_container, forgetFragment)
                     .addToBackStack(null)
                     .commit();
