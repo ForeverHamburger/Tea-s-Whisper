@@ -6,6 +6,5 @@ public class ForumModel implements IForumContract.IForumModel<String> {
     @Override
     public void execute(String data, LoadForumInfoCallBack callBack) {
 
-
     }
 }

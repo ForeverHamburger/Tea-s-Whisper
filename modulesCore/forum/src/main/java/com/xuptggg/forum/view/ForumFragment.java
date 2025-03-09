@@ -11,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.contract.IForumContract;
 import com.xuptggg.forum.databinding.FragmentForumBinding;
 import com.xuptggg.forum.model.ForumInfo;
+import com.xuptggg.forum.model.ForumModel;
+import com.xuptggg.forum.presenter.ForumPresenter;
 import com.xuptggg.forum.view.adapters.WaterFallAdapter;
 
 import java.util.List;
@@ -24,11 +27,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import in.srain.cube.views.ptr.util.PtrLocalDisplay;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ForumFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+@Route(path = "/forum/ForumFragment")
 public class ForumFragment extends Fragment implements IForumContract.IForumView{
     private FragmentForumBinding binding;
     private IForumContract.IForumPresenter mPresenter;
@@ -58,13 +57,13 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setPresenter(new ForumPresenter(this,new ForumModel()));
 
         mPresenter.getForumInfo(requestType);
 
         PtrFrameLayout ptrFrame = binding.ptrFrame;
         MaterialHeader materialHeader = new MaterialHeader(getActivity());
         materialHeader.setPadding(0, PtrLocalDisplay.dp2px(35),0,0);
-
 
         ptrFrame.setHeaderView(materialHeader);
         ptrFrame.addPtrUIHandler(materialHeader);
@@ -77,8 +76,6 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
                 ptrFrame.refreshComplete();
             }
         });
-
-
     }
 
     @Override

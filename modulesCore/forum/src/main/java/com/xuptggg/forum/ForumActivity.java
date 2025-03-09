@@ -22,7 +22,5 @@ public class ForumActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 }
