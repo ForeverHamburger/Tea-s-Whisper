@@ -44,7 +44,7 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
     private ActivityDetailBinding binding;
     private boolean isLiked = false;
     @Autowired(name =  "teaName")
-    private String teaName;
+    public String teaName;
     private IDetailContract.IDetailPresenter mPresenter;
 
     @Override
