@@ -51,7 +51,6 @@ dependencies {
         implementation project(':modulesCore:detection')
         implementation project(':modulesCore:home')
         implementation project(':modulesCore:chat')
-
         implementation project(':modulesCore:detail')
         implementation project(':modulesCore:forum')
     }
