@@ -13,6 +13,6 @@ import java.util.Map;
 public class ARouter$$Group$$detail implements IRouteGroup {
   @Override
   public void loadInto(Map<String, RouteMeta> atlas) {
-    atlas.put("/detail/DetailActivity", RouteMeta.build(RouteType.ACTIVITY, DetailActivity.class, "/detail/detailactivity", "detail", null, -1, -2147483648));
+    atlas.put("/detail/DetailActivity", RouteMeta.build(RouteType.ACTIVITY, DetailActivity.class, "/detail/detailactivity", "detail", new java.util.HashMap<String, Integer>(){{put("teaName", 8); }}, -1, -2147483648));
   }
 }

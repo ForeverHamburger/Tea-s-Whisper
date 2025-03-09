@@ -1,7 +1,7 @@
 package com.xuptggg.libnetwork;
 
 public class URL {
-    public static final String LOGIN_BASE_URL = "https://42.193.100.201:8080";
+    public static final String LOGIN_BASE_URL = "https://42.193.100.201:8080/";
     //注册时验证码
     public static final String LOGIN_CODE_URL = LOGIN_BASE_URL +"api/v1/code";
     //注册
