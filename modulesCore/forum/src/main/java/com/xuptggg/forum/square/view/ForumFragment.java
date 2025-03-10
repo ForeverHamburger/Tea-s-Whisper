@@ -1,4 +1,4 @@
-package com.xuptggg.forum.view;
+package com.xuptggg.forum.square.view;
 
 import android.os.Bundle;
 
@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.xuptggg.forum.R;
-import com.xuptggg.forum.contract.IForumContract;
+import com.xuptggg.forum.square.contract.IForumContract;
 import com.xuptggg.forum.databinding.FragmentForumBinding;
-import com.xuptggg.forum.model.ForumInfo;
-import com.xuptggg.forum.model.ForumModel;
-import com.xuptggg.forum.presenter.ForumPresenter;
-import com.xuptggg.forum.view.adapters.WaterFallAdapter;
+import com.xuptggg.forum.square.model.ForumInfo;
+import com.xuptggg.forum.square.model.ForumModel;
+import com.xuptggg.forum.square.presenter.ForumPresenter;
+import com.xuptggg.forum.square.view.adapters.WaterFallAdapter;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".ForumActivity"
+            android:name=".square.ForumActivity"
             android:exported="true" />
     </application>
 

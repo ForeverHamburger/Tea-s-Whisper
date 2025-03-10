@@ -1,8 +1,8 @@
-package com.xuptggg.forum.presenter;
+package com.xuptggg.forum.square.presenter;
 
-import com.xuptggg.forum.contract.IForumContract;
-import com.xuptggg.forum.model.ForumInfo;
-import com.xuptggg.forum.model.LoadForumInfoCallBack;
+import com.xuptggg.forum.square.contract.IForumContract;
+import com.xuptggg.forum.square.model.ForumInfo;
+import com.xuptggg.forum.square.model.LoadForumInfoCallBack;
 
 import java.util.List;
 

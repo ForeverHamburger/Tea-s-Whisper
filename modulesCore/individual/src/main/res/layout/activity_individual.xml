@@ -17,8 +17,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <!-- 沉浸式 -->
-            <!-- app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" -->
 
             <ImageView
                 android:id="@+id/imageView"

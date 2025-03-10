@@ -1,7 +1,7 @@
-package com.xuptggg.forum.model;
+package com.xuptggg.forum.square.model;
 
 import com.xuptggg.forum.R;
-import com.xuptggg.forum.contract.IForumContract;
+import com.xuptggg.forum.square.contract.IForumContract;
 
 import java.util.ArrayList;
 import java.util.List;

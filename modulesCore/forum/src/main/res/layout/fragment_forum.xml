@@ -5,8 +5,8 @@
     android:id="@+id/forum"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    tools:context=".view.ForumFragment">
+    android:background="@color/grey_bg"
+    tools:context=".square.view.ForumFragment">
 
     <!-- 顶部搜索栏 -->
     <LinearLayout
