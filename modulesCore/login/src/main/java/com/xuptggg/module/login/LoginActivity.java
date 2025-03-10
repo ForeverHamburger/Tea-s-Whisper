@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setupAnimator(ValueAnimator animator, int viewId, ConstraintLayout constraintLayout, ConstraintSet constraintSet) {
-        animator.setDuration(300);
+        animator.setDuration(200);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
         animator.addUpdateListener(animation -> {
             int animatedValue = (int) animation.getAnimatedValue();
