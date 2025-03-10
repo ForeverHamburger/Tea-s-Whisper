@@ -167,6 +167,7 @@
             android:hint="@string/search_hint"
             android:layout_marginLeft="50dp"
             android:paddingLeft="25dp"
+            android:focusable="false"
             android:textColor="@color/black"
             android:textColorHint="@color/dark_green"
             android:textSize="15sp" />

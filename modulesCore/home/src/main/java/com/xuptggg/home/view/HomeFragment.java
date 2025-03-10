@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.home.R;
@@ -37,10 +40,9 @@ import java.util.List;
 @Route(path = "/home/HomeFragment")
 public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
     private IHomeContract.IHomePresenter mPresenter;
-    private Banner<Integer, BannerImageAdapter<Integer>> banner;
     private FragmentHomeBinding binding;
-    private RecyclerView teaRecyclerView;
-    private RecyclerView teaMaKeRecyclerView;
+    @Autowired
+    int containerId;
 
     public HomeFragment() {
 
@@ -66,6 +68,8 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
         // 初始化 RecyclerView
         initRecyclerView(binding.getRoot());
 
+        ARouter.getInstance().inject(this);
+
         return binding.getRoot();
     }
 
@@ -75,11 +79,25 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
         setPresenter(new HomePresenter(new HomeModel(),this));
         mPresenter.getHomeInfo("Tea");
 
+        binding.etSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Fragment fragment = (Fragment) ARouter.getInstance().build("/search/SearchFragment").navigation();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
+                        .replace(containerId,fragment)
+                        .commit();
+            }
+        });
+
         binding.etSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = (Fragment) ARouter.getInstance().build("/search/SearchFragment").navigation();
-
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
+                        .replace(containerId,fragment)
+                        .commit();
             }
         });
     }
