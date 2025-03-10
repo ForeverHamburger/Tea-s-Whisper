@@ -1,7 +1,6 @@
-package com.xuptggg.forum.view.adapters;
+package com.xuptggg.forum.square.view.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuptggg.forum.R;
-import com.xuptggg.forum.model.ForumInfo;
+import com.xuptggg.forum.square.model.ForumInfo;
 
 import java.util.List;
 

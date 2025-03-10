@@ -1,8 +1,8 @@
-package com.xuptggg.forum.contract;
+package com.xuptggg.forum.square.contract;
 
-import com.xuptggg.forum.base.BaseView;
-import com.xuptggg.forum.model.ForumInfo;
-import com.xuptggg.forum.model.LoadForumInfoCallBack;
+import com.xuptggg.forum.square.base.BaseView;
+import com.xuptggg.forum.square.model.ForumInfo;
+import com.xuptggg.forum.square.model.LoadForumInfoCallBack;
 
 import java.util.List;
 
@@ -10,8 +10,6 @@ public interface IForumContract {
 
     interface IForumModel<T> {
         void execute(T data, LoadForumInfoCallBack callBack);
-
-        void execute(String data, LoadForumInfoCallBack callBack);
     }
 
     interface IForumPresenter{

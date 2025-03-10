@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".ForumActivity">
+    tools:context=".square.ForumActivity">
 
     <in.srain.cube.views.ptr.PtrFrameLayout
         android:id="@+id/ptr_frame"

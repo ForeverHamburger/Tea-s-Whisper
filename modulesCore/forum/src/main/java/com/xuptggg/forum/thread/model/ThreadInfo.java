@@ -1,6 +1,6 @@
-package com.xuptggg.forum.model;
+package com.xuptggg.forum.thread.model;
 
-public class ForumInfo {
+public class ThreadInfo {
     public static final String NOTE = "NOTE";
     public static final String VIDEO = "VIDEO";
     private String type;
@@ -10,7 +10,7 @@ public class ForumInfo {
     private String userName;
     private String loveCount;
 
-    public ForumInfo(String type, int imageResource, String title, int headImage, String userName, String loveCount) {
+    public ThreadInfo(String type, int imageResource, String title, int headImage, String userName, String loveCount) {
         this.type = type;
         this.imageResource = imageResource;
         this.title = title;

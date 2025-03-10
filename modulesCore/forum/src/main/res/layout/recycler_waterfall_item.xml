@@ -57,6 +57,7 @@
                 app:cardElevation="0dp"
                 app:cardCornerRadius="15dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_waterfall_title">
                 <ImageView
@@ -82,7 +83,7 @@
                 android:fontFamily="@font/content_font"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 app:layout_constraintStart_toEndOf="@+id/iv_waterfall_user_card"
                 app:layout_constraintTop_toBottomOf="@+id/tv_waterfall_title" />
 
@@ -106,7 +107,7 @@
                 android:textColor="@color/grey"
                 android:fontFamily="@font/content_font"
                 android:textSize="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_waterfall_title" />
 

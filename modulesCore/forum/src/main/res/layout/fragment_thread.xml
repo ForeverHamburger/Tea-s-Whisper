@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context=".thread.view.ThreadFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view_note_top"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner_note_page"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_note_top" />
+
+            <TextView
+                android:id="@+id/tv_note_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="奶龙大王入侵西邮"
+                android:textSize="18sp"
+                android:fontFamily="@font/content_font"
+                android:textColor="@color/black"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner_note_page"/>
+
+            <TextView
+                android:id="@+id/tv_note_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="在一个遥远的国度，有一个和平而繁荣的城市，名叫西邮。这里的居民们过着安宁的生活，直到有一天，一个名叫奶龙大王的神秘角色出现在了城市的边缘。\n奶龙大王并不是一个真正的入侵者，而是一个巨大的、温和的奶龙，它有着柔软的毛发和温和的眼神。它的到来引起了西邮居民的好奇和惊讶。起初，人们有些害怕，但很快他们就发现奶龙大王并没有恶意，它只是迷路了，误打误撞地来到了西邮。"
+                android:textSize="13sp"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:maxWidth="370dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_note_title"/>
+
+            <TextView
+                android:id="@+id/tv_note_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#每日分享 #二次元 #漫画 #高校 #生活"
+                android:textSize="13sp"
+                android:textColor="#204F8F"
+                android:fontFamily="sans-serif"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:maxWidth="370dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_note_content"/>
+
+            <TextView
+                android:id="@+id/tv_note_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="编辑于 今天16：55 西安"
+                android:textSize="12sp"
+                android:textColor="#959595"
+                android:fontFamily="@font/fzht"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:maxWidth="370dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_note_tag"/>
+
+            <View
+                android:id="@+id/v_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EAEAEA"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_note_time"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:id="@+id/tv_comment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="共 114条评论"
+                android:textSize="13sp"
+                android:textColor="#696767"
+                android:fontFamily="@font/fzht"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:maxWidth="370dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_line"/>
+
+            <LinearLayout
+                android:id="@+id/ll_comment_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_comment_count"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_mine_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginLeft="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_mine_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dog_head" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/et_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/et_background"
+                    android:hint="@string/forum_search_hint"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="15dp"
+                    android:paddingLeft="25dp"
+                    android:drawablePadding="10dp"
+                    android:paddingRight="16dp"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_green"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_note_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/ll_comment_bar"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:layout_constraintTop_toBottomOf="@id/ll_comment_bar"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/ll_search_bar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/top_background"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 返回按钮 -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_navigation" />
+
+        <!-- 头像 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_forum_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/iv_forum_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dog_head" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_forum_name"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="头像名称"
+            android:fontFamily="@font/fzht"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- 用于占位，将关注和分享按钮挤到右边 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_background"
+                android:text="关注"
+                android:layout_gravity="center"
+                android:textColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/btn_share"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_share" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/top_background"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/et_bottom_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/et_background"
+            android:hint="@string/forum_search_hint"
+            android:drawableLeft="@drawable/ic_edit"
+            android:drawablePadding="10dp"
+            android:paddingLeft="13dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_green"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_bottom_like"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_like_select"/>
+
+        <TextView
+            android:id="@+id/tv_bottom_like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="2340"
+            android:textSize="16sp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/dark_green" />
+
+        <ImageView
+            android:id="@+id/iv_bottom_comment"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_comment"/>
+
+        <TextView
+            android:id="@+id/tv_bottom_comment_count"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="2340"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/dark_green" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,6 +1,6 @@
-package com.xuptggg.forum.model;
+package com.xuptggg.forum.thread.model;
 
-public interface LoadForumInfoCallBack<T> {
+public interface LoadThreadCallBack<T> {
     void onSuccess(T t);
     void onStart();
     void onFailed();
