@@ -2,7 +2,6 @@ package com.xuptggg.forum.thread.model;
 
 public class ThreadInfo {
     public static final String NOTE = "NOTE";
-    public static final String VIDEO = "VIDEO";
     private String type;
     private int imageResource;
     private String title;
