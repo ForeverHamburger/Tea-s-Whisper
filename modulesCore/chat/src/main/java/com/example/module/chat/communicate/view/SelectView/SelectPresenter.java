@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.module.chat.base.database.select.DataItem;
 import com.example.module.chat.base.other.LoadTasksCallBack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,9 +38,13 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     @Override
     public void onSuccess(List<DataItem> data) {
         if (mView != null && mView.isACtive()) {
-            for (DataItem mydata:data
-                 ) {
-                Log.d("aaa",mydata.getTitle());
+            if (data == null || data.isEmpty()) {
+//                mView.showEmptyHistory();
+            } else {
+                mView.displayHistoryData(data,null);
+                for (DataItem mydata : data) {
+                    Log.d("HistoryData", mydata.getTitle());
+                }
             }
         }
     }
@@ -48,6 +53,9 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     public void onFailed(String error) {
         System.out.println(error);
         if (mView != null && mView.isACtive()) {
+            List<DataItem> err = new ArrayList<>();
+            err.add(new DataItem());
+            mView.displayHistoryData(err,error);
         }
     }
 }

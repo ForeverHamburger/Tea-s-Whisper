@@ -1,7 +1,10 @@
 package com.example.module.chat.communicate.view.SelectView;
 
+import com.example.module.chat.base.database.select.DataItem;
 import com.example.module.chat.base.other.BaseView;
 import com.example.module.chat.base.other.LoadTasksCallBack;
+
+import java.util.List;
 
 public interface SelectContract {
     interface Model {
@@ -26,5 +29,7 @@ public interface SelectContract {
         void showError();
 
         Boolean isACtive();
+
+        void displayHistoryData(List<DataItem> data,String isOk);
     }
 }

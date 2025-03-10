@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.module.chat.communicate.base.OnItemSelectedListener;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
@@ -77,26 +78,30 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        SelectFragment selectFragment = (SelectFragment) fm.findFragmentById(R.id.fragment_container);
+
+        // 仅在 Fragment 不存在时创建新实例
+        if (selectFragment == null) {
+            selectFragment = new SelectFragment();
+            SelectPresenter presenter = new SelectPresenter(selectFragment, new SelectModel());
+            selectFragment.setPresenter(presenter);
+
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, selectFragment)
+                    .commit();
+        }
+    }
+
 //        FragmentManager fm = getSupportFragmentManager();
-//        SelectFragment selectFragment = (SelectFragment) fm.findFragmentById(R.id.fragment_container);
+//        CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container);
 //        FragmentTransaction ft = fm.beginTransaction();
-//        if (selectFragment == null) {
-//            selectFragment = new SelectFragment();
+//        if (communicateFragment == null) {
+//            communicateFragment = new CommunicateFragment();
 //        }
-//        SelectPresenter selectPresenter = new SelectPresenter(selectFragment, new SelectModel());
-//        selectFragment.setPresenter(selectPresenter);
-//        ft.add(R.id.fragment_container, selectFragment);
+//        CommunicatePresenter communicatePresenter = new CommunicatePresenter(communicateFragment, new CommunicateModel());
+//        communicateFragment.setPresenter(communicatePresenter);
+//        ft.add(R.id.fragment_container, communicateFragment);
 //        ft.commit();
 
-        FragmentManager fm = getSupportFragmentManager();
-        CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container);
-        FragmentTransaction ft = fm.beginTransaction();
-        if (communicateFragment == null) {
-            communicateFragment = new CommunicateFragment();
-        }
-        CommunicatePresenter communicatePresenter = new CommunicatePresenter(communicateFragment, new CommunicateModel());
-        communicateFragment.setPresenter(communicatePresenter);
-        ft.add(R.id.fragment_container, communicateFragment);
-        ft.commit();
-    }
 }

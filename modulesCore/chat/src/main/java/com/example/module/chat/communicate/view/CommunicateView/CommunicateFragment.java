@@ -31,7 +31,11 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     public String sessionId;
     // 初始化 Markwon
     private Markwon markwon;
-
+    public static CommunicateFragment newInstance(Bundle args) {
+        CommunicateFragment fragment = new CommunicateFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

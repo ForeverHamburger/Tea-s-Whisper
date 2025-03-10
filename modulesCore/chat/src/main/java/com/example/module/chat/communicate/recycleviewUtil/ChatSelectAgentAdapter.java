@@ -7,15 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
-import com.example.module.chat.communicate.base.ChatAgent;
-import com.example.module.chat.communicate.base.ChatMessage;
+import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.databinding.ItemAgentBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    List<ChatAgent> Agents = new ArrayList<>();
+    List<Agent> Agents = new ArrayList<>();
+
     ItemAgentBinding binding;
 
     public static class ChatAgentHolder extends RecyclerView.ViewHolder {
@@ -26,8 +26,10 @@ public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.binding = binding;
         }
 
-        public void bind(ChatAgent Agent) {
-
+        public void bind(Agent Agent) {
+            binding.ivIcon.setImageResource(Agent.getIcon());
+            binding.tvName.setText(Agent.getName());
+            binding.tvDesc.setText(Agent.getDescription());
         }
     }
 
@@ -41,7 +43,8 @@ public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ChatAgent Agent = Agents.get(position);
+        Agent Agent = Agents.get(position);
+        ((ChatSelectAgentAdapter.ChatAgentHolder) holder).bind(Agent);
 
     }
 
@@ -49,11 +52,11 @@ public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemCount() {
         return Agents == null ? 0 : Agents.size();
     }
-    public void addAgentDataList(ChatAgent agents) {
+    public void addAgentDataList(Agent agents) {
         Agents.add(agents);
         notifyItemInserted(Agents.size() - 1);
     }
-    public void addAllMessageDataList(List<ChatAgent> agentsList) {
+    public void addAllMessageDataList(List<Agent> agentsList) {
         int startPosition = Agents.size();
         Agents.addAll(agentsList);
         notifyItemRangeInserted(startPosition, agentsList.size());

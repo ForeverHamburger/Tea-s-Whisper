@@ -46,7 +46,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     binding.tvSent.setText(message.getContent());
                 }
             }
-            binding.tvSentTime.setText(formatTime(message.getTimestamp()));
+            binding.tvSentTime.setText(getRelativeTime(message.getTimestamp()));
             binding.tvSent.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
@@ -69,7 +69,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     binding.tvReceived.setText(message.getContent());
                 }
             }
-            binding.tvReceivedTime.setText(formatTime(message.getTimestamp()));
+            binding.tvReceivedTime.setText(getRelativeTime(message.getTimestamp()));
             binding.tvReceived.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
@@ -127,6 +127,20 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     static String formatTime(long timestamp) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.getDefault());
         return sdf.format(new Date(timestamp));
+    }
+    public static String getRelativeTime(long timestamp) {
+        long now = System.currentTimeMillis();
+        long diff = now - timestamp;
+
+        if (diff < 60_000) {
+            return "刚刚";
+        } else if (diff < 3_600_000) {
+            return diff / 60_000 + "分钟前";
+        } else if (diff < 86_400_000) {
+            return diff / 3_600_000 + "小时前";
+        } else {
+            return formatTime(timestamp);
+        }
     }
 
 }
