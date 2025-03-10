@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/light_green"
     tools:context=".view.NavigationActivity">
 
@@ -39,9 +40,9 @@
             android:id="@+id/bnv_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:background="@color/transparent"
+            android:layout_gravity="bottom"
             app:elevation="0dp"
+            android:background="@color/transparent"
             app:itemBackground="@color/transparent"
             app:itemTextAppearanceActive="@style/BnvStyle"
             app:layout_anchor="@+id/bab_navigation"
@@ -52,8 +53,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_gravity="center"
             android:contentDescription="@string/floatingbuttonName"
             android:src="@drawable/ic_detect"
+            android:scaleType="centerCrop"
             app:backgroundTint="@color/dark_green"
             app:layout_anchor="@id/bab_navigation" />
 
