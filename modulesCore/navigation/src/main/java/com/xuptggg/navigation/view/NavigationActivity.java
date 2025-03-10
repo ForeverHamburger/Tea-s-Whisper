@@ -1,5 +1,6 @@
 package com.xuptggg.navigation.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -44,6 +45,7 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        getWindow().setStatusBarColor(getResources().getColor(R.color.light_green));
 
         binding.bnvNavigation.setItemIconTintList(null);
 

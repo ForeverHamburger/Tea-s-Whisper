@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.home.R;
 import com.xuptggg.home.contract.IHomeContract;
 import com.xuptggg.home.databinding.FragmentHomeBinding;
@@ -73,6 +74,14 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
         super.onViewCreated(view, savedInstanceState);
         setPresenter(new HomePresenter(new HomeModel(),this));
         mPresenter.getHomeInfo("Tea");
+
+        binding.etSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = (Fragment) ARouter.getInstance().build("/search/SearchFragment").navigation();
+
+            }
+        });
     }
 
     private void initBanner(View view) {
