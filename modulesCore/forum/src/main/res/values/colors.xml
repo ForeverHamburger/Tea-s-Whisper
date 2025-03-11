@@ -11,4 +11,5 @@
     <color name="dark_green">#608B7A</color>
     <color name="bright_yellow">#FFC530</color>
     <color name="grey_bg">#F7F9F5</color>
+    <color name="grey_pic_bg">#F6F6F8</color>
 </resources>

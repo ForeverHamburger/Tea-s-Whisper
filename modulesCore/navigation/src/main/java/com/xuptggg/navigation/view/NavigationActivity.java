@@ -114,7 +114,11 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
         binding.fabNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/detection/DetectionActivity").navigation();
+                if (isSelected) {
+                    ARouter.getInstance().build("/forum/PublishActivity").navigation();
+                } else {
+                    ARouter.getInstance().build("/detection/DetectionActivity").navigation();
+                }
             }
         });
     }
