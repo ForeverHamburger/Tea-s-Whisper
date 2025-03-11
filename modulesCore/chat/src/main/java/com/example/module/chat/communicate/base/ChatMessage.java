@@ -23,4 +23,14 @@ public class ChatMessage {
     public void setFormattedContent(CharSequence formattedContent) {
         this.formattedContent = formattedContent;
     }
+
+    @Override
+    public String toString() {
+        return "ChatMessage{" +
+                "type=" + type +
+                ", content='" + content + '\'' +
+                ", timestamp=" + timestamp +
+                ", formattedContent=" + formattedContent +
+                '}';
+    }
 }

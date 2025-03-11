@@ -58,7 +58,7 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
 
     @Override
     public void onFailed(String error) {
-        System.out.println(error);
+        System.out.println(error.toString());
         if (mView != null && mView.isACtive()) {
             mView.aiResponse(new ChatMessage(ChatMessage.TYPE_RECEIVED, error));
         }

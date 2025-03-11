@@ -209,7 +209,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 
     @Override
     public void aiResponse(ChatMessage chatMessage) {
-        System.out.println(chatMessage + "aiResponse");
+        System.out.println(chatMessage.toString() + "aiResponse");
 
         if (getActivity() != null) {
             getActivity().runOnUiThread(() -> {
@@ -221,7 +221,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 
     @Override
     public void historyResponse(List<ChatMessage> chatMessageList) {
-        System.out.println(chatMessageList + "historyResponse");
+        System.out.println(chatMessageList.toString() + "historyResponse");
         if (getActivity() != null) {
             getActivity().runOnUiThread(() -> {
                 // 添加 AI 回复

@@ -21,4 +21,12 @@ public class DataItem {
     public void setMsg(Data msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "DataItem{" +
+                "title='" + title + '\'' +
+                ", msg=" + msg +
+                '}';
+    }
 }
