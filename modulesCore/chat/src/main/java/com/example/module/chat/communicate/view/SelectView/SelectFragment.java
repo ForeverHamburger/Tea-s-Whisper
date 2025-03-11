@@ -1,6 +1,8 @@
 package com.example.module.chat.communicate.view.SelectView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,11 @@ import androidx.fragment.app.Fragment;
 import com.example.module.chat.R;
 import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.base.database.select.DataItem;
+import com.example.module.chat.communicate.base.ItemActionListener;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.communicate.recycleviewUtil.ChatSelectAgentAdapter;
 import com.example.module.chat.communicate.recycleviewUtil.ChatSelectHistoryAdapter;
+import com.example.module.chat.communicate.view.CommunicateActivity;
 import com.example.module.chat.databinding.FragmentSelectBinding;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ import java.util.List;
 
 import io.noties.markwon.Markwon;
 
-public class SelectFragment extends Fragment implements SelectContract.View {
+public class SelectFragment extends Fragment implements SelectContract.View, ItemActionListener {
     public FragmentSelectBinding binding;
     private SelectContract.Presenter mPresenter;
     private ChatSelectHistoryAdapter historyAdapter;
@@ -43,10 +47,14 @@ public class SelectFragment extends Fragment implements SelectContract.View {
         super.onViewCreated(view, savedInstanceState);
         markwon = Markwon.create(requireContext());
         mPresenter.getHistoryDataInfo();
-        historyAdapter = new ChatSelectHistoryAdapter(markwon);
+        historyAdapter = new ChatSelectHistoryAdapter(markwon,this);
         agentAdapter = new ChatSelectAgentAdapter();
         binding.rvAgents.setAdapter(agentAdapter);
         binding.rvHistory.setAdapter(historyAdapter);
+        binding.btnSelectAgent.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), CommunicateActivity.class);
+            startActivity(intent);
+        });
 
     }
 
@@ -76,7 +84,24 @@ public class SelectFragment extends Fragment implements SelectContract.View {
         }
 
     }
+    // 实现接口方法
+    @Override
+    public void onItemClick(DataItem item, int position) {
+        Intent intent = new Intent(requireActivity(), CommunicateActivity.class);
+        intent.putExtra("title", item.getTitle());
+        intent.putExtra("sessionID", item.getMsg().getSessionID());
+        startActivity(intent);
+    }
 
+    @Override
+    public void onLongClick(DataItem item, int position) {
+//        new MaterialAlertDialogBuilder(requireContext())
+//                .setItems(R.array.history_options, (d, which) -> {
+//                    handleOption(which, item);
+//                })
+//                .show();
+        Log.d("test", "onLongClick: "+position);
+    }
     @Override
     public void setPresenter(SelectContract.Presenter presenter) {
         mPresenter = presenter;

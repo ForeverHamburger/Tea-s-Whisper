@@ -8,6 +8,7 @@
     manifestMergeReport="build\outputs\logs\manifest-merger-debug-report.txt"
     partialResultsDir="build\intermediates\unit_test_lint_partial_results\debug\lintAnalyzeDebugUnitTest\out">
   <buildFeatures
+      viewBinding="true"
       namespacing="REQUIRED"/>
   <sourceProviders>
   </sourceProviders>

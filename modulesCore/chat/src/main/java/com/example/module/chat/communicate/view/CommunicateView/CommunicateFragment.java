@@ -21,18 +21,27 @@ import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
 
+import java.util.List;
+
 import io.noties.markwon.Markwon;
 
 @Route(path = "/chat/CommunicateFragment")
 public class CommunicateFragment extends Fragment implements CommunicateContract.View {
     public FragmentCommunicateBinding binding;
+    private static final String ARG_TITLE = "title";
+    private static final String ARG_SESSION_ID = "sessionID";
+    private String title;
+    private boolean isFirstLaunch = true; // 标记是否首次启动
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
     public String sessionId;
     // 初始化 Markwon
     private Markwon markwon;
-    public static CommunicateFragment newInstance(Bundle args) {
+    public static CommunicateFragment newInstance(String title, String sessionID) {
         CommunicateFragment fragment = new CommunicateFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_TITLE, title);
+        args.putString(ARG_SESSION_ID, sessionID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,15 +49,17 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        if (getArguments() != null) {
+            title = getArguments().getString(ARG_TITLE);
+            sessionId = getArguments().getString(ARG_SESSION_ID);
+        }
         binding = FragmentCommunicateBinding.inflate(inflater, container, false);
-
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         markwon = Markwon.create(requireContext());
         adapter = new ChatCommunicateAdapter(markwon);
@@ -157,8 +168,29 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
                 binding.ChatEdit.setText("");
             }
         });
+
+        initDefault();
     }
 
+    private void initDefault() {
+        if (title != null && !title.isEmpty()) {
+            binding.ChatTitle.setText(title);
+        } else {
+            binding.ChatTitle.setText("新对话");
+        }
+
+        if (sessionId != null && !sessionId.isEmpty()) {
+            mPresenter.getHistoryInfo(sessionId);
+        } else if (isFirstLaunch) {
+            showDefaultWelcomeMessage();
+            isFirstLaunch = false;
+        }
+    }
+
+    private void showDefaultWelcomeMessage() {
+        String welcomeText = "你好，我是奶龙，一名热衷于中国茶文化的爱好者。我对茶的历史、品种、泡饮方法以及茶艺都有浓厚的兴趣。在我国悠久的茶文化中，我深感茶道不仅是品茗的艺术，更是一种修身养性的生活方式。在接下来的时间里，我很乐意与你探讨关于茶的各种话题。";
+        aiResponse(new ChatMessage(ChatMessage.TYPE_RECEIVED, welcomeText));
+    }
     private void sendMessage(String message) {
         // 添加用户消息
         ChatMessage userMsg = new ChatMessage(ChatMessage.TYPE_SENT, message);
@@ -176,18 +208,27 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     }
 
     @Override
-    public String aiResponse(String content) {
-        System.out.println(content + "aiResponse");
+    public void aiResponse(ChatMessage chatMessage) {
+        System.out.println(chatMessage + "aiResponse");
 
         if (getActivity() != null) {
             getActivity().runOnUiThread(() -> {
-                // 添加 AI 回复
-                ChatMessage aiMsg = new ChatMessage(ChatMessage.TYPE_RECEIVED, content);
-                adapter.addMessageDataList(aiMsg);
+                adapter.addMessageDataList(chatMessage);
                 binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
             });
         }
-        return content;
+    }
+
+    @Override
+    public void historyResponse(List<ChatMessage> chatMessageList) {
+        System.out.println(chatMessageList + "historyResponse");
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(() -> {
+                // 添加 AI 回复
+                adapter.addAllMessageDataList(chatMessageList);
+                binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+            });
+        }
     }
     @Override
     public void setSessionId(String SessionId) {

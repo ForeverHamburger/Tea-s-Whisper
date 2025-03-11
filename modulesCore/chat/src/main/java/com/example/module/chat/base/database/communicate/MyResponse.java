@@ -6,7 +6,6 @@ import java.util.List;
 
 public class MyResponse extends BaseResponse<List<Data>> {
     // 删除 code、msg、data 字段的定义
-    // 直接复用父类 BaseResponse<Data> 的字段
 
     @Override
     public String toString() {

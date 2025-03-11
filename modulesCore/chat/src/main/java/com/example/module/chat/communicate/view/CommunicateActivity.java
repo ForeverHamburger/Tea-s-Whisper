@@ -1,5 +1,6 @@
 package com.example.module.chat.communicate.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -21,7 +22,8 @@ import com.example.module.chat.databinding.ActivityCommunicateBinding;
 
 public class CommunicateActivity extends AppCompatActivity {
     private ActivityCommunicateBinding binding;
-
+    private String title;
+    private String sessionID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,11 @@ public class CommunicateActivity extends AppCompatActivity {
             v.setPadding(0, 0, 0, 0); // 顶部避开状态栏高度
             return insets;
         });
-
+        Intent intent = getIntent();
+        if (intent != null) {
+            title = intent.getStringExtra("title");
+            sessionID = intent.getStringExtra("sessionID");
+        }
         binding = ActivityCommunicateBinding.inflate(getLayoutInflater());
         initViews();
     }
@@ -48,15 +54,15 @@ public class CommunicateActivity extends AppCompatActivity {
 
     private void initFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container);
+        CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container_communicate);
 
         if (communicateFragment == null) {
-            communicateFragment = new CommunicateFragment();
+            communicateFragment = CommunicateFragment.newInstance(title, sessionID);
             CommunicatePresenter presenter = new CommunicatePresenter(communicateFragment, new CommunicateModel());
             communicateFragment.setPresenter(presenter);
 
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, communicateFragment)
+                    .replace(R.id.fragment_container_communicate, communicateFragment)
                     .commit();
         }
     }

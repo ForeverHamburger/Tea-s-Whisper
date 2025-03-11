@@ -8,13 +8,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.module.chat.communicate.base.OnItemSelectedListener;
-import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
-import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
-import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
 import com.example.module.chat.communicate.view.SelectView.SelectFragment;
 import com.example.module.chat.communicate.view.SelectView.SelectModel;
 import com.example.module.chat.communicate.view.SelectView.SelectPresenter;
@@ -30,11 +25,11 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chat);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 //            getWindow().setDecorFitsSystemWindows(true);
 //        }
@@ -55,11 +50,11 @@ public class ChatActivity extends AppCompatActivity {
 //        getWindow().setStatusBarColor(Color.TRANSPARENT);
 //
         // 3. 调整布局避开状态栏（可选）
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(0, 0, 0, 0); // 顶部避开状态栏高度
-            return insets;
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(0, 0, 0, 0); // 顶部避开状态栏高度
+//            return insets;
+//        });
 
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         initViews();
@@ -68,9 +63,6 @@ public class ChatActivity extends AppCompatActivity {
     private void initViews() {
         initFragment();
         initListener();
-//        SoftKeyBoard.assistActivity(this);
-//        SoftKeyBoard0.assistActivity(this);
-//        SoftKeyBoard1.assistActivity(this);
     }
 
     private void initListener() {

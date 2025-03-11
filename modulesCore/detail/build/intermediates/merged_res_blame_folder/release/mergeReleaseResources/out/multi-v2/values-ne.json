@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.xuptggg.detail-mergeReleaseResources-29:/values-ne/values-ne.xml",
+            "outputFile": "com.xuptggg.detail-mergeReleaseResources-34:/values-ne/values-ne.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\LittleBurger\\.gradle\\caches\\transforms-4\\0fcecf06103acaeadd600af7ef4080ff\\transformed\\core-1.13.0\\res\\values-ne\\values-ne.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,158,261,363,469,567,667,775",
-                        "endColumns": "102,102,101,105,97,99,107,100",
-                        "endOffsets": "153,256,358,464,562,662,770,871"
-                    },
-                    "to": {
-                        "startLines": "38,39,40,41,42,43,44,116",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3522,3625,3728,3830,3936,4034,4134,9993",
-                        "endColumns": "102,102,101,105,97,99,107,100",
-                        "endOffsets": "3620,3723,3825,3931,4029,4129,4237,10089"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\LittleBurger\\.gradle\\caches\\transforms-4\\3a853a53430ad0b7b8ccea4140643aa2\\transformed\\material-1.12.0\\res\\values-ne\\values-ne.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-ne\\values-ne.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +23,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\LittleBurger\\.gradle\\caches\\transforms-4\\591c52e10e126938686d67103cc84b25\\transformed\\appcompat-1.7.0\\res\\values-ne\\values-ne.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\39609a868ebea40fdeb9df78dd2e4b26\\transformed\\core-1.13.0\\res\\values-ne\\values-ne.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,158,261,363,469,567,667,775",
+                        "endColumns": "102,102,101,105,97,99,107,100",
+                        "endOffsets": "153,256,358,464,562,662,770,871"
+                    },
+                    "to": {
+                        "startLines": "38,39,40,41,42,43,44,116",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3522,3625,3728,3830,3936,4034,4134,9993",
+                        "endColumns": "102,102,101,105,97,99,107,100",
+                        "endOffsets": "3620,3723,3825,3931,4029,4129,4237,10089"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\76744539114a5addeff06081e7ef1044\\transformed\\appcompat-1.7.0\\res\\values-ne\\values-ne.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

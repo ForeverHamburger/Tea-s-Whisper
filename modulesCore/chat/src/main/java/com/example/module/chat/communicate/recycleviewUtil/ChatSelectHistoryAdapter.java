@@ -1,6 +1,7 @@
 package com.example.module.chat.communicate.recycleviewUtil;
 import static com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter.getRelativeTime;
 
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.module.chat.R;
 import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.database.select.DataItem;
+import com.example.module.chat.communicate.base.ItemActionListener;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
 import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
@@ -28,21 +30,48 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
     private List<DataItem> historys = new ArrayList<>();
     private static final int TYPE_EMPTY = 0;
     private static final int TYPE_ITEM = 1;
-    private final Markwon markwon; // Markwon 实例
-    public ChatSelectHistoryAdapter(Markwon markwon) {
-        this.markwon = markwon;
-    }
+    private final Markwon markwon;
 
+    private final ItemActionListener listener;
+
+    public ChatSelectHistoryAdapter(Markwon markwon, ItemActionListener listener) {
+        this.markwon = markwon;
+        this.listener = listener;
+    }
     public static class ChatHistoryHolder extends RecyclerView.ViewHolder {
         public final ItemHistoryBinding binding;
+        private long lastClickTime = 0;
         Data data;
-
-        public ChatHistoryHolder(ItemHistoryBinding binding) {
+        private DataItem currentItem;
+        private final ItemActionListener listener; // 持有监听器引用
+        public ChatHistoryHolder(ItemHistoryBinding binding,ItemActionListener listener ) {
             super(binding.getRoot());
             this.binding = binding;
+            this.listener = listener;
+            // 点击防抖机制（500ms间隔）
+            itemView.setOnClickListener(v -> {
+                long currentTime = SystemClock.elapsedRealtime();
+                if (currentTime - lastClickTime < 500) return;
+                lastClickTime = currentTime;
+
+                int pos = getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onItemClick(currentItem, pos);
+                }
+            });
+            // 长按事件处理
+            itemView.setOnLongClickListener(v -> {
+                int pos = getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onLongClick(currentItem, pos);
+                    return true;
+                }
+                return false;
+            });
         }
 
         private void bind(DataItem history, Markwon markwon) {
+            currentItem = history;
             data = history.getMsg();
             if (markwon != null) {
                 markwon.setMarkdown(binding.tvContent, data.getContent());
@@ -68,7 +97,7 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
             return new EmptyViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_empty_history, parent, false));
         }
-        return new ChatSelectHistoryAdapter.ChatHistoryHolder(binding);
+        return new ChatHistoryHolder(binding, listener);
     }
 
     @Override
@@ -76,22 +105,6 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
         if (holder instanceof ChatHistoryHolder) {
             DataItem history = historys.get(position);
             ((ChatHistoryHolder) holder).bind(history, markwon);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 处理点击事件
-                    FragmentManager fm = getSupportFragmentManager();
-                    CommunicateFragment communicateFragment = (CommunicateFragment) fm.findFragmentById(R.id.fragment_container);
-                    FragmentTransaction ft = fm.beginTransaction();
-                    if (communicateFragment == null) {
-                        communicateFragment = new CommunicateFragment();
-                    }
-                    CommunicatePresenter communicatePresenter = new CommunicatePresenter(communicateFragment, new CommunicateModel());
-                    communicateFragment.setPresenter(communicatePresenter);
-                    ft.add(R.id.fragment_container, communicateFragment);
-                    ft.commit();
-                }
-            });
         } else if (holder instanceof EmptyViewHolder) {
             // 无需绑定数据，或设置空状态提示
             ((EmptyViewHolder) holder).bindEmptyView();
