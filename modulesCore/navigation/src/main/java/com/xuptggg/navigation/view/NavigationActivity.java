@@ -1,9 +1,13 @@
 package com.xuptggg.navigation.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -33,7 +37,7 @@ import java.util.List;
 public class NavigationActivity extends AppCompatActivity implements INavigationContract.INavigationView {
     private ActivityNavigationBinding binding;
     private INavigationContract.INavigationPresenter mPresenter;
-    private BottomNavigationView bnvNavigation;
+    private boolean isSelected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,23 +73,33 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 // 每次点击导航项时，创建一个新的 FragmentTransaction 实例
                 FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-
+                isSelected = false;
                 // 根据导航项的标题进行不同的处理
                 if ("首页".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为首页对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
+                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    isSelected = false;
                 } else if ("论坛".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为论坛对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
+                    performChangeAnimation();
+                    isSelected = true;
                 } else if ("AI对话".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为 AI 对话对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(2).getFragment());
+                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    isSelected = false;
                 } else if ("我的".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为我的对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(3).getFragment());
+                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    isSelected = false;
                 } else if ("检测".equals(menuItem.getTitle())) {
                     // 替换当前显示的 Fragment 为检测对应的 Fragment
                     fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(3).getFragment());
+                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    isSelected = false;
                 }
 
                 // 提交 FragmentTransaction
@@ -103,6 +117,34 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
                 ARouter.getInstance().build("/detection/DetectionActivity").navigation();
             }
         });
+    }
+
+    private void performChangeAnimation() {
+        // 创建一个从 1 到 1.2 再到 1 的弹性动画
+        ValueAnimator animator = ValueAnimator.ofFloat(1f, 1.2f, 1f);
+        animator.setDuration(300);
+        animator.setInterpolator(new BounceInterpolator());
+
+        animator.addUpdateListener(animation -> {
+            float scale = (float) animation.getAnimatedValue();
+            binding.fabNavigation.setScaleX(scale);
+            binding.fabNavigation.setScaleY(scale);
+        });
+
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                binding.fabNavigation.setImageResource(R.drawable.ic_add);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+            }
+        });
+
+        animator.start();
     }
 
     @Override
