@@ -46,7 +46,7 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
                     for (int i = 1; i < data.size(); i++) {
                         Data item = data.get(i);
                         int type = "user".equals(item.getRole()) ? ChatMessage.TYPE_SENT : ChatMessage.TYPE_RECEIVED;
-                        chatMessageList.add(new ChatMessage(type, item.getContent()));
+                        chatMessageList.add(new ChatMessage(type, item.getContent(),item.getTimestamp().getTime()));
                     }
                     mView.setSessionId(data.get(0).getSessionID());
                     mView.historyResponse(chatMessageList);

@@ -9,14 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.module.chat.R;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
@@ -31,6 +35,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     private static final String ARG_TITLE = "title";
     private static final String ARG_SESSION_ID = "sessionID";
     private String title;
+    private boolean Send = true;
     private boolean isFirstLaunch = true; // 标记是否首次启动
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
@@ -158,12 +163,19 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 //                    });
 //                    marginAnimator.setDuration(300).start();
 //                }
+
             }
         });
-
+        binding.ChatSetup.setOnClickListener(v -> {
+            showNewDialogConfirmation();
+        });
         binding.ChatSend.setOnClickListener(v -> {
             String content = binding.ChatEdit.getText().toString();
             if (!TextUtils.isEmpty(content)) {
+                if(!Send){
+                    Toast.makeText(requireContext(), "请稍等，正在思考中...", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 sendMessage(content);
                 binding.ChatEdit.setText("");
             }
@@ -172,6 +184,15 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         initDefault();
     }
 
+    private void initFragment() {
+        CommunicateFragment newFragment = CommunicateFragment.newInstance(null,null);
+        CommunicatePresenter presenter = new CommunicatePresenter(newFragment, new CommunicateModel());
+        newFragment.setPresenter(presenter);
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container_communicate, newFragment)
+                .commit();
+    }
     private void initDefault() {
         if (title != null && !title.isEmpty()) {
             binding.ChatTitle.setText(title);
@@ -186,7 +207,20 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
             isFirstLaunch = false;
         }
     }
-
+    public void showNewDialogConfirmation() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("开启新对话") // 对话框标题
+                .setMessage("确定要开启新对话吗？当前对话将关闭。") // 提示信息
+                .setPositiveButton("确定", (dialog, which) -> {
+                    // 用户确认后替换 Fragment
+                    initFragment();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    dialog.dismiss(); // 关闭对话框
+                })
+                .create()
+                .show();
+    }
     private void showDefaultWelcomeMessage() {
         String welcomeText = "你好，我是奶龙，一名热衷于中国茶文化的爱好者。我对茶的历史、品种、泡饮方法以及茶艺都有浓厚的兴趣。在我国悠久的茶文化中，我深感茶道不仅是品茗的艺术，更是一种修身养性的生活方式。在接下来的时间里，我很乐意与你探讨关于茶的各种话题。";
         aiResponse(new ChatMessage(ChatMessage.TYPE_RECEIVED, welcomeText));
@@ -195,8 +229,14 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         // 添加用户消息
         ChatMessage userMsg = new ChatMessage(ChatMessage.TYPE_SENT, message);
         adapter.addMessageDataList(userMsg);
+        // 添加思考中状态
+        ChatMessage thinkingMsg = new ChatMessage(ChatMessage.TYPE_THINKING, "正在思考中，请稍等哈...");
+        adapter.addMessageDataList(thinkingMsg);
+
         binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+
         getAIResponse(message);
+        Send = false;
     }
 
     private void getAIResponse(String content) {
@@ -210,11 +250,13 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public void aiResponse(ChatMessage chatMessage) {
         System.out.println(chatMessage.toString() + "aiResponse");
-
         if (getActivity() != null) {
             getActivity().runOnUiThread(() -> {
+                adapter.removeLastThinkingMessage();
+
                 adapter.addMessageDataList(chatMessage);
                 binding.ChatRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+                Send = true;
             });
         }
     }
@@ -237,7 +279,10 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 
     @Override
     public void showError() {
-
+        getActivity().runOnUiThread(() -> {
+            adapter.removeLastThinkingMessage();
+            Toast.makeText(getContext(), "请求失败，请重试", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override

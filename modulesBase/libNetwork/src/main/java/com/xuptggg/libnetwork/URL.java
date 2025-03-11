@@ -20,6 +20,7 @@ public class URL {
 
     public static final String CHAT_URL = LOGIN_BASE_URL + "api/v1/text";
     public static final String CHAT_HISTORY_URL = LOGIN_BASE_URL + "api/v1/text/history";
+    public static final String CHAT_HISTORYS_URL = LOGIN_BASE_URL + "api/v1/text/histories";
 
 
 }

@@ -87,7 +87,10 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if (viewType == ChatMessage.TYPE_SENT) {
             ItemChatSentBinding binding = ItemChatSentBinding.inflate(inflater, parent, false);
             return new SentMessageHolder(binding);
-        } else {
+        } else if (viewType == ChatMessage.TYPE_RECEIVED){
+            ItemChatReceivedBinding binding = ItemChatReceivedBinding.inflate(inflater, parent, false);
+            return new ReceivedMessageHolder(binding);
+        }else {
             ItemChatReceivedBinding binding = ItemChatReceivedBinding.inflate(inflater, parent, false);
             return new ReceivedMessageHolder(binding);
         }
@@ -96,9 +99,12 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatMessage message = messages.get(position);
-        // 如果未缓存，先解析 Markdown
+        if (message == null || message.getContent() == null) return;
+
+        String content = message.getContent().equalsIgnoreCase("null") ? "（内容为空）" : message.getContent();
+
         if (message.getFormattedContent() == null) {
-            CharSequence formattedContent = markwon.toMarkdown(message.getContent());
+            CharSequence formattedContent = markwon.toMarkdown(content);
             message.setFormattedContent(formattedContent);
         }
         if (holder instanceof SentMessageHolder) {
@@ -113,6 +119,15 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         return messages != null ? messages.size() : 0;
     }
 
+    public void removeLastThinkingMessage() {
+        for (int i = messages.size() - 1; i >= 0; i--) {
+            if (messages.get(i).getType() == ChatMessage.TYPE_THINKING) {
+                messages.remove(i);
+                notifyItemRemoved(i);
+                break;
+            }
+        }
+    }
     public void addMessageDataList(ChatMessage message) {
         messages.add(message);
         notifyItemInserted(messages.size() - 1);
@@ -142,5 +157,4 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return formatTime(timestamp);
         }
     }
-
 }

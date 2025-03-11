@@ -133,7 +133,7 @@ public class NetworkHelper {
                 }
 
 
-            } else if (url.equals(URL.CHAT_HISTORY_URL)) {
+            } else if (url.equals(URL.CHAT_HISTORY_URL)|| url.equals(URL.CHAT_HISTORYS_URL)) {
                 if (responseObj.getMsg().equals("success")) {
 //                    //getData校验
                     if (responseObj.getData() != null)

@@ -19,7 +19,7 @@ public class SelectModel implements SelectContract.Model {
 
     @Override
     public void getHistoryListInfo(LoadTasksCallBack callBack) {
-        networkHelper.performGetRequest(URL.CHAT_HISTORY_URL, null, callBack);
+        networkHelper.performGetRequest(URL.CHAT_HISTORYS_URL, null, callBack);
     }
 
 }
