@@ -40,17 +40,14 @@ public class PublishActivity extends AppCompatActivity {
             return insets;
         });
 
-        adapter = new ImageAdapter(this);
-        binding.rvNineGrid.setLayoutManager(new GridLayoutManager(this, 3));
-        binding.rvNineGrid.setAdapter(adapter);
-
-
-        binding.tvPublish.setOnClickListener(new View.OnClickListener() {
+        adapter = new ImageAdapter(this, new ImageAdapter.OnAddImageClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onAddImageClick() {
                 openImageChooser();
             }
         });
+        binding.rvNineGrid.setLayoutManager(new GridLayoutManager(this, 3));
+        binding.rvNineGrid.setAdapter(adapter);
 
 
         // 注册 Activity Result Launcher

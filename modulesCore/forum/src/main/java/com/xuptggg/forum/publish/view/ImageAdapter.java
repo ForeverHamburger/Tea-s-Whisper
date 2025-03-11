@@ -19,9 +19,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     private List<Uri> mImageUris;
     private OnAddImageClickListener mOnAddImageClickListener;
     private static final int MAX_IMAGE_COUNT = 9;
-    public ImageAdapter(Context context) {
+    public ImageAdapter(Context context,OnAddImageClickListener onAddImageClickListener) {
         mContext = context;
         mImageUris = new ArrayList<>();
+        mOnAddImageClickListener = onAddImageClickListener;
     }
 
     public void addImages(List<Uri> uris) {
