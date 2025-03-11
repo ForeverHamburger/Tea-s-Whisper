@@ -26,7 +26,7 @@ import java.util.List;
 
 import io.noties.markwon.Markwon;
 
-public class SelectFragment extends Fragment implements SelectContract.View, ItemActionListener {
+public class SelectFragment extends Fragment implements SelectContract.View, ItemActionListener<DataItem> {
     public FragmentSelectBinding binding;
     private SelectContract.Presenter mPresenter;
     private ChatSelectHistoryAdapter historyAdapter;
@@ -48,7 +48,19 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
         markwon = Markwon.create(requireContext());
         mPresenter.getHistoryDataInfo();
         historyAdapter = new ChatSelectHistoryAdapter(markwon,this);
-        agentAdapter = new ChatSelectAgentAdapter();
+        agentAdapter = new ChatSelectAgentAdapter(new ItemActionListener<Agent>() {
+            @Override
+            public void onItemClick(Agent item, int position) {
+                Intent intent = new Intent(requireActivity(), CommunicateActivity.class);
+                intent.putExtra("name", item.getName());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(Agent item, int position) {
+
+            }
+        });
         binding.rvAgents.setAdapter(agentAdapter);
         binding.rvHistory.setAdapter(historyAdapter);
         binding.btnSelectAgent.setOnClickListener(v -> {

@@ -68,8 +68,6 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         markwon = Markwon.create(requireContext());
         adapter = new ChatCommunicateAdapter(markwon);
-//        adapter = new ChatCommunicateAdapter();
-//        addMessageDataList
         binding.ChatRecyclerView.setAdapter(adapter);
         ViewCompat.setOnApplyWindowInsetsListener(binding.ChatRecyclerView, (v, insets) -> {
             // 当键盘弹出时，自动滚动到底部
@@ -86,12 +84,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                binding.ChatSend.animate().cancel(); // 取消之前的动画
+//                binding.ChatSend.animate().cancel(); // 取消之前的动画
                 if (s.length() > 0) {
                     if(binding.ChatSend.getVisibility() == View.GONE) {
                         // 从右侧滑入
@@ -114,6 +107,33 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
                             })
                             .start();
                 }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                binding.ChatSend.animate().cancel(); // 取消之前的动画
+//                if (s.length() > 0) {
+//                    if(binding.ChatSend.getVisibility() == View.GONE) {
+//                        // 从右侧滑入
+//                        binding.ChatSend.setVisibility(View.VISIBLE);
+//                        binding.ChatSend.setTranslationX(200); // 初始偏移量
+//                        binding.ChatSend.animate()
+//                                .translationX(0)
+//                                .setDuration(400)
+//                                .setInterpolator(new DecelerateInterpolator())
+//                                .start();
+//                    }
+//                } else {
+//                    // 向右侧滑出
+//                    binding.ChatSend.animate()
+//                            .translationX(200)
+//                            .setDuration(400)
+//                            .withEndAction(() -> {
+//                                binding.ChatSend.setVisibility(View.GONE);
+//                                binding.ChatSend.setTranslationX(0); // 复位位置
+//                            })
+//                            .start();
+//                }
                 // 在文本变化之后的操作
 //                binding.ChatSend.animate().cancel();
 //                binding.ChatEdit.animate().cancel();

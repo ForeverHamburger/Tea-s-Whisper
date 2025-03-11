@@ -87,10 +87,10 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if (viewType == ChatMessage.TYPE_SENT) {
             ItemChatSentBinding binding = ItemChatSentBinding.inflate(inflater, parent, false);
             return new SentMessageHolder(binding);
-        } else if (viewType == ChatMessage.TYPE_RECEIVED){
+        } else if (viewType == ChatMessage.TYPE_RECEIVED) {
             ItemChatReceivedBinding binding = ItemChatReceivedBinding.inflate(inflater, parent, false);
             return new ReceivedMessageHolder(binding);
-        }else {
+        } else {
             ItemChatReceivedBinding binding = ItemChatReceivedBinding.inflate(inflater, parent, false);
             return new ReceivedMessageHolder(binding);
         }
@@ -128,6 +128,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
         }
     }
+
     public void addMessageDataList(ChatMessage message) {
         messages.add(message);
         notifyItemInserted(messages.size() - 1);
@@ -143,6 +144,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.getDefault());
         return sdf.format(new Date(timestamp));
     }
+
     public static String getRelativeTime(long timestamp) {
         long now = System.currentTimeMillis();
         long diff = now - timestamp;

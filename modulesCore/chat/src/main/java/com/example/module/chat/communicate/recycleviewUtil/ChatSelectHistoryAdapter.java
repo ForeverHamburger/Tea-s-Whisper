@@ -34,7 +34,7 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
 
     private final ItemActionListener listener;
 
-    public ChatSelectHistoryAdapter(Markwon markwon, ItemActionListener listener) {
+    public ChatSelectHistoryAdapter(Markwon markwon, ItemActionListener<DataItem> listener) {
         this.markwon = markwon;
         this.listener = listener;
     }
@@ -43,8 +43,8 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
         private long lastClickTime = 0;
         Data data;
         private DataItem currentItem;
-        private final ItemActionListener listener; // 持有监听器引用
-        public ChatHistoryHolder(ItemHistoryBinding binding,ItemActionListener listener ) {
+        private final ItemActionListener<DataItem> listener; // 持有监听器引用
+        public ChatHistoryHolder(ItemHistoryBinding binding,ItemActionListener<DataItem> listener ) {
             super(binding.getRoot());
             this.binding = binding;
             this.listener = listener;
