@@ -46,7 +46,6 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
         setPresenter(new ThreadPresenter(this,new ThreadModel()));
         mPresenter.getThreadInfo("id");
 
-
     }
 
     @Override
