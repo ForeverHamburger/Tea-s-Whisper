@@ -1,10 +1,8 @@
-package com.xuptggg.individual.contract;
+package com.xuptggg.individual.personal.contract;
 
-import com.xuptggg.individual.base.BaseView;
-import com.xuptggg.individual.model.IndividualInfo;
-import com.xuptggg.individual.model.LoadIndividualInfoCallBack;
-
-import java.util.List;
+import com.xuptggg.individual.personal.base.BaseView;
+import com.xuptggg.individual.personal.model.IndividualInfo;
+import com.xuptggg.individual.personal.model.LoadIndividualInfoCallBack;
 
 public interface IIndividualContract {
     interface IIndividualModel<T> {

@@ -3,7 +3,6 @@ package com.xuptggg.forum.publish.view;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
@@ -20,6 +19,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.databinding.ActivityPublishBinding;
+import com.xuptggg.forum.publish.contract.IPublishContract;
+import com.xuptggg.forum.publish.view.adapter.ImageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class PublishActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private ImageAdapter adapter;
     private ActivityPublishBinding binding;
+    private IPublishContract.IPublishPresenter mPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,11 +71,12 @@ public class PublishActivity extends AppCompatActivity {
                                 Uri imageUri = data.getData();
                                 selectedImageUris.add(imageUri);
                             }
+
+                            mPresenter.getUri(selectedImageUris);
                             adapter.addImages(selectedImageUris);
                         }
                     }
                 });
-
     }
 
     private void openImageChooser() {

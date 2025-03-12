@@ -1,4 +1,4 @@
-package com.xuptggg.individual.view;
+package com.xuptggg.individual.personal.view;
 
 import android.os.Bundle;
 

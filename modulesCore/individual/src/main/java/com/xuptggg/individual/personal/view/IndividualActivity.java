@@ -1,23 +1,19 @@
-package com.xuptggg.individual.view;
+package com.xuptggg.individual.personal.view;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.xuptggg.individual.R;
-import com.xuptggg.individual.base.myviewpageradapter;
+import com.xuptggg.individual.personal.base.myviewpageradapter;
 import com.xuptggg.individual.databinding.ActivityIndividualBinding;
 
 
