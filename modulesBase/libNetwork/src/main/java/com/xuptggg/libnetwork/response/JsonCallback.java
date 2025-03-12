@@ -94,6 +94,7 @@ public class JsonCallback implements Callback {
 
         try {
             // 将响应结果转换为 JSONObject
+            Log.d("xixi", "handleResponse: " + responseObj);
             JSONObject result = new JSONObject(responseObj.toString());
             // 如果没有指定期望的数据类型，直接将结果以 JSONObject 形式传递给监听器的 onSuccess 方法
             if (mClass == null) {
