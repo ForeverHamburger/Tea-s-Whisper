@@ -1,10 +1,14 @@
 package com.xuptggg.libnetwork.request;
 
+import java.io.File;
 import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class MyRequest {
 
@@ -73,5 +77,97 @@ public class MyRequest {
                 .headers(mHeadersBuilder.build())
                 .get()
                 .build();
+    }
+    private static final MediaType FILE_TYPE = MediaType.parse("application/octet-stream");
+    public static Request MultiPostRequest(String url,RequestParams params){
+        MultipartBody.Builder requestBuilder = new MultipartBody.Builder();
+        requestBuilder.setType(MultipartBody.FORM);
+        if(params != null){
+            for (Map.Entry<String, Object> entry : params.fileParams.entrySet()) {
+                if (entry.getValue() instanceof File) {
+                    //手动构建 Content-Disposition 头部，但未包含 filename 参数（仅设置 name）。
+                    requestBuilder.addPart(Headers.of("Content-Disposition","form-data; name=\"" + entry.getKey() + "\""),
+                            RequestBody.create(FILE_TYPE, (File) entry.getValue()));
+                }else if (entry.getValue() instanceof String) {
+                    requestBuilder.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + entry.getKey() + "\""),
+                            RequestBody.create(null, (String) entry.getValue()));
+                }
+            }
+        }
+        return new Request.Builder()
+                .url(url)
+                .post(requestBuilder.build())
+                .build();
+    }
+    //--------------------------------------------
+
+    public static Request TestMultiPostRequest(String url, RequestParams params) {
+        MultipartBody.Builder bodyBuilder = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM);
+
+        if (params != null) {
+            processParams(bodyBuilder, params);
+        }
+
+        return new Request.Builder()
+                .url(url)
+                .post(bodyBuilder.build())
+                .build();
+    }
+    private static void processParams(MultipartBody.Builder builder, RequestParams params) {
+        for (Map.Entry<String, Object> entry : params.fileParams.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+
+            if (value instanceof File) {
+                addFilePart(builder, key, (File) value);
+            } else if (value instanceof String) {
+                addTextPart(builder, key, (String) value);
+            }
+        }
+    }
+
+    private static void addFilePart(MultipartBody.Builder builder, String name, File file) {
+        // 安全检查
+        if (!file.exists()) {
+            throw new IllegalArgumentException("File not exist: " + file.getAbsolutePath());
+        }
+
+        // 自动检测MIME类型
+        MediaType mediaType = detectMediaType(file);
+
+        builder.addFormDataPart(
+                name,
+                file.getName(),
+                RequestBody.create(file, mediaType)
+        );
+    }
+
+    private static void addTextPart(MultipartBody.Builder builder, String name, String value) {
+        MediaType textType = MediaType.parse("text/plain; charset=utf-8");
+        builder.addFormDataPart(
+                name,
+                null, // 当不需要filename时设为null
+                RequestBody.create(value, textType)
+        );
+    }
+    private static MediaType detectMediaType(File file) {
+        // 实现示例：根据扩展名判断
+        String fileName = file.getName().toLowerCase();
+        if (fileName.endsWith(".png")) {
+            return MediaType.parse("image/png");
+        } else if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+            return MediaType.parse("image/jpeg");
+        } else if (fileName.endsWith(".pdf")) {
+            return MediaType.parse("application/pdf");
+        }
+        return FILE_TYPE;
+    }
+//--------------------------------------------------------------
+    public static Request FileDownLoadRequest(String url,RequestParams params){
+        return GetRequest(url,params);
+    }
+    public static Request FileDownLoadRequest(String url){
+        return GetRequest(url,null);
     }
 }

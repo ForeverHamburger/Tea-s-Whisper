@@ -4,22 +4,17 @@ package com.xuptggg.libnetwork;
 import com.xuptggg.libnetwork.listener.MyDataHandle;
 import com.xuptggg.libnetwork.request.MyRequest;
 import com.xuptggg.libnetwork.request.RequestParams;
+import com.xuptggg.libnetwork.response.NewFileCallBack;
 import com.xuptggg.libnetwork.response.JsonCallback;
+import com.xuptggg.libnetwork.response.FileCallBack;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.security.KeyStore;
-import java.security.SecureRandom;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
@@ -153,5 +148,14 @@ public class MyOkHttpClient {
         call.enqueue(new JsonCallback(handle));
         return call;
     }
-
+    public static Call downloadFile(Request request, MyDataHandle handle) {
+        Call call = mOkHttpClient.newCall(request);
+        call.enqueue(new FileCallBack(handle));
+        return call;
+    }
+    public static Call TestFile(Request request, MyDataHandle handle) {
+        Call call = mOkHttpClient.newCall(request);
+        call.enqueue(new NewFileCallBack(handle));
+        return call;
+    }
 }
