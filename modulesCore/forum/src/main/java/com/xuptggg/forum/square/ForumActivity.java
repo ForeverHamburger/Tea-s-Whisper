@@ -1,6 +1,7 @@
 package com.xuptggg.forum.square;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,10 @@ import com.xuptggg.forum.square.contract.IForumContract;
 import com.xuptggg.forum.square.model.ForumInfo;
 import com.xuptggg.forum.square.model.ForumModel;
 import com.xuptggg.forum.square.presenter.ForumPresenter;
+import com.xuptggg.module.libbase.eventbus.TokenManager;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -30,10 +35,7 @@ public class ForumActivity extends AppCompatActivity implements IForumContract.I
             return insets;
         });
         setPresenter(new ForumPresenter(this,new ForumModel()));
-        mPresenter.getForumInfo("normal");
     }
-
-
 
     @Override
     public void setPresenter(IForumContract.IForumPresenter presenter) {

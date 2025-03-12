@@ -18,6 +18,11 @@ import com.xuptggg.forum.square.model.ForumInfo;
 import com.xuptggg.forum.square.model.ForumModel;
 import com.xuptggg.forum.square.presenter.ForumPresenter;
 import com.xuptggg.forum.square.view.adapters.WaterFallAdapter;
+import com.xuptggg.module.libbase.eventbus.TokenManager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -42,6 +47,12 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -58,8 +69,6 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
         super.onViewCreated(view, savedInstanceState);
         setPresenter(new ForumPresenter(this,new ForumModel()));
 
-        mPresenter.getForumInfo(requestType);
-
         PtrFrameLayout ptrFrame = binding.ptrFrame;
         MaterialHeader materialHeader = new MaterialHeader(getActivity());
         materialHeader.setPadding(0, PtrLocalDisplay.dp2px(35),0,0);
@@ -75,6 +84,17 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
                 ptrFrame.refreshComplete();
             }
         });
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getToken(TokenManager tokenManager) {
+        mPresenter.getForumInfo(tokenManager.getToken());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
