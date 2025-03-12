@@ -46,10 +46,10 @@
       <SelectionState runConfigName="modulesCore.home">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="modulesCore.detail">
+      <SelectionState runConfigName="modulesCore.chat">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="modulesCore.chat">
+      <SelectionState runConfigName="modulesCore.detail">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="modulesCore.forum">

@@ -18,4 +18,8 @@
     <style name="Base.V24.Theme.Material3.Light.Dialog" parent="Base.V14.Theme.Material3.Light.Dialog">
     <item name="android:contextPopupMenuStyle">@style/Widget.Material3.PopupMenu.ContextMenu</item>
   </style>
+    <style name="TextAppearance.Compat.Notification.Info.Media"/>
+    <style name="TextAppearance.Compat.Notification.Media"/>
+    <style name="TextAppearance.Compat.Notification.Time.Media"/>
+    <style name="TextAppearance.Compat.Notification.Title.Media"/>
 </resources>

@@ -11,7 +11,10 @@ import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-
+/**
+ * 修复Android软键盘遮挡输入框的问题（适配全面屏/异形屏）
+ * 使用方式：在Activity的onCreate中调用assistActivity()
+ */
 public class SoftKeyBoard1 {
 
     private final View mChildOfContent;
@@ -38,15 +41,15 @@ public class SoftKeyBoard1 {
     }
 
     /**
-     ◦ 静态方法启动辅助功能
-     ◦ @param activity 需要调整的Activity实例
+     * 静态方法启动辅助功能
+     * @param activity 需要调整的Activity实例
      */
     public static void assistActivity(Activity activity) {
         new SoftKeyBoard1(activity);
     }
 
     /**
-     ◦ 计算可用高度并调整布局
+     * 计算可用高度并调整布局
      */
     private void possiblyResizeChildOfContent() {
         int usableHeightNow = computeUsableHeight();
@@ -54,23 +57,42 @@ public class SoftKeyBoard1 {
             int usableHeightSansKeyboard = mChildOfContent.getRootView().getHeight();
             int heightDifference = usableHeightSansKeyboard - usableHeightNow;
 
-            // 当高度差超过1/4屏幕高度时，视为键盘弹出
-            if (heightDifference > (usableHeightSansKeyboard/4)) {
-                // 键盘可见时调整布局高度
+            // 直接使用差值调整布局，不再处理导航栏
+            if (heightDifference > (usableHeightSansKeyboard / 4)) {
+                // 键盘可见时，直接减去高度差
                 frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
             } else {
-                // 键盘隐藏时恢复全屏高度（减去导航栏高度）
-                frameLayoutParams.height = usableHeightSansKeyboard - getNavigationBarHeight(mChildOfContent.getContext());
+                // 键盘隐藏时，恢复全屏高度（不扣除导航栏）
+                frameLayoutParams.height = usableHeightSansKeyboard;
             }
 
-            // 请求重新布局
             mChildOfContent.requestLayout();
             usableHeightPrevious = usableHeightNow;
         }
     }
+//    private void possiblyResizeChildOfContent() {
+//        int usableHeightNow = computeUsableHeight();
+//        if (usableHeightNow != usableHeightPrevious) {
+//            int usableHeightSansKeyboard = mChildOfContent.getRootView().getHeight();
+//            int heightDifference = usableHeightSansKeyboard - usableHeightNow;
+//
+//            // 当高度差超过1/4屏幕高度时，视为键盘弹出
+//            if (heightDifference > (usableHeightSansKeyboard/4)) {
+//                // 键盘可见时调整布局高度
+//                frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
+//            } else {
+//                // 键盘隐藏时恢复全屏高度（减去导航栏高度）
+//                frameLayoutParams.height = usableHeightSansKeyboard - getNavigationBarHeight(mChildOfContent.getContext());
+//            }
+//
+//            // 请求重新布局
+//            mChildOfContent.requestLayout();
+//            usableHeightPrevious = usableHeightNow;
+//        }
+//    }
 
     /**
-     ◦ 计算窗口可见区域高度
+     * 计算窗口可见区域高度
      */
     private int computeUsableHeight() {
         Rect rect = new Rect();
@@ -82,7 +104,7 @@ public class SoftKeyBoard1 {
     }
 
     /**
-     ◦ 获取导航栏高度（适配不同设备）
+     * 获取导航栏高度（适配不同设备）
      */
     private int getNavigationBarHeight(Context context) {
         boolean hasMenuKey = ViewConfiguration.get(context).hasPermanentMenuKey();
@@ -103,7 +125,7 @@ public class SoftKeyBoard1 {
     }
 
     /**
-     ◦ 获取状态栏高度
+     * 获取状态栏高度
      */
     private int getStatusBarHeight(Context context) {
         int result = 0;
@@ -116,7 +138,7 @@ public class SoftKeyBoard1 {
     }
 
     /**
-     ◦ 适配异形屏的屏幕高度计算
+     * 适配异形屏的屏幕高度计算
      */
     private int getRealScreenHeight(Context context) {
         DisplayMetrics metrics = new DisplayMetrics();

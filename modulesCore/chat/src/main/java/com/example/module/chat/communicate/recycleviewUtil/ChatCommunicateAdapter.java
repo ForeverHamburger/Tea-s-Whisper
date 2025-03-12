@@ -46,7 +46,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     binding.tvSent.setText(message.getContent());
                 }
             }
-            binding.tvSentTime.setText(formatTime(message.getTimestamp()));
+            binding.tvSentTime.setText(getRelativeTime(message.getTimestamp()));
             binding.tvSent.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
@@ -69,7 +69,7 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     binding.tvReceived.setText(message.getContent());
                 }
             }
-            binding.tvReceivedTime.setText(formatTime(message.getTimestamp()));
+            binding.tvReceivedTime.setText(getRelativeTime(message.getTimestamp()));
             binding.tvReceived.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
@@ -87,6 +87,9 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if (viewType == ChatMessage.TYPE_SENT) {
             ItemChatSentBinding binding = ItemChatSentBinding.inflate(inflater, parent, false);
             return new SentMessageHolder(binding);
+        } else if (viewType == ChatMessage.TYPE_RECEIVED) {
+            ItemChatReceivedBinding binding = ItemChatReceivedBinding.inflate(inflater, parent, false);
+            return new ReceivedMessageHolder(binding);
         } else {
             ItemChatReceivedBinding binding = ItemChatReceivedBinding.inflate(inflater, parent, false);
             return new ReceivedMessageHolder(binding);
@@ -96,9 +99,12 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatMessage message = messages.get(position);
-        // 如果未缓存，先解析 Markdown
+        if (message == null || message.getContent() == null) return;
+
+        String content = message.getContent().equalsIgnoreCase("null") ? "（内容为空）" : message.getContent();
+
         if (message.getFormattedContent() == null) {
-            CharSequence formattedContent = markwon.toMarkdown(message.getContent());
+            CharSequence formattedContent = markwon.toMarkdown(content);
             message.setFormattedContent(formattedContent);
         }
         if (holder instanceof SentMessageHolder) {
@@ -110,7 +116,17 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return messages != null ? messages.size() : 0;
+    }
+
+    public void removeLastThinkingMessage() {
+        for (int i = messages.size() - 1; i >= 0; i--) {
+            if (messages.get(i).getType() == ChatMessage.TYPE_THINKING) {
+                messages.remove(i);
+                notifyItemRemoved(i);
+                break;
+            }
+        }
     }
 
     public void addMessageDataList(ChatMessage message) {
@@ -118,9 +134,29 @@ public class ChatCommunicateAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         notifyItemInserted(messages.size() - 1);
     }
 
+    public void addAllMessageDataList(List<ChatMessage> messageList) {
+        int startPosition = messages.size();
+        messages.addAll(messageList);
+        notifyItemRangeInserted(startPosition, messageList.size());
+    }
+
     static String formatTime(long timestamp) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.getDefault());
         return sdf.format(new Date(timestamp));
     }
 
+    public static String getRelativeTime(long timestamp) {
+        long now = System.currentTimeMillis();
+        long diff = now - timestamp;
+
+        if (diff < 60_000) {
+            return "刚刚";
+        } else if (diff < 3_600_000) {
+            return diff / 60_000 + "分钟前";
+        } else if (diff < 86_400_000) {
+            return diff / 3_600_000 + "小时前";
+        } else {
+            return formatTime(timestamp);
+        }
+    }
 }
