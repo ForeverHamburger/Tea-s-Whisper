@@ -23,9 +23,9 @@ public class NetworkHelper {
 //    String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEzNzczMDEzMDQ0MDE5MiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MjUxNTE1MywiaXNzIjoiTEJES0lORyJ9.OO3zLux1aEMPhnPEkaXSFX_oLXPBf_bWXOmcUr6uG68";
     String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEyODg3MDU3MzQwNDE2MCwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MzE0NTMwNywiaXNzIjoiTEJES0lORyJ9.1TvcabhhEOMPf7TIDdV-4M2PwIv6IAiuLx18Q96PIwA";
 
-    RequestParams mToken = new RequestParams();
 
     public void performPostRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
+        RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
@@ -50,6 +50,7 @@ public class NetworkHelper {
         MyOkHttpClient.post(MyRequest.PostRequest(url, params, mToken), handle);
     }
     public void performDataGetRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
+        RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
@@ -74,6 +75,7 @@ public class NetworkHelper {
         MyOkHttpClient.get(MyRequest.GetRequest(url, params, mToken), handle);
     }
     public void performGetRequest(String url, RequestParams params, LoadTasksCallBack<List<DataItem>> callBack) {
+        RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.Headers;
+import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
@@ -54,14 +55,21 @@ public class MyRequest {
     //创建一个包含headers（请求头）的Get请求对象
 
     public static Request GetRequest(String url, RequestParams params, RequestParams headers) {
-        StringBuilder stringBuilder = new StringBuilder(url).append("?");
-        if (params!= null) {
-            // 遍历params中的键值对，将它们拼接到stringBuilder中，构建出带查询参数的URL字符串
+//        StringBuilder stringBuilder = new StringBuilder(url).append("?");
+//        if (params!= null) {
+//            // 遍历params中的键值对，将它们拼接到stringBuilder中，构建出带查询参数的URL字符串
+//            for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+//                stringBuilder.append(entry.getKey()).append("=").append(entry.getValue());
+//            }
+//        }
+        // 使用HttpUrl.Builder构建URL，自动处理查询参数和编码
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
+        if (params != null) {
             for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
-                stringBuilder.append(entry.getKey()).append("=").append(entry.getValue());
+                urlBuilder.addQueryParameter(entry.getKey(), entry.getValue());
             }
         }
-
+        HttpUrl httpUrl = urlBuilder.build();
         // 创建一个Headers.Builder对象，用于构建请求头内容
         Headers.Builder mHeadersBuilder = new Headers.Builder();
         if (headers!= null) {
@@ -73,7 +81,8 @@ public class MyRequest {
 
         // 通过Request.Builder构建最终的Request对象，设置拼接好的带查询参数的URL、添加构建好的请求头，指定请求方法为GET，然后生成并返回
         return new Request.Builder()
-                .url(stringBuilder.toString())
+                .url(httpUrl)
+//                .url(stringBuilder.toString())
                 .headers(mHeadersBuilder.build())
                 .get()
                 .build();
