@@ -1,14 +1,17 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +21,7 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.R;
@@ -202,6 +206,8 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         });
 
         initDefault();
+        // 初始化键盘隐藏逻辑
+        setupHideKeyboardFeature();
     }
 
     private void initFragment() {
@@ -313,5 +319,46 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public void setPresenter(CommunicateContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+    private View.OnTouchListener hideKeyboardListener;
+    // 添加这个方法
+    private void setupHideKeyboardFeature() {
+        // 获取根布局
+        View rootView = binding.getRoot();
+
+        // 初始化触摸监听器
+        hideKeyboardListener = (v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                hideKeyboardIfNeeded();
+            }
+            return false;
+        };
+
+        // 设置监听器
+        rootView.setOnTouchListener(hideKeyboardListener);
+        binding.ChatRecyclerView.setOnTouchListener(hideKeyboardListener);
+
+        // 处理滚动时隐藏键盘
+        binding.ChatRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                hideKeyboardIfNeeded();
+            }
+        });
+    }
+
+    // 隐藏键盘的逻辑
+    private void hideKeyboardIfNeeded() {
+        if (getActivity() == null) return;
+
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        View focusedView = getActivity().getCurrentFocus();
+
+        // 如果当前焦点在输入框
+        if (focusedView != null && focusedView == binding.ChatEdit) {
+            // 清除焦点并隐藏键盘
+            binding.ChatEdit.clearFocus();
+            imm.hideSoftInputFromWindow(binding.ChatEdit.getWindowToken(), 0);
+        }
     }
 }

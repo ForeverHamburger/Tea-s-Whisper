@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.module.chat.R;
@@ -58,18 +59,33 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
 
             @Override
             public void onLongClick(Agent item, int position) {
-
             }
         });
         binding.rvAgents.setAdapter(agentAdapter);
         binding.rvHistory.setAdapter(historyAdapter);
         binding.btnSelectAgent.setOnClickListener(v -> {
-            Intent intent = new Intent(requireActivity(), CommunicateActivity.class);
-            startActivity(intent);
+            showNewDialogConfirmation();
         });
 
     }
-
+    public void showNewDialogConfirmation() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("开启新对话") // 对话框标题
+                .setMessage("确定要开启新对话吗？当前对话将关闭。") // 提示信息
+                .setPositiveButton("确定", (dialog, which) -> {
+                    // 用户确认后替换 Fragment
+                    initFragment();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    dialog.dismiss(); // 关闭对话框
+                })
+                .create()
+                .show();
+    }
+    private void initFragment() {
+        Intent intent = new Intent(requireActivity(), CommunicateActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void showError() {
