@@ -33,6 +33,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:clipToOutline="true"
+                android:src="@drawable/dog"
                 android:outlineProvider="bounds"
                 app:layout_collapseMode="parallax">
             </ImageView>

@@ -1,6 +1,7 @@
 package com.xuptggg.individual.personal.model;
 
-import com.xuptggg.individual.contract.IIndividualContract;
+
+import com.xuptggg.individual.personal.contract.IIndividualContract;
 
 public class IndividualModel implements IIndividualContract.IIndividualModel<String> {
     @Override

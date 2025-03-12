@@ -12,4 +12,10 @@
         android:textSize="40sp"
         android:text="@string/hello_blank_fragment" />
 
+    <Button
+        android:id="@+id/btn_individual"
+        android:text="切换"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
 </FrameLayout>

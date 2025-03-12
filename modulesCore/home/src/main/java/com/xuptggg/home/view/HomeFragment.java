@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,20 +30,27 @@ import com.xuptggg.home.presenter.HomePresenter;
 import com.xuptggg.home.view.adapter.TeaCardAdapter;
 import com.xuptggg.home.view.adapter.TeaHistoryAdapter;
 import com.xuptggg.home.view.adapter.TeaMakeAdapter;
+import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
 import com.youth.banner.holder.BannerImageHolder;
 import com.youth.banner.indicator.CircleIndicator;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = "/home/HomeFragment")
 public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
+    private final static String TAG  = "HomeFragment";
     private IHomeContract.IHomePresenter mPresenter;
     private FragmentHomeBinding binding;
     @Autowired
     int containerId;
+    private String token = null;
 
     public HomeFragment() {
 
@@ -51,6 +59,12 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -77,7 +91,6 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setPresenter(new HomePresenter(new HomeModel(),this));
-        mPresenter.getHomeInfo("Tea");
 
         binding.etSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -100,6 +113,18 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
                         .commit();
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getToken(TokenManager tokenManager) {
+        Log.d(TAG, "getToken: " + token);
+        mPresenter.getHomeInfo(tokenManager.getToken());
     }
 
     private void initBanner(View view) {

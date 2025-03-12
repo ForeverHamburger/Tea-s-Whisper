@@ -9,8 +9,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.xuptggg.forum.R;
+import com.xuptggg.forum.square.contract.IForumContract;
+import com.xuptggg.forum.square.model.ForumInfo;
+import com.xuptggg.forum.square.model.ForumModel;
+import com.xuptggg.forum.square.presenter.ForumPresenter;
 
-public class ForumActivity extends AppCompatActivity {
+import java.util.List;
+
+public class ForumActivity extends AppCompatActivity implements IForumContract.IForumView {
+    private IForumContract.IForumPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +29,24 @@ public class ForumActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        setPresenter(new ForumPresenter(this,new ForumModel()));
+        mPresenter.getForumInfo("normal");
+    }
 
+
+
+    @Override
+    public void setPresenter(IForumContract.IForumPresenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void showForumInfomation(List<ForumInfo> forumInfos) {
+
+    }
+
+    @Override
+    public void showError() {
 
     }
 }

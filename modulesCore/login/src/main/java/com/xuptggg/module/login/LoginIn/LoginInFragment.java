@@ -223,7 +223,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
 
     @Override
     public void loginSuccess() {
-        Log.d("test", "loginSuccess: 111");
         Toast.makeText(getActivity(), "Login Success!", Toast.LENGTH_SHORT).show();
         MMKV mmkv = MMKV.mmkvWithID("Tea's Whisper");
 
