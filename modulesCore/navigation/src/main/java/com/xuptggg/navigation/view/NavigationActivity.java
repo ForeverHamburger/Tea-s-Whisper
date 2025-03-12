@@ -45,8 +45,6 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             return insets;
         });
 
-
-//        bnvNavigation = findViewById(R.id.bnv_navigation);
         binding.bnvNavigation.setItemIconTintList(null);
 
         NavigationModel navigationModel = new NavigationModel();
@@ -61,11 +59,7 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
 
     @Override
     public void showNavigationInfomation(List<NavigationInfo> navigationInfos) {
-// 获取 FragmentManager
         FragmentManager supportFragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
-        // 设置底部导航栏的选择监听器
         binding.bnvNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

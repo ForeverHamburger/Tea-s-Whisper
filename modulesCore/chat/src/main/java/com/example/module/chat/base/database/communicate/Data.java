@@ -15,7 +15,6 @@ public  class Data {
     private Date Timestamp;
     private String Role;
 
-    // Getters and Setters
     public Long getID() {
         return ID;
     }

@@ -20,9 +20,9 @@ ext {  //extend
                      ,"detection" : "com.xuptggg.detection"
                      ,"individual" : "com.xuptggg.individual"
                      ,"home":"com.xuptggg.home"
-                     ,"individual" : "com.xupt.individual"
                      ,"chat" : "com.example.module.chat"
-                     ,"detection" : "com.xuptggg.detection"]
+                     ,"detail" : "com.xuptggg.detail"
+                     ,"forum" : "com.xuptggg.forum"]
 
     dependencies = [
             glide : 'com.github.bumptech.glide:glide:4.16.0',

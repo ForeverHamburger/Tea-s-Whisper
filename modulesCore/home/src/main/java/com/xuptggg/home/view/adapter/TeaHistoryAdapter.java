@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuptggg.home.R;
-import com.xuptggg.home.model.TeaHistoryInfo;
+import com.xuptggg.home.model.infos.TeaHistoryInfo;
 
 import java.util.List;
 

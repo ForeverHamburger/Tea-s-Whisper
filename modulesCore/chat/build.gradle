@@ -67,6 +67,8 @@ dependencies {
     implementation  'io.github.scwang90:refresh-footer-classics:3.0.0-alpha'    //经典加载
     implementation libs.okhttp
     api 'com.alibaba:arouter-api:1.5.2'
+    implementation libs.activity
+    implementation libs.constraintlayout
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
     implementation project(':modulesBase:libNetwork')
 

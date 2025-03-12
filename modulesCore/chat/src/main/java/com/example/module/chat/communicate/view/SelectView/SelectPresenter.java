@@ -1,9 +1,15 @@
 package com.example.module.chat.communicate.view.SelectView;
 
+import android.util.Log;
+
+import com.example.module.chat.base.database.select.DataItem;
 import com.example.module.chat.base.other.LoadTasksCallBack;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallBack<String> {
+
+public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallBack<List<DataItem>> {
     private SelectContract.View mView;
     private SelectContract.Model mModel;
 
@@ -19,14 +25,27 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     }
 
     @Override
+    public void getHistoryDataInfo() {
+        mModel.getHistoryListInfo(this);
+    }
+
+    @Override
     public void unSubscribe() {
         mModel = null;
         mView = null;
     }
 
     @Override
-    public void onSuccess(String data) {
+    public void onSuccess(List<DataItem> data) {
         if (mView != null && mView.isACtive()) {
+            if (data == null || data.isEmpty()) {
+//                mView.showEmptyHistory();
+            } else {
+                mView.displayHistoryData(data,null);
+                for (DataItem mydata : data) {
+                    Log.d("HistoryData", mydata.getTitle());
+                }
+            }
         }
     }
 
@@ -34,6 +53,9 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     public void onFailed(String error) {
         System.out.println(error);
         if (mView != null && mView.isACtive()) {
+            List<DataItem> err = new ArrayList<>();
+            err.add(new DataItem());
+            mView.displayHistoryData(err,error);
         }
     }
 }

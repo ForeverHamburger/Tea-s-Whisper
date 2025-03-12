@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuptggg.home.R;
-import com.xuptggg.home.model.TeaMakeInfo;
+import com.xuptggg.home.model.infos.TeaMakeInfo;
 
 import java.util.List;
 

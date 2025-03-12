@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuptggg.home.R;
-import com.xuptggg.home.model.TeaInfo;
+import com.xuptggg.home.model.infos.TeaInfo;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class TeaCardAdapter extends RecyclerView.Adapter<TeaCardAdapter.TeaCardV
     public void onBindViewHolder(@NonNull TeaCardViewHolder holder, int position) {
         TeaInfo teaInfo = teaInfoList.get(position);
         holder.teaName.setText(teaInfo.getName());
-        holder.teaOrigin.setText(teaInfo.getOrigin());
+        holder.teaOrigin.setText(teaInfo.getDetail());
         holder.teaImage.setImageResource(teaInfo.getImageResId());
     }
 
