@@ -1,6 +1,6 @@
 package com.xuptggg.individual.personal.presenter;
 
-import com.xuptggg.individual.contract.IIndividualContract;
+import com.xuptggg.individual.personal.contract.IIndividualContract;
 import com.xuptggg.individual.personal.model.IndividualInfo;
 import com.xuptggg.individual.personal.model.LoadIndividualInfoCallBack;
 

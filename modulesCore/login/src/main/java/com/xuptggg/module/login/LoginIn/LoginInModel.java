@@ -20,7 +20,6 @@ public class LoginInModel implements LoginInContract.Model {
         RequestParams params = new RequestParams();
         params.put("phoneoremail", phoneoremail);
         params.put("password", password);
-
         networkHelper.performPostRequest(URL.LOGIN_LOGIN_URL, params, callBack);
     }
 
