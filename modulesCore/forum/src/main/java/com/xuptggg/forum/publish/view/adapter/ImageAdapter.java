@@ -1,4 +1,4 @@
-package com.xuptggg.forum.publish.view;
+package com.xuptggg.forum.publish.view.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;

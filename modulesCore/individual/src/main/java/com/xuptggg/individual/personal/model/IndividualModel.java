@@ -1,8 +1,6 @@
-package com.xuptggg.individual.model;
+package com.xuptggg.individual.personal.model;
 
 import com.xuptggg.individual.contract.IIndividualContract;
-
-import java.util.List;
 
 public class IndividualModel implements IIndividualContract.IIndividualModel<String> {
     @Override

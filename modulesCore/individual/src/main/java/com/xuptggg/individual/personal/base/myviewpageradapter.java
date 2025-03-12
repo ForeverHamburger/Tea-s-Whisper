@@ -1,4 +1,4 @@
-package com.xuptggg.individual.base;
+package com.xuptggg.individual.personal.base;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

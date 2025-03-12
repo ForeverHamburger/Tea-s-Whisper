@@ -1,4 +1,4 @@
-package com.xuptggg.individual.model;
+package com.xuptggg.individual.personal.model;
 
 public interface LoadIndividualInfoCallBack<T> {
     void onSuccess(T t);
