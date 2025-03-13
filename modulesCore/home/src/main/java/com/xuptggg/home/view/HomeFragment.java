@@ -9,11 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.home.R;
 import com.xuptggg.home.contract.IHomeContract;
 import com.xuptggg.home.databinding.FragmentHomeBinding;
@@ -25,21 +30,27 @@ import com.xuptggg.home.presenter.HomePresenter;
 import com.xuptggg.home.view.adapter.TeaCardAdapter;
 import com.xuptggg.home.view.adapter.TeaHistoryAdapter;
 import com.xuptggg.home.view.adapter.TeaMakeAdapter;
+import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
 import com.youth.banner.holder.BannerImageHolder;
 import com.youth.banner.indicator.CircleIndicator;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = "/home/HomeFragment")
 public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
+    private final static String TAG  = "HomeFragment";
     private IHomeContract.IHomePresenter mPresenter;
-    private Banner<Integer, BannerImageAdapter<Integer>> banner;
     private FragmentHomeBinding binding;
-    private RecyclerView teaRecyclerView;
-    private RecyclerView teaMaKeRecyclerView;
+    @Autowired
+    int containerId;
+    private String token = null;
 
     public HomeFragment() {
 
@@ -48,6 +59,12 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -65,6 +82,8 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
         // 初始化 RecyclerView
         initRecyclerView(binding.getRoot());
 
+        ARouter.getInstance().inject(this);
+
         return binding.getRoot();
     }
 
@@ -72,7 +91,40 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setPresenter(new HomePresenter(new HomeModel(),this));
-        mPresenter.getHomeInfo("Tea");
+
+        binding.etSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Fragment fragment = (Fragment) ARouter.getInstance().build("/search/SearchFragment").navigation();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
+                        .replace(containerId,fragment)
+                        .commit();
+            }
+        });
+
+        binding.etSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = (Fragment) ARouter.getInstance().build("/search/SearchFragment").navigation();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
+                        .replace(containerId,fragment)
+                        .commit();
+            }
+        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getToken(TokenManager tokenManager) {
+        Log.d(TAG, "getToken: " + token);
+        mPresenter.getHomeInfo(tokenManager.getToken());
     }
 
     private void initBanner(View view) {

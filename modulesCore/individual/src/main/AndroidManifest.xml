@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeasWhisper">
         <activity
-            android:name=".view.IndividualActivity"
+            android:name=".personal.view.IndividualActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

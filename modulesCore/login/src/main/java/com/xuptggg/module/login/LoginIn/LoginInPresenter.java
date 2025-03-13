@@ -5,10 +5,14 @@ import static android.provider.Settings.System.getString;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.xuptggg.module.login.R;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
+import org.greenrobot.eventbus.EventBus;
+
 public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCallBack<String> {
+        private final static String TAG = "LoginInPresenter";
     private LoginInContract.View mView;
     private LoginInContract.Model mModel;
     public LoginInPresenter(LoginInContract.View mView, LoginInContract.Model mModel)
@@ -39,17 +43,24 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
 
     }
     @Override
-    public void onSuccess( String data) {
-        System.out.println("LoginInPresenter onSuccess"+data);
+    public void onSuccess(String data) {
         if (mView!=null&&mView.isACtive()) {
-//            mView.setStarData(data);
+            Log.d(TAG, "onSuccess: " + 111);
             mView.loginSuccess();
+
+            if (data != null) {
+                TokenManager tokenManager = new TokenManager();
+                tokenManager.setToken(data);
+                Log.d(TAG, "onSuccess: " + tokenManager.getToken());
+                EventBus.getDefault().postSticky(tokenManager);
+            } else {
+                Log.d(TAG, "onSuccess: " + "token获取失败");
+            }
         }
     }
 
     @Override
     public void onFailed(String error) {
         System.out.println(error);
-        Log.d("test", "loginSuccess: 111123");
     }
 }

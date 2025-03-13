@@ -131,6 +131,10 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             registerFragment.setPresenter(registerPresenter);
 
             requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_bottom,
+                            R.anim.slide_out_bottom
+                    )
                     .replace(R.id.fragment_container, registerFragment)
                     .addToBackStack(null)
                     .commit();
@@ -142,6 +146,10 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             verifyLoginFragment.setPresenter(verifyLoginPresenter);
 
             requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_right,
+                            R.anim.slide_out_left
+                    )
                     .replace(R.id.fragment_container, verifyLoginFragment)
                     .addToBackStack(null)
                     .commit();
@@ -153,6 +161,10 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             forgetFragment.setPresenter(ForgetPresenter);
 
             requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_right,
+                            R.anim.slide_out_left
+                    )
                     .replace(R.id.fragment_container, forgetFragment)
                     .addToBackStack(null)
                     .commit();
@@ -178,10 +190,7 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
         }
 
         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.title_font);
-        binding.textViewLoginWithVerificationCode.setTypeface(typeface);
         binding.textViewTitle.setTypeface(typeface);
-        binding.textViewForget.setTypeface(typeface);
-        binding.textViewToRegister.setTypeface(typeface);
     }
     @Override
     public void onDestroy() {
@@ -214,7 +223,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
 
     @Override
     public void loginSuccess() {
-        Log.d("test", "loginSuccess: 111");
         Toast.makeText(getActivity(), "Login Success!", Toast.LENGTH_SHORT).show();
         MMKV mmkv = MMKV.mmkvWithID("Tea's Whisper");
 

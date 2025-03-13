@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/register_title"
             android:textSize="@dimen/text_size_title"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,6 +50,7 @@
                 android:drawableStart="@drawable/icon_phone"
                 android:drawablePadding="18dp"
                 android:hint="@string/login_phone"
+                android:fontFamily="@font/content_font"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:maxLength="25"
@@ -80,6 +82,7 @@
                 android:drawableStart="@drawable/icon_email"
                 android:drawablePadding="18dp"
                 android:hint="@string/login_account"
+                android:fontFamily="@font/content_font"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:maxLength="25"
@@ -110,6 +113,7 @@
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="18dp"
                 android:hint="@string/login_password"
+                android:fontFamily="@font/content_font"
                 android:imeOptions="actionNext"
                 android:inputType="textPassword"
                 android:maxLength="25"
@@ -142,6 +146,7 @@
                 android:drawablePadding="18dp"
                 android:hint="@string/login_confirmPassword"
                 android:imeOptions="actionNext"
+                android:fontFamily="@font/content_font"
                 android:inputType="textPassword"
                 android:maxLength="25"
                 android:maxLines="1"
@@ -203,6 +208,7 @@
                 android:drawablePadding="18dp"
                 android:hint="@string/login_verificationCode"
                 android:imeOptions="actionNext"
+                android:fontFamily="@font/content_font"
                 android:inputType="number"
                 android:maxLength="25"
                 android:maxLines="1"
@@ -219,7 +225,8 @@
             android:background="@drawable/edit_shape"
             android:padding="8dp"
             android:text="@string/get_verification_code"
-            android:textColor="@color/white"
+            android:fontFamily="@font/content_font"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tl_verificationCode">
 
@@ -232,6 +239,8 @@
             android:background="@drawable/edit_shape"
             android:text="@string/register_title"
             android:textColor="@color/black"
+            android:textSize="25dp"
+            android:fontFamily="@font/content_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tl_verificationCode" />
@@ -242,8 +251,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_marginTop_big"
             android:text="@string/login_have_to_register_before"
-            android:textColor="@color/red"
-            android:textColorLink="@color/red"
+            android:textColor="@color/dark_green"
+            android:textColorLink="@color/dark_green"
+            android:fontFamily="@font/content_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_register" />

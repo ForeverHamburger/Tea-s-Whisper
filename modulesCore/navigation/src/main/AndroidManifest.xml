@@ -10,7 +10,8 @@
         android:theme="@style/Theme.TeasWhisper">
         <activity
             android:name=".view.NavigationActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

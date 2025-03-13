@@ -58,8 +58,12 @@ android {
 }
 
 dependencies {
+    implementation 'io.github.youth5201314:banner:2.2.3'
     implementation "in.srain.cube:ultra-ptr:1.0.11"
+    api 'com.alibaba:arouter-api:1.5.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
     implementation project(':modulesBase:libNetwork')
+    implementation libs.okhttp
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

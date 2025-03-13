@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edit.view.EditActivity">
+
+
+    <LinearLayout
+        android:id="@+id/ll_edit_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="取消"
+            android:fontFamily="@font/content_font"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="编辑资料"
+            android:fontFamily="@font/title_font"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_publish"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_button_background"
+            android:fontFamily="@font/content_font"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/white"
+            android:text="保存"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_edit_head_container"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="70dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_edit_top">
+
+        <ImageView
+            android:id="@+id/iv_edit_user_head"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/dog" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_edit_container"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="70dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@id/cv_edit_head_container"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_edit_head_container">
+
+        <ImageView
+            android:id="@+id/iv_edit_camera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="7dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:background="@color/dark_green"
+            android:src="@drawable/ic_camera" />
+    </androidx.cardview.widget.CardView>
+    <!-- 用户名 -->
+    <TextView
+        android:id="@+id/tv_username_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="用户名"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_edit_head_container" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入用户名"
+        android:textSize="16sp"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_username_label"
+        app:layout_constraintTop_toTopOf="@id/tv_username_label"
+        android:layout_marginStart="16dp"/>
+
+    <!-- ID -->
+    <TextView
+        android:id="@+id/tv_id_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        android:textSize="16sp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_username"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/et_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="uid103516237"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_id_label"
+        app:layout_constraintTop_toTopOf="@id/tv_id_label"
+        android:layout_marginStart="16dp"/>
+
+    <!-- 手机 -->
+    <TextView
+        android:id="@+id/tv_phone_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="手机"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_id"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="12846974456"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_phone_label"
+        app:layout_constraintTop_toTopOf="@id/tv_phone_label"
+        android:layout_marginStart="16dp"/>
+
+    <!-- 邮箱 -->
+    <TextView
+        android:id="@+id/tv_email_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="邮箱"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_phone"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1469785615@qq.com"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_email_label"
+        app:layout_constraintTop_toTopOf="@id/tv_email_label"
+        android:layout_marginStart="16dp"/>
+
+    <!-- 性别 -->
+    <TextView
+        android:id="@+id/tv_gender_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="性别"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_email"
+        android:layout_marginTop="20dp"/>
+
+    <Spinner
+        android:id="@+id/spinner_gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_gender_label"
+        app:layout_constraintTop_toTopOf="@id/tv_gender_label"
+        android:layout_marginStart="16dp"/>
+
+    <!-- 茶龄 -->
+    <TextView
+        android:id="@+id/tv_tea_age_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="茶龄"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_gender"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/et_tea_age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入茶龄"
+        android:textSize="16sp"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_tea_age_label"
+        app:layout_constraintTop_toTopOf="@id/tv_tea_age_label"
+        android:layout_marginStart="16dp"/>
+
+    <!-- 简介 -->
+    <TextView
+        android:id="@+id/tv_introduction_label"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="简介"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_tea_age"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/et_introduction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/edit_introduction_background"
+        android:gravity="top"
+        android:hint="茶席已备，静待君书 | 邀您共撰「茶心」自述"
+        android:minLines="3"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_save"
+        app:layout_constraintStart_toEndOf="@id/tv_introduction_label"
+        app:layout_constraintTop_toTopOf="@id/tv_introduction_label" />
+
+    <TextView
+        android:id="@+id/tv_introduction_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/100"
+        android:textSize="12sp"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="@id/et_introduction"
+        app:layout_constraintTop_toBottomOf="@id/et_introduction"
+        android:layout_marginTop="4dp"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保  存"
+        android:textColor="@color/white"
+        android:fontFamily="@font/content_font"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/btn_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

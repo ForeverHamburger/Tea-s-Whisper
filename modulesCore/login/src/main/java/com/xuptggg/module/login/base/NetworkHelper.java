@@ -45,6 +45,10 @@ public class NetworkHelper {
             JSONObject json = new JSONObject(responseObj.toString());
             int code = json.optInt("code", -1);
             String msg = json.optString("msg", "未知错误");
+            JSONObject data = json.optJSONObject("data");
+            String token = data.optString("token");
+
+            Log.d(TAG, "handleResponse: " +code);
 
             if (code == 1) { // 假设 code == 1 表示成功
                 if (url.equals(URL.LOGIN_CODE_URL)) {
@@ -55,7 +59,7 @@ public class NetworkHelper {
                 } else if (url.equals(URL.LOGIN_SIGNUP_URL)) {
                     callBack.onSuccess("注册成功");
                 } else if (url.equals(URL.LOGIN_LOGIN_URL)) {
-                    callBack.onSuccess("登录成功");
+                    callBack.onSuccess(token);
                 }
             } else {
                 callBack.onFailed(msg);

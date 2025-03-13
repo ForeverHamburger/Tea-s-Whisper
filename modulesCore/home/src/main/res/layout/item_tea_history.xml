@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="70dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_message_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:cardElevation="0dp"
         app:cardCornerRadius="25dp"
         android:layout_marginTop="10dp"
@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/iv_message_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:scaleType="centerCrop"
             android:src="@drawable/tea_history_item" />
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="陆羽问泉"
         android:textColor="@color/dark_green"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:fontFamily="@font/title_font"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
@@ -46,7 +46,7 @@
         android:fontFamily="@font/content_font"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/tv_tea_history_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_tea_history_title" />

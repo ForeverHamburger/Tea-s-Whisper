@@ -7,6 +7,15 @@
     android:background="@drawable/background_green"
     tools:context=".VerifyLogin.VerifyLoginFragment">
 
+    <ImageView
+        android:id="@+id/iv_navigation"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/icon_navigation"
+        app:layout_constraintBottom_toBottomOf="@id/textView_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_title" />
 
     <TextView
         android:id="@+id/textView_title"
@@ -14,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="验证码登录"
         android:textSize="@dimen/text_size_title"
-        android:textStyle="bold"
+        android:textStyle="normal"
+        android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +76,7 @@
             android:drawablePadding="18dp"
             android:windowSoftInputMode="adjustResize"
             android:hint="        请输入邮箱地址"
+            android:fontFamily="@font/content_font"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:maxLength="25"
@@ -96,9 +107,10 @@
         android:id="@+id/resendEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="吗没有收到？重新发送"
-        android:textColor="@color/red"
-
+        android:text="验证没有收到？重新发送"
+        android:textColor="@color/dark_green"
+        android:fontFamily="@font/content_font"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/codeInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,10 +118,11 @@
 
     <Button
         android:id="@+id/continueButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="登录"
         android:textColor="@color/black"
+        android:textSize="25dp"
         android:background="@drawable/edit_shape"
         app:layout_constraintTop_toBottomOf="@id/resendEmail"
         app:layout_constraintStart_toStartOf="parent"

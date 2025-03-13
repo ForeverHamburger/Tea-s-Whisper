@@ -45,7 +45,7 @@
         android:text="高温钝化酶活性，锁住鲜绿与清香"
         android:fontFamily="@font/content_font"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="parent"

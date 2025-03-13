@@ -1,9 +1,12 @@
 package com.xuptggg.module.login;
 
+import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         LoginInFragment loginInFragment = (LoginInFragment) fm.findFragmentById(R.id.fragment_container);
         FragmentTransaction ft = fm.beginTransaction();
+        ft.setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+        );
+
         if (loginInFragment == null) {
             loginInFragment = new LoginInFragment();
         }
@@ -76,19 +84,51 @@ public class LoginActivity extends AppCompatActivity {
             fragmentHeight = 1600;
         }
 
+//        ConstraintLayout constraintLayout = findViewById(R.id.main);
+//        ConstraintSet constraintSet = new ConstraintSet();
+//        constraintSet.clone(constraintLayout);
+//        int newCardViewHeight = fragmentHeight + 180;
+//        // 调整 CardView 高度
+//        constraintSet.constrainHeight(R.id.cardView_login, newCardViewHeight);
+//        // 调整 FragmentContainerView 高度
+//        constraintSet.constrainHeight(R.id.fragment_container, fragmentHeight);
+//        constraintSet.applyTo(constraintLayout);
+
+
+
+
         ConstraintLayout constraintLayout = findViewById(R.id.main);
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(constraintLayout);
-        int newCardViewHeight = fragmentHeight + 180;
-        // 调整 CardView 高度
-        constraintSet.constrainHeight(R.id.cardView_login, newCardViewHeight);
-        // 调整 FragmentContainerView 高度
-        constraintSet.constrainHeight(R.id.fragment_container, fragmentHeight);
 
-//        constraintSet.connect(R.id.fragment_container, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
-//        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
-//        //让 CardView 适当上移，避免底部挤压
-//        constraintSet.connect(R.id.cardView_login, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 50);
-        constraintSet.applyTo(constraintLayout);
+        // 获取当前的 CardView 和 FragmentContainerView
+        View cardView = findViewById(R.id.cardView_login);
+        View fragmentContainer = findViewById(R.id.fragment_container);
+
+        // 获取当前的高度
+        int currentCardHeight = cardView.getHeight();
+        int currentFragmentHeight = fragmentContainer.getHeight();
+
+        // 计算目标 CardView 的高度
+        int targetCardHeight = fragmentHeight + 180;
+
+        // 创建并启动 FragmentContainerView 高度动画
+        ValueAnimator fragmentAnimator = ValueAnimator.ofInt(currentFragmentHeight, fragmentHeight);
+        setupAnimator(fragmentAnimator, R.id.fragment_container, constraintLayout, constraintSet);
+
+        // 创建并启动 CardView 高度动画
+        ValueAnimator cardAnimator = ValueAnimator.ofInt(currentCardHeight, targetCardHeight);
+        setupAnimator(cardAnimator, R.id.cardView_login, constraintLayout, constraintSet);
+    }
+
+    private void setupAnimator(ValueAnimator animator, int viewId, ConstraintLayout constraintLayout, ConstraintSet constraintSet) {
+        animator.setDuration(200);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            int animatedValue = (int) animation.getAnimatedValue();
+            constraintSet.constrainHeight(viewId, animatedValue);
+            constraintSet.applyTo(constraintLayout);
+        });
+        animator.start();
     }
 }

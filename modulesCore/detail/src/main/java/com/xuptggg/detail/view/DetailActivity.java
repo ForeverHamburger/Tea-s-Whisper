@@ -27,7 +27,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.detail.R;
 import com.xuptggg.detail.contract.IDetailContract;
 import com.xuptggg.detail.databinding.ActivityDetailBinding;
@@ -41,7 +43,8 @@ import com.xuptggg.detail.utils.GlideLoader;
 public class DetailActivity extends AppCompatActivity implements IDetailContract.IDetailView {
     private ActivityDetailBinding binding;
     private boolean isLiked = false;
-    private View currentExpandedSection;
+    @Autowired(name =  "teaName")
+    public String teaName;
     private IDetailContract.IDetailPresenter mPresenter;
 
     @Override
@@ -50,6 +53,8 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
         EdgeToEdge.enable(this);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ARouter.getInstance().inject(this);
 
         binding.fabDetailLike.setOnClickListener(v -> {
             if (!isLiked) {
@@ -151,8 +156,6 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
         set.playTogether(heightAnim, alphaAnim, rotateAnim);
         set.setDuration(400);
         set.start();
-
-        currentExpandedSection = content;
     }
 
     private void collapseSectionWithAnimation(final TextView content, final ImageView arrow) {
@@ -188,7 +191,5 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
         });
         set.setDuration(400);
         set.start();
-
-        currentExpandedSection = null;
     }
 }

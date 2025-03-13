@@ -22,7 +22,7 @@
             app:contentScrim="@color/dark_green"
             app:expandedTitleMarginEnd="60dp"
             app:expandedTitleMarginStart="48dp"
-            app:title="嘻嘻学啥呢"
+            app:title="      "
             app:expandedTitleGravity="left"
             app:expandedTitleTextAppearance="@style/ExpandedTitleTextStyle"
             app:collapsedTitleTextAppearance="@style/CollapsedTitleTextStyle"

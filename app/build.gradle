@@ -51,9 +51,9 @@ dependencies {
         implementation project(':modulesCore:detection')
         implementation project(':modulesCore:home')
         implementation project(':modulesCore:chat')
-
         implementation project(':modulesCore:detail')
         implementation project(':modulesCore:forum')
+        implementation project(':modulesCore:search')
     }
 
     api 'com.alibaba:arouter-api:1.5.2'

@@ -8,14 +8,26 @@
     android:background="@drawable/background_green"
     tools:context=".Forget.ForgetFragment">
 
+    <ImageView
+        android:id="@+id/iv_navigation"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/icon_navigation"
+        app:layout_constraintBottom_toBottomOf="@id/textView_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_title" />
+
     <TextView
         android:id="@+id/textView_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="忘记密码"
+        android:fontFamily="@font/content_font"
         android:textSize="@dimen/text_size_title"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +56,8 @@
             android:drawableStart="@drawable/icon_password"
             android:drawablePadding="18dp"
             android:hint="请输入邮箱"
+            android:fontFamily="@font/content_font"
+
             android:imeOptions="actionNext"
             android:windowSoftInputMode="adjustResize"
             android:inputType="textEmailAddress"
@@ -59,8 +73,10 @@
         android:layout_marginTop="@dimen/dp_marginTop_small"
         android:background="@drawable/edit_shape"
         android:padding="8dp"
+        android:fontFamily="@font/content_font"
+
         android:text="@string/get_verification_code"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tl_email">
 
@@ -104,6 +120,8 @@
             android:drawablePadding="18dp"
             android:hint="@string/login_password"
             android:imeOptions="actionNext"
+            android:fontFamily="@font/content_font"
+
             android:inputType="textPassword"
             android:windowSoftInputMode="adjustResize"
             android:maxLength="25"
@@ -136,6 +154,7 @@
             android:imeOptions="actionNext"
             android:inputType="textPassword"
             android:maxLength="25"
+            android:fontFamily="@font/content_font"
             android:maxLines="1"
             android:textColor="@color/black"
             app:errorEnabled="true"
@@ -150,7 +169,8 @@
         android:text="确认"
         android:textAllCaps="false"
         android:background="@drawable/edit_shape"
-        android:textColor="@android:color/white"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tl_confirmPassword" />

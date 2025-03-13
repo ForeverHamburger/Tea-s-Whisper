@@ -18,7 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_title"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_title"
+        android:fontFamily="@font/title_font"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <!-- 用户名输入框 -->
@@ -45,6 +47,8 @@
             android:drawableStart="@drawable/icon_email"
             android:drawablePadding="18dp"
             android:hint="@string/login_account"
+            android:fontFamily="@font/content_font"
+
             android:windowSoftInputMode="adjustResize"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
@@ -75,6 +79,8 @@
             android:drawableStart="@drawable/icon_password"
             android:drawablePadding="18dp"
             android:hint="@string/login_password"
+            android:fontFamily="@font/content_font"
+
             android:imeOptions="actionNext"
             android:inputType="textPassword"
             android:windowSoftInputMode="adjustResize"
@@ -90,46 +96,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_remember_password"
+        android:fontFamily="@font/content_font"
         android:textColor="@color/black"
         android:layout_marginStart="@dimen/dp_marginTop_big"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tl_password" />
 
     <!-- Forget（忘记密码）选项，使用TextView模拟链接样式 -->
-    <TextView
-        android:id="@+id/textView_forget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_forget_password"
-        android:textColor="@color/red"
-        android:textColorLink="@color/red"
-        android:layout_marginEnd="@dimen/dp_marginTop_big"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_password" />
+        <TextView
+            android:id="@+id/textView_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_marginTop_big"
+            android:text="@string/login_forget_password"
+            android:fontFamily="@font/content_font"
+            android:textColor="@color/dark_green"
+            android:textColorLink="@color/dark_green"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/checkBox_remember"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkBox_remember" />
 
     <!-- 登录按钮 -->
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_shape"
-        android:text="@string/login_title"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_remember" />
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_shape"
+            android:text="@string/login_title"
+            android:fontFamily="@font/content_font"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_remember" />
 
     <TextView
         android:id="@+id/textView_to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_forget_to_register_before"
-        android:textColor="@color/red"
-        android:textColorLink="@color/red"
+        android:textColor="@color/dark_green"
+        android:textColorLink="@color/dark_green"
         android:layout_marginTop="@dimen/dp_marginTop_big"
+        android:textSize="15dp"
+        android:fontFamily="@font/content_font"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
     <LinearLayout
         android:id="@+id/textView_or"
         android:layout_width="match_parent"
@@ -162,6 +179,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="验证码 登录"
+        android:textSize="15dp"
+        android:fontFamily="@font/content_font"
         android:layout_gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
