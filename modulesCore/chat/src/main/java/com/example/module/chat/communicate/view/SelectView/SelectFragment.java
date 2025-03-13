@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.module.chat.R;
 import com.example.module.chat.base.database.select.Agent;
@@ -49,6 +50,7 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
         markwon = Markwon.create(requireContext());
         mPresenter.getHistoryDataInfo();
         historyAdapter = new ChatSelectHistoryAdapter(markwon,this);
+
         agentAdapter = new ChatSelectAgentAdapter(new ItemActionListener<Agent>() {
             @Override
             public void onItemClick(Agent item, int position) {
@@ -61,6 +63,8 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
             public void onLongClick(Agent item, int position) {
             }
         });
+        binding.rvAgents.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        binding.rvHistory.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         binding.rvAgents.setAdapter(agentAdapter);
         binding.rvHistory.setAdapter(historyAdapter);
         binding.btnSelectAgent.setOnClickListener(v -> {
