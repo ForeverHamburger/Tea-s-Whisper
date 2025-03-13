@@ -27,6 +27,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.R;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
+import com.example.module.chat.communicate.view.SelectView.SelectFragment;
+import com.example.module.chat.communicate.view.SelectView.SelectModel;
+import com.example.module.chat.communicate.view.SelectView.SelectPresenter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 
@@ -103,6 +106,8 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         markwon = Markwon.create(requireContext());
         adapter = new ChatCommunicateAdapter(markwon);

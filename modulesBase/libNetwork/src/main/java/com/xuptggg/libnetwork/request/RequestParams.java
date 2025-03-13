@@ -14,6 +14,7 @@ public class RequestParams {
     public ConcurrentHashMap<String, Object> fileParams = new ConcurrentHashMap<String, Object>();
     //空参构造
     public RequestParams() {
+
     }
 
 

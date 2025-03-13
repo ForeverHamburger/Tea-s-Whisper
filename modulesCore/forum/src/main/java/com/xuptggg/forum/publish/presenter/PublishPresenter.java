@@ -7,9 +7,10 @@ import com.xuptggg.forum.publish.contract.IPublishContract;
 import com.xuptggg.forum.publish.model.LoadPublishCallBack;
 import com.xuptggg.forum.publish.model.PublishInfo;
 
+import java.io.File;
 import java.util.List;
 
-public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadPublishCallBack<String> {
+public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadPublishCallBack<List<String>> {
     private IPublishContract.IPublishModel model;
     private IPublishContract.IPublishView view;
 
@@ -19,8 +20,8 @@ public class PublishPresenter implements IPublishContract.IPublishPresenter, Loa
     }
 
     @Override
-    public void getUri(List<Uri> uris) {
-        model.getUriFromFile(uris);
+    public void getUri(List<File> files, String token) {
+        model.getUriFromFile(files,token,this);
     }
 
     @Override
@@ -29,8 +30,8 @@ public class PublishPresenter implements IPublishContract.IPublishPresenter, Loa
     }
 
     @Override
-    public void onSuccess(String string) {
-
+    public void onSuccess(List<String> strings) {
+        view.showMessage(strings);
     }
 
     @Override

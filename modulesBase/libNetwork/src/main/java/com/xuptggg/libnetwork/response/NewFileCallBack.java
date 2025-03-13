@@ -26,7 +26,7 @@ public class NewFileCallBack implements Callback {
     // region 常量
     private static final int PROGRESS_WHAT = 0x1001;
     private static final long UPDATE_INTERVAL = 1000L; // 进度更新间隔
-    private static final int BUFFER_SIZE = 8192;      // 8KB缓冲区
+    private static final int BUFFER_SIZE = 8192; // 8KB缓冲区
     // endregion
 
     // region 成员变量

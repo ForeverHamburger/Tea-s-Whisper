@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.R;
 import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.base.database.select.DataItem;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.noties.markwon.Markwon;
-
+@Route(path = "/chat/SelectFragment")
 public class SelectFragment extends Fragment implements SelectContract.View, ItemActionListener<DataItem> {
     public FragmentSelectBinding binding;
     private SelectContract.Presenter mPresenter;
@@ -74,6 +75,7 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SelectPresenter presenter = new SelectPresenter(this, new SelectModel());
         markwon = Markwon.create(requireContext());
         mPresenter.getHistoryDataInfo();
         historyAdapter = new ChatSelectHistoryAdapter(markwon, this);
