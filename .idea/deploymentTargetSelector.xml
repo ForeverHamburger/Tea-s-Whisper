@@ -55,9 +55,6 @@
       <SelectionState runConfigName="modulesCore.forum">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="modulesCore.search">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
     </selectionStates>
   </component>
 </project>
