@@ -8,12 +8,15 @@ import java.util.Objects;
 public class PublishInfo {
     private String publishTitle;
     private String publishContent;
-    private List<Uri> uriList;
+    private List<String> strings;
+    private String status;
 
-    public PublishInfo(String publishTitle, String publishContent, List<Uri> uriList) {
+
+
+    public PublishInfo(String publishTitle, String publishContent, List<String> strings, String status) {
         this.publishTitle = publishTitle;
         this.publishContent = publishContent;
-        this.uriList = uriList;
+        this.strings = strings;
     }
 
     public String getPublishTitle() {
@@ -32,12 +35,19 @@ public class PublishInfo {
         this.publishContent = publishContent;
     }
 
-    public List<Uri> getUriList() {
-        return uriList;
+    public List<String> getStrings() {
+        return strings;
     }
 
-    public void setUriList(List<Uri> uriList) {
-        this.uriList = uriList;
+    public void setStrings(List<String> strings) {
+        this.strings = strings;
+    }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -45,11 +55,11 @@ public class PublishInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PublishInfo that = (PublishInfo) o;
-        return Objects.equals(publishTitle, that.publishTitle) && Objects.equals(publishContent, that.publishContent) && Objects.equals(uriList, that.uriList);
+        return Objects.equals(publishTitle, that.publishTitle) && Objects.equals(publishContent, that.publishContent) && Objects.equals(strings, that.strings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(publishTitle, publishContent, uriList);
+        return Objects.hash(publishTitle, publishContent, strings);
     }
 }

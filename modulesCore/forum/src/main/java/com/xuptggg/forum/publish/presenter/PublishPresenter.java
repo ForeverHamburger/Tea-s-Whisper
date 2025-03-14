@@ -1,16 +1,13 @@
 package com.xuptggg.forum.publish.presenter;
 
-import android.graphics.drawable.Icon;
-import android.net.Uri;
-
 import com.xuptggg.forum.publish.contract.IPublishContract;
-import com.xuptggg.forum.publish.model.LoadPublishCallBack;
+import com.xuptggg.forum.publish.model.LoadImageUriCallBack;
 import com.xuptggg.forum.publish.model.PublishInfo;
 
 import java.io.File;
 import java.util.List;
 
-public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadPublishCallBack<List<String>> {
+public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadImageUriCallBack<List<String>> {
     private IPublishContract.IPublishModel model;
     private IPublishContract.IPublishView view;
 
@@ -25,8 +22,8 @@ public class PublishPresenter implements IPublishContract.IPublishPresenter, Loa
     }
 
     @Override
-    public void publishThread(PublishInfo publishInfos) {
-        model.publishThread(publishInfos);
+    public void publishThread(PublishInfo publishInfos, String token) {
+        model.publishThread(publishInfos,token,this);
     }
 
     @Override

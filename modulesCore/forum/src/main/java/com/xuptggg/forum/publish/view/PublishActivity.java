@@ -28,6 +28,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.databinding.ActivityPublishBinding;
 import com.xuptggg.forum.publish.contract.IPublishContract;
+import com.xuptggg.forum.publish.model.PublishInfo;
 import com.xuptggg.forum.publish.model.PublishModel;
 import com.xuptggg.forum.publish.presenter.PublishPresenter;
 import com.xuptggg.forum.publish.utils.ThreadPoolUtil;
@@ -54,6 +55,7 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
     private IPublishContract.IPublishPresenter mPresenter;
     private String token = null;
     private ThreadPoolUtil threadPoolUtil;
+    private List<String> imageStringList;
     @Override
     protected void onStart() {
         super.onStart();
@@ -131,7 +133,12 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
             @Override
             public void onClick(View v) {
                 if (token != null) {
-
+                    mPresenter.publishThread(new PublishInfo(
+                            binding.etPublishTitle.getText().toString(),
+                            binding.etPublishContent.getText().toString(),
+                            imageStringList,
+                            "1"
+                    ),token);
                 }
             }
         });
@@ -160,6 +167,7 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
     @Override
     public void showMessage(List<String> strings) {
         Log.d("pic", "showMessage: " + strings);
+        imageStringList = strings;
         Toast.makeText(this, "图片均上传成功！", Toast.LENGTH_SHORT).show();
     }
 

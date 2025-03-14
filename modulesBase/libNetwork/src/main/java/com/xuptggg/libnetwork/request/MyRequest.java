@@ -112,7 +112,7 @@ public class MyRequest {
     }
     //--------------------------------------------
 
-    public static Request TestMultiPostRequest(String url, RequestParams params,RequestParams headers) {
+    public static Request TestMultiPostRequest(String url, RequestParams params, RequestParams headers) {
         MultipartBody.Builder bodyBuilder = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM);
 

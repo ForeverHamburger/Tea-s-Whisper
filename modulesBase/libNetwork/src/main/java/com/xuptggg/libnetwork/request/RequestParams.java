@@ -2,6 +2,7 @@ package com.xuptggg.libnetwork.request;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -10,7 +11,6 @@ public class RequestParams {
 
     // 这个map用于存放类似查询参数或者表单中的普通文本参数等，方便后续构建请求时使用
     public ConcurrentHashMap<String, String> urlParams = new ConcurrentHashMap<>();
-
     public ConcurrentHashMap<String, Object> fileParams = new ConcurrentHashMap<String, Object>();
     //空参构造
     public RequestParams() {
@@ -51,6 +51,8 @@ public class RequestParams {
             fileParams.put(key, object);
         }
     }
+
+
     //判断当前RequestParams对象中是否包含了有效的请求参数，
     public boolean hasParams() {
         return urlParams.size() > 0;
