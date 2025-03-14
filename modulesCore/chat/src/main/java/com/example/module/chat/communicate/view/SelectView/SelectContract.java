@@ -11,7 +11,7 @@ public interface SelectContract {
         void getSelectInfo(String content, String sessionId, LoadTasksCallBack callBack);
 
         void getHistoryListInfo( LoadTasksCallBack callBack);
-
+        void getToken(String token);
 //        void getHistoryDataInfo(String data, LoadTasksCallBack callBack);
 
 //        void getAgentDataInfo(String data, LoadTasksCallBack callBack);
@@ -21,8 +21,11 @@ public interface SelectContract {
         void getSelectInfo(String content, String sessionId);
         void getHistoryDataInfo();
 
+
 //        void getAgentDataInfo(String data);
         void unSubscribe();
+
+        void getToken(String token);
     }
 
     interface View extends BaseView<Presenter> {
