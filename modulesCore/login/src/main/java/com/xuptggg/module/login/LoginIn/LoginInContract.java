@@ -16,7 +16,7 @@ public interface LoginInContract {
 
     }
     interface View extends BaseView<Presenter> {
-        void showError();
+        void showError(String error);
 //        void setLoginInData(musicData starData);
         Boolean isACtive();
         void loginSuccess();

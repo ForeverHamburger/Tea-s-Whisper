@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.LoginActivity;
@@ -288,6 +290,48 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         //判断是否加入到Activity
         return isAdded();
     }
+
+    @Override
+    public void showSuccess(String data) {
+
+    }
+    public void showNewDialogConfirmation() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("开启新对话") // 对话框标题
+                .setMessage("确定要开启新对话吗？当前对话将关闭。") // 提示信息
+                .setPositiveButton("确定", (dialog, which) -> {
+                    // 用户确认后替换 Fragment
+                    initFragment();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    dialog.dismiss(); // 关闭对话框
+                })
+                .create()
+                .show();
+    }
+
+    private void initFragment() {
+        String email = binding.editTextEmail.getText().toString();
+        String password = binding.editTextPassword.getText().toString();
+        LoginInFragment loginFragment = new LoginInFragment();
+        Bundle args = new Bundle();
+        args.putString("email", email);
+        args.putString("password", password);
+        loginFragment.setArguments(args);
+
+        LoginInPresenter loginInPresenter = new LoginInPresenter(loginFragment, new LoginInModel());
+        loginFragment.setPresenter(loginInPresenter);
+
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.slide_in_bottom,
+                        R.anim.slide_out_bottom
+                )
+                .replace(R.id.fragment_container, loginFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
 
     @Override
     public void setPresenter(RegisterContract.Presenter presenter) {

@@ -41,7 +41,6 @@ public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksC
 
     @Override
     public void getVerificationCode(String email) {
-
         mModel.getVerificationCode(email, this);
     }
 
@@ -49,7 +48,7 @@ public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksC
     public void onSuccess(String data) {
 
         if (mView!=null&&mView.isACtive()) {
-//            mView.setStarData(data);
+            mView.showSuccess(data);
         }
     }
 

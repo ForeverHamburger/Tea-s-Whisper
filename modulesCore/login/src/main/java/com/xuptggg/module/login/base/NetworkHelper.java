@@ -48,9 +48,9 @@ public class NetworkHelper {
             JSONObject data = json.optJSONObject("data");
             String token = data.optString("token");
 
-            Log.d(TAG, "handleResponse: " +code);
+            Log.d(TAG, "handleResponse: " + code);
 
-            if (code == 1) { // 假设 code == 1 表示成功
+            if (code == 1) {
                 if (url.equals(URL.LOGIN_CODE_URL)) {
                     if (msg.equals("success"))
                         callBack.onSuccess("验证码发送成功");

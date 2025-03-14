@@ -22,5 +22,7 @@ public class RegisterContract {
         void showError();
         //        void setLoginInData(musicData starData);
         Boolean isACtive();
+
+        void showSuccess(String data);
     }
 }
