@@ -73,6 +73,11 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 // 每次点击导航项时，创建一个新的 FragmentTransaction 实例
                 FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(
+                        R.anim.slide_in_right,
+                        R.anim.slide_out_left,
+                        R.anim.slide_in_left,
+                        R.anim.slide_out_right);
                 isSelected = false;
                 // 根据导航项的标题进行不同的处理
                 if ("首页".equals(menuItem.getTitle())) {
@@ -124,31 +129,35 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
     }
 
     private void performChangeAnimation() {
-        // 创建一个从 1 到 1.2 再到 1 的弹性动画
-        ValueAnimator animator = ValueAnimator.ofFloat(1f, 1.2f, 1f);
-        animator.setDuration(300);
-        animator.setInterpolator(new BounceInterpolator());
+        if(isSelected) {
+            return;
+        } else {
+            // 创建一个从 1 到 1.2 再到 1 的弹性动画
+            ValueAnimator animator = ValueAnimator.ofFloat(1f, 1.2f, 1f);
+            animator.setDuration(300);
+            animator.setInterpolator(new BounceInterpolator());
 
-        animator.addUpdateListener(animation -> {
-            float scale = (float) animation.getAnimatedValue();
-            binding.fabNavigation.setScaleX(scale);
-            binding.fabNavigation.setScaleY(scale);
-        });
+            animator.addUpdateListener(animation -> {
+                float scale = (float) animation.getAnimatedValue();
+                binding.fabNavigation.setScaleX(scale);
+                binding.fabNavigation.setScaleY(scale);
+            });
 
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                super.onAnimationStart(animation);
-                binding.fabNavigation.setImageResource(R.drawable.ic_add);
-            }
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    super.onAnimationStart(animation);
+                    binding.fabNavigation.setImageResource(R.drawable.ic_add);
+                }
 
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-            }
-        });
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                }
+            });
 
-        animator.start();
+            animator.start();
+        }
     }
 
     @Override
