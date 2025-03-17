@@ -24,6 +24,7 @@ int drawable ic_search 0x0
 int drawable ic_share 0x0
 int drawable icon_love 0x0
 int drawable icon_love_empty 0x0
+int drawable icon_me 0x0
 int drawable icon_nailong 0x0
 int drawable publish_add_background 0x0
 int drawable publish_background 0x0

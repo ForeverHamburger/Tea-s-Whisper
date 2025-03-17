@@ -25,6 +25,7 @@ drawable ic_search
 drawable ic_share
 drawable icon_love
 drawable icon_love_empty
+drawable icon_me
 drawable icon_nailong
 drawable publish_add_background
 drawable publish_background
