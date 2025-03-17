@@ -19,7 +19,7 @@ public class RegisterContract {
         void getVerificationCode(String string);
     }
     interface View extends BaseView<RegisterContract.Presenter> {
-        void showError();
+        void showError(String error);
         //        void setLoginInData(musicData starData);
         Boolean isACtive();
 

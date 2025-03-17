@@ -281,8 +281,8 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     }
 
     @Override
-    public void showError() {
-
+    public void showError(String error){
+        Toast.makeText(getActivity(), "注册失败："+error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -293,18 +293,20 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
 
     @Override
     public void showSuccess(String data) {
-
+        Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+        if(data.equals("注册成功")){
+            showNewDialogConfirmation();
+        }
     }
     public void showNewDialogConfirmation() {
         new AlertDialog.Builder(requireContext())
-                .setTitle("开启新对话") // 对话框标题
-                .setMessage("确定要开启新对话吗？当前对话将关闭。") // 提示信息
+                .setTitle("即将去登录")
+                .setMessage("确定要去登录吗？")
                 .setPositiveButton("确定", (dialog, which) -> {
-                    // 用户确认后替换 Fragment
                     initFragment();
                 })
                 .setNegativeButton("取消", (dialog, which) -> {
-                    dialog.dismiss(); // 关闭对话框
+                    dialog.dismiss();
                 })
                 .create()
                 .show();

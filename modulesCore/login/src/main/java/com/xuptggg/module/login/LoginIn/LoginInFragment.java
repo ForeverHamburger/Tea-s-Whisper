@@ -210,18 +210,8 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
 
     @Override
     public void showError(String error) {
-        Toast.makeText(getActivity(), "登录失败"+error, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "登录失败："+error, Toast.LENGTH_SHORT).show();
     }
-//    @Override
-//    public void setStarData(musicData starData) {
-//        requireActivity().runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-//
-//    }
 
     @Override
     public Boolean isACtive() {

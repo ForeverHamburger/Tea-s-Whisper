@@ -5,10 +5,13 @@ import android.widget.Toast;
 
 import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
+import com.xuptggg.module.login.base.VerificationRequestManager;
 
 public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksCallBack<String> {
     private RegisterContract.View mView;
     private RegisterContract.Model mModel;
+    private String pendingEmail;
+
     public RegisterPresenter(RegisterContract.View mView, RegisterContract.Model mModel)
     {
         this.mView = mView;
@@ -35,18 +38,29 @@ public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksC
 
     @Override
     public void onRegisterClick(String email, String password, String phone, String verificationCode) {
+        if (!VerificationRequestManager.getInstance().isRequestValid(email)) {
+            onFailed("请先获取验证码");
+            return;
+        }
         mModel.getRegisterInfo(email, password, phone, verificationCode, this);
 
     }
 
     @Override
     public void getVerificationCode(String email) {
+        pendingEmail= email;
         mModel.getVerificationCode(email, this);
     }
 
     @Override
     public void onSuccess(String data) {
-
+        System.out.println(data);
+        if(data.equals("验证码发送成功")){
+            if (pendingEmail != null) {
+                VerificationRequestManager.getInstance().markRequested(pendingEmail);
+                pendingEmail = null; // 清除临时存储
+            }
+        }
         if (mView!=null&&mView.isACtive()) {
             mView.showSuccess(data);
         }
@@ -54,6 +68,9 @@ public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksC
 
     @Override
     public void onFailed(String error) {
+        if (mView!=null&&mView.isACtive()) {
+            mView.showError(error);
+        }
         System.out.println(error);
 
     }
