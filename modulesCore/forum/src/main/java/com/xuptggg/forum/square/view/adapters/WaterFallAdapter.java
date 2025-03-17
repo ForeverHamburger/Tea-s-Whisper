@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.square.model.ForumInfo;
 
@@ -35,11 +36,32 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ForumInfo info = mWaterFallInfoList.get(position);
-        holder.picture.setImageResource(info.getImageResource());
+
         holder.title.setText(info.getTitle());
-        holder.userIcon.setImageResource(info.getHeadImage());
-        holder.userName.setText(info.getUserName());
-        holder.loveCount.setText(info.getLoveCount());
+
+
+        if (info.getAuthor_url().toString().equals("")) {
+            Glide.with(mContext)
+                    .load(R.drawable.icon_me)
+                    .into(holder.userIcon);
+        } else {
+            Glide.with(mContext)
+                    .load(info.getAuthor_url().toString())
+                    .into(holder.userIcon);
+        }
+
+        if (info.getAuthor_name().toString().equals("")) {
+            holder.userName.setText("匿名奶龙");
+        } else {
+            holder.userName.setText(info.getAuthor_name());
+        }
+
+        holder.loveCount.setText(info.getVotes());
+
+        Glide.with(mContext)
+                .load(info.getUrl().toString())
+                .into(holder.picture);
+
         holder.loveIcon.setImageResource(R.drawable.icon_love);
 
         final boolean[] statusLove = {true};
