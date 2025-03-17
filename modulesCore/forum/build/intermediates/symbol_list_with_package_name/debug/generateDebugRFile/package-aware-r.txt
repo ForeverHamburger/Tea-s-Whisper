@@ -15,6 +15,7 @@ drawable dog_head
 drawable et_background
 drawable ic_add_publish
 drawable ic_comment
+drawable ic_delete
 drawable ic_edit
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -40,9 +41,11 @@ id btn_back
 id btn_follow
 id btn_search
 id btn_share
+id cv_delete_container
 id cv_forum_image
 id cv_message_icon
 id cv_mine_image
+id cv_publish_picture_container
 id et_bottom_comment
 id et_comment
 id et_forum_search
@@ -52,6 +55,7 @@ id forum
 id iv_add_picture
 id iv_bottom_comment
 id iv_bottom_like
+id iv_delete_picture
 id iv_forum_image
 id iv_mine_image
 id iv_publish_picture

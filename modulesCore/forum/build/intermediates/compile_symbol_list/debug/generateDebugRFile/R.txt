@@ -14,6 +14,7 @@ int drawable dog_head 0x0
 int drawable et_background 0x0
 int drawable ic_add_publish 0x0
 int drawable ic_comment 0x0
+int drawable ic_delete 0x0
 int drawable ic_edit 0x0
 int drawable ic_launcher_background 0x0
 int drawable ic_launcher_foreground 0x0
@@ -39,9 +40,11 @@ int id btn_back 0x0
 int id btn_follow 0x0
 int id btn_search 0x0
 int id btn_share 0x0
+int id cv_delete_container 0x0
 int id cv_forum_image 0x0
 int id cv_message_icon 0x0
 int id cv_mine_image 0x0
+int id cv_publish_picture_container 0x0
 int id et_bottom_comment 0x0
 int id et_comment 0x0
 int id et_forum_search 0x0
@@ -51,6 +54,7 @@ int id forum 0x0
 int id iv_add_picture 0x0
 int id iv_bottom_comment 0x0
 int id iv_bottom_like 0x0
+int id iv_delete_picture 0x0
 int id iv_forum_image 0x0
 int id iv_mine_image 0x0
 int id iv_publish_picture 0x0
