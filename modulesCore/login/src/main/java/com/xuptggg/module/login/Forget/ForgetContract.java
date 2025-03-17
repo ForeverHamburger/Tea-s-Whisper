@@ -5,8 +5,8 @@ import com.xuptggg.module.login.base.LoadTasksCallBack;
 
 public interface ForgetContract {
     interface Model {
-        void getForgetInfo(String email, String verificationCode,String password, String password1, LoadTasksCallBack callBack);
-        void getVerificationCode(String email, LoadTasksCallBack callBack);
+        void getForgetInfo(String email, String verificationCode,String password, String password1, LoadTasksCallBack<String> callBack);
+        void getVerificationCode(String email, LoadTasksCallBack<String> callBack);
     }
 
     interface Presenter {

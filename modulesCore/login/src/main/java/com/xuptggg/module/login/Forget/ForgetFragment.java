@@ -41,9 +41,9 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+
         binding.buttonGetVerificationCode.setOnClickListener(v -> {
             String email = binding.editTextEmail.getText().toString().trim();
-//            sentCode(email);
             ValidationResult result = ValidationUtil.validateEmail(email);
             if (!result.isValid()) {
                 Toast.makeText(getContext(), result.getErrorMessage(), Toast.LENGTH_SHORT).show();

@@ -61,6 +61,13 @@ public class NetworkHelper {
                 } else if (url.equals(URL.LOGIN_LOGIN_URL)) {
                     callBack.onSuccess(token);
                 }
+                else if (url.equals(URL.LOGIN_FORGET_URL)) {
+                    if (msg.equals("success"))
+                        callBack.onSuccess("验证码发送成功");
+                    else
+                        callBack.onFailed(msg);
+                }
+
             } else {
                 callBack.onFailed(msg);
             }
