@@ -17,6 +17,7 @@ public class PublishInfo {
         this.publishTitle = publishTitle;
         this.publishContent = publishContent;
         this.strings = strings;
+        this.status = status;
     }
 
     public String getPublishTitle() {

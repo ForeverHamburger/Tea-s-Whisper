@@ -1,5 +1,7 @@
 package com.xuptggg.forum.publish.model;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.xuptggg.forum.publish.contract.IPublishContract;
 import com.xuptggg.libnetwork.MyOkHttpClient;
@@ -18,14 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PublishModel implements IPublishContract.IPublishModel<String> {
+    List<String> imageUriList;
+
+    public PublishModel() {
+        this.imageUriList = new ArrayList<>();;
+    }
+
     @Override
     public void getUriFromFile(List<File> files, String token, LoadImageUriCallBack callBack) {
         uploadFiles(files, 0, token, callBack);
     }
 
     private void uploadFiles(final List<File> files, final int index, final String token, final LoadImageUriCallBack callBack) {
-        List<String> imageUriList = new ArrayList<>();
-
         if (index >= files.size()) {
             // 所有文件都上传成功
             callBack.onSuccess(imageUriList);
@@ -78,7 +84,7 @@ public class PublishModel implements IPublishContract.IPublishModel<String> {
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-
+                Log.d("xixi", "onSuccess: " + responseObj);
             }
 
             @Override
@@ -98,11 +104,13 @@ public class PublishModel implements IPublishContract.IPublishModel<String> {
 
         RequestParams requestParams = new RequestParams();
         requestParams.put("content",publishInfo.getPublishContent());
+        Log.d("TAG", "publishThread: " + publishInfo.getStatus());
         requestParams.put("status",publishInfo.getStatus());
         requestParams.put("title",publishInfo.getPublishTitle());
         Gson gson = new Gson();
-        requestParams.put("url",gson.toJson(publishInfo.toString()));
+        requestParams.put("url",gson.toJson(publishInfo.getStrings().toArray()));
 
+        Log.d("TAG", "publishThread: " + gson.toJson(publishInfo.getStrings().toArray()));
 
         MyOkHttpClient.get(MyRequest.PostRequest(URL.FORUM_PUBLISH_URL, requestParams, mToken), myDataHandle);
     }

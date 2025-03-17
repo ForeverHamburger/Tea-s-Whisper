@@ -51,7 +51,10 @@ public class ForumModel implements IForumContract.IForumModel<String> {
             Log.d(TAG, "execute: " + data);
         }
 
-        MyOkHttpClient.get(MyRequest.GetRequest(URL.FORUM_SQUARE_URL,null,mToken),myDataHandle);
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("page","1");
+        requestParams.put("size","5");
+        MyOkHttpClient.get(MyRequest.GetRequest(URL.FORUM_SQUARE_URL,requestParams,mToken),myDataHandle);
 
 
         // 造一点数据

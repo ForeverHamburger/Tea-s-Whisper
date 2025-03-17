@@ -166,7 +166,6 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
 
     @Override
     public void showMessage(List<String> strings) {
-        Log.d("pic", "showMessage: " + strings);
         imageStringList = strings;
         Toast.makeText(this, "图片均上传成功！", Toast.LENGTH_SHORT).show();
     }

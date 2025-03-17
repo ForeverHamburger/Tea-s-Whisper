@@ -44,7 +44,7 @@ public class IndividualFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.btnIndividual.setOnClickListener(new View.OnClickListener() {
+        binding.editInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ARouter.getInstance().build("/individual/EditActivity").navigation();

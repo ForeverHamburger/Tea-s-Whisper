@@ -1,5 +1,7 @@
 package com.xuptggg.forum.publish.presenter;
 
+import android.util.Log;
+
 import com.xuptggg.forum.publish.contract.IPublishContract;
 import com.xuptggg.forum.publish.model.LoadImageUriCallBack;
 import com.xuptggg.forum.publish.model.PublishInfo;
