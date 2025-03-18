@@ -6,6 +6,9 @@
 
     <application>
         <activity
+            android:name="com.xuptggg.forum.thread.view.ThreadContainerActivity"
+            android:exported="false" />
+        <activity
             android:name="com.xuptggg.forum.publish.view.PublishActivity"
             android:exported="false" />
         <activity

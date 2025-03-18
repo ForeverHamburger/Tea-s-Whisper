@@ -31,9 +31,11 @@ public class ThreadModel implements IThreadContract.IThreadModel<String> {
             public void onFailure(Object reasonObj) {
                 if (reasonObj instanceof String) {
                     // 将响应结果转换为 String 类型并传递给 LoadTasksCallBack 的 onSuccess 方法
+                    Log.d("TAG", "onFailure: " + reasonObj);
                     callBack.onFailed();
                 } else {
                     // 如果响应结果不是 String 类型，视为请求失败
+                    Log.d("TAG", "onFailure: " + reasonObj);
                     callBack.onFailed();
                 }
             }
@@ -45,6 +47,6 @@ public class ThreadModel implements IThreadContract.IThreadModel<String> {
         RequestParams requestParams = new RequestParams();
         requestParams.put("post_id",postId);
 
-        MyOkHttpClient.get(MyRequest.GetRequest(URL.FORUM_SQUARE_URL,requestParams,mToken),myDataHandle);
+        MyOkHttpClient.get(MyRequest.GetRequest(URL.FORUM_THREAD_URL,requestParams,mToken),myDataHandle);
     }
 }

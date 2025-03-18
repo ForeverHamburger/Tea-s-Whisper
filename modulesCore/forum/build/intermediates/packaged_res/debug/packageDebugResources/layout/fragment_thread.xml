@@ -152,7 +152,7 @@
                     android:drawableRight="@drawable/ic_edit"
                     android:textColor="@color/black"
                     android:textColorHint="@color/dark_green"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -221,7 +221,7 @@
             android:text="头像名称"
             android:fontFamily="@font/fzht"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="13sp" />
 
         <!-- 用于占位，将关注和分享按钮挤到右边 -->
         <LinearLayout
@@ -236,7 +236,7 @@
 
             <Button
                 android:id="@+id/btn_follow"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:background="@drawable/btn_background"
                 android:text="关注"
@@ -245,8 +245,8 @@
 
             <ImageButton
                 android:id="@+id/btn_share"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:scaleType="centerCrop"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center"
@@ -277,13 +277,13 @@
             android:paddingLeft="13dp"
             android:textColor="@color/black"
             android:textColorHint="@color/dark_green"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/iv_bottom_like"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="5dp"
             android:src="@drawable/ic_like_select"/>
@@ -299,9 +299,9 @@
 
         <ImageView
             android:id="@+id/iv_bottom_comment"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             android:src="@drawable/ic_comment"/>
 

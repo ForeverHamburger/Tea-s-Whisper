@@ -51,6 +51,7 @@ id et_comment
 id et_forum_search
 id et_publish_content
 id et_publish_title
+id fcv_thread
 id forum
 id iv_add_picture
 id iv_bottom_comment
@@ -91,6 +92,7 @@ id view
 id view_note_top
 layout activity_forum
 layout activity_publish
+layout activity_thread_container
 layout fragment_forum
 layout fragment_thread
 layout item_image
