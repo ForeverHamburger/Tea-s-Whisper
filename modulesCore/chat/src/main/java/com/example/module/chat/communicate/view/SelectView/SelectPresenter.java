@@ -36,6 +36,11 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     }
 
     @Override
+    public void getToken(String token) {
+        mModel.getToken(token);
+    }
+
+    @Override
     public void onSuccess(List<DataItem> data) {
         if (mView != null && mView.isACtive()) {
             if (data == null || data.isEmpty()) {

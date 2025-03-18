@@ -61,6 +61,14 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                 ((LoginActivity) getActivity()).adjustCardViewForFragment(fragmentHeight);
             }
         });
+        Bundle args = getArguments();
+        if (args != null) {
+            String email = args.getString("email", "");
+            String password = args.getString("password", "");
+
+            binding.editTextUsername.setText(email);
+            binding.editTextPassword.setText(password);
+        }
         return binding.getRoot();
     }
 
@@ -201,19 +209,9 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
     }
 
     @Override
-    public void showError() {
-
+    public void showError(String error) {
+        Toast.makeText(getActivity(), "登录失败："+error, Toast.LENGTH_SHORT).show();
     }
-//    @Override
-//    public void setStarData(musicData starData) {
-//        requireActivity().runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
-//
-//    }
 
     @Override
     public Boolean isACtive() {

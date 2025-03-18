@@ -110,16 +110,24 @@ public class MyRequest {
     }
     //--------------------------------------------
 
-    public static Request TestMultiPostRequest(String url, RequestParams params) {
+    public static Request TestMultiPostRequest(String url, RequestParams params,RequestParams headers) {
         MultipartBody.Builder bodyBuilder = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM);
 
         if (params != null) {
             processParams(bodyBuilder, params);
         }
-
+        // 创建一个Headers.Builder对象，用于构建请求头内容
+        Headers.Builder mHeadersBuilder = new Headers.Builder();
+        if (headers!= null) {
+            // 遍历headers中的键值对，将它们添加到Headers.Builder中，以此构建请求头
+            for (Map.Entry<String, String> entry : headers.urlParams.entrySet()) {
+                mHeadersBuilder.add(entry.getKey(), entry.getValue());
+            }
+        }
         return new Request.Builder()
                 .url(url)
+                .headers(mHeadersBuilder.build())
                 .post(bodyBuilder.build())
                 .build();
     }

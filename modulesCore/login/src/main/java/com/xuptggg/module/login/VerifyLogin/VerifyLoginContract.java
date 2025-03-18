@@ -24,9 +24,12 @@ public interface VerifyLoginContract {
     }
 
     interface View extends BaseView<VerifyLoginContract.Presenter> {
-        void showError();
+        void showError(String error);
 
-        //        void setLoginInData(musicData starData);
         Boolean isACtive();
+
+        void showSuccess(String data);
+
+        void enableVerificationCodeInput(boolean b);
     }
 }

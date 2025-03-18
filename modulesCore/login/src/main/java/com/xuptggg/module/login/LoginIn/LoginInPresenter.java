@@ -61,6 +61,9 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
 
     @Override
     public void onFailed(String error) {
+        if (mView!=null&&mView.isACtive()) {
+            mView.showError(error);
+        }
         System.out.println(error);
     }
 }

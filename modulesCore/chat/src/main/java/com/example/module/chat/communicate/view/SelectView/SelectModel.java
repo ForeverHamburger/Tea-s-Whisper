@@ -22,4 +22,9 @@ public class SelectModel implements SelectContract.Model {
         networkHelper.performGetRequest(URL.CHAT_HISTORYS_URL, null, callBack);
     }
 
+    @Override
+    public void getToken(String token) {
+        networkHelper.setToken(token);
+    }
+
 }

@@ -10,13 +10,15 @@ public interface CommunicateContract {
     interface Model {
         void getCommunicateInfo(String content, String sessionId, LoadTasksCallBack callBack);
         void getHistoryInfo(String sessionId, LoadTasksCallBack callBack);
-
+        void getToken(String token);
     }
 
     interface Presenter {
         void getCommunicateInfo(String content, String sessionId);
         void getHistoryInfo(String sessionId);
         void unSubscribe();
+
+        void getToken(String token);
     }
 
     interface View extends BaseView<Presenter> {

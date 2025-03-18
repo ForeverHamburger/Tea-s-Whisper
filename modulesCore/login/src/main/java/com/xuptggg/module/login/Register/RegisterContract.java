@@ -4,7 +4,7 @@ import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.base.BaseView;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
-public class RegisterContract {
+public interface RegisterContract {
     interface Model {
         void getRegisterInfo(String email, String password,String phone, String verificationCode, LoadTasksCallBack callBack);
         void getVerificationCode(String email,LoadTasksCallBack callBack);
@@ -19,8 +19,10 @@ public class RegisterContract {
         void getVerificationCode(String string);
     }
     interface View extends BaseView<RegisterContract.Presenter> {
-        void showError();
+        void showError(String error);
         //        void setLoginInData(musicData starData);
         Boolean isACtive();
+
+        void showSuccess(String data);
     }
 }

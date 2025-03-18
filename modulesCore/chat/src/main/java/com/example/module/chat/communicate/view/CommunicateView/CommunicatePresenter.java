@@ -55,7 +55,10 @@ public class CommunicatePresenter implements CommunicateContract.Presenter, Load
             }
         }
     }
-
+    @Override
+    public void getToken(String token) {
+        mModel.getToken(token);
+    }
     @Override
     public void onFailed(String error) {
         System.out.println(error.toString());

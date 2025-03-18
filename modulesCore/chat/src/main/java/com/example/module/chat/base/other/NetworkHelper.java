@@ -152,4 +152,8 @@ public class NetworkHelper {
             callBack.onFailed(responseObj.getMsg() + "code错误");
         }
     }
+
+    public void setToken(String token) {
+        this.apiKey = token;
+    }
 }

@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.LoginActivity;
@@ -279,8 +281,8 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     }
 
     @Override
-    public void showError() {
-
+    public void showError(String error){
+        Toast.makeText(getActivity(), "注册失败："+error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -288,6 +290,50 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         //判断是否加入到Activity
         return isAdded();
     }
+
+    @Override
+    public void showSuccess(String data) {
+        Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+        if(data.equals("注册成功")){
+            showNewDialogConfirmation();
+        }
+    }
+    public void showNewDialogConfirmation() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("即将去登录")
+                .setMessage("确定要去登录吗？")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    initFragment();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
+    }
+
+    private void initFragment() {
+        String email = binding.editTextEmail.getText().toString();
+        String password = binding.editTextPassword.getText().toString();
+        LoginInFragment loginFragment = new LoginInFragment();
+        Bundle args = new Bundle();
+        args.putString("email", email);
+        args.putString("password", password);
+        loginFragment.setArguments(args);
+
+        LoginInPresenter loginInPresenter = new LoginInPresenter(loginFragment, new LoginInModel());
+        loginFragment.setPresenter(loginInPresenter);
+
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.slide_in_bottom,
+                        R.anim.slide_out_bottom
+                )
+                .replace(R.id.fragment_container, loginFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
 
     @Override
     public void setPresenter(RegisterContract.Presenter presenter) {

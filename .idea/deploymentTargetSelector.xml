@@ -39,6 +39,14 @@
       </SelectionState>
       <SelectionState runConfigName="modulesCore.chat">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-03-13T05:51:03.932006200Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=DKS9K23511032399" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="modulesCore.individual">
         <option name="selectionMode" value="DROPDOWN" />
@@ -48,6 +56,14 @@
       </SelectionState>
       <SelectionState runConfigName="modulesCore.chat">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-03-13T05:51:03.932006200Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=DKS9K23511032399" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="modulesCore.detail">
         <option name="selectionMode" value="DROPDOWN" />

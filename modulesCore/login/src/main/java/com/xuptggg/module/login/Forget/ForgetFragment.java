@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
@@ -41,9 +42,9 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+
         binding.buttonGetVerificationCode.setOnClickListener(v -> {
             String email = binding.editTextEmail.getText().toString().trim();
-//            sentCode(email);
             ValidationResult result = ValidationUtil.validateEmail(email);
             if (!result.isValid()) {
                 Toast.makeText(getContext(), result.getErrorMessage(), Toast.LENGTH_SHORT).show();
@@ -56,7 +57,7 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
         // 确认按钮点击事件
         binding.confirmButton.setOnClickListener(v -> {
             String email = binding.editTextEmail.getText().toString().trim();
-            String verificationCode = binding.codeview.getValue();
+            String verificationCode = binding.codeInput.getText().toString();
             String newPassword = binding.editTextPassword.getText().toString().trim();
             String confirmPassword = binding.editTextConfirmPassword.getText().toString().trim();
             ValidationResult[] results = {
@@ -129,8 +130,49 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
         binding.buttonGetVerificationCode.setText(R.string.get_verification_code);
     }
     @Override
-    public void showError() {
+    public void showSuccess(String data) {
+        Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+        if(data.equals("密码修改成功")){
+            showNewDialogConfirmation();
+        }
+    }
+    public void showNewDialogConfirmation() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("即将去登录")
+                .setMessage("确定要去登录吗？")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    initFragment();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
+    }
+    private void initFragment() {
+        String email = binding.editTextEmail.getText().toString();
+        String password = binding.editTextPassword.getText().toString();
+        LoginInFragment loginFragment = new LoginInFragment();
+        Bundle args = new Bundle();
+        args.putString("email", email);
+        args.putString("password", password);
+        loginFragment.setArguments(args);
 
+        LoginInPresenter loginInPresenter = new LoginInPresenter(loginFragment, new LoginInModel());
+        loginFragment.setPresenter(loginInPresenter);
+
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.slide_in_bottom,
+                        R.anim.slide_out_bottom
+                )
+                .replace(R.id.fragment_container, loginFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+    @Override
+    public void showError(String error){
+        Toast.makeText(getActivity(), "密码修改失败："+error, Toast.LENGTH_SHORT).show();
     }
 
 

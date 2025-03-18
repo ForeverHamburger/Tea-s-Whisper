@@ -34,4 +34,10 @@ public class CommunicateModel implements CommunicateContract.Model {
         networkHelper.performDataGetRequest(URL.CHAT_HISTORY_URL, params, callBack);
     }
 
+    @Override
+    public void getToken(String token) {
+        networkHelper.setToken(token);
+    }
+
+
 }

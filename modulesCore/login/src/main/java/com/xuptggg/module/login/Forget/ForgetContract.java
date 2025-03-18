@@ -5,8 +5,8 @@ import com.xuptggg.module.login.base.LoadTasksCallBack;
 
 public interface ForgetContract {
     interface Model {
-        void getForgetInfo(String email, String verificationCode,String password, String password1, LoadTasksCallBack callBack);
-        void getVerificationCode(String email, LoadTasksCallBack callBack);
+        void getForgetInfo(String email, String verificationCode, String password, String repassword, LoadTasksCallBack<String> callBack);
+        void getVerificationCode(String email, LoadTasksCallBack<String> callBack);
     }
 
     interface Presenter {
@@ -20,8 +20,10 @@ public interface ForgetContract {
     }
 
     interface View extends BaseView<ForgetContract.Presenter> {
-        void showError();
+        void showError(String error);
 
         Boolean isACtive();
+
+        void showSuccess(String data);
     }
 }
