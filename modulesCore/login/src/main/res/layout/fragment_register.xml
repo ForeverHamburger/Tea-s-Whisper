@@ -8,9 +8,7 @@
     android:fillViewport="true"
     tools:context=".Register.RegisterFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintLayout_re"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -206,9 +204,9 @@
                 android:layout_marginEnd="@dimen/dp_marginTop_small"
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="18dp"
+                android:fontFamily="@font/content_font"
                 android:hint="@string/login_verificationCode"
                 android:imeOptions="actionNext"
-                android:fontFamily="@font/content_font"
                 android:inputType="number"
                 android:maxLength="25"
                 android:maxLines="1"

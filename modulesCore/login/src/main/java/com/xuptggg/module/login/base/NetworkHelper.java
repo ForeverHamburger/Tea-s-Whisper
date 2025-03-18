@@ -62,7 +62,7 @@ public class NetworkHelper {
                     callBack.onSuccess("密码已修改");
                 } else if (url.equals(URL.LOGIN_SIGNUP_URL)) {
                     callBack.onSuccess("注册成功");
-                } else if (url.equals(URL.LOGIN_LOGIN_URL)) {
+                } else if (url.equals(URL.LOGIN_LOGIN_URL)||url.equals(URL.LOGIN_VERIFY_URL)) {
                     if (data == null) {
                         callBack.onFailed("服务器未返回 token");
                         return;

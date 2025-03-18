@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.chaos.view.PinView;
 import com.goodiebag.pinview.Pinview;
 import com.google.android.material.textfield.TextInputLayout;
 import com.xuptggg.module.login.Forget.ForgetFragment;
@@ -47,24 +49,16 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
 
         initView();
         // 监听键盘的“完成”按钮
-        binding.editTextEmailAddress.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                String email = binding.editTextEmailAddress.getText().toString().trim();
-                return sentCode(email);
-            }
-            return false;
-        });
+//        binding.editTextEmailAddress.setOnEditorActionListener((v, actionId, event) -> {
+//            if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                String email = binding.editTextEmailAddress.getText().toString().trim();
+//                Log.d("VerifyLoginFragment", "Email: " + email);
+//                return sentCode(email);
+//            }
+//            return false;
+//        });
 
-        Pinview pinview = binding.codeInput;
-        pinview.setPinViewEventListener((pinview1, fromUser) -> {
-            // 当用户输入完成时触发
-            if (pinview.getValue().length() == 6) {
-                String email = binding.editTextEmailAddress.getText().toString();
-                String verificationCode = pinview1.getValue();
-                mPresenter.onVerifyLoginClick(email, verificationCode);
-                Toast.makeText(getContext(), "Entered: " + verificationCode, Toast.LENGTH_SHORT).show();
-            }
-        });
+        PinView pinview = binding.codeInput;
         binding.resendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +69,17 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
         binding.continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String email = binding.editTextEmailAddress.getText().toString();
+                String verificationCode = pinview.getText().toString();
+                mPresenter.onVerifyLoginClick(email, verificationCode);
+            }
+        });
+        binding.buttonGetVerificationCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = binding.editTextEmailAddress.getText().toString().trim();
+                Log.d("VerifyLoginFragment", "Email: " + email);
+                sentCode(email);
             }
         });
         binding.ivNavigation.setOnClickListener(new View.OnClickListener() {
@@ -118,10 +122,14 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
         }
     }
 
-
     @Override
-    public void showError() {
-
+    public void showSuccess(String data) {
+//        Toast.makeText(getActivity(), "Login Success!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void showError(String error){
+        Toast.makeText(getActivity(), "验证码登录失败："+error, Toast.LENGTH_SHORT).show();
     }
     public void initView() {
         binding.tlEmailAddress.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
@@ -141,8 +149,20 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
                 }
             }
         });
+        binding.codeInput.setOnClickListener(v -> {
+            if (!binding.codeInput.isEnabled()) {
+                Toast.makeText(getContext(), "请先获取验证码", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
+    @Override
+    public void enableVerificationCodeInput(boolean enabled) {
+        binding.codeInput.setEnabled(enabled);
+        binding.codeInput.setFocusable(enabled);
+        if (enabled) {
+            binding.codeInput.requestFocus(); // 自动弹出键盘
+        }
+    }
     @Override
     public Boolean isACtive() {
         return isAdded();

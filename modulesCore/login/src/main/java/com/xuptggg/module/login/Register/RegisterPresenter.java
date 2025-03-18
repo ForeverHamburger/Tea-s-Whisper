@@ -10,7 +10,7 @@ import com.xuptggg.module.login.base.VerificationRequestManager;
 public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksCallBack<String> {
     private RegisterContract.View mView;
     private RegisterContract.Model mModel;
-    private String pendingEmail;
+    private String Email;
 
     public RegisterPresenter(RegisterContract.View mView, RegisterContract.Model mModel)
     {
@@ -48,18 +48,15 @@ public class RegisterPresenter implements RegisterContract.Presenter, LoadTasksC
 
     @Override
     public void getVerificationCode(String email) {
-        pendingEmail= email;
+        Email= email;
         mModel.getVerificationCode(email, this);
     }
 
     @Override
     public void onSuccess(String data) {
         System.out.println(data);
-        if(data.equals("验证码发送成功")){
-            if (pendingEmail != null) {
-                VerificationRequestManager.getInstance().markRequested(pendingEmail);
-                pendingEmail = null; // 清除临时存储
-            }
+        if (VerificationRequestManager.getInstance().addRequested(Email, data)) {
+            Email = null; // 清除临时存储
         }
         if (mView!=null&&mView.isACtive()) {
             mView.showSuccess(data);

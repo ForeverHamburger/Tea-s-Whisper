@@ -54,7 +54,8 @@
 <!--    </com.google.android.material.textfield.TextInputLayout>-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_emailAddress"
-        android:layout_width="wrap_content"
+        style="@style/CustomTextInputLayoutStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_marginTop_small"
         app:boxBackgroundMode="outline"
@@ -62,45 +63,76 @@
         app:errorEnabled="true"
         app:errorTextColor="@color/red"
         app:hintTextAppearance="@style/MyHintTextStyle"
-        android:layout_margin="@dimen/dp_marginTop_big"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_marginTop_big"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_emailAddress"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="match_parent"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@"
             android:drawableStart="@drawable/icon_email"
-            android:drawablePadding="18dp"
-            android:windowSoftInputMode="adjustResize"
-            android:hint="        请输入邮箱地址"
+            android:drawablePadding="5dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:fontFamily="@font/content_font"
-            android:imeOptions="actionNext"
+            android:hint="        请输入邮箱地址"
+            android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
             android:maxLength="25"
             android:maxLines="1"
             android:textColor="@color/black"
+            android:windowSoftInputMode="adjustResize"
             app:errorEnabled="true" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.goodiebag.pinview.Pinview
+    <Button
+        android:id="@+id/button_getVerificationCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_marginTop_small"
+        android:layout_marginEnd="@dimen/dp_marginTop_small"
+        android:background="@drawable/edit_shape"
+        android:fontFamily="@font/content_font"
+        android:padding="8dp"
+        android:text="@string/get_verification_code"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tl_emailAddress"
+        app:layout_constraintTop_toTopOf="@+id/tl_emailAddress">
+
+    </Button>
+
+    <com.chaos.view.PinView
         android:id="@+id/codeInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:itemCount="6"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:cursorVisible="true"
         android:inputType="number"
-        app:pinWidth="30dp"
-        app:pinHeight="30dp"
-        app:pinLength="6"
-        app:cursorVisible="false"
-        app:forceKeyboard="true"
-        app:password="false"
-        android:windowSoftInputMode="adjustResize"
-        app:layout_constraintTop_toBottomOf="@id/tl_emailAddress"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cursorColor="@color/bright_yellow"
+        app:cursorWidth="2dp"
+        app:itemHeight="48dp"
+        app:itemRadius="4dp"
+        app:itemSpacing="0dp"
+        app:itemWidth="48dp"
+        app:hideLineWhenFilled="false"
+        app:lineColor="@color/dark_green"
+        app:lineWidth="2dp"
+        app:viewType="rectangle"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_emailAddress" />
     <!--    app:pinBackground="@drawable/example_drawable"-->
 
     <TextView

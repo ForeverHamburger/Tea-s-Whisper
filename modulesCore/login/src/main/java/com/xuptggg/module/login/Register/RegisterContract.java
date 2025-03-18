@@ -4,7 +4,7 @@ import com.xuptggg.module.login.LoginIn.LoginInContract;
 import com.xuptggg.module.login.base.BaseView;
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 
-public class RegisterContract {
+public interface RegisterContract {
     interface Model {
         void getRegisterInfo(String email, String password,String phone, String verificationCode, LoadTasksCallBack callBack);
         void getVerificationCode(String email,LoadTasksCallBack callBack);
