@@ -3,6 +3,9 @@
 
     <application>
         <activity
+            android:name=".thread.view.ThreadContainerActivity"
+            android:exported="false" />
+        <activity
             android:name=".publish.view.PublishActivity"
             android:exported="false" />
         <activity

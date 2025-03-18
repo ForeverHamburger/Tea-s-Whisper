@@ -1,6 +1,7 @@
 package com.xuptggg.forum.square.view.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.square.model.ForumInfo;
+import com.xuptggg.forum.thread.view.ThreadContainerActivity;
 
 import java.util.List;
 
@@ -28,8 +30,6 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.recycler_waterfall_item, null);
         ViewHolder holder = new ViewHolder(view);
-
-
         return holder;
     }
 
@@ -104,6 +104,19 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
 
             loveIcon = itemView.findViewById(R.id.iv_wf_love_icon);
             loveCount = itemView.findViewById(R.id.tv_wf_love_count);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        ForumInfo info = mWaterFallInfoList.get(position);
+                        Intent intent = new Intent(mContext, ThreadContainerActivity.class);
+                        intent.putExtra("postid", info.getPost_id());
+                        mContext.startActivity(intent);
+                    }
+                }
+            });
         }
     }
 }

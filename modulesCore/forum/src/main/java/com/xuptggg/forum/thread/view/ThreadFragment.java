@@ -15,10 +15,16 @@ import com.xuptggg.forum.thread.contract.IThreadContract;
 import com.xuptggg.forum.thread.model.ThreadInfo;
 import com.xuptggg.forum.thread.model.ThreadModel;
 import com.xuptggg.forum.thread.presenter.ThreadPresenter;
+import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.youth.banner.indicator.CircleIndicator;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class ThreadFragment extends Fragment implements IThreadContract.IThreadView {
     private IThreadContract.IThreadPresenter mPresenter;
+    private String postid;
 
     public ThreadFragment() {
         // Required empty public constructor
@@ -30,8 +36,17 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            postid = getArguments().getString("postid");
+        }
     }
 
     @Override
@@ -40,12 +55,21 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
         return inflater.inflate(R.layout.fragment_thread, container, false);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getToken(TokenManager tokenManager) {
+        mPresenter.getThreadInfo(tokenManager.getToken(),postid);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setPresenter(new ThreadPresenter(this,new ThreadModel()));
-        mPresenter.getThreadInfo("id");
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
