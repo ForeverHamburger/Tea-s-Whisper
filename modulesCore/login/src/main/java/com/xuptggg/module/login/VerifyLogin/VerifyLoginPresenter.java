@@ -59,7 +59,6 @@ public class VerifyLoginPresenter implements VerifyLoginContract.Presenter, Load
     public void onSuccess(String data) {
         if (mView != null && mView.isACtive()) {
             if (VerificationRequestManager.getInstance().addRequested(Email, data)) {
-//                mView.enableVerificationCodeInput(true);
                 Email = null;
             }
             if (data != null) {

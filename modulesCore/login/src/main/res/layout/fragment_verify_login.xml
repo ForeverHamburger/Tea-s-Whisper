@@ -125,7 +125,7 @@
         app:itemHeight="48dp"
         app:itemRadius="4dp"
         app:itemSpacing="0dp"
-        app:itemWidth="48dp"
+        app:itemWidth="60dp"
         app:hideLineWhenFilled="false"
         app:lineColor="@color/dark_green"
         app:lineWidth="2dp"

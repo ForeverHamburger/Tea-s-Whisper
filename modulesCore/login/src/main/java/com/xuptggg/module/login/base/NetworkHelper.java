@@ -59,7 +59,7 @@ public class NetworkHelper {
                 if (url.equals(URL.LOGIN_CODE_URL)) {
                     callBack.onSuccess("验证码发送成功");
                 } else if (url.equals(URL.LOGIN_FORGET_URL)) {
-                    callBack.onSuccess("密码已修改");
+                    callBack.onSuccess("密码修改成功");
                 } else if (url.equals(URL.LOGIN_SIGNUP_URL)) {
                     callBack.onSuccess("注册成功");
                 } else if (url.equals(URL.LOGIN_LOGIN_URL)||url.equals(URL.LOGIN_VERIFY_URL)) {

@@ -5,8 +5,39 @@
     android:id="@+id/constraintLayout_select"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/white"
     tools:context=".communicate.view.SelectView.SelectFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_select_fragment_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/emerald_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_select_fragment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/title_font"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="茶韵对谈"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_centerInParent="true"/>
+
+        <ImageButton
+            android:id="@+id/btn_select_agent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_add"
+            android:textSize="18sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
     <!-- 背景层（第一个子元素） -->
     <ImageView
         android:id="@+id/bg_overlay"
@@ -19,72 +50,76 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:layout_height="0dp"
+        android:background="@drawable/bg_chat_container"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rl_select_fragment_title">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!-- 智能体选择标题 -->
+        <TextView
+            android:id="@+id/tv_select_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/content_font"
+            android:padding="8dp"
+            android:text="茗智寻伴"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_select_fragment_title" />
 
-            <!-- 智能体选择标题 -->
-            <TextView
-                android:id="@+id/tv_select_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="选择智能体"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/btn_select_agent"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/dog"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_select_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_select_title" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_agents"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_select_title"
             app:spanCount="2" />
 
         <TextView
+            android:id="@+id/tv_history_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/content_font"
             android:padding="8dp"
-            android:text="历史记录"
+            android:text="茶语拾忆"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_agents" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_history"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
             android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_history_title" />
 
         <ImageButton
             android:id="@+id/btn_select_cancel"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:src="@color/white" />
+            android:background="@drawable/ic_add"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="50dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,19 +14,28 @@
         android:gravity="center"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/iv_icon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/dog"
-            android:scaleType="centerCrop"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="2dp">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/dog"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:gravity="center"
+            android:fontFamily="@font/head_font"
             android:text="奶龙"
             android:layout_marginTop="8dp"/>
 
@@ -34,10 +43,17 @@
             android:id="@+id/tv_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
             android:gravity="center"
             android:text="一只可爱的奶龙"
-            android:textColor="@color/bright_yellow"/>
+            android:fontFamily="@font/content_font"
+            android:textColor="@color/dark_green"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_right_enter"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

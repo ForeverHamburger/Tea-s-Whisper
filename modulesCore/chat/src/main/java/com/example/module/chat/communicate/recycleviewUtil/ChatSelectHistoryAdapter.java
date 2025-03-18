@@ -1,6 +1,7 @@
 package com.example.module.chat.communicate.recycleviewUtil;
 import static com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter.getRelativeTime;
 
+import android.graphics.Color;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.example.module.chat.databinding.ItemHistoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import io.noties.markwon.Markwon;
 
@@ -80,6 +82,8 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
             }
             binding.tvTime.setText(getRelativeTime(data.getTimestamp().getTime()));
             binding.tvTittle.setText(history.getTitle());
+            binding.cvHistoryAvatarContainer.setCardBackgroundColor(getRandomColor(itemView));
+
         }
 
     }
@@ -132,6 +136,19 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
         int startPosition = historys.size();
         historys.addAll(historyList);
         notifyItemRangeInserted(startPosition, historyList.size());
+    }
+
+    private static int getRandomColor(View itemView) {
+        int[] colors = {
+                itemView.getResources().getColor(R.color.emerald_green),
+                itemView.getResources().getColor(R.color.light_green)
+        };
+
+        // 随机选择一种颜色
+        Random random = new Random();
+        int randomIndex = random.nextInt(colors.length);
+        int selectedColor = colors[randomIndex];
+        return selectedColor;
     }
 
     private class EmptyViewHolder extends RecyclerView.ViewHolder {

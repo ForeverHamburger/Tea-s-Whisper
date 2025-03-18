@@ -53,11 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_marginTop_small"
-            android:drawableStart="@drawable/icon_password"
-            android:drawablePadding="18dp"
+            android:drawableStart="@drawable/icon_email"
+            android:drawablePadding="5dp"
             android:hint="请输入邮箱"
             android:fontFamily="@font/content_font"
-
             android:imeOptions="actionNext"
             android:windowSoftInputMode="adjustResize"
             android:inputType="textEmailAddress"
@@ -81,22 +80,34 @@
         app:layout_constraintTop_toTopOf="@+id/tl_email">
 
     </Button>
-
-    <com.goodiebag.pinview.Pinview
-        android:id="@+id/codeview"
+    <com.chaos.view.PinView
+        android:id="@+id/codeInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cursorVisible="true"
-        app:forceKeyboard="true"
-        app:hint="*"
+        app:itemCount="6"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:cursorVisible="true"
+        android:inputType="number"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cursorColor="@color/bright_yellow"
+        app:cursorWidth="2dp"
+        app:itemHeight="48dp"
+        app:itemRadius="4dp"
+        app:itemSpacing="0dp"
+        app:itemWidth="60dp"
+        app:hideLineWhenFilled="false"
+        app:lineColor="@color/dark_green"
+        app:lineWidth="2dp"
+        app:viewType="rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tl_email"
+        app:layout_constraintTop_toBottomOf="@id/tl_email"/>
 
-        app:pinHeight="40dp"
-        app:pinLength="6"
-        app:pinWidth="40dp"
-        app:textSize="20sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_password"
@@ -109,7 +120,7 @@
         app:errorTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeview"
+        app:layout_constraintTop_toBottomOf="@+id/codeInput"
         app:passwordToggleDrawable="@drawable/shape_seeorno">
 
         <com.google.android.material.textfield.TextInputEditText
