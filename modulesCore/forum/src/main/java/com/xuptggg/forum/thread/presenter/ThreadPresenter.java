@@ -19,8 +19,8 @@ public class ThreadPresenter implements IThreadContract.IThreadPresenter, LoadTh
     }
 
     @Override
-    public void getThreadInfo(String info) {
-        model.execute(info,this);
+    public void getThreadInfo(String info,String postId) {
+        model.execute(info,postId,this);
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -20,15 +21,28 @@ public final class ItemImageBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final CardView cvDeleteContainer;
+
+  @NonNull
+  public final CardView cvPublishPictureContainer;
+
+  @NonNull
   public final ImageView ivAddPicture;
+
+  @NonNull
+  public final ImageView ivDeletePicture;
 
   @NonNull
   public final ImageView ivPublishPicture;
 
-  private ItemImageBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView ivAddPicture,
-      @NonNull ImageView ivPublishPicture) {
+  private ItemImageBinding(@NonNull ConstraintLayout rootView, @NonNull CardView cvDeleteContainer,
+      @NonNull CardView cvPublishPictureContainer, @NonNull ImageView ivAddPicture,
+      @NonNull ImageView ivDeletePicture, @NonNull ImageView ivPublishPicture) {
     this.rootView = rootView;
+    this.cvDeleteContainer = cvDeleteContainer;
+    this.cvPublishPictureContainer = cvPublishPictureContainer;
     this.ivAddPicture = ivAddPicture;
+    this.ivDeletePicture = ivDeletePicture;
     this.ivPublishPicture = ivPublishPicture;
   }
 
@@ -59,9 +73,27 @@ public final class ItemImageBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cv_delete_container;
+      CardView cvDeleteContainer = ViewBindings.findChildViewById(rootView, id);
+      if (cvDeleteContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.cv_publish_picture_container;
+      CardView cvPublishPictureContainer = ViewBindings.findChildViewById(rootView, id);
+      if (cvPublishPictureContainer == null) {
+        break missingId;
+      }
+
       id = R.id.iv_add_picture;
       ImageView ivAddPicture = ViewBindings.findChildViewById(rootView, id);
       if (ivAddPicture == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_delete_picture;
+      ImageView ivDeletePicture = ViewBindings.findChildViewById(rootView, id);
+      if (ivDeletePicture == null) {
         break missingId;
       }
 
@@ -71,7 +103,8 @@ public final class ItemImageBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemImageBinding((ConstraintLayout) rootView, ivAddPicture, ivPublishPicture);
+      return new ItemImageBinding((ConstraintLayout) rootView, cvDeleteContainer,
+          cvPublishPictureContainer, ivAddPicture, ivDeletePicture, ivPublishPicture);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

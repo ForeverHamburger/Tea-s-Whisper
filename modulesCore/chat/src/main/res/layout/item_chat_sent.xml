@@ -22,8 +22,9 @@
         android:layout_margin="8dp"
         android:autoSizeTextType="uniform"
         android:background="@drawable/chat_sent"
+        android:textColor="@color/black"
         android:maxWidth="300dp"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="sent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sent_time" />

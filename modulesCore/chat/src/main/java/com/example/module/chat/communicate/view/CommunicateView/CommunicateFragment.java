@@ -1,5 +1,7 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,6 +31,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.module.chat.R;
 import com.example.module.chat.communicate.base.ChatMessage;
 import com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter;
+import com.example.module.chat.communicate.view.SelectView.SelectFragment;
+import com.example.module.chat.communicate.view.SelectView.SelectModel;
+import com.example.module.chat.communicate.view.SelectView.SelectPresenter;
 import com.example.module.chat.databinding.FragmentCommunicateBinding;
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 
@@ -62,7 +69,6 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         if (getArguments() != null) {
             title = getArguments().getString(ARG_TITLE);
             sessionId = getArguments().getString(ARG_SESSION_ID);
@@ -103,6 +109,8 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         markwon = Markwon.create(requireContext());
         adapter = new ChatCommunicateAdapter(markwon);
@@ -122,28 +130,10 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                binding.ChatSend.animate().cancel(); // 取消之前的动画
                 if (s.length() > 0) {
-                    if(binding.ChatSend.getVisibility() == View.GONE) {
-                        // 从右侧滑入
-                        binding.ChatSend.setVisibility(View.VISIBLE);
-                        binding.ChatSend.setTranslationX(200); // 初始偏移量
-                        binding.ChatSend.animate()
-                                .translationX(0)
-                                .setDuration(400)
-                                .setInterpolator(new DecelerateInterpolator())
-                                .start();
-                    }
+                    showSendButton();
                 } else {
-                    // 向右侧滑出
-                    binding.ChatSend.animate()
-                            .translationX(200)
-                            .setDuration(400)
-                            .withEndAction(() -> {
-                                binding.ChatSend.setVisibility(View.GONE);
-                                binding.ChatSend.setTranslationX(0); // 复位位置
-                            })
-                            .start();
+                    hideSendButton();
                 }
             }
 
@@ -242,6 +232,66 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         initDefault();
         // 初始化键盘隐藏逻辑
         setupHideKeyboardFeature();
+    }
+
+
+    private void showSendButton() {
+        if (binding.ChatSend.getVisibility() == View.GONE) {
+            binding.ChatSend.setVisibility(View.VISIBLE);
+            binding.ChatSend.setTranslationX(200);
+            binding.ChatSend.animate()
+                    .translationX(0)
+                    .setDuration(400)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .start();
+
+            shrinkEditText();
+        }
+    }
+
+    private void hideSendButton() {
+        binding.ChatSend.animate()
+                .translationX(200)
+                .setDuration(400)
+                .withEndAction(() -> {
+                    binding.ChatSend.setVisibility(View.GONE);
+                    binding.ChatSend.setTranslationX(0);
+                })
+                .start();
+
+        expandEditText();
+    }
+
+    private void shrinkEditText() {
+        int startWidth = binding.ChatEdit.getWidth();
+        int endWidth = startWidth - 200;
+
+        ValueAnimator widthAnimator = ValueAnimator.ofInt(startWidth, endWidth);
+        widthAnimator.setDuration(400);
+        widthAnimator.setInterpolator(new DecelerateInterpolator());
+        widthAnimator.addUpdateListener(animation -> {
+            int newWidth = (int) animation.getAnimatedValue();
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) binding.ChatEdit.getLayoutParams();
+            params.width = newWidth;
+            binding.ChatEdit.setLayoutParams(params);
+        });
+        widthAnimator.start();
+    }
+
+    private void expandEditText() {
+        int startWidth = binding.ChatEdit.getWidth();
+        int endWidth = startWidth + 200;
+
+        ValueAnimator widthAnimator = ValueAnimator.ofInt(startWidth, endWidth);
+        widthAnimator.setDuration(400);
+        widthAnimator.setInterpolator(new DecelerateInterpolator());
+        widthAnimator.addUpdateListener(animation -> {
+            int newWidth = (int) animation.getAnimatedValue();
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) binding.ChatEdit.getLayoutParams();
+            params.width = newWidth;
+            binding.ChatEdit.setLayoutParams(params);
+        });
+        widthAnimator.start();
     }
 
     private void initFragment() {

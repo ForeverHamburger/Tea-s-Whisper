@@ -1,15 +1,15 @@
 package com.xuptggg.forum.publish.presenter;
 
-import android.graphics.drawable.Icon;
-import android.net.Uri;
+import android.util.Log;
 
 import com.xuptggg.forum.publish.contract.IPublishContract;
-import com.xuptggg.forum.publish.model.LoadPublishCallBack;
+import com.xuptggg.forum.publish.model.LoadImageUriCallBack;
 import com.xuptggg.forum.publish.model.PublishInfo;
 
+import java.io.File;
 import java.util.List;
 
-public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadPublishCallBack<String> {
+public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadImageUriCallBack<List<String>> {
     private IPublishContract.IPublishModel model;
     private IPublishContract.IPublishView view;
 
@@ -19,18 +19,18 @@ public class PublishPresenter implements IPublishContract.IPublishPresenter, Loa
     }
 
     @Override
-    public void getUri(List<Uri> uris) {
-        model.getUriFromFile(uris);
+    public void getUri(List<File> files, String token) {
+        model.getUriFromFile(files,token,this);
     }
 
     @Override
-    public void publishThread(PublishInfo publishInfos) {
-        model.publishThread(publishInfos);
+    public void publishThread(PublishInfo publishInfos, String token) {
+        model.publishThread(publishInfos,token,this);
     }
 
     @Override
-    public void onSuccess(String string) {
-
+    public void onSuccess(List<String> strings) {
+        view.showMessage(strings);
     }
 
     @Override

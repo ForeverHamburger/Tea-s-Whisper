@@ -65,7 +65,7 @@
         android:id="@+id/ptr_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/grey_bg"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_search_bar">
 

@@ -1,38 +1,30 @@
 package com.xuptggg.forum.square.model;
 
 public class ForumInfo {
-    public static final String NOTE = "NOTE";
-    public static final String VIDEO = "VIDEO";
-    private String type;
-    private int imageResource;
+    private String post_id;
     private String title;
-    private int headImage;
-    private String userName;
-    private String loveCount;
+    private String url;
+    private String author_id;
+    private String author_url;
+    private String author_name;
+    private String votes;
 
-    public ForumInfo(String type, int imageResource, String title, int headImage, String userName, String loveCount) {
-        this.type = type;
-        this.imageResource = imageResource;
+    public ForumInfo(String post_id, String title, String url, String author_id, String author_url, String author_name, String votes) {
+        this.post_id = post_id;
         this.title = title;
-        this.headImage = headImage;
-        this.userName = userName;
-        this.loveCount = loveCount;
+        this.url = url;
+        this.author_id = author_id;
+        this.author_url = author_url;
+        this.author_name = author_name;
+        this.votes = votes;
     }
 
-    public String getType() {
-        return type;
+    public String getPost_id() {
+        return post_id;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getImageResource() {
-        return imageResource;
-    }
-
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
+    public void setPost_id(String post_id) {
+        this.post_id = post_id;
     }
 
     public String getTitle() {
@@ -43,27 +35,43 @@ public class ForumInfo {
         this.title = title;
     }
 
-    public int getHeadImage() {
-        return headImage;
+    public String getUrl() {
+        return url;
     }
 
-    public void setHeadImage(int headImage) {
-        this.headImage = headImage;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAuthor_id() {
+        return author_id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAuthor_id(String author_id) {
+        this.author_id = author_id;
     }
 
-    public String getLoveCount() {
-        return loveCount;
+    public String getAuthor_url() {
+        return author_url;
     }
 
-    public void setLoveCount(String loveCount) {
-        this.loveCount = loveCount;
+    public void setAuthor_url(String author_url) {
+        this.author_url = author_url;
+    }
+
+    public String getAuthor_name() {
+        return author_name;
+    }
+
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
+    }
+
+    public String getVotes() {
+        return votes;
+    }
+
+    public void setVotes(String votes) {
+        this.votes = votes;
     }
 }

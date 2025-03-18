@@ -15,6 +15,7 @@ drawable dog_head
 drawable et_background
 drawable ic_add_publish
 drawable ic_comment
+drawable ic_delete
 drawable ic_edit
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -25,6 +26,7 @@ drawable ic_search
 drawable ic_share
 drawable icon_love
 drawable icon_love_empty
+drawable icon_me
 drawable icon_nailong
 drawable publish_add_background
 drawable publish_background
@@ -39,18 +41,22 @@ id btn_back
 id btn_follow
 id btn_search
 id btn_share
+id cv_delete_container
 id cv_forum_image
 id cv_message_icon
 id cv_mine_image
+id cv_publish_picture_container
 id et_bottom_comment
 id et_comment
 id et_forum_search
 id et_publish_content
 id et_publish_title
+id fcv_thread
 id forum
 id iv_add_picture
 id iv_bottom_comment
 id iv_bottom_like
+id iv_delete_picture
 id iv_forum_image
 id iv_mine_image
 id iv_publish_picture
@@ -86,6 +92,7 @@ id view
 id view_note_top
 layout activity_forum
 layout activity_publish
+layout activity_thread_container
 layout fragment_forum
 layout fragment_thread
 layout item_image

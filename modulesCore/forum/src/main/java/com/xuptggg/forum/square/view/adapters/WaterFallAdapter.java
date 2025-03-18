@@ -1,6 +1,7 @@
 package com.xuptggg.forum.square.view.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,8 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.square.model.ForumInfo;
+import com.xuptggg.forum.thread.view.ThreadContainerActivity;
 
 import java.util.List;
 
@@ -27,19 +30,38 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.recycler_waterfall_item, null);
         ViewHolder holder = new ViewHolder(view);
-
-
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ForumInfo info = mWaterFallInfoList.get(position);
-        holder.picture.setImageResource(info.getImageResource());
+
         holder.title.setText(info.getTitle());
-        holder.userIcon.setImageResource(info.getHeadImage());
-        holder.userName.setText(info.getUserName());
-        holder.loveCount.setText(info.getLoveCount());
+
+
+        if (info.getAuthor_url().toString().equals("")) {
+            Glide.with(mContext)
+                    .load(R.drawable.icon_me)
+                    .into(holder.userIcon);
+        } else {
+            Glide.with(mContext)
+                    .load(info.getAuthor_url().toString())
+                    .into(holder.userIcon);
+        }
+
+        if (info.getAuthor_name().toString().equals("")) {
+            holder.userName.setText("匿名奶龙");
+        } else {
+            holder.userName.setText(info.getAuthor_name());
+        }
+
+        holder.loveCount.setText(info.getVotes());
+
+        Glide.with(mContext)
+                .load(info.getUrl().toString())
+                .into(holder.picture);
+
         holder.loveIcon.setImageResource(R.drawable.icon_love);
 
         final boolean[] statusLove = {true};
@@ -82,6 +104,19 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
 
             loveIcon = itemView.findViewById(R.id.iv_wf_love_icon);
             loveCount = itemView.findViewById(R.id.tv_wf_love_count);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        ForumInfo info = mWaterFallInfoList.get(position);
+                        Intent intent = new Intent(mContext, ThreadContainerActivity.class);
+                        intent.putExtra("postid", info.getPost_id());
+                        mContext.startActivity(intent);
+                    }
+                }
+            });
         }
     }
 }

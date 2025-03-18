@@ -1,4 +1,4 @@
-package com.xuptggg.individual.personal.view;
+package com.xuptggg.individual;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.xuptggg.individual.R;
 import com.xuptggg.individual.personal.base.myviewpageradapter;
 import com.xuptggg.individual.databinding.ActivityIndividualBinding;
+import com.xuptggg.individual.personal.view.IndividualFragment;
 
 
 public class IndividualActivity extends AppCompatActivity {
