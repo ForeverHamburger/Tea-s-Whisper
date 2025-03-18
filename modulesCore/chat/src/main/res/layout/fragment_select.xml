@@ -12,7 +12,7 @@
         android:id="@+id/rl_select_fragment_title"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/emerald_green"
+        android:background="@color/light_green"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -34,6 +34,7 @@
             android:layout_height="30dp"
             android:background="@drawable/ic_add"
             android:textSize="18sp"
+            android:layout_marginEnd="8dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"/>
 
@@ -104,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scrollbars="vertical"
+            android:layout_marginBottom="50dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

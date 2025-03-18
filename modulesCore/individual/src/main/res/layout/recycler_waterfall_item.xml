@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_message_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="0.5dp"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_waterfall_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:background="@color/bg_color"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_nailong"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_waterfall_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/content_font"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_waterfall_icon"
+                app:layout_constraintTop_toBottomOf="@+id/iv_waterfall_icon" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/iv_waterfall_user_card"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_waterfall_user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_waterfall_user_name">
+
+                <ImageView
+                    android:id="@+id/iv_waterfall_user_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/bg_color"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_me" />
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tv_waterfall_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:maxEms="5"
+                android:maxLines="1"
+                android:text="奶龙大王"
+                android:fontFamily="@font/content_font"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_waterfall_user_card"
+                app:layout_constraintTop_toBottomOf="@+id/tv_waterfall_title" />
+
+            <ImageView
+                android:id="@+id/iv_wf_love_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_love_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_wf_love_count"
+                app:layout_constraintEnd_toStartOf="@+id/tv_wf_love_count"
+                app:layout_constraintTop_toTopOf="@+id/tv_wf_love_count" />
+
+            <TextView
+                android:id="@+id/tv_wf_love_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="11K"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/content_font"
+                android:textSize="10dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_waterfall_title" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_waterfall_user_card"
+                app:layout_constraintTop_toBottomOf="@+id/tv_waterfall_user_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
