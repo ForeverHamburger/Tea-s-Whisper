@@ -20,9 +20,8 @@ import java.util.List;
 public class NetworkHelper {
 
     private static final String TAG = "NetworkHelper";
-//    String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEzNzczMDEzMDQ0MDE5MiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MjUxNTE1MywiaXNzIjoiTEJES0lORyJ9.OO3zLux1aEMPhnPEkaXSFX_oLXPBf_bWXOmcUr6uG68";
-    String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEyODg3MDU3MzQwNDE2MCwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MzE0NTMwNywiaXNzIjoiTEJES0lORyJ9.1TvcabhhEOMPf7TIDdV-4M2PwIv6IAiuLx18Q96PIwA";
-
+//    String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEyODg3MDU3MzQwNDE2MCwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MzE0NTMwNywiaXNzIjoiTEJES0lORyJ9.1TvcabhhEOMPf7TIDdV-4M2PwIv6IAiuLx18Q96PIwA";
+    String apiKey = null;
 
     public void performPostRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
         RequestParams mToken = new RequestParams();
@@ -101,6 +100,7 @@ public class NetworkHelper {
     }
 
     private <T> void handleMyResponse(String url, BaseResponse<T> responseObj, LoadTasksCallBack<T> callBack) {
+        Log.d(TAG, "Response in apiKey: " + apiKey);
         Log.d(TAG, "Response in chat: " + responseObj);
         Log.d(TAG, "Response in chat:code= " + responseObj.getCode());
         if (responseObj.getData() != null) {
@@ -126,20 +126,23 @@ public class NetworkHelper {
                 //getMsg校验
                 if (responseObj.getMsg().equals("success")) {
                     //getData校验
-                    if (responseObj.getData() != null)
+                    if (responseObj.getData() != null) {
+                        Log.d(TAG, "handleMyResponse: " + "getData校验成功");
                         callBack.onSuccess(responseObj.getData());
-                    else
+                    }
+                    else {
                         callBack.onFailed("数据为空");
+                    }
                 } else {
                     callBack.onFailed(responseObj.getMsg());
                 }
-
-
             } else if (url.equals(URL.CHAT_HISTORY_URL)|| url.equals(URL.CHAT_HISTORYS_URL)) {
                 if (responseObj.getMsg().equals("success")) {
 //                    //getData校验
-                    if (responseObj.getData() != null)
-                    callBack.onSuccess(responseObj.getData());
+                    if (responseObj.getData() != null) {
+                        Log.d(TAG, "handleMyResponse: " + "getData校验成功");
+                        callBack.onSuccess(responseObj.getData());
+                    }
                     else
                         callBack.onFailed("历史聊天数据为空");
                 } else {

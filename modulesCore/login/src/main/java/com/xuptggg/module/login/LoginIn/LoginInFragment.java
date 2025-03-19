@@ -91,6 +91,7 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
             if (!processLogin(phoneoremail, password)) {
                 return;
             }
+            Log.e("onLoginClick", "onViewCreated: ");
             mPresenter.onLoginClick(phoneoremail, password);
         });
         // 账号输入框焦点改变监听
@@ -144,7 +145,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                             R.anim.slide_out_bottom
                     )
                     .replace(R.id.fragment_container, registerFragment)
-                    .addToBackStack(null)
                     .commit();
         });
         binding.textViewLoginWithVerificationCode.setOnClickListener(v -> {
@@ -159,7 +159,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                             R.anim.slide_out_left
                     )
                     .replace(R.id.fragment_container, verifyLoginFragment)
-                    .addToBackStack(null)
                     .commit();
         });
         binding.textViewForget.setOnClickListener(v -> {
@@ -174,7 +173,6 @@ public class LoginInFragment extends Fragment implements LoginInContract.View {
                             R.anim.slide_out_left
                     )
                     .replace(R.id.fragment_container, forgetFragment)
-                    .addToBackStack(null)
                     .commit();
         });
 

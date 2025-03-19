@@ -330,7 +330,6 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                         R.anim.slide_out_bottom
                 )
                 .replace(R.id.fragment_container, loginFragment)
-                .addToBackStack(null)
                 .commit();
     }
 

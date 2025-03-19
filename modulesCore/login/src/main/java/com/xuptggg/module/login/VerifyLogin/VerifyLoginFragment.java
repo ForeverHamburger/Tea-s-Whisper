@@ -94,7 +94,6 @@ public class VerifyLoginFragment extends Fragment implements VerifyLoginContract
                                 R.anim.slide_out_right
                         )
                         .replace(R.id.fragment_container, logininFragment)
-                        .addToBackStack(null)
                         .commit();
             }
         });

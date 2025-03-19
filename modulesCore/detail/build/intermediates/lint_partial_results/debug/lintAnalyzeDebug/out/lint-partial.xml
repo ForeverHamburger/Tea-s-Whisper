@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <incidents format="6" by="lint 8.4.0" type="partial_results">
     <map id="UnusedResources">
+        <location id="R.mipmap.ic_launcher"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher.webp"/>
         <location id="R.color.bright_yellow"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
             line="10"
@@ -17,6 +19,14 @@
             endLine="14"
             endColumn="30"
             endOffset="499"/>
+        <location id="R.style.Base_Theme_TeasWhisper"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="3"
+            column="12"
+            startOffset="109"
+            endLine="3"
+            endColumn="41"
+            endOffset="138"/>
         <location id="R.drawable.button_selector"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/drawable/button_selector.xml"
             line="2"
@@ -33,6 +43,14 @@
             endLine="7"
             endColumn="9"
             endOffset="252"/>
+        <location id="R.drawable.ic_launcher_background"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_launcher_background.xml"
+            line="2"
+            column="1"
+            startOffset="40"
+            endLine="170"
+            endColumn="10"
+            endOffset="5774"/>
         <location id="R.color.emerald_green"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
             line="8"
@@ -49,6 +67,14 @@
             endLine="15"
             endColumn="27"
             endOffset="556"/>
+        <location id="R.string.app_name"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="2"
+            column="13"
+            startOffset="25"
+            endLine="2"
+            endColumn="28"
+            endOffset="40"/>
         <location id="R.style.detailTitleTextStyle"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
             line="39"
@@ -65,6 +91,14 @@
             endLine="7"
             endColumn="30"
             endOffset="219"/>
+        <location id="R.drawable.ic_launcher_foreground"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_launcher_foreground.xml"
+            line="1"
+            column="1"
+            startOffset="0"
+            endLine="30"
+            endColumn="10"
+            endOffset="1731"/>
         <location id="R.string.hello_blank_fragment"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
             line="4"
@@ -83,7 +117,15 @@
             endOffset="1284"/>
         <entry
             name="model"
-            string="color[light_yellow(U),dark_green(U),white(U),tea_light(U),tea_primary(D),black(U),transparent(D),light_green(D),emerald_green(D),bright_yellow(D),red(D),tea_dark(D)],drawable[arrow_down(U),bg_guide_rounded(U),pic_detail_guide(U),bg_rounded_corner(D),bg_tea_card(U),button_background(D),button_background_pressed(D),button_selector(D),detail_background(U),ic_launcher_background(U),ic_launcher_foreground(U),ic_launcher_foreground_1(R),ic_like(U),ic_like_select(U),icon_menu_navigation(U),pic_detail_history(U),pic_detail_progress(U),pic_title_background(U),rounded_corners(U),tea_test(U)],font[head_font(R),content_font(R),title_font(R)],id[coordinator_detail(D),appbar(U),ctl_detail(D),main_backdrop(D),toolbar(D),iv_detail(U),tv_detail_title(D),tv_content(U),section_history(D),iv_history_arrow(D),tv_history_content(D),section_process(D),iv_process_arrow(D),tv_process_content(D),section_guide(D),iv_guide_arrow(D),tv_guide_content(D),fab_detail_like(D)],layout[activity_detail(U)],mipmap[ic_launcher(U),ic_launcher_round(U)],string[app_name(U),appbar_scrolling_view_behavior(R),string_detail_content(U),string_detail_bottom_test(U),hello_blank_fragment(D)],style[Theme_TeasWhisper(U),ThemeOverlay_MaterialComponents_Dark_ActionBar(R),CollapsedTitleTextStyle(U),ExpandedTitleTextStyle(U),Base_Theme_TeasWhisper(U),Theme_MaterialComponents_DayNight_NoActionBar_Bridge(R),BaseTextStyle(U),detailTextStyle(D),detailTitleTextStyle(D),Theme_Material3_DayNight_NoActionBar(R)];d^e,f^0^1,10^2^3,11^4^2,12^4^3,13^12^11,14^0,16^17,19^2,1a^2,35^2^3e^3f^1^40^1d^1a^14^39^1e^1f^20^28^10^21^3a^0^2a^1b^c^22^5^3b^1c^d^18^24,36^15^16,37^15^16,3d^41,3f^43^2^22,40^43^5^22,41^42^46,43^2^22,44^22^13^2,45^22^2;;;"/>
+            string="color[light_yellow(U),dark_green(U),white(U),tea_light(U),tea_primary(D),black(U),transparent(D),light_green(D),emerald_green(D),bright_yellow(D),red(D),tea_dark(D)],drawable[arrow_down(U),bg_guide_rounded(U),pic_detail_guide(U),bg_rounded_corner(D),bg_tea_card(U),button_background(D),button_background_pressed(D),button_selector(D),detail_background(U),ic_launcher_background(D),ic_launcher_foreground(D),ic_launcher_foreground_1(E),ic_like(U),ic_like_select(U),icon_menu_navigation(U),pic_detail_history(U),pic_detail_progress(U),pic_title_background(U),rounded_corners(U),tea_test(U)],font[head_font(R),content_font(R),title_font(R)],id[coordinator_detail(D),appbar(U),ctl_detail(D),main_backdrop(D),toolbar(D),iv_detail(U),tv_detail_title(D),tv_content(U),section_history(D),iv_history_arrow(D),tv_history_content(D),section_process(D),iv_process_arrow(D),tv_process_content(D),section_guide(D),iv_guide_arrow(D),tv_guide_content(D),fab_detail_like(D)],layout[activity_detail(U)],mipmap[ic_launcher(D),ic_launcher_round(D)],string[appbar_scrolling_view_behavior(R),string_detail_content(U),string_detail_bottom_test(U),app_name(D),hello_blank_fragment(D)],style[ThemeOverlay_MaterialComponents_Dark_ActionBar(R),CollapsedTitleTextStyle(U),ExpandedTitleTextStyle(U),Base_Theme_TeasWhisper(D),Theme_MaterialComponents_DayNight_NoActionBar_Bridge(E),Theme_TeasWhisper(D),BaseTextStyle(U),detailTextStyle(D),detailTitleTextStyle(D),Theme_Material3_DayNight_NoActionBar(E)];d^e,f^0^1,10^2^3,11^4^2,12^4^3,13^12^11,14^0,16^17,19^2,1a^2,35^2^3d^3e^1^3f^1d^1a^14^38^1e^1f^20^28^10^21^39^0^2a^1b^c^22^5^3a^1c^d^18^24,36^15^16,37^15^16,3e^43^2^22,3f^43^5^22,40^41^46,42^40,43^2^22,44^22^13^2,45^22^2;;;"/>
+        <location id="R.style.Theme_TeasWhisper"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="8"
+            column="12"
+            startOffset="356"
+            endLine="8"
+            endColumn="36"
+            endOffset="380"/>
         <location id="R.drawable.button_background_pressed"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/drawable/button_background_pressed.xml"
             line="2"
@@ -92,6 +134,8 @@
             endLine="9"
             endColumn="9"
             endOffset="345"/>
+        <location id="R.mipmap.ic_launcher_round"
+            file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_round.webp"/>
         <location id="R.color.transparent"
             file="${:modulesCore:detail*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
             line="6"

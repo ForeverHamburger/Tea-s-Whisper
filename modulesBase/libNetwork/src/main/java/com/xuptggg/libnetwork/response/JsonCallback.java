@@ -64,6 +64,7 @@ public class JsonCallback implements Callback {
             @Override
             public void run() {
                 // 调用监听器的 onFailure 方法，并将网络错误封装成 MyHttpException 传递
+                Log.d("JsonCallback", "onFailure in JsonCallback: " + ioexception);
                 mListener.onFailure(new MyHttpException(NETWORK_ERROR, ioexception + "-网络错误onFailure"));
             }
         });
@@ -88,13 +89,14 @@ public class JsonCallback implements Callback {
     private void handleResponse(Object responseObj) {
         // 如果响应对象为空或为空字符串，认为请求失败，调用监听器的 onFailure 方法，传递网络错误
         if (responseObj == null || responseObj.toString().trim().equals("")) {
+            Log.d("JsonCallback", "handleResponse in JsonCallback: " + EMPTY_MSG);
             mListener.onFailure(new MyHttpException(NETWORK_ERROR, EMPTY_MSG+"-网络错误"));
             return;
         }
 
         try {
             // 将响应结果转换为 JSONObject
-            Log.d("xixi", "handleResponse: " + responseObj);
+            Log.d("JsonCallback", "handleResponse in JsonCallback: " + responseObj);
             JSONObject result = new JSONObject(responseObj.toString());
             // 如果没有指定期望的数据类型，直接将结果以 JSONObject 形式传递给监听器的 onSuccess 方法
             if (mClass == null) {

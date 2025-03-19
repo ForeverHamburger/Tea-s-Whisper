@@ -48,7 +48,7 @@ D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res
    can be unused too, such as the new <tag> element in layouts introduced in
    API 21.
 
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\layout\activity_detail.xml:8: Warning: Possible overdraw: Root element paints background @color/white with a theme that also paints a background (inferred theme is @style/Theme.TeasWhisper) [Overdraw]
+D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\layout\activity_detail.xml:8: Warning: Possible overdraw: Root element paints background @color/white with a theme that also paints a background (inferred theme is @android:style/Theme.Holo) [Overdraw]
     android:background="@color/white"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -72,63 +72,6 @@ D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res
    want it to be mixed with the background. However, you will get better
    performance if you pre-mix the background with your drawable and use that
    resulting image or color as a custom theme background instead.
-
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\drawable\bg_rounded_corner.xml:1: Warning: The resource R.drawable.bg_rounded_corner appears to be unused [UnusedResources]
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-^
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\drawable\button_background.xml:2: Warning: The resource R.drawable.button_background appears to be unused [UnusedResources]
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-^
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\drawable\button_background_pressed.xml:2: Warning: The resource R.drawable.button_background_pressed appears to be unused [UnusedResources]
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-^
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\drawable\button_selector.xml:2: Warning: The resource R.drawable.button_selector appears to be unused [UnusedResources]
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-^
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:6: Warning: The resource R.color.transparent appears to be unused [UnusedResources]
-    <color name="transparent">#00FFFFFF</color>
-           ~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:7: Warning: The resource R.color.light_green appears to be unused [UnusedResources]
-    <color name="light_green">#BFE1CA</color>
-           ~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:8: Warning: The resource R.color.emerald_green appears to be unused [UnusedResources]
-    <color name="emerald_green">#A5CEBD</color>
-           ~~~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:10: Warning: The resource R.color.bright_yellow appears to be unused [UnusedResources]
-    <color name="bright_yellow">#FFC530</color>
-           ~~~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:11: Warning: The resource R.color.red appears to be unused [UnusedResources]
-    <color name="red">#C62828</color>
-           ~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:14: Warning: The resource R.color.tea_primary appears to be unused [UnusedResources]
-    <color name="tea_primary">#3E2723</color> <!-- 深茶色 -->
-           ~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\colors.xml:15: Warning: The resource R.color.tea_dark appears to be unused [UnusedResources]
-    <color name="tea_dark">#2E1B16</color>   <!-- 强调色 -->
-           ~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\strings.xml:4: Warning: The resource R.string.hello_blank_fragment appears to be unused [UnusedResources]
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\themes.xml:30: Warning: The resource R.style.detailTextStyle appears to be unused [UnusedResources]
-    <style name="detailTextStyle">
-           ~~~~~~~~~~~~~~~~~~~~~~
-D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\values\themes.xml:39: Warning: The resource R.style.detailTitleTextStyle appears to be unused [UnusedResources]
-    <style name="detailTitleTextStyle">
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-   Explanation for issues of type "UnusedResources":
-   Unused resources make applications larger and slow down builds.
-
-
-   The unused resource check can ignore tests. If you want to include
-   resources that are only referenced from tests, consider packaging them in a
-   test source set instead.
-
-   You can include test sources in the unused resource check by setting the
-   system property lint.unused-resources.include-tests =true, and to exclude
-   them (usually for performance reasons), use
-   lint.unused-resources.exclude-tests =true.
-   ,
 
 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\layout\activity_detail.xml:123: Warning: This namespace declaration is redundant [RedundantNamespace]
                         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -250,4 +193,4 @@ D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res
    probably also specify padding on the right side (and vice versa) for
    right-to-left layout symmetry.
 
-0 errors, 48 warnings
+0 errors, 34 warnings

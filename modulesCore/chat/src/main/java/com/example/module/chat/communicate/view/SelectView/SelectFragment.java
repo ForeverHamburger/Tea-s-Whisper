@@ -77,7 +77,7 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
         super.onViewCreated(view, savedInstanceState);
         SelectPresenter presenter = new SelectPresenter(this, new SelectModel());
         markwon = Markwon.create(requireContext());
-        mPresenter.getHistoryDataInfo();
+//        mPresenter.getHistoryDataInfo();
         historyAdapter = new ChatSelectHistoryAdapter(markwon, this);
 
         agentAdapter = new ChatSelectAgentAdapter(new ItemActionListener<Agent>() {
@@ -158,8 +158,8 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
     }
 
     @Override
-    public void displayHistoryData(List<DataItem> data, String isOk) {
-        if (isOk == null) {
+    public void displayHistoryData(List<DataItem> data, String errorCode) {
+        if (errorCode == null) {
             historyAdapter.addAllHistoryDataList(data);
             List<Agent> agents = new ArrayList<>();
             agents.add(new Agent("0", "陆羽", R.drawable.pic_luyu, "悦来客满是茶香"));
@@ -168,11 +168,19 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
             agents.add(new Agent("3", "张岱", R.drawable.pic_zhangdai, "茶淫枯虐"));
             agentAdapter.addAllMessageDataList(agents);
         } else {
-            historyAdapter.addWithError(data, isOk);
+            addAgents();
+            historyAdapter.addWithError(data, errorCode);
         }
 
     }
-
+    public void addAgents() {
+        agentAdapter.addAllMessageDataList(mPresenter.getAgents());
+    }
+    @Override
+    public void showEmptyHistory() {
+        addAgents();
+        historyAdapter.addWithError(new ArrayList<>(), "error");
+    }
     // 实现接口方法
     @Override
     public void onItemClick(DataItem item, int position) {

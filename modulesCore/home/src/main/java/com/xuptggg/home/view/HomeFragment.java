@@ -125,6 +125,7 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
     public void getToken(TokenManager tokenManager) {
         Log.d(TAG, "getToken: " + token);
         mPresenter.getHomeInfo(tokenManager.getToken());
+        Log.d(TAG, "getToken: " + token+"\\\\"+tokenManager.getToken());
     }
 
     private void initBanner(View view) {

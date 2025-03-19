@@ -1,5 +1,6 @@
 package com.example.module.chat.communicate.view.SelectView;
 
+import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.base.database.select.DataItem;
 import com.example.module.chat.base.other.BaseView;
 import com.example.module.chat.base.other.LoadTasksCallBack;
@@ -12,6 +13,7 @@ public interface SelectContract {
 
         void getHistoryListInfo( LoadTasksCallBack callBack);
         void getToken(String token);
+        List<Agent> getAgents();
 //        void getHistoryDataInfo(String data, LoadTasksCallBack callBack);
 
 //        void getAgentDataInfo(String data, LoadTasksCallBack callBack);
@@ -20,6 +22,7 @@ public interface SelectContract {
     interface Presenter {
         void getSelectInfo(String content, String sessionId);
         void getHistoryDataInfo();
+        List<Agent> getAgents();
 
 
 //        void getAgentDataInfo(String data);
@@ -33,6 +36,8 @@ public interface SelectContract {
 
         Boolean isACtive();
 
-        void displayHistoryData(List<DataItem> data,String isOk);
+        void displayHistoryData(List<DataItem> data,String errorCode);
+
+        void showEmptyHistory();
     }
 }

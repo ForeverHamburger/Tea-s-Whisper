@@ -1,25 +1,24 @@
 package com.example.module.chat.communicate.recycleviewUtil;
 import static com.example.module.chat.communicate.recycleviewUtil.ChatCommunicateAdapter.getRelativeTime;
 
-import android.graphics.Color;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.module.chat.R;
+import com.example.module.chat.base.aword.aWord;
+import com.example.module.chat.base.aword.aWordHelper;
 import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.database.select.DataItem;
+import com.example.module.chat.base.other.LoadTasksCallBack;
 import com.example.module.chat.communicate.base.ItemActionListener;
-import com.example.module.chat.communicate.view.CommunicateView.CommunicateFragment;
-import com.example.module.chat.communicate.view.CommunicateView.CommunicateModel;
-import com.example.module.chat.communicate.view.CommunicateView.CommunicatePresenter;
 import com.example.module.chat.databinding.ItemHistoryBinding;
 
 import java.util.ArrayList;
@@ -40,13 +39,15 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
         this.markwon = markwon;
         this.listener = listener;
     }
+
     public static class ChatHistoryHolder extends RecyclerView.ViewHolder {
         public final ItemHistoryBinding binding;
         private long lastClickTime = 0;
         Data data;
         private DataItem currentItem;
         private final ItemActionListener<DataItem> listener; // 持有监听器引用
-        public ChatHistoryHolder(ItemHistoryBinding binding,ItemActionListener<DataItem> listener ) {
+
+        public ChatHistoryHolder(ItemHistoryBinding binding, ItemActionListener<DataItem> listener) {
             super(binding.getRoot());
             this.binding = binding;
             this.listener = listener;
@@ -90,7 +91,8 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemViewType(int position) {
-        return historys.isEmpty() ? TYPE_EMPTY : TYPE_ITEM;
+        Log.d("getItemViewType", "position: " + position);
+        return (historys == null || historys.isEmpty()) ? TYPE_EMPTY : TYPE_ITEM;
     }
 
     @NonNull
@@ -110,15 +112,13 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
             DataItem history = historys.get(position);
             ((ChatHistoryHolder) holder).bind(history, markwon);
         } else if (holder instanceof EmptyViewHolder) {
-            // 无需绑定数据，或设置空状态提示
             ((EmptyViewHolder) holder).bindEmptyView();
         }
     }
-
-
     @Override
     public int getItemCount() {
-        return historys != null ? historys.size() : 0;
+        Log.d("getItemCount", "historys.size(): " + historys.size());
+        return (historys == null || historys.isEmpty()) ? 1 : historys.size();
     }
 
     public void addHistoryDataList(DataItem history) {
@@ -127,12 +127,37 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
     public void addAllHistoryDataList(List<DataItem> historyList) {
+        if (historyList == null || historyList.isEmpty()) {
+            Log.e("addAllHistoryDataList", "historyList is null or empty");
+        }
         int startPosition = historys.size();
         historys.addAll(historyList);
         notifyItemRangeInserted(startPosition, historyList.size());
     }
-
     public void addWithError(List<DataItem> historyList, String error) {
+        if (error != null) {
+            // 如果有错误信息，清空现有数据并显示错误状态
+            Log.e("addWithError", "Error: " + error);
+            int itemCount = historys.size();
+            historys.clear(); // 清空现有数据
+            if (itemCount > 0) {
+                notifyItemRangeRemoved(0, itemCount); // 通知 RecyclerView 移除所有数据
+            }
+            return;
+        }
+
+        if (historyList == null || historyList.isEmpty()) {
+            // 如果数据为空，清空现有数据
+            Log.e("addWithError", "historyList is null or empty");
+            int itemCount = historys.size();
+            historys.clear(); // 清空现有数据
+            if (itemCount > 0) {
+                notifyItemRangeRemoved(0, itemCount); // 通知 RecyclerView 移除所有数据
+            }
+            return;
+        }
+
+        // 如果数据正常，添加新数据并通知 RecyclerView 更新
         int startPosition = historys.size();
         historys.addAll(historyList);
         notifyItemRangeInserted(startPosition, historyList.size());
@@ -158,6 +183,31 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
 
         public void bindEmptyView() {
             Log.d("bindEmptyView", "bindEmptyView");
+            TextView emptyText = itemView.findViewById(R.id.tv_text);
+            if (emptyText != null) {
+                aWordHelper helper = aWordHelper.getInstance();
+                helper.fetchaWord(new LoadTasksCallBack<aWord.aWordMain>() {
+                    @Override
+                    public void onSuccess(aWord.aWordMain data) {
+                        System.out.println("最新数据: " + data);
+                        if (data != null) {
+                            emptyText.setText(data.getContent());
+                        } else {
+                            emptyText.setText("没有找到数据");
+                        }
+                    }
+                    @Override
+                    public void onFailed(String errorMessage) {
+                        System.out.println("请求失败: " + errorMessage);
+                        aWord.aWordMain latestData = helper.getLatestData();
+                        if (latestData != null) {
+                            emptyText.setText(latestData.getContent());
+                        } else {
+                            emptyText.setText("没有找到数据");
+                        }
+                    }
+                });
+            }
         }
     }
 }

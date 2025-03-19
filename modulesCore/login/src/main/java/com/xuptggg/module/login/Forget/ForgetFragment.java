@@ -167,7 +167,6 @@ public class ForgetFragment extends Fragment implements ForgetContract.View {
                         R.anim.slide_out_bottom
                 )
                 .replace(R.id.fragment_container, loginFragment)
-                .addToBackStack(null)
                 .commit();
     }
     @Override

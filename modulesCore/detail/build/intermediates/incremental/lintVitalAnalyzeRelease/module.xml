@@ -2,7 +2,7 @@
     format="1"
     dir="D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail"
     name=":modulesCore:detail"
-    type="APP"
+    type="LIBRARY"
     maven="Tea&apos;s Whisper.modulesCore:detail:unspecified"
     agpVersion="8.4.0"
     buildFolder="build"

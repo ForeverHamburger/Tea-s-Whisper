@@ -40,7 +40,6 @@ public class LoginInPresenter implements LoginInContract.Presenter, LoadTasksCal
     @Override
     public void onLoginClick(String phoneoremail, String password) {
         getLoginInInfo(phoneoremail, password);
-
     }
     @Override
     public void onSuccess(String data) {

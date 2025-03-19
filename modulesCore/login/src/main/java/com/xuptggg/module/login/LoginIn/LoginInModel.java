@@ -1,5 +1,7 @@
 package com.xuptggg.module.login.LoginIn;
 
+import android.util.Log;
+
 import com.xuptggg.module.login.base.LoadTasksCallBack;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
@@ -16,6 +18,7 @@ public class LoginInModel implements LoginInContract.Model {
     private final NetworkHelper networkHelper = new NetworkHelper();
     @Override
     public void getLoginInInfo(String phoneoremail, String password, LoadTasksCallBack callBack) {
+        Log.e("TAG", "getLoginInInfo: " );
         // 创建请求参数对象，添加用户名和密码作为参数
         RequestParams params = new RequestParams();
         params.put("phoneoremail", phoneoremail);

@@ -1,7 +1,22 @@
 {
     "logs": [
         {
-            "outputFile": "com.xuptggg.detail-mergeReleaseResources-34:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.xuptggg.detail-mergeReleaseResources-33:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,191",
+                        "endColumns": "135,140",
+                        "endOffsets": "186,327"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.xuptggg.detail-release-35:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
                     "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",

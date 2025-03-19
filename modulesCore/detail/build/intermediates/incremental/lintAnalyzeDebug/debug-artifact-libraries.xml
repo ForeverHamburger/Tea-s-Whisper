@@ -1,10 +1,10 @@
 <libraries>
   <library
       name=":@@:modulesBase:libBase::debug"
-      jars="C:\Users\wind\.gradle\caches\transforms-4\d40a91cac3340680cd95e307c84ed9da\transformed\out\jars\classes.jar;C:\Users\wind\.gradle\caches\transforms-4\d40a91cac3340680cd95e307c84ed9da\transformed\out\jars\libs\R.jar"
+      jars="C:\Users\wind\.gradle\caches\transforms-4\657a2aafb0cceab81f0724957197c99a\transformed\out\jars\classes.jar;C:\Users\wind\.gradle\caches\transforms-4\657a2aafb0cceab81f0724957197c99a\transformed\out\jars\libs\R.jar"
       resolved="Tea&apos;s Whisper.modulesBase:libBase:unspecified"
       partialResultsDir="D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesBase\libBase\build\intermediates\lint_partial_results\debug\lintAnalyzeDebug\out"
-      folder="C:\Users\wind\.gradle\caches\transforms-4\d40a91cac3340680cd95e307c84ed9da\transformed\out"
+      folder="C:\Users\wind\.gradle\caches\transforms-4\657a2aafb0cceab81f0724957197c99a\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -93,10 +93,10 @@
       proguardRules="proguard.txt"/>
   <library
       name=":@@:modulesBase:libNetwork::debug"
-      jars="C:\Users\wind\.gradle\caches\transforms-4\625fd418daa3fb8741cdbd6f96be838c\transformed\out\jars\classes.jar;C:\Users\wind\.gradle\caches\transforms-4\625fd418daa3fb8741cdbd6f96be838c\transformed\out\jars\libs\R.jar"
+      jars="C:\Users\wind\.gradle\caches\transforms-4\d772ad6cbb94990184f4523ea6b6b85f\transformed\out\jars\classes.jar;C:\Users\wind\.gradle\caches\transforms-4\d772ad6cbb94990184f4523ea6b6b85f\transformed\out\jars\libs\R.jar"
       resolved="Tea&apos;s Whisper.modulesBase:libNetwork:unspecified"
       partialResultsDir="D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesBase\libNetwork\build\intermediates\lint_partial_results\debug\lintAnalyzeDebug\out"
-      folder="C:\Users\wind\.gradle\caches\transforms-4\625fd418daa3fb8741cdbd6f96be838c\transformed\out"
+      folder="C:\Users\wind\.gradle\caches\transforms-4\d772ad6cbb94990184f4523ea6b6b85f\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
