@@ -1,6 +1,7 @@
 package com.xuptggg.detection.history.view;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,12 @@ public class DetectionHistoryActivity extends AppCompatActivity implements IDete
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
         setPresenter(new DetectionHistoryPresenter(new DetectionHistoryModel(),this));
         mPresenter.getDetectionInfo("history");

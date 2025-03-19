@@ -51,15 +51,11 @@ public class ForumModel implements IForumContract.IForumModel<String> {
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + data);
 
-        if (data.equals("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEzNzczNjI5NjA2NzA3MiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MzMyNDgwOSwiaXNzIjoiTEJES0lORyJ9.Cu9DmiZqjqtEtgf5fFsW5wLl64gdi7isiIo_NtnRtKQ")) {
-            Log.d(TAG, "execute: " + "token duizhede");
-        } else {
-            Log.d(TAG, "execute: " + data);
-        }
-
         RequestParams requestParams = new RequestParams();
         requestParams.put("page","1");
-        requestParams.put("size","5");
+        requestParams.put("size","12");
         MyOkHttpClient.get(MyRequest.GetRequest(URL.FORUM_SQUARE_URL,requestParams,mToken),myDataHandle);
+
+        callBack.onStart();
     }
 }

@@ -10,5 +10,6 @@
     <color name="bright_yellow">#FFC530</color>
     <color name="grey">#8B8B8B</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="light_yellow">#FCF4E5</color>
 
 </resources>

@@ -41,11 +41,18 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
             return insets;
         });
 
+        binding.tbDetection.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         binding.tbDetection.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.menu_history) {
-                    ARouter.getInstance().build("/detection/TeaCardActivity").navigation();
+                    ARouter.getInstance().build("/detection/DetectionHistoryActivity").navigation();
                 }
                 return false;
             }

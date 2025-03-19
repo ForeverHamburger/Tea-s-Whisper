@@ -27,6 +27,7 @@ int drawable icon_love 0x0
 int drawable icon_love_empty 0x0
 int drawable icon_me 0x0
 int drawable icon_nailong 0x0
+int drawable pic_cup_hint 0x0
 int drawable publish_add_background 0x0
 int drawable publish_background 0x0
 int drawable publish_button_background 0x0
@@ -45,6 +46,7 @@ int id cv_forum_image 0x0
 int id cv_message_icon 0x0
 int id cv_mine_image 0x0
 int id cv_publish_picture_container 0x0
+int id dialog_container 0x0
 int id et_bottom_comment 0x0
 int id et_comment 0x0
 int id et_forum_search 0x0
@@ -52,9 +54,12 @@ int id et_publish_content 0x0
 int id et_publish_title 0x0
 int id fcv_thread 0x0
 int id forum 0x0
+int id front_layout 0x0
 int id iv_add_picture 0x0
 int id iv_bottom_comment 0x0
 int id iv_bottom_like 0x0
+int id iv_card 0x0
+int id iv_card_background 0x0
 int id iv_delete_picture 0x0
 int id iv_forum_image 0x0
 int id iv_mine_image 0x0
@@ -77,6 +82,7 @@ int id rv_water_fall 0x0
 int id tv_bottom_comment_count 0x0
 int id tv_bottom_like_count 0x0
 int id tv_comment_count 0x0
+int id tv_dialog_publish 0x0
 int id tv_forum_name 0x0
 int id tv_note_content 0x0
 int id tv_note_tag 0x0
@@ -92,6 +98,7 @@ int id view_note_top 0x0
 int layout activity_forum 0x0
 int layout activity_publish 0x0
 int layout activity_thread_container 0x0
+int layout dialog_publish 0x0
 int layout fragment_forum 0x0
 int layout fragment_thread 0x0
 int layout item_image 0x0
@@ -103,3 +110,4 @@ int string forum_search_hint 0x0
 int string hello_blank_fragment 0x0
 int style Base_Theme_TeasWhisper 0x0
 int style Theme_TeasWhisper 0x0
+int style dialog 0x0

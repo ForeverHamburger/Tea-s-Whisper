@@ -56,10 +56,13 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
     private String token = null;
     private ThreadPoolUtil threadPoolUtil;
     private List<String> imageStringList;
+    private PublishDialog publishDialog;
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -73,6 +76,7 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        publishDialog = new PublishDialog(this);
         threadPoolUtil = ThreadPoolUtil.getInstance();
         setPresenter(new PublishPresenter(new PublishModel(),this));
 
@@ -145,9 +149,12 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
+    public void onStop() {
+        super.onStop();
+        // 取消注册
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -173,6 +180,17 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
     @Override
     public void showError() {
 
+    }
+
+    @Override
+    public void showSuccess() {
+        publishDialog.dismissAfterOneSecond();
+        finish();
+    }
+
+    @Override
+    public void showOnPublished() {
+        publishDialog.showContinuously();
     }
 
     @Override
