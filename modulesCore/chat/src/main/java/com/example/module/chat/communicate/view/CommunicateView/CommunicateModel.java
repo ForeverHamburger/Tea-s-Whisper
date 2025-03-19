@@ -8,7 +8,7 @@ import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.request.RequestParams;
 
 public class CommunicateModel implements CommunicateContract.Model {
-    private final NetworkHelper networkHelper = new NetworkHelper();
+    private final NetworkHelper networkHelper = NetworkHelper.getInstance();
     String sessionId;
 
     @Override

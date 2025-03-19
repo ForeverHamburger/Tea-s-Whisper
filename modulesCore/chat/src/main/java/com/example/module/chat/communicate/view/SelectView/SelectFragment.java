@@ -160,13 +160,8 @@ public class SelectFragment extends Fragment implements SelectContract.View, Ite
     @Override
     public void displayHistoryData(List<DataItem> data, String errorCode) {
         if (errorCode == null) {
+            addAgents();
             historyAdapter.addAllHistoryDataList(data);
-            List<Agent> agents = new ArrayList<>();
-            agents.add(new Agent("0", "陆羽", R.drawable.pic_luyu, "悦来客满是茶香"));
-            agents.add(new Agent("1", "卢仝", R.drawable.pic_lutong, "二碗破孤闷"));
-            agents.add(new Agent("2", "汪士慎", R.drawable.pic_wss, "胸中清苦味"));
-            agents.add(new Agent("3", "张岱", R.drawable.pic_zhangdai, "茶淫枯虐"));
-            agentAdapter.addAllMessageDataList(agents);
         } else {
             addAgents();
             historyAdapter.addWithError(data, errorCode);

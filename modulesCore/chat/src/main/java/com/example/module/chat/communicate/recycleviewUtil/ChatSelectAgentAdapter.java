@@ -1,5 +1,6 @@
 package com.example.module.chat.communicate.recycleviewUtil;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -33,7 +34,7 @@ public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             super(binding.getRoot());
             this.binding = binding;
             this.listener = listener;
-            itemView.setOnClickListener( v -> {
+            itemView.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION && listener != null) {
                     listener.onItemClick(currentItem, pos);
@@ -42,7 +43,7 @@ public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void bind(Agent Agent) {
-            currentItem =Agent;
+            currentItem = Agent;
             binding.ivIcon.setImageResource(Agent.getIcon());
             binding.tvName.setText(Agent.getName());
             binding.tvDesc.setText(Agent.getDescription());
@@ -67,13 +68,33 @@ public class ChatSelectAgentAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemCount() {
         return Agents == null ? 0 : Agents.size();
     }
+
     public void addAgentDataList(Agent agents) {
         Agents.add(agents);
         notifyItemInserted(Agents.size() - 1);
     }
-    public void addAllMessageDataList(List<Agent> agentsList) {
-        int startPosition = Agents.size();
-        Agents.addAll(agentsList);
-        notifyItemRangeInserted(startPosition, agentsList.size());
+
+        public void addAllMessageDataList(List<Agent> agentsList) {
+            Agents.clear();
+            // 添加新数据
+            Agents.addAll(agentsList);
+            notifyDataSetChanged(); // 直接刷新整个 RecyclerView
     }
+//    public void addAllMessageDataList(List<Agent> agentsList) {
+//        if (agentsList == null || agentsList.isEmpty()) {
+//            Log.e("addAllMessageDataList", "agentsList is null or empty");
+//            return; // 如果数据为空，直接返回
+//        }
+//
+//        // 清空旧数据
+//        int oldSize = Agents.size();
+//        Agents.clear();
+//        if (oldSize > 0) {
+//            notifyItemRangeRemoved(0, oldSize); // 通知 RecyclerView 移除旧数据
+//        }
+//
+//        // 添加新数据
+//        Agents.addAll(agentsList);
+//        notifyItemRangeInserted(0, agentsList.size()); // 通知 RecyclerView 插入新数据
+//    }
 }

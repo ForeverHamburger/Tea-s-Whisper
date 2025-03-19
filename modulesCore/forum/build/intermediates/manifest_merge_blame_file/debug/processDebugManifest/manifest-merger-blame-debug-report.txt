@@ -5,25 +5,25 @@
 5    <uses-sdk android:minSdkVersion="28" />
 6
 7    <application>
-7-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:4:5-14:19
+7-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:4:5-14:19
 8        <activity
-8-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:5:9-7:40
+8-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:5:9-7:40
 9            android:name="com.xuptggg.forum.thread.view.ThreadContainerActivity"
-9-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:6:13-64
+9-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:6:13-64
 10            android:exported="false" />
-10-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:7:13-37
+10-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:7:13-37
 11        <activity
-11-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:8:9-10:40
+11-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:8:9-10:40
 12            android:name="com.xuptggg.forum.publish.view.PublishActivity"
-12-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:9:13-57
+12-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:9:13-57
 13            android:exported="false" />
-13-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:10:13-37
+13-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:10:13-37
 14        <activity
-14-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:11:9-13:39
+14-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:11:9-13:39
 15            android:name="com.xuptggg.forum.square.ForumActivity"
-15-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:12:13-49
+15-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:12:13-49
 16            android:exported="true" />
-16-->E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\release\AndroidManifest.xml:13:13-36
+16-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\forum\src\main\release\AndroidManifest.xml:13:13-36
 17    </application>
 18
 19</manifest>

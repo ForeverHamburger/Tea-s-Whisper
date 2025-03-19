@@ -114,6 +114,7 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
             ((EmptyViewHolder) holder).bindEmptyView();
         }
     }
+
     @Override
     public int getItemCount() {
         Log.d("getItemCount", "historys.size(): " + historys.size());
@@ -129,10 +130,31 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
         if (historyList == null || historyList.isEmpty()) {
             Log.e("addAllHistoryDataList", "historyList is null or empty");
         }
-        int startPosition = historys.size();
+        // 清空旧数据
+        historys.clear();
+        // 添加新数据
         historys.addAll(historyList);
-        notifyItemRangeInserted(startPosition, historyList.size());
+        notifyDataSetChanged(); // 直接刷新整个 RecyclerView
     }
+    //会闪现
+//    public void addAllHistoryDataList(List<DataItem> historyList) {
+//        if (historyList == null || historyList.isEmpty()) {
+//            Log.e("addAllHistoryDataList", "historyList is null or empty");
+//            return; // 如果数据为空，直接返回
+//        }
+//
+//        // 清空旧数据
+//        int oldSize = historys.size();
+//        historys.clear();
+//        if (oldSize > 0) {
+//            notifyItemRangeRemoved(0, oldSize); // 通知 RecyclerView 移除旧数据
+//        }
+//
+//        // 添加新数据
+//        historys.addAll(historyList);
+//        notifyItemRangeInserted(0, historyList.size()); // 通知 RecyclerView 插入新数据
+//    }
+
     public void addWithError(List<DataItem> historyList, String error) {
         if (error != null) {
             // 如果有错误信息，清空现有数据并显示错误状态
@@ -195,6 +217,7 @@ public class ChatSelectHistoryAdapter extends RecyclerView.Adapter<RecyclerView.
                             emptyText.setText("没有找到数据");
                         }
                     }
+
                     @Override
                     public void onFailed(String errorMessage) {
                         System.out.println("请求失败: " + errorMessage);

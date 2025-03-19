@@ -10,6 +10,7 @@ import com.example.module.chat.base.database.select.DataItem;
 import com.example.module.chat.base.database.select.HistoryResponse;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
+import com.xuptggg.libnetwork.aword.aWordHelper;
 import com.xuptggg.libnetwork.exception.MyHttpException;
 import com.xuptggg.libnetwork.listener.MyDataHandle;
 import com.xuptggg.libnetwork.listener.MyDataListener;
@@ -19,14 +20,23 @@ import com.xuptggg.libnetwork.request.RequestParams;
 import java.util.List;
 
 public class NetworkHelper {
-
-    private static final String TAG = "NetworkHelper";
+    private static NetworkHelper instance;
+    private static final String TAG = "NetworkHelper.chat";
 //    String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjotMTc5MjEyODg3MDU3MzQwNDE2MCwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImV4cCI6MTc3MzE0NTMwNywiaXNzIjoiTEJES0lORyJ9.1TvcabhhEOMPf7TIDdV-4M2PwIv6IAiuLx18Q96PIwA";
     String apiKey = null;
+    private NetworkHelper() {
+    }
 
+    public static synchronized NetworkHelper getInstance() {
+        if (instance == null) {
+            instance = new NetworkHelper();
+        }
+        return instance;
+    }
     public void performPostRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
+        Log.d(TAG, "performPostRequest: " + "apiKey=" + apiKey);
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
@@ -52,6 +62,7 @@ public class NetworkHelper {
     public void performDataGetRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
+        Log.d(TAG, "performDataGetRequest: " + "apiKey=" + apiKey);
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
@@ -115,6 +126,7 @@ public class NetworkHelper {
             callBack.onFailed("响应为空");
             return;
         }
+        Log.e(TAG, "-------------- " );
         // 统一校验 code
         if (responseObj.getCode() != 1) {
             callBack.onFailed(responseObj.getMsg() + " (错误码: " + responseObj.getCode() + ")");

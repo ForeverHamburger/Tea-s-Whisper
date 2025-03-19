@@ -1,24 +1,24 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:2:1-10:12
-INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:2:1-10:12
+ADDED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:2:1-10:12
+INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:2:1-10:12
 	package
-		INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml
+		INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml
 	xmlns:android
-		ADDED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:2:11-69
+		ADDED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:2:11-69
 application
-ADDED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:4:5-9:19
+ADDED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:4:5-9:19
 activity#com.xuptggg.detail.view.DetailActivity
-ADDED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:5:9-8:20
+ADDED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:5:9-8:20
 	android:exported
-		ADDED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:7:13-36
+		ADDED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:7:13-36
 	android:name
-		ADDED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:6:13-48
+		ADDED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:6:13-48
 uses-sdk
-INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml
-INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml
+INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml
+INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml
+		INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml
+		INJECTED from D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml
