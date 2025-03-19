@@ -2,6 +2,7 @@ package com.example.module.chat.base.other;
 
 import android.util.Log;
 
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.example.module.chat.base.database.BaseResponse;
 import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.database.communicate.MyResponse;

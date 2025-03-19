@@ -2,7 +2,7 @@ package com.example.module.chat.communicate.view.CommunicateView;
 
 import android.util.Log;
 
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.example.module.chat.base.other.NetworkHelper;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.request.RequestParams;

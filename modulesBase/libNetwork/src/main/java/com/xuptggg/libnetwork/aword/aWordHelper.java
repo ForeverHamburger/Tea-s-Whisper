@@ -1,11 +1,10 @@
-package com.example.module.chat.base.aword;
+package com.xuptggg.libnetwork.aword;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.module.chat.base.other.LoadTasksCallBack;
 import com.google.gson.Gson;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.exception.MyHttpException;

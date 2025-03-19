@@ -1,4 +1,4 @@
-package com.example.module.chat.base.other;
+package com.xuptggg.libnetwork.aword;
 
 public interface LoadTasksCallBack<T> {
     void onSuccess(T data);

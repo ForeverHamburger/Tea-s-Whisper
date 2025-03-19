@@ -3,7 +3,7 @@ package com.example.module.chat.communicate.view.SelectView;
 import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.base.database.select.DataItem;
 import com.example.module.chat.base.other.BaseView;
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 
 import java.util.List;
 

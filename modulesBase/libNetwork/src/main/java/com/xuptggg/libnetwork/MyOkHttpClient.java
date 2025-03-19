@@ -9,19 +9,14 @@ import com.xuptggg.libnetwork.request.RequestParams;
 import com.xuptggg.libnetwork.response.NewFileCallBack;
 import com.xuptggg.libnetwork.response.JsonCallback;
 import com.xuptggg.libnetwork.response.FileCallBack;
+import com.xuptggg.libnetwork.ssl.MixedTrustManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.security.KeyStore;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;

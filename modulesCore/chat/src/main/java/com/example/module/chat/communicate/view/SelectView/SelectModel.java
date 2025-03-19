@@ -2,7 +2,7 @@ package com.example.module.chat.communicate.view.SelectView;
 
 import com.example.module.chat.R;
 import com.example.module.chat.base.database.select.Agent;
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.example.module.chat.base.other.NetworkHelper;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.request.RequestParams;

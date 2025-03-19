@@ -6,18 +6,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.module.chat.R;
-import com.example.module.chat.base.aword.aWord;
-import com.example.module.chat.base.aword.aWordHelper;
+import com.xuptggg.libnetwork.aword.aWord;
+import com.xuptggg.libnetwork.aword.aWordHelper;
 import com.example.module.chat.base.database.communicate.Data;
 import com.example.module.chat.base.database.select.DataItem;
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.example.module.chat.communicate.base.ItemActionListener;
 import com.example.module.chat.databinding.ItemHistoryBinding;
 

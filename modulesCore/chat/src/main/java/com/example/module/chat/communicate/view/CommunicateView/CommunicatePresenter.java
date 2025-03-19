@@ -1,7 +1,7 @@
 package com.example.module.chat.communicate.view.CommunicateView;
 
 import com.example.module.chat.base.database.communicate.Data;
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.example.module.chat.communicate.base.ChatMessage;
 
 import java.util.ArrayList;

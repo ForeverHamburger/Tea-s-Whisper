@@ -1,4 +1,4 @@
-package com.example.module.chat.base.aword;
+package com.xuptggg.libnetwork.aword;
 
 
 public class aWord {

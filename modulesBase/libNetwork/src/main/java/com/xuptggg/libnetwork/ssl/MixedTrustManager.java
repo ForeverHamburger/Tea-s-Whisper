@@ -1,4 +1,4 @@
-package com.xuptggg.libnetwork;
+package com.xuptggg.libnetwork.ssl;
 
 import javax.net.ssl.*;
 import java.security.KeyStore;

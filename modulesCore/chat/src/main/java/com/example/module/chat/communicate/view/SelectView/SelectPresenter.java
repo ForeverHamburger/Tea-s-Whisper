@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.base.database.select.DataItem;
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
