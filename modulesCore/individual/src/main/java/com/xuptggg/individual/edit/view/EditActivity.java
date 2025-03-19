@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -25,16 +26,35 @@ import com.bumptech.glide.request.RequestOptions;
 import com.xuptggg.individual.R;
 import com.xuptggg.individual.databinding.ActivityEditBinding;
 import com.xuptggg.individual.databinding.ActivityIndividualBinding;
+import com.xuptggg.individual.edit.contract.IEditContract;
+import com.xuptggg.individual.edit.model.EditModel;
+import com.xuptggg.individual.edit.presenter.EditPresenter;
+import com.xuptggg.individual.personal.model.IndividualInfo;
+import com.xuptggg.module.libbase.eventbus.TokenManager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Route(path = "/individual/EditActivity")
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity implements IEditContract.IEditView {
 
     private ActivityEditBinding binding;
     private static final int MAX_LENGTH = 100;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
+    private IEditContract.IEditPresenter mPresenter;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +66,8 @@ public class EditActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        setPresenter(new EditPresenter(new EditModel(),this));
 
         Spinner spinnerGender = findViewById(R.id.spinner_gender);
         List<String> genderOptions = Arrays.asList("男", "女", "奶龙", "保密");
@@ -106,10 +128,45 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getToken(TokenManager tokenManager) {
+        Log.d("TAG", "getTokenIndividual: " + tokenManager.getToken());
+        mPresenter.getEditInfo(tokenManager.getToken());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // 取消注册
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
 
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*"); // 限制只选图片
         imagePickerLauncher.launch(intent); // 替代 startActivityForResult
+    }
+
+    @Override
+    public void showMessage(IndividualInfo info) {
+        binding.etUsername.setText(info.getUserName());
+        binding.etId.setText(info.getUserId());
+        binding.tvPhone.setText(info.getPhone());
+        binding.tvEmail.setText(info.getEmail());
+        binding.spinnerGender.setSelection(Integer.parseInt(info.getSex()));
+        binding.etTeaAge.setText("1年");
+        binding.tvIntroductionCount.setText(info.getIntroduction());
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void setPresenter(IEditContract.IEditPresenter presenter) {
+        mPresenter = presenter;
     }
 }

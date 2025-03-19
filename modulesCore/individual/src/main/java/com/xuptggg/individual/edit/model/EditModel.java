@@ -1,10 +1,9 @@
-package com.xuptggg.individual.personal.model;
-
+package com.xuptggg.individual.edit.model;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
-import com.xuptggg.individual.personal.contract.IIndividualContract;
+import com.xuptggg.individual.edit.contract.IEditContract;
+import com.xuptggg.individual.personal.model.IndividualInfo;
 import com.xuptggg.individual.personal.util.JsonParser;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
@@ -13,11 +12,9 @@ import com.xuptggg.libnetwork.listener.MyDataListener;
 import com.xuptggg.libnetwork.request.MyRequest;
 import com.xuptggg.libnetwork.request.RequestParams;
 
-import org.json.JSONObject;
-
-public class IndividualModel implements IIndividualContract.IIndividualModel<String> {
+public class EditModel implements IEditContract.IEditModel {
     @Override
-    public void execute(String data, LoadIndividualInfoCallBack callBack) {
+    public void execute(Object data, LoadEditInfoCallBack callBack) {
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
