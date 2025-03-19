@@ -52,7 +52,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     private static final String ARG_SESSION_ID = "sessionID";
     private String title;
     private boolean Send = true;
-    private boolean isFirstLaunch = true; // 标记是否首次启动
+    private boolean isFirstLaunch = true;
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
     public String sessionId;
@@ -79,6 +79,8 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
         mPresenter.getToken(tokenManager.getToken());
+        initDefault();
+        Log.d("CommunicateFragment", "getToken: " + tokenManager.getToken());
     }
 
     @Override
@@ -109,8 +111,6 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         markwon = Markwon.create(requireContext());
         adapter = new ChatCommunicateAdapter(markwon);
@@ -229,7 +229,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
             }
         });
 
-        initDefault();
+//        initDefault();
         // 初始化键盘隐藏逻辑
         setupHideKeyboardFeature();
     }
@@ -311,6 +311,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         }
 
         if (sessionId != null && !sessionId.isEmpty()) {
+            Log.d("CommunicateFragment", "initDefault: "+sessionId);
             mPresenter.getHistoryInfo(sessionId);
         } else if (isFirstLaunch) {
             showDefaultWelcomeMessage();
