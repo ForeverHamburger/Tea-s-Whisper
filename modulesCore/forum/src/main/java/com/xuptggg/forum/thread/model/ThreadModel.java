@@ -39,7 +39,7 @@ public class ThreadModel implements IThreadContract.IThreadModel<String> {
                     callBack.onFailed();
                 }
             }
-        });
+        }, ThreadInfo.class);
 
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + data);

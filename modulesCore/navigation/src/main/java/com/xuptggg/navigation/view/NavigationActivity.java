@@ -11,6 +11,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -38,6 +39,8 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
     private ActivityNavigationBinding binding;
     private INavigationContract.INavigationPresenter mPresenter;
     private boolean isSelected = false;
+    private static final int DOUBLE_CLICK_TIME_DELAY = 2000;
+    private long firstBackPressedTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,24 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
         NavigationModel navigationModel = new NavigationModel();
         setPresenter(new NavigationPresenter(navigationModel,this));
         mPresenter.getNavigationInfo("开！");
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (firstBackPressedTime == 0) {
+                    firstBackPressedTime = System.currentTimeMillis();
+                    Toast.makeText(NavigationActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                } else {
+                    long secondBackPressedTime = System.currentTimeMillis();
+                    if (secondBackPressedTime - firstBackPressedTime < DOUBLE_CLICK_TIME_DELAY) {
+                        finish();
+                    } else {
+                        firstBackPressedTime = 0;
+                        Toast.makeText(NavigationActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -127,6 +148,9 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             }
         });
     }
+
+
+
 
     private void performChangeAnimation() {
         if(isSelected) {
