@@ -2,6 +2,7 @@ package com.xuptggg.detection.function.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.detection.R;
+import com.xuptggg.detection.card.FlippableDialog;
 import com.xuptggg.detection.function.contract.IDetectionContract;
 import com.xuptggg.detection.databinding.ActivityDetectionBinding;
 import com.xuptggg.detection.function.model.DetectionInfo;
@@ -26,6 +28,7 @@ import com.xuptggg.detection.history.view.DetectionHistoryActivity;
 public class DetectionActivity extends AppCompatActivity implements IDetectionContract.IDetectionView {
     private ActivityDetectionBinding binding;
     private boolean isStartDetection = false;
+    private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,7 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.menu_history) {
-                    ARouter.getInstance().build("/detection/DetectionHistoryActivity").navigation();
+                    ARouter.getInstance().build("/detection/TeaCardActivity").navigation();
                 }
                 return false;
             }
@@ -55,10 +58,29 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
                     binding.tvDetectionState.setText("点击开始识茶");
                     binding.tvDetectionAttach.setVisibility(View.VISIBLE);
                     isStartDetection = false;
+                    handler.removeCallbacksAndMessages(null); // 取消可能存在的延迟任务
                 } else {
                     binding.tvDetectionState.setText("录音中");
                     binding.tvDetectionAttach.setVisibility(View.INVISIBLE);
                     isStartDetection = true;
+                    // 延迟 3 秒后弹出卡片
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            showFlippableDialog();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    binding.rippleView.toggleAnimations();
+                                    binding.tvDetectionState.setText("点击开始识茶");
+                                    binding.tvDetectionAttach.setVisibility(View.VISIBLE);
+                                    isStartDetection = false;
+                                }
+                            });
+                        }
+                    }, 3000);
+
+
                 }
                 binding.rippleView.toggleAnimations();
             }
@@ -79,5 +101,10 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
     @Override
     public void showError() {
 
+    }
+
+    private void showFlippableDialog() {
+        final FlippableDialog flippableDialog = new FlippableDialog(this);
+        flippableDialog.show();
     }
 }

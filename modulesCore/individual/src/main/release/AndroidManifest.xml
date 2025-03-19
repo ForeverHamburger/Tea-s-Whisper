@@ -3,9 +3,6 @@
 
     <application>
         <activity
-            android:name=".personal.view.TabItemActivity"
-            android:exported="false" />
-        <activity
             android:name=".edit.view.EditActivity"
             android:exported="false" />
     </application>

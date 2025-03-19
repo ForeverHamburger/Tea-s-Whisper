@@ -12,13 +12,13 @@ color tea_primary
 color transparent
 color white
 drawable arrow_down
+drawable bg_detail_background
 drawable bg_guide_rounded
 drawable bg_rounded_corner
 drawable bg_tea_card
 drawable button_background
 drawable button_background_pressed
 drawable button_selector
-drawable detail_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_like

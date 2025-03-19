@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <!-- 设置填充颜色为绿色 -->
-    <solid android:color="@color/light_yellow" />
+    <corners android:radius="16dp" />
+    <solid android:color="#35B9F4" />
 </shape>
