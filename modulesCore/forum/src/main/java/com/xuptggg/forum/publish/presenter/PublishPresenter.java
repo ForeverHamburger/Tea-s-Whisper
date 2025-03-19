@@ -4,12 +4,13 @@ import android.util.Log;
 
 import com.xuptggg.forum.publish.contract.IPublishContract;
 import com.xuptggg.forum.publish.model.LoadImageUriCallBack;
+import com.xuptggg.forum.publish.model.LoadPublishCallBack;
 import com.xuptggg.forum.publish.model.PublishInfo;
 
 import java.io.File;
 import java.util.List;
 
-public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadImageUriCallBack<List<String>> {
+public class PublishPresenter implements IPublishContract.IPublishPresenter, LoadImageUriCallBack<List<String>> , LoadPublishCallBack<String> {
     private IPublishContract.IPublishModel model;
     private IPublishContract.IPublishView view;
 
@@ -45,6 +46,26 @@ public class PublishPresenter implements IPublishContract.IPublishPresenter, Loa
 
     @Override
     public void onFinish() {
+
+    }
+
+    @Override
+    public void onSuccessPublished(String string) {
+        view.showSuccess();
+    }
+
+    @Override
+    public void onStartPublish() {
+        view.showOnPublished();
+    }
+
+    @Override
+    public void onFailedPublish() {
+
+    }
+
+    @Override
+    public void onFinishPublish() {
 
     }
 }

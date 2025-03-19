@@ -3,10 +3,14 @@
 
     <application>
         <activity
+            android:name=".card.TeaCardActivity"
+            android:exported="false" />
+        <activity
             android:name=".function.view.DetectionActivity"
             android:exported="true" />
-        <activity android:name=".history.view.DetectionHistoryActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".history.view.DetectionHistoryActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

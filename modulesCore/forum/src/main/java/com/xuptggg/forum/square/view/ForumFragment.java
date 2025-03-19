@@ -49,7 +49,9 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -92,9 +94,12 @@ public class ForumFragment extends Fragment implements IForumContract.IForumView
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
+    public void onStop() {
+        super.onStop();
+        // 取消注册
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Override

@@ -27,9 +27,9 @@ public class HomeModel implements IHomeContract.IHomeModel<String> {
             public void onSuccess(Object responseObj) {
                 Log.d(TAG, "onSuccess: " + responseObj);
 
-                List<TeaInfo> teaInfos = JsonParser.parseTeaInfoList((JSONObject)responseObj);
-                Log.d(TAG, "onSuccess: " + teaInfos);
-                callBack.onSuccess(teaInfos);
+//                List<TeaInfo> teaInfos = JsonParser.parseTeaInfoList((JSONObject)responseObj);
+//                Log.d(TAG, "onSuccess: " + teaInfos);
+//                callBack.onSuccess(teaInfos);
             }
 
             @Override

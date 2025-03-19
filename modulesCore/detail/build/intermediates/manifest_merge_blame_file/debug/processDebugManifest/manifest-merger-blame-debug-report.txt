@@ -5,13 +5,13 @@
 5    <uses-sdk android:minSdkVersion="28" />
 6
 7    <application>
-7-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:4:5-9:19
+7-->E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:4:5-9:19
 8        <activity
-8-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:5:9-8:20
+8-->E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:5:9-8:20
 9            android:name="com.xuptggg.detail.view.DetailActivity"
-9-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:6:13-48
+9-->E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:6:13-48
 10            android:exported="true" >
-10-->D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\release\AndroidManifest.xml:7:13-36
+10-->E:\STUDY\Android\TeasWhisper\modulesCore\detail\src\main\release\AndroidManifest.xml:7:13-36
 11        </activity>
 12    </application>
 13

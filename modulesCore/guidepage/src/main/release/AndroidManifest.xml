@@ -3,6 +3,7 @@
 
     <application>
         <activity
+            android:noHistory="true"
             android:name=".view.GuidePageActivity"
             android:exported="true" />
     </application>

@@ -50,7 +50,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/detail_background"
+        android:background="@drawable/bg_detail_background"
         android:layout_marginTop="0dp"
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">

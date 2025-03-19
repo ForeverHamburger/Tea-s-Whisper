@@ -62,10 +62,16 @@ public class SearchFragment extends Fragment {
         binding.rvTeaCommendSearch.setLayoutManager(layoutManager1);
 
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add("西湖龙井");
-            list.add("信阳毛尖");
-        }
+        list.add("西湖龙井");
+        list.add("信阳毛尖");
+        list.add("碧螺春");
+        list.add("黄山毛峰");
+        list.add("六安瓜片");
+        list.add("祁门红茶");
+        list.add("安溪铁观音");
+        list.add("武夷岩茶");
+
+
         TeaSearchCommendAdapter teaSearchCommendAdapter = new TeaSearchCommendAdapter(list);
         binding.rvTeaCommendSearch.setAdapter(teaSearchCommendAdapter);
     }

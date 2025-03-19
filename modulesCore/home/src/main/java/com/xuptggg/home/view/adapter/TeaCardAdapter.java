@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.home.R;
 import com.xuptggg.home.model.infos.TeaInfo;
 
@@ -51,6 +52,14 @@ public class TeaCardAdapter extends RecyclerView.Adapter<TeaCardAdapter.TeaCardV
             teaName = itemView.findViewById(R.id.tv_tea_name);
             teaOrigin = itemView.findViewById(R.id.tv_tea_origin);
             teaImage = itemView.findViewById(R.id.iv_tea_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ARouter.getInstance().build("/detail/DetailActivity").navigation();
+                }
+            });
         }
+
     }
 }

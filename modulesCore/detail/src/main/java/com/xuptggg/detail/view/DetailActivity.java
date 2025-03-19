@@ -66,6 +66,13 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
             }
         });
 
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         setupSections();
         setPresenter(new DetailPresenter(new DetailModel(),this));
         mPresenter.getDetailInfo("西湖龙井");

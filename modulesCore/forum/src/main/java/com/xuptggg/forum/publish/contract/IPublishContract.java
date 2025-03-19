@@ -1,6 +1,7 @@
 package com.xuptggg.forum.publish.contract;
 
 import com.xuptggg.forum.publish.model.LoadImageUriCallBack;
+import com.xuptggg.forum.publish.model.LoadPublishCallBack;
 import com.xuptggg.forum.publish.model.PublishInfo;
 import com.xuptggg.forum.square.base.BaseView;
 
@@ -11,7 +12,7 @@ public interface IPublishContract {
 
     interface IPublishModel<T> {
         void getUriFromFile(List<File> files, String token, LoadImageUriCallBack callBack);
-        void publishThread(PublishInfo publishInfo, String token, LoadImageUriCallBack callBack);
+        void publishThread(PublishInfo publishInfo, String token, LoadPublishCallBack callBack);
     }
 
     interface IPublishPresenter{
@@ -21,5 +22,7 @@ public interface IPublishContract {
     interface IPublishView extends BaseView<IPublishPresenter> {
         void showMessage(List<String> strings);
         void showError();
+        void showSuccess();
+        void showOnPublished();
     }
 }

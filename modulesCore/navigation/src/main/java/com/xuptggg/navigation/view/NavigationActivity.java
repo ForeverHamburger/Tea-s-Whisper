@@ -5,17 +5,20 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -38,6 +41,10 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
     private ActivityNavigationBinding binding;
     private INavigationContract.INavigationPresenter mPresenter;
     private boolean isSelected = false;
+    private static final int DOUBLE_CLICK_TIME_DELAY = 2000;
+    private long firstBackPressedTime = 0;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction initialTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,24 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
         NavigationModel navigationModel = new NavigationModel();
         setPresenter(new NavigationPresenter(navigationModel,this));
         mPresenter.getNavigationInfo("开！");
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (firstBackPressedTime == 0) {
+                    firstBackPressedTime = System.currentTimeMillis();
+                    Toast.makeText(NavigationActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                } else {
+                    long secondBackPressedTime = System.currentTimeMillis();
+                    if (secondBackPressedTime - firstBackPressedTime < DOUBLE_CLICK_TIME_DELAY) {
+                        finish();
+                    } else {
+                        firstBackPressedTime = 0;
+                        Toast.makeText(NavigationActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -65,51 +90,60 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
 
     @Override
     public void showNavigationInfomation(List<NavigationInfo> navigationInfos) {
-        FragmentManager supportFragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.add(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
+        fragmentManager = getSupportFragmentManager();
+        initialTransaction = fragmentManager.beginTransaction();
+        for (NavigationInfo navigationInfo : navigationInfos) {
+            Fragment fragment = navigationInfo.getFragment();
+            initialTransaction.add(binding.fcvNavigation.getId(),fragment);
+            initialTransaction.hide(fragment);
+        }
+        initialTransaction.setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right)
+                .commit();
+
         binding.bnvNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                // 每次点击导航项时，创建一个新的 FragmentTransaction 实例
-                FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(
-                        R.anim.slide_in_right,
-                        R.anim.slide_out_left,
-                        R.anim.slide_in_left,
-                        R.anim.slide_out_right);
+
                 isSelected = false;
                 // 根据导航项的标题进行不同的处理
+                getFragment(menuItem.getTitle(),navigationInfos);
+
                 if ("首页".equals(menuItem.getTitle())) {
-                    // 替换当前显示的 Fragment 为首页对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(0).getFragment());
                     binding.fabNavigation.setImageResource(R.drawable.ic_detect);
                     isSelected = false;
                 } else if ("论坛".equals(menuItem.getTitle())) {
-                    // 替换当前显示的 Fragment 为论坛对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(1).getFragment());
                     performChangeAnimation();
                     isSelected = true;
                 } else if ("AI对话".equals(menuItem.getTitle())) {
-                    // 替换当前显示的 Fragment 为 AI 对话对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(2).getFragment());
                     binding.fabNavigation.setImageResource(R.drawable.ic_detect);
                     isSelected = false;
                 } else if ("我的".equals(menuItem.getTitle())) {
-                    // 替换当前显示的 Fragment 为我的对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(3).getFragment());
                     binding.fabNavigation.setImageResource(R.drawable.ic_detect);
                     isSelected = false;
                 } else if ("检测".equals(menuItem.getTitle())) {
-                    // 替换当前显示的 Fragment 为检测对应的 Fragment
-                    fragmentTransaction.replace(binding.fcvNavigation.getId(), navigationInfos.get(3).getFragment());
                     binding.fabNavigation.setImageResource(R.drawable.ic_detect);
                     isSelected = false;
                 }
-
-                // 提交 FragmentTransaction
-                fragmentTransaction.commit();
                 return true;
+            }
+
+            private Fragment getFragment(CharSequence title, List<NavigationInfo> navigationInfos) {
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                for (NavigationInfo navigationInfo : navigationInfos) {
+                    if (title.equals(navigationInfo.getFragmentName())){
+                        Log.d("TAG", "getFragment: "+ "xixi");
+                        fragmentTransaction.show(navigationInfo.getFragment());
+                    } else {
+                        Log.d("TAG", "getFragment: "+ "???" );
+                        fragmentTransaction.hide(navigationInfo.getFragment());
+                    }
+                }
+                fragmentTransaction.commit();
+                return null;
             }
         });
 
@@ -127,6 +161,9 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             }
         });
     }
+
+
+
 
     private void performChangeAnimation() {
         if(isSelected) {

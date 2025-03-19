@@ -4,6 +4,7 @@
     <application>
         <activity
             android:name=".LoginActivity"
+            android:noHistory="true"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>

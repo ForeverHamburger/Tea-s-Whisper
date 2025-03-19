@@ -54,6 +54,13 @@ public class EditActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(adapter);
 
+        binding.tvEditCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         // 设置输入的最大长度
         binding.etIntroduction.setFilters(new android.text.InputFilter[]{new android.text.InputFilter.LengthFilter(MAX_LENGTH)});
 

@@ -29,6 +29,7 @@ drawable icon_love
 drawable icon_love_empty
 drawable icon_me
 drawable icon_nailong
+drawable pic_cup_hint
 drawable publish_add_background
 drawable publish_background
 drawable publish_button_background
@@ -47,6 +48,7 @@ id cv_forum_image
 id cv_message_icon
 id cv_mine_image
 id cv_publish_picture_container
+id dialog_container
 id et_bottom_comment
 id et_comment
 id et_forum_search
@@ -54,9 +56,12 @@ id et_publish_content
 id et_publish_title
 id fcv_thread
 id forum
+id front_layout
 id iv_add_picture
 id iv_bottom_comment
 id iv_bottom_like
+id iv_card
+id iv_card_background
 id iv_delete_picture
 id iv_forum_image
 id iv_mine_image
@@ -79,6 +84,7 @@ id rv_water_fall
 id tv_bottom_comment_count
 id tv_bottom_like_count
 id tv_comment_count
+id tv_dialog_publish
 id tv_forum_name
 id tv_note_content
 id tv_note_tag
@@ -94,6 +100,7 @@ id view_note_top
 layout activity_forum
 layout activity_publish
 layout activity_thread_container
+layout dialog_publish
 layout fragment_forum
 layout fragment_thread
 layout item_image
@@ -105,3 +112,4 @@ string forum_search_hint
 string hello_blank_fragment
 style Base.Theme.TeasWhisper
 style Theme.TeasWhisper
+style dialog

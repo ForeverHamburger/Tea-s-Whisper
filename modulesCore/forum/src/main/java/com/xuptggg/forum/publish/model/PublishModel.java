@@ -80,21 +80,21 @@ public class PublishModel implements IPublishContract.IPublishModel<String> {
     }
 
     @Override
-    public void publishThread(PublishInfo publishInfo, String token, LoadImageUriCallBack callBack) {
+    public void publishThread(PublishInfo publishInfo, String token, LoadPublishCallBack callBack) {
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                Log.d("xixi", "onSuccess: " + responseObj);
+                callBack.onSuccessPublished("成功了");
             }
 
             @Override
             public void onFailure(Object reasonObj) {
                 if (reasonObj instanceof String) {
                     // 将响应结果转换为 String 类型并传递给 LoadTasksCallBack 的 onFailed 方法
-                    callBack.onFailed();
+                    callBack.onFailedPublish();
                 } else {
                     // 如果响应结果不是 String 类型，视为请求失败
-                    callBack.onFailed();
+                    callBack.onFailedPublish();
                 }
             }
         });
@@ -113,5 +113,6 @@ public class PublishModel implements IPublishContract.IPublishModel<String> {
         Log.d("TAG", "publishThread: " + gson.toJson(publishInfo.getStrings().toArray()));
 
         MyOkHttpClient.get(MyRequest.PostRequest(URL.FORUM_PUBLISH_URL, requestParams, mToken), myDataHandle);
+        callBack.onStartPublish();
     }
 }

@@ -11,13 +11,13 @@ int color tea_primary 0x0
 int color transparent 0x0
 int color white 0x0
 int drawable arrow_down 0x0
+int drawable bg_detail_background 0x0
 int drawable bg_guide_rounded 0x0
 int drawable bg_rounded_corner 0x0
 int drawable bg_tea_card 0x0
 int drawable button_background 0x0
 int drawable button_background_pressed 0x0
 int drawable button_selector 0x0
-int drawable detail_background 0x0
 int drawable ic_launcher_background 0x0
 int drawable ic_launcher_foreground 0x0
 int drawable ic_like 0x0
