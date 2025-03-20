@@ -27,6 +27,7 @@ import com.xuptggg.individual.R;
 import com.xuptggg.individual.databinding.ActivityEditBinding;
 import com.xuptggg.individual.databinding.ActivityIndividualBinding;
 import com.xuptggg.individual.edit.contract.IEditContract;
+import com.xuptggg.individual.edit.model.BaseIndividualInfo;
 import com.xuptggg.individual.edit.model.EditModel;
 import com.xuptggg.individual.edit.presenter.EditPresenter;
 import com.xuptggg.individual.personal.model.IndividualInfo;
@@ -46,7 +47,8 @@ public class EditActivity extends AppCompatActivity implements IEditContract.IEd
     private static final int MAX_LENGTH = 100;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private IEditContract.IEditPresenter mPresenter;
-
+    private String token;
+    private String url;
     @Override
     public void onStart() {
         super.onStart();
@@ -127,10 +129,26 @@ public class EditActivity extends AppCompatActivity implements IEditContract.IEd
                 openImagePicker();
             }
         });
+
+        binding.btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BaseIndividualInfo baseIndividualInfo = new BaseIndividualInfo(
+                        binding.etUsername.getText().toString(),
+                        String.valueOf(binding.spinnerGender.getSelectedItemPosition()),
+                        url,
+                        binding.etIntroduction.getText().toString()
+                );
+
+                mPresenter.postEditInfo(baseIndividualInfo,token);
+            }
+        });
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
         Log.d("TAG", "getTokenIndividual: " + tokenManager.getToken());
+        token = tokenManager.getToken();
         mPresenter.getEditInfo(tokenManager.getToken());
     }
 

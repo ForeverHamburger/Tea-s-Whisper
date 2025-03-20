@@ -22,7 +22,7 @@ public class IndividualModel implements IIndividualContract.IIndividualModel<Str
             @Override
             public void onSuccess(Object responseObj) {
                 IndividualInfo individualInfo = JsonParser.parseForumJson(responseObj.toString());
-                Log.d("TAG", "onSuccess: " + individualInfo);
+                Log.d("IndividualModel", "onSuccess: " + individualInfo);
                 callBack.onSuccess(individualInfo);
             }
 

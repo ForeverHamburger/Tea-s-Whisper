@@ -23,7 +23,7 @@ public class ThreadModel implements IThreadContract.IThreadModel<String> {
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                Log.d("TAG", "onSuccess: " + responseObj);
+                Log.d("ThreadModel", "onSuccess: " + responseObj);
                 callBack.onSuccess(responseObj);
             }
 

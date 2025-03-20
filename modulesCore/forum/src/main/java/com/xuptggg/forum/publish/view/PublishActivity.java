@@ -89,6 +89,12 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
         binding.rvNineGrid.setLayoutManager(new GridLayoutManager(this, 3));
         binding.rvNineGrid.setAdapter(adapter);
 
+        binding.tvCancelPublish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // 注册 Activity Result Launcher
         imagePickerLauncher = registerForActivityResult(
@@ -136,14 +142,19 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
         binding.tvPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (token != null) {
-                    mPresenter.publishThread(new PublishInfo(
-                            binding.etPublishTitle.getText().toString(),
-                            binding.etPublishContent.getText().toString(),
-                            imageStringList,
-                            "1"
-                    ),token);
+                if (imageStringList == null || imageStringList.size() == 0) {
+                    Toast.makeText(PublishActivity.this, "请上传至少一张图片或等待图片上传成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (token != null) {
+                        mPresenter.publishThread(new PublishInfo(
+                                binding.etPublishTitle.getText().toString(),
+                                binding.etPublishContent.getText().toString(),
+                                imageStringList,
+                                "1"
+                        ),token);
+                    }
                 }
+
             }
         });
     }

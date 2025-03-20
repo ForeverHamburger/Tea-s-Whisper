@@ -38,7 +38,10 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        // 检查是否已经注册，如果没有注册则进行注册
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -67,9 +70,12 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
+    public void onStop() {
+        super.onStop();
+        // 取消注册
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Override

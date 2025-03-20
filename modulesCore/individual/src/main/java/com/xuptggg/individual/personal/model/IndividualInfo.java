@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 public class IndividualInfo {
-    @SerializedName("user_id")
+    @SerializedName("UserID")
     String userId;
-    @SerializedName("username")
+    @SerializedName("Username")
     String userName;
     String phone;
     String email;
+    @SerializedName("URL")
     String url;
+    @SerializedName("Introduction")
     String introduction;
     String sex;
-    String followCount;
-    String followerCount;
 
     public String getUserId() {
         return userId;

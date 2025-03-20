@@ -83,6 +83,7 @@ id rv_note_comments
 id rv_water_fall
 id tv_bottom_comment_count
 id tv_bottom_like_count
+id tv_cancel_publish
 id tv_comment_count
 id tv_dialog_publish
 id tv_forum_name

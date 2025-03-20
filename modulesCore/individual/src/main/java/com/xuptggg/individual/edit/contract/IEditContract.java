@@ -1,6 +1,8 @@
 package com.xuptggg.individual.edit.contract;
 
+import com.xuptggg.individual.edit.model.BaseIndividualInfo;
 import com.xuptggg.individual.edit.model.LoadEditInfoCallBack;
+import com.xuptggg.individual.edit.model.LoadPostEditCallBack;
 import com.xuptggg.individual.personal.base.BaseView;
 import com.xuptggg.individual.personal.model.IndividualInfo;
 import com.xuptggg.individual.personal.model.LoadIndividualInfoCallBack;
@@ -10,9 +12,11 @@ public interface IEditContract {
         // data是请求数据用的头
         // callBack为回调方法
         void execute(T data, LoadEditInfoCallBack callBack);
+        void postInfo(T data, BaseIndividualInfo info, LoadPostEditCallBack callBack);
     }
     interface IEditPresenter{
         void getEditInfo(String info);
+        void postEditInfo(BaseIndividualInfo individualInfo,String token);
     }
     interface IEditView extends BaseView<IEditPresenter> {
         void showMessage(IndividualInfo info);

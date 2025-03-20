@@ -1,10 +1,12 @@
 package com.xuptggg.individual.edit.presenter;
 
 import com.xuptggg.individual.edit.contract.IEditContract;
+import com.xuptggg.individual.edit.model.BaseIndividualInfo;
 import com.xuptggg.individual.edit.model.LoadEditInfoCallBack;
+import com.xuptggg.individual.edit.model.LoadPostEditCallBack;
 import com.xuptggg.individual.personal.model.IndividualInfo;
 
-public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInfoCallBack<IndividualInfo> {
+public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInfoCallBack<IndividualInfo> , LoadPostEditCallBack<String> {
     private IEditContract.IEditModel model;
     private IEditContract.IEditView view;
 
@@ -19,9 +21,17 @@ public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInf
     }
 
     @Override
+    public void postEditInfo(BaseIndividualInfo individualInfo, String token) {
+        model.postInfo(token,individualInfo,this);
+    }
+
+
+    @Override
     public void onSuccess(IndividualInfo individualInfo) {
         view.showMessage(individualInfo);
     }
+
+
 
     @Override
     public void onStart() {
@@ -35,6 +45,26 @@ public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInf
 
     @Override
     public void onFinish() {
+
+    }
+
+    @Override
+    public void onPostSuccess(String string) {
+
+    }
+
+    @Override
+    public void onStartPost() {
+
+    }
+
+    @Override
+    public void onFailedPost() {
+
+    }
+
+    @Override
+    public void onFinishPost() {
 
     }
 }
