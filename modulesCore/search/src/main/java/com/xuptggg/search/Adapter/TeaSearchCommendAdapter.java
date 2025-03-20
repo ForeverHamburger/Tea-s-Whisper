@@ -1,16 +1,14 @@
-package com.xuptggg.search.view;
+package com.xuptggg.search.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuptggg.search.R;
-import com.xuptggg.search.model.TeaShowInfo;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xuptggg.search.view;
+package com.xuptggg.search.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -106,11 +106,7 @@ public class HomeFragment extends Fragment implements IHomeContract.IHomeView {
         binding.etSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = (Fragment) ARouter.getInstance().build("/search/SearchFragment").navigation();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
-                        .replace(containerId,fragment)
-                        .commit();
+                ARouter.getInstance().build("/search/SearchActivity").navigation();
             }
         });
     }

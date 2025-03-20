@@ -1,4 +1,4 @@
-package com.xuptggg.search.view;
+package com.xuptggg.search.view.Search;
 
 import android.os.Bundle;
 
@@ -13,16 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.xuptggg.search.R;
+import com.xuptggg.search.Adapter.TeaSearchCommendAdapter;
+import com.xuptggg.search.Adapter.TeaShowAdapter;
+import com.xuptggg.search.contract.ISearchContract;
 import com.xuptggg.search.databinding.FragmentSearchBinding;
-import com.xuptggg.search.model.TeaShowInfo;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.xuptggg.search.model.SearchInfo;
 
 @Route(path = "/search/SearchFragment")
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements ISearchContract.ISearchView{
     private FragmentSearchBinding binding;
+    private ISearchContract.ISearchPresenter mPresenter;
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -47,32 +47,33 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<TeaShowInfo> teaShowInfos = new ArrayList<>();
-        teaShowInfos.add(new TeaShowInfo("杀青",R.drawable.tea_item2));
-        teaShowInfos.add(new TeaShowInfo("萎凋",R.drawable.tea_item2));
-        teaShowInfos.add(new TeaShowInfo("渥堆",R.drawable.tea_item2));
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false);
         binding.rvTeaShow.setLayoutManager(layoutManager);
 
-        TeaShowAdapter teaShowAdapter= new TeaShowAdapter(teaShowInfos);
+        TeaShowAdapter teaShowAdapter= new TeaShowAdapter(mPresenter.getTeaShow());
         binding.rvTeaShow.setAdapter(teaShowAdapter);
 
         GridLayoutManager layoutManager1 = new GridLayoutManager(getContext(), 2);
         binding.rvTeaCommendSearch.setLayoutManager(layoutManager1);
 
-        List<String> list = new ArrayList<>();
-        list.add("西湖龙井");
-        list.add("信阳毛尖");
-        list.add("碧螺春");
-        list.add("黄山毛峰");
-        list.add("六安瓜片");
-        list.add("祁门红茶");
-        list.add("安溪铁观音");
-        list.add("武夷岩茶");
-
-
-        TeaSearchCommendAdapter teaSearchCommendAdapter = new TeaSearchCommendAdapter(list);
+        TeaSearchCommendAdapter teaSearchCommendAdapter = new TeaSearchCommendAdapter(mPresenter.getTeaSearchCommend());
         binding.rvTeaCommendSearch.setAdapter(teaSearchCommendAdapter);
+    }
+
+    @Override
+    public void setPresenter(ISearchContract.ISearchPresenter presenter) {
+        mPresenter =presenter;
+    }
+
+    @Override
+    public void showSearchInfomation(SearchInfo searchInfo) {
+
+    }
+
+    @Override
+    public void showError() {
+
     }
 }

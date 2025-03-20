@@ -351,11 +351,9 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     }
 
     private void getAIResponse(String content) {
-//        new Thread(() -> {
         mPresenter.getCommunicateInfo(content, sessionId);
         Log.d("CommunicateFragment", "getAIResponse: " + content);
         Log.d("CommunicateFragment", "getAIResponse: " + sessionId);
-//        }).start();
     }
 
     @Override
@@ -406,7 +404,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         mPresenter = presenter;
     }
     private View.OnTouchListener hideKeyboardListener;
-    // 添加这个方法
+
     private void setupHideKeyboardFeature() {
         // 获取根布局
         View rootView = binding.getRoot();

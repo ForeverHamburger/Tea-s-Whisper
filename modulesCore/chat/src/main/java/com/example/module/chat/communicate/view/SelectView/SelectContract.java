@@ -14,18 +14,12 @@ public interface SelectContract {
         void getHistoryListInfo( LoadTasksCallBack callBack);
         void getToken(String token);
         List<Agent> getAgents();
-//        void getHistoryDataInfo(String data, LoadTasksCallBack callBack);
-
-//        void getAgentDataInfo(String data, LoadTasksCallBack callBack);
     }
 
     interface Presenter {
         void getSelectInfo(String content, String sessionId);
         void getHistoryDataInfo();
         List<Agent> getAgents();
-
-
-//        void getAgentDataInfo(String data);
         void unSubscribe();
 
         void getToken(String token);
