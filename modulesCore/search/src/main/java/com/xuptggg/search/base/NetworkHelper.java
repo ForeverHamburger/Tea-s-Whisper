@@ -14,14 +14,13 @@ public class NetworkHelper {
     String apiKey = null;
     private NetworkHelper() {
     }
-
     public static synchronized NetworkHelper getInstance() {
         if (instance == null) {
             instance = new NetworkHelper();
         }
         return instance;
     }
-//    public void performPostRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
+    public void performPostRequest(String url, RequestParams params, LoadTasksCallBack callBack) {
 //        RequestParams mToken = new RequestParams();
 //        mToken.put("Authorization", "Bearer " + apiKey);
 //        Log.d(TAG, "performPostRequest: " + "apiKey=" + apiKey);
@@ -97,7 +96,7 @@ public class NetworkHelper {
 //        }, HistoryResponse.class);
 //
 //        MyOkHttpClient.get(MyRequest.GetRequest(url, params, mToken), handle);
-//    }
+    }
 
     private <T> void handleMyResponse(String url, BaseResponse<T> responseObj, LoadTasksCallBack<T> callBack) {
         Log.d(TAG, "Response in apiKey: " + apiKey);
