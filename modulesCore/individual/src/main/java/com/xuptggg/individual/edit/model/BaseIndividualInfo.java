@@ -6,7 +6,7 @@ public class BaseIndividualInfo {
     private String url;
     private String username;
 
-    public BaseIndividualInfo(String introduction, String sex, String url, String username) {
+    public BaseIndividualInfo(String username, String sex, String url, String introduction) {
         this.introduction = introduction;
         this.sex = sex;
         this.url = url;

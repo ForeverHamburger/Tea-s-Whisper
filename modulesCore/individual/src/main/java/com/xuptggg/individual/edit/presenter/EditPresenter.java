@@ -3,10 +3,13 @@ package com.xuptggg.individual.edit.presenter;
 import com.xuptggg.individual.edit.contract.IEditContract;
 import com.xuptggg.individual.edit.model.BaseIndividualInfo;
 import com.xuptggg.individual.edit.model.LoadEditInfoCallBack;
+import com.xuptggg.individual.edit.model.LoadImageUriCallBack;
 import com.xuptggg.individual.edit.model.LoadPostEditCallBack;
 import com.xuptggg.individual.personal.model.IndividualInfo;
 
-public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInfoCallBack<IndividualInfo> , LoadPostEditCallBack<String> {
+import java.io.File;
+
+public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInfoCallBack<IndividualInfo> , LoadPostEditCallBack<String> , LoadImageUriCallBack<String> {
     private IEditContract.IEditModel model;
     private IEditContract.IEditView view;
 
@@ -25,6 +28,10 @@ public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInf
         model.postInfo(token,individualInfo,this);
     }
 
+    @Override
+    public void getUri(File imageFile, String token) {
+        model.getUriFromFile(imageFile,token,this);
+    }
 
     @Override
     public void onSuccess(IndividualInfo individualInfo) {
@@ -50,7 +57,7 @@ public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInf
 
     @Override
     public void onPostSuccess(String string) {
-
+        view.showSuccessMessage(string);
     }
 
     @Override
@@ -65,6 +72,26 @@ public class EditPresenter implements IEditContract.IEditPresenter , LoadEditInf
 
     @Override
     public void onFinishPost() {
+
+    }
+
+    @Override
+    public void onUploadSuccess(String string) {
+        view.setImageUri(string);
+    }
+
+    @Override
+    public void onUploadStart() {
+
+    }
+
+    @Override
+    public void onUploadFailed() {
+
+    }
+
+    @Override
+    public void onUploadFinish() {
 
     }
 }

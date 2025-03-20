@@ -9,13 +9,17 @@ public class IndividualInfo {
     String userId;
     @SerializedName("Username")
     String userName;
+    @SerializedName("phone")
     String phone;
+    @SerializedName("Email")
     String email;
     @SerializedName("URL")
     String url;
     @SerializedName("Introduction")
     String introduction;
+    @SerializedName("Sex")
     String sex;
+
 
     public String getUserId() {
         return userId;
@@ -72,26 +76,8 @@ public class IndividualInfo {
     public void setSex(String sex) {
         this.sex = sex;
     }
-
-    public String getFollowCount() {
-        return followCount;
-    }
-
-    public void setFollowCount(String followCount) {
-        this.followCount = followCount;
-    }
-
-    public String getFollowerCount() {
-        return followerCount;
-    }
-
-    public void setFollowerCount(String followerCount) {
-        this.followerCount = followerCount;
-    }
-
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "IndividualInfo{" +
                 "userId='" + userId + '\'' +
                 ", userName='" + userName + '\'' +
@@ -100,8 +86,6 @@ public class IndividualInfo {
                 ", url='" + url + '\'' +
                 ", introduction='" + introduction + '\'' +
                 ", sex='" + sex + '\'' +
-                ", followCount='" + followCount + '\'' +
-                ", followerCount='" + followerCount + '\'' +
                 '}';
     }
 
@@ -110,11 +94,11 @@ public class IndividualInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         IndividualInfo that = (IndividualInfo) o;
-        return Objects.equals(userId, that.userId) && Objects.equals(userName, that.userName) && Objects.equals(phone, that.phone) && Objects.equals(email, that.email) && Objects.equals(url, that.url) && Objects.equals(introduction, that.introduction) && Objects.equals(sex, that.sex) && Objects.equals(followCount, that.followCount) && Objects.equals(followerCount, that.followerCount);
+        return Objects.equals(userId, that.userId) && Objects.equals(userName, that.userName) && Objects.equals(phone, that.phone) && Objects.equals(email, that.email) && Objects.equals(url, that.url) && Objects.equals(introduction, that.introduction) && Objects.equals(sex, that.sex);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, phone, email, url, introduction, sex, followCount, followerCount);
+        return Objects.hash(userId, userName, phone, email, url, introduction, sex);
     }
 }

@@ -31,6 +31,8 @@ public class URL {
     public static final String FORUM_THREAD_URL = BASE_URL + "api/v1/post";
     //获取个人基本信息
     public static final String INDIVIDUAL_GET_URL = BASE_URL + "api/v1/user/info";
+    //修改个人信息
+    public static final String INDIVIDUAL_EDIT_POST_URL = BASE_URL + "api/v1/user/info";
     //获取子贴信息
     public static final String SEARCH_URL = BASE_URL + "api/v1/search";
 

@@ -131,8 +131,6 @@ public class IndividualFragment extends Fragment implements IIndividualContract.
         Glide.with(this)
                 .load(individualInfos.getUrl())
                 .into(binding.ivMyIcon);
-        binding.tvMyAttention.setText(individualInfos.getFollowCount());
-        binding.tvMyFans.setText(individualInfos.getFollowerCount());
     }
 
     @Override
