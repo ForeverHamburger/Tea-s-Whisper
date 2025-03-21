@@ -1,5 +1,6 @@
 [versions]
 agp = "8.4.0"
+arouterCompiler = "1.5.2"
 core = "4.6.2"
 gson = "2.11.0"
 junit = "4.13.2"
@@ -13,6 +14,8 @@ okhttp = "4.12.0"
 mmkvVersion = "2.0.1"
 
 [libraries]
+arouter-api = { module = "com.alibaba:arouter-api", version.ref = "arouterCompiler" }
+arouter-compiler = { module = "com.alibaba:arouter-compiler", version.ref = "arouterCompiler" }
 core = { module = "io.noties.markwon:core", version.ref = "core" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

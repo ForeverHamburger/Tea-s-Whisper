@@ -61,7 +61,7 @@ public class ResultUserFragment extends Fragment implements ResultContract.View{
         mPresenter.getToken(tokenManager.getToken());
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
         if (getArguments() != null){
-            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"User","3");
+            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"user","3");
         }
     }
     @Override

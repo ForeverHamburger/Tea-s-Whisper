@@ -55,9 +55,10 @@ android {
 }
 
 dependencies {
-    api 'com.alibaba:arouter-api:1.5.2'
+    api libs.arouter.api
     implementation project(':modulesBase:libNetwork')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+    annotationProcessor libs.arouter.compiler
+    implementation libs.okhttp
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

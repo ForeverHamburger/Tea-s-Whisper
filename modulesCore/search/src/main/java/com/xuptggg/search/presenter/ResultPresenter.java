@@ -1,11 +1,14 @@
 package com.xuptggg.search.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.xuptggg.search.contract.ResultContract;
 
-public class ResultPresenter implements ResultContract.Presenter, LoadTasksCallBack<String> {
+import java.util.List;
+
+public class ResultPresenter implements ResultContract.Presenter, LoadTasksCallBack<List> {
     private ResultContract.View mView;
     private ResultContract.Model mModel;
 
@@ -35,10 +38,12 @@ public class ResultPresenter implements ResultContract.Presenter, LoadTasksCallB
     }
 
 
-    @Override
-    public void onSuccess(String data) {
-        if (mView != null && mView.isACtive()) {
 
+
+    @Override
+    public void onSuccess(List data) {
+        if (mView != null && mView.isACtive()) {
+            Log.i("ResultPresenter", "onSuccess: " + data.get(0).toString());
         }
     }
 

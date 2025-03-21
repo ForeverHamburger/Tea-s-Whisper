@@ -17,7 +17,7 @@ public class ResultModel implements ResultContract.Model {
         params.put("content", content);
         params.put("tag", tag);
         params.put("size", size);
-//        networkHelper.performPostRequest(URL.SEARCH_URL, params, callBack);
+        networkHelper.performGetRequest(URL.SEARCH_URL, params, callBack);
 
     }
 

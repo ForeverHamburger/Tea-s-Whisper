@@ -62,7 +62,7 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
 //        mPresenter.getResultInfo(getArguments().getString("CONTENT"),);
         if (getArguments() != null){
-            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"User","3");
+            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"tea","3");
         }
     }
     @Override
