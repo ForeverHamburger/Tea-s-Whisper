@@ -1,4 +1,4 @@
-package com.xuptggg.individual.personal.view;
+package com.xuptggg.individual.tabitem.view;
 
 import android.os.Bundle;
 
@@ -11,10 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xuptggg.individual.R;
 import com.xuptggg.individual.databinding.FragmentTabBinding;
 import com.xuptggg.individual.personal.model.ForumInfo;
-import com.xuptggg.individual.personal.view.adapter.WaterFallAdapter;
+import com.xuptggg.individual.tabitem.view.adapter.WaterFallAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

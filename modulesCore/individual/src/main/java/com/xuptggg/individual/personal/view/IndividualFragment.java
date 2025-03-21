@@ -16,13 +16,13 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.xuptggg.individual.R;
 import com.xuptggg.individual.databinding.FragmentIndividualBinding;
 import com.xuptggg.individual.personal.contract.IIndividualContract;
 import com.xuptggg.individual.personal.model.IndividualInfo;
 import com.xuptggg.individual.personal.model.IndividualModel;
 import com.xuptggg.individual.personal.presenter.IndividualPresenter;
 import com.xuptggg.individual.personal.view.adapter.ViewPagerAdapter;
+import com.xuptggg.individual.tabitem.view.TabFragment;
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 
 import org.greenrobot.eventbus.EventBus;

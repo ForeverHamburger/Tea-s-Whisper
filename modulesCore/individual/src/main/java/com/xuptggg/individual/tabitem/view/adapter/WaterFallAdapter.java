@@ -1,4 +1,4 @@
-package com.xuptggg.individual.personal.view.adapter;
+package com.xuptggg.individual.tabitem.view.adapter;
 
 import android.content.Context;
 import android.view.View;
