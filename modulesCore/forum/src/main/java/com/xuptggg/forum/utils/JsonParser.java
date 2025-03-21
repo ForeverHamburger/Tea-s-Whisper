@@ -1,10 +1,13 @@
-package com.xuptggg.forum.square.utils;
+package com.xuptggg.forum.utils;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.xuptggg.forum.square.model.ForumInfo;
 import com.xuptggg.forum.square.model.ForumResponse;
+import com.xuptggg.forum.thread.model.ThreadInfo;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,24 @@ public class JsonParser {
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
             return new ArrayList<>(); // 异常处理
+        }
+    }
+
+    public static ThreadInfo parseThreadJson(String json) {
+        try {
+            JSONObject jsonOb = new JSONObject(json);
+            JSONObject jsonObject = jsonOb.optJSONObject("data");
+
+            Gson gson = new Gson();
+            ThreadInfo response = gson.fromJson(String.valueOf(jsonObject), ThreadInfo.class);
+
+            return response;
+
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null; // 异常处理
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
     }
 }

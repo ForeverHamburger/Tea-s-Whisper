@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.xuptggg.forum.R;
+import com.xuptggg.forum.databinding.FragmentThreadBinding;
 import com.xuptggg.forum.thread.contract.IThreadContract;
 import com.xuptggg.forum.thread.model.ThreadInfo;
 import com.xuptggg.forum.thread.model.ThreadModel;
@@ -25,6 +27,7 @@ import org.greenrobot.eventbus.ThreadMode;
 public class ThreadFragment extends Fragment implements IThreadContract.IThreadView {
     private IThreadContract.IThreadPresenter mPresenter;
     private String postid;
+    private FragmentThreadBinding binding;
 
     public ThreadFragment() {
         // Required empty public constructor
@@ -55,7 +58,8 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_thread, container, false);
+        binding = FragmentThreadBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -85,7 +89,15 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
 
     @Override
     public void showThreadInfomation(ThreadInfo threadInfo) {
+        Glide.with(this)
+                .load(threadInfo.getAuthorUrl())
+                .error(R.drawable.icon_me)
+                .into(binding.ivForumImage);
+        binding.tvForumName.setText(threadInfo.getAuthorName());
+        binding.tvNoteTitle.setText(threadInfo.getTitle());
+        binding.tvNoteContent.setText(threadInfo.getContent());
 
+        binding.tvBottomLikeCount.setText(threadInfo.getVotes());
 //        binding.bannerNotePage.setAdapter(new BannerAdapter(list))
 //                .addBannerLifecycleObserver(this)
 //                .setIndicator(new CircleIndicator(this));

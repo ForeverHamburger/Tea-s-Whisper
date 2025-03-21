@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.square.model.ForumInfo;
-import com.xuptggg.forum.square.utils.JsonParser;
 import com.xuptggg.forum.thread.contract.IThreadContract;
+import com.xuptggg.forum.utils.JsonParser;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.listener.MyDataHandle;
@@ -23,8 +23,8 @@ public class ThreadModel implements IThreadContract.IThreadModel<String> {
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                Log.d("ThreadModel", "onSuccess: " + responseObj);
-                callBack.onSuccess(responseObj);
+                ThreadInfo threadInfo = JsonParser.parseThreadJson(responseObj.toString());
+                callBack.onSuccess(threadInfo);
             }
 
             @Override
@@ -39,7 +39,7 @@ public class ThreadModel implements IThreadContract.IThreadModel<String> {
                     callBack.onFailed();
                 }
             }
-        }, ThreadInfo.class);
+        });
 
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + data);
