@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.xuptggg.individual.R;
-import com.xuptggg.individual.personal.model.ForumInfo;
+import com.xuptggg.individual.tabitem.model.ForumInfo;
 
 import java.util.List;
 

@@ -21,7 +21,7 @@ public class IndividualModel implements IIndividualContract.IIndividualModel<Str
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                IndividualInfo individualInfo = JsonParser.parseForumJson(responseObj.toString());
+                IndividualInfo individualInfo = JsonParser.parseIndividualJson(responseObj.toString());
                 Log.d("IndividualModel", "onSuccess: " + individualInfo);
                 callBack.onSuccess(individualInfo);
             }

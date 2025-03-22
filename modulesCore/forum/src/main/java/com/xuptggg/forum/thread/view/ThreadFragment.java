@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import com.xuptggg.forum.thread.model.ThreadInfo;
 import com.xuptggg.forum.thread.model.ThreadModel;
 import com.xuptggg.forum.thread.presenter.ThreadPresenter;
 import com.xuptggg.module.libbase.eventbus.TokenManager;
+import com.youth.banner.adapter.BannerAdapter;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
 import com.youth.banner.indicator.CircleIndicator;
 
 import org.greenrobot.eventbus.EventBus;
@@ -98,9 +102,20 @@ public class ThreadFragment extends Fragment implements IThreadContract.IThreadV
         binding.tvNoteContent.setText(threadInfo.getContent());
 
         binding.tvBottomLikeCount.setText(threadInfo.getVotes());
-//        binding.bannerNotePage.setAdapter(new BannerAdapter(list))
-//                .addBannerLifecycleObserver(this)
-//                .setIndicator(new CircleIndicator(this));
+        Fragment fragment = this;
+        Log.d("bannerNotePage", "showThreadInfomation: " + threadInfo.getUrl());
+        binding.bannerNotePage.setAdapter(new BannerImageAdapter<String>(threadInfo.getUrl()) {
+                    @Override
+                    public void onBindView(BannerImageHolder holder, String data, int position, int size) {
+                        Glide.with(fragment)
+                                .load(data)
+                                .error(R.drawable.icon_me)
+                                .into(holder.imageView);
+                    }
+                })
+                .addBannerLifecycleObserver(this)
+                .setIndicator(new CircleIndicator(requireContext()))
+                .isAutoLoop(false); // 禁止自动滑动
     }
 
     @Override

@@ -25,7 +25,7 @@ public class EditModel implements IEditContract.IEditModel {
         MyDataHandle myDataHandle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                IndividualInfo individualInfo = JsonParser.parseForumJson(responseObj.toString());
+                IndividualInfo individualInfo = JsonParser.parseIndividualJson(responseObj.toString());
                 Log.d("TAG", "onSuccess: " + individualInfo);
                 callBack.onSuccess(individualInfo);
             }

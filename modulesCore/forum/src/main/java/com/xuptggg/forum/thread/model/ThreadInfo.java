@@ -1,6 +1,7 @@
 package com.xuptggg.forum.thread.model;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.util.List;
 
 public class ThreadInfo{
 
@@ -11,7 +12,7 @@ public class ThreadInfo{
     private String Title;
 
     @SerializedName("url")
-    private String Url;
+    private List<String> Url;
 
     @SerializedName("content")
     private String Content;
@@ -56,11 +57,11 @@ public class ThreadInfo{
         Title = title;
     }
 
-    public String getUrl() {
+    public List<String> getUrl() {
         return Url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(List<String> url) {
         Url = url;
     }
 

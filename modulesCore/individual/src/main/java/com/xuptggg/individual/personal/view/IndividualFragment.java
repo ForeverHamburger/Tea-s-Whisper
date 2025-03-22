@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -75,12 +77,18 @@ public class IndividualFragment extends Fragment implements IIndividualContract.
         // ViewPager2与TabLayout绑定 与 数据初始化
         List<TabFragment> fragmentList = new ArrayList<>();
 
-        fragmentList.add(new TabFragment());
-        fragmentList.add(new TabFragment());
-        fragmentList.add(new TabFragment());
+        fragmentList.add(new TabFragment("我的"));
+        fragmentList.add(new TabFragment("赞过"));
+        fragmentList.add(new TabFragment("收藏"));
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity(), fragmentList);
         binding.vpMy.setAdapter(viewPagerAdapter);
         binding.vpMy.setOffscreenPageLimit(3);
+        binding.vpMy.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                updatePagerHeightForChild(fragmentList.get(binding.vpMy.getCurrentItem()).getView(),binding.vpMy);
+            }
+        });
 
         new TabLayoutMediator(binding.tabMy, binding.vpMy, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -136,5 +144,20 @@ public class IndividualFragment extends Fragment implements IIndividualContract.
     @Override
     public void showError() {
 
+    }
+
+    public static void updatePagerHeightForChild(View view, ViewPager2 pager) {
+        if (view != null) {
+            view.post(() -> {
+                int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
+                int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                view.measure(wMeasureSpec, hMeasureSpec);
+                if (pager.getLayoutParams().height != view.getMeasuredHeight()) {
+                    ViewGroup.LayoutParams lp = pager.getLayoutParams();
+                    lp.height = view.getMeasuredHeight();
+                    pager.setLayoutParams(lp);
+                }
+            });
+        }
     }
 }

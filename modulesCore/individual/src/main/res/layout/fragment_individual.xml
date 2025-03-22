@@ -69,6 +69,7 @@
                     android:id="@+id/iv_my_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:background="@color/bg_color"
                     android:src="@drawable/dog" />
             </androidx.cardview.widget.CardView>
@@ -263,7 +264,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_my"
                 android:layout_width="match_parent"
-                android:layout_height="1500dp"
+                android:layout_height="1000dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

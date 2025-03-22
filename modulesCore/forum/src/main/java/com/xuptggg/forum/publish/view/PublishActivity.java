@@ -76,6 +76,7 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        imageStringList = new ArrayList<>();
         publishDialog = new PublishDialog(this);
         threadPoolUtil = ThreadPoolUtil.getInstance();
         setPresenter(new PublishPresenter(new PublishModel(),this));
@@ -184,7 +185,10 @@ public class PublishActivity extends AppCompatActivity implements IPublishContra
 
     @Override
     public void showMessage(List<String> strings) {
-        imageStringList = strings;
+        for (String string : strings) {
+            imageStringList.add(string);
+        }
+        Log.d("showMessage", "showMessage: " + imageStringList);
         Toast.makeText(this, "图片均上传成功！", Toast.LENGTH_SHORT).show();
     }
 
