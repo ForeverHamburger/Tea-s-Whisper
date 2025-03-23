@@ -2,6 +2,7 @@ package com.xuptggg.search.view.Result;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -14,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.xuptggg.search.R;
+import com.xuptggg.search.base.data.Post;
 import com.xuptggg.search.contract.ResultContract;
 import com.xuptggg.search.databinding.FragmentResultArticleBinding;
 import com.xuptggg.search.databinding.FragmentResultUserBinding;
@@ -25,8 +27,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.Arrays;
 import java.util.List;
 
-public class ResultArticleFragment extends Fragment implements ResultContract.View{
-    private ResultContract.Presenter mPresenter;
+public class ResultArticleFragment extends Fragment implements ResultContract.View<Post>{
+    private ResultContract.Presenter<Post> mPresenter;
     private FragmentResultArticleBinding binding;
 
     public ResultArticleFragment() {
@@ -46,14 +48,14 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentResultArticleBinding.inflate(inflater);
         return binding.getRoot();
     }
 
     @Override
-    public void setPresenter(ResultContract.Presenter presenter) {
+    public void setPresenter(ResultContract.Presenter<Post> presenter) {
         mPresenter = presenter;
     }
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -62,7 +64,7 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
 //        mPresenter.getResultInfo(getArguments().getString("CONTENT"),);
         if (getArguments() != null){
-            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"tea","3");
+            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"post","3");
         }
     }
     @Override
@@ -90,5 +92,10 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     @Override
     public Boolean isACtive() {
         return isAdded();
+    }
+
+    @Override
+    public void showResult(List<Post> data) {
+
     }
 }

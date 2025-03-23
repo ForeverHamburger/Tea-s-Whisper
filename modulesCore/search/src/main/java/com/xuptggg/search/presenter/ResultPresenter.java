@@ -8,11 +8,11 @@ import com.xuptggg.search.contract.ResultContract;
 
 import java.util.List;
 
-public class ResultPresenter implements ResultContract.Presenter, LoadTasksCallBack<List> {
-    private ResultContract.View mView;
+public class ResultPresenter<T> implements ResultContract.Presenter<T>, LoadTasksCallBack<List<T>> {
+    private ResultContract.View<T> mView;
     private ResultContract.Model mModel;
 
-    public ResultPresenter(ResultContract.View mView, ResultContract.Model mModel) {
+    public ResultPresenter(ResultContract.View<T> mView, ResultContract.Model mModel) {
         this.mView = mView;
         this.mModel = mModel;
         mView.setPresenter(this);
@@ -37,11 +37,8 @@ public class ResultPresenter implements ResultContract.Presenter, LoadTasksCallB
 
     }
 
-
-
-
     @Override
-    public void onSuccess(List data) {
+    public void onSuccess(List<T> data) {
         if (mView != null && mView.isACtive()) {
             Log.i("ResultPresenter", "onSuccess: " + data.get(0).toString());
         }

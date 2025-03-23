@@ -2,6 +2,7 @@ package com.xuptggg.search.base;
 
 import android.util.Log;
 
+import com.google.gson.reflect.TypeToken;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
@@ -12,9 +13,12 @@ import com.xuptggg.libnetwork.request.MyRequest;
 import com.xuptggg.libnetwork.request.RequestParams;
 import com.xuptggg.search.base.data.BaseData;
 import com.xuptggg.search.base.data.BaseResponse;
+import com.xuptggg.search.base.data.Post;
 import com.xuptggg.search.base.data.Tea;
 import com.xuptggg.search.base.data.TeaResponse;
+import com.xuptggg.search.base.data.User;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class NetworkHelper {
@@ -81,14 +85,16 @@ public class NetworkHelper {
 //
 //        MyOkHttpClient.get(MyRequest.GetRequest(url, params, mToken), handle);
 //    }
-    public void performGetRequest(String url, RequestParams params, LoadTasksCallBack<List<Tea>> callBack) {
+    public <T> void performGetRequest(String url, RequestParams params, LoadTasksCallBack<List<T>> callBack) {
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
+
+        Type type = getResponseTypeForTag(params.urlParams.get("tag"));
         MyDataHandle handle = new MyDataHandle(new MyDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
                 Log.d(TAG, "performGetRequest: " + "onSuccess");
-                handleMyResponse(url, (TeaResponse) responseObj, callBack);
+                handleMyResponse(url,  (BaseResponse<BaseData<T>>) responseObj, callBack);
             }
 
             @Override
@@ -102,7 +108,7 @@ public class NetworkHelper {
                     }
                 }
             }
-        }, TeaResponse.class);
+        }, type);
 
         MyOkHttpClient.get(MyRequest.GetRequest(url, params, mToken), handle);
     }
@@ -166,5 +172,25 @@ public class NetworkHelper {
     }
     public void setToken(String token) {
         this.apiKey = token;
+    }
+    private Type getResponseTypeForTag(String tag) {
+        if (tag == null || tag.isEmpty()) {
+            throw new IllegalArgumentException("Tag cannot be null or empty");
+        }
+
+        switch (tag) {
+            case "tea":
+                return getResponseType(Tea.class);
+            case "post":
+                return getResponseType(Post.class);
+            case "user":
+                return getResponseType(User.class);
+            default:
+                throw new IllegalArgumentException("Unknown tag: " + tag);
+        }
+    }
+
+    private <T> Type getResponseType(Class<T> clazz) {
+        return TypeToken.getParameterized(BaseResponse.class, TypeToken.getParameterized(BaseData.class, clazz).getType()).getType();
     }
 }

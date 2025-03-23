@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ResultFragment extends Fragment implements ResultContract.View{
+public class ResultFragment extends Fragment implements ResultContract.View<String>{
     private FragmentResultBinding binding;
     private ResultContract.Presenter mPresenter;
 
@@ -77,7 +77,6 @@ public class ResultFragment extends Fragment implements ResultContract.View{
         TabLayout tabLayout = binding.TabLayout;
         ViewPager2 viewPager =binding.viewPager2;
 
-        // 设置适配器
         List<String> tabTitles = Arrays.asList("用户", "内容", "户用","容内","其他");
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(initUserFragment());
@@ -111,7 +110,6 @@ public class ResultFragment extends Fragment implements ResultContract.View{
     @Override
     public void onStart() {
         super.onStart();
-        // 检查是否已经注册，如果没有注册则进行注册
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
@@ -120,7 +118,6 @@ public class ResultFragment extends Fragment implements ResultContract.View{
     @Override
     public void onStop() {
         super.onStop();
-        // 取消注册
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
@@ -138,6 +135,11 @@ public class ResultFragment extends Fragment implements ResultContract.View{
     @Override
     public Boolean isACtive() {
         return isAdded();
+    }
+
+    @Override
+    public void showResult(List<String> data) {
+
     }
 
 }

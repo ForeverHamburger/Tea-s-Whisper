@@ -3,6 +3,8 @@ package com.xuptggg.search.contract;
 import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 import com.xuptggg.search.base.BaseView;
 
+import java.util.List;
+
 
 public interface ResultContract {
     interface Model {
@@ -12,7 +14,7 @@ public interface ResultContract {
 
     }
 
-    interface Presenter {
+    interface Presenter<T> {
         void getResultInfo(String content, String tag, String size);
 
         void unSubscribe();
@@ -20,10 +22,11 @@ public interface ResultContract {
         void getToken(String token);
     }
 
-    interface View extends BaseView<Presenter> {
+    interface View<T> extends BaseView<Presenter<T>> {
         void showError();
 
         Boolean isACtive();
+        void showResult(List<T> data);
 
 
     }

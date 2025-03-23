@@ -1,7 +1,7 @@
 package com.xuptggg.search.base.data;
 
 
-public abstract class BaseResponse<T> {
+public  class BaseResponse<T> {
     private int code;
     private String msg;
     private T data;

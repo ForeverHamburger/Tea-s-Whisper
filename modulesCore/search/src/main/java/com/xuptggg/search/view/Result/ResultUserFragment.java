@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.xuptggg.search.R;
+import com.xuptggg.search.base.data.User;
 import com.xuptggg.search.contract.ResultContract;
 import com.xuptggg.search.databinding.FragmentResultBinding;
 import com.xuptggg.search.databinding.FragmentResultUserBinding;
@@ -19,8 +20,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class ResultUserFragment extends Fragment implements ResultContract.View{
-    private ResultContract.Presenter mPresenter;
+import java.util.List;
+
+public class ResultUserFragment extends Fragment implements ResultContract.View<User>{
+    private ResultContract.Presenter<User> mPresenter;
     private FragmentResultUserBinding binding;
 
     public ResultUserFragment() {
@@ -44,6 +47,12 @@ public class ResultUserFragment extends Fragment implements ResultContract.View{
     public Boolean isACtive() {
         return isAdded();
     }
+
+    @Override
+    public void showResult(List<User> data) {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
