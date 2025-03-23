@@ -1,9 +1,19 @@
 package com.xuptggg.search.model;
 
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.tencent.mmkv.MMKV;
 import com.xuptggg.search.R;
 import com.xuptggg.search.base.NetworkHelper;
+import com.xuptggg.search.base.SearchHistoryUtils;
 import com.xuptggg.search.contract.ISearchContract;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,5 +51,10 @@ public class SearchModel implements ISearchContract.ISearchModel<String> {
         teaShowInfos.add(new TeaShowInfo("萎凋",R.drawable.tea_item2));
         teaShowInfos.add(new TeaShowInfo("渥堆",R.drawable.tea_item2));
         return teaShowInfos;
+    }
+
+    @Override
+    public List<String> getTeaSearchHistory() {
+        return SearchHistoryUtils.getSearchHistory();
     }
 }

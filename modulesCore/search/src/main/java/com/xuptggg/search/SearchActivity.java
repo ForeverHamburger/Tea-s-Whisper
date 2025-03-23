@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.gson.Gson;
+import com.tencent.mmkv.MMKV;
+import com.xuptggg.search.base.SearchHistoryUtils;
 import com.xuptggg.search.databinding.ActivitySearchBinding;
 import com.xuptggg.search.model.ResultModel;
 import com.xuptggg.search.model.SearchModel;
@@ -19,6 +22,8 @@ import com.xuptggg.search.presenter.ResultPresenter;
 import com.xuptggg.search.presenter.SearchPresenter;
 import com.xuptggg.search.view.Result.ResultFragment;
 import com.xuptggg.search.view.Search.SearchFragment;
+
+import java.util.List;
 
 @Route(path = "/search/SearchActivity")
 public class SearchActivity extends AppCompatActivity {
@@ -50,8 +55,9 @@ public class SearchActivity extends AppCompatActivity {
 
         Log.d("SearchActivity", "initListener");
         binding.btnSearch.setOnClickListener(v -> {
+            String searchText = binding.etSearch.getText().toString();
             Log.d("SearchActivity", "btnSearch");
-            if(binding.etSearch.getText().toString().isEmpty()){
+            if(searchText.isEmpty()){
                 Log.d("SearchActivity", "Search is empty");
             }else {
                 Log.d("SearchActivity", "Search is not empty");
@@ -61,13 +67,14 @@ public class SearchActivity extends AppCompatActivity {
                 if (currentFragment instanceof ResultFragment) {
                     ResultFragment resultFragment = (ResultFragment) currentFragment;
                 } else {
-                    ResultFragment resultFragment = ResultFragment.newInstance(binding.etSearch.getText().toString());
+                    ResultFragment resultFragment = ResultFragment.newInstance(searchText);
                     ResultPresenter presenter = new ResultPresenter(resultFragment, new ResultModel());
                     resultFragment.setPresenter(presenter);
                     fm.beginTransaction()
                             .replace(R.id.fragment_container, resultFragment)
                             .commit();
                 }
+                SearchHistoryUtils.addSearchHistory(searchText);
             }
         });
     }

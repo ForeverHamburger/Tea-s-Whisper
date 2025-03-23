@@ -40,6 +40,11 @@ public class SearchPresenter implements ISearchContract.ISearchPresenter, LoadSe
     }
 
     @Override
+    public List<String> getTeaSearchHistory() {
+        return model.getTeaSearchHistory();
+    }
+
+    @Override
     public void onSuccess(SearchInfo searchInfo) {
         view.showSearchInfomation(searchInfo);
     }

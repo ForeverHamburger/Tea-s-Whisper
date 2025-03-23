@@ -13,6 +13,8 @@ public interface ISearchContract {
         void getToken(String token);
         List<String> getTeaSearchCommend();
         List<TeaShowInfo> getTeaShow();
+
+        List<String> getTeaSearchHistory();
     }
 
     interface ISearchPresenter{
@@ -20,6 +22,8 @@ public interface ISearchContract {
         void getToken(String token);
         List<String> getTeaSearchCommend();
         List<TeaShowInfo> getTeaShow();
+
+        List<String> getTeaSearchHistory();
     }
     interface ISearchView extends BaseView<ISearchPresenter> {
         void showSearchInfomation(SearchInfo searchInfo);
