@@ -33,58 +33,7 @@ public class NetworkHelper {
         }
         return instance;
     }
-//    public void performPostRequest(String url, RequestParams params, LoadTasksCallBack callBack) {
-//        RequestParams mToken = new RequestParams();
-//        mToken.put("Authorization", "Bearer " + apiKey);
-//        Log.d(TAG, "performPostRequest: " + "apiKey=" + apiKey);
-//        MyDataHandle handle = new MyDataHandle(new MyDataListener() {
-//            @Override
-//            public void onSuccess(Object responseObj) {
-//                Log.d(TAG, "performPostRequest: " + "onSuccess");
-//                handleMyResponse(url, (MyResponse) responseObj, callBack);
-//            }
-//
-//            @Override
-//            public void onFailure(Object reasonObj) {
-//                Log.d(TAG, "performPostRequest: " + "onFailure");
-//                if (reasonObj != null) {
-//                    if (reasonObj instanceof MyHttpException) {
-//                        callBack.onFailed(((MyHttpException) reasonObj).getErrorMessage());
-//                    } else {
-//                        callBack.onFailed(reasonObj.toString());
-//                    }
-//                }
-//            }
-//        }, MyResponse.class);
-//
-//        MyOkHttpClient.post(MyRequest.PostRequest(url, params, mToken), handle);
-//    }
-//    public void performDataGetRequest(String url, RequestParams params, LoadTasksCallBack<List<Data>> callBack) {
-//        RequestParams mToken = new RequestParams();
-//        mToken.put("Authorization", "Bearer " + apiKey);
-//        Log.d(TAG, "performDataGetRequest: " + "apiKey=" + apiKey);
-//        MyDataHandle handle = new MyDataHandle(new MyDataListener() {
-//            @Override
-//            public void onSuccess(Object responseObj) {
-//                Log.d(TAG, "performDataGetRequest: " + "onSuccess");
-//                handleMyResponse(url, (MyResponse) responseObj, callBack);
-//            }
-//
-//            @Override
-//            public void onFailure(Object reasonObj) {
-//                Log.d(TAG, "performDataGetRequest: " + "onFailure");
-//                if (reasonObj != null) {
-//                    if (reasonObj instanceof MyHttpException) {
-//                        callBack.onFailed(((MyHttpException) reasonObj).getErrorMessage());
-//                    } else {
-//                        callBack.onFailed(reasonObj.toString());
-//                    }
-//                }
-//            }
-//        }, MyResponse.class);
-//
-//        MyOkHttpClient.get(MyRequest.GetRequest(url, params, mToken), handle);
-//    }
+
     public <T> void performGetRequest(String url, RequestParams params, LoadTasksCallBack<List<T>> callBack) {
         RequestParams mToken = new RequestParams();
         mToken.put("Authorization", "Bearer " + apiKey);
@@ -120,15 +69,14 @@ public class NetworkHelper {
         if (responseObj.getData() != null) {
             Log.d(TAG, "Response in chat: code= " + responseObj.getData().toString());
             Log.d(TAG, "Response in chat: content= " + responseObj.getData());
-        }
-        else
+        } else
             Log.d(TAG, "Response in chat: " + responseObj.getMsg() + "data==null");
 
         if (responseObj == null || responseObj.toString().trim().equals("")) {
             callBack.onFailed("响应为空");
             return;
         }
-        Log.e(TAG, "-------------- " );
+        Log.e(TAG, "-------------- ");
         // 统一校验 code
         if (responseObj.getCode() != 1) {
             callBack.onFailed(responseObj.getMsg() + " (错误码: " + responseObj.getCode() + ")");
@@ -144,27 +92,12 @@ public class NetworkHelper {
                     if (responseObj.getData() != null) {
                         Log.d(TAG, "handleMyResponse: " + "getData校验成功");
                         callBack.onSuccess(responseObj.getData().getInfo());
-                    }
-                    else {
+                    } else {
                         callBack.onFailed("数据为空");
                     }
                 } else {
                     callBack.onFailed(responseObj.getMsg());
                 }
-            } else if (url.equals(URL.SEARCH_URL)|| url.equals(URL.SEARCH_URL)) {
-                if (responseObj.getMsg().equals("success")) {
-//                    //getData校验
-                    if (responseObj.getData() != null) {
-                        Log.d(TAG, "handleMyResponse: " + "getData校验成功");
-                        callBack.onSuccess(responseObj.getData().getInfo());
-                    }
-                    else
-                        callBack.onFailed("历史聊天数据为空");
-                } else {
-                    callBack.onFailed(responseObj.getMsg());
-                }
-            } else {
-                callBack.onFailed(responseObj.getMsg());
             }
         } else {
             callBack.onFailed(responseObj.getMsg() + "code错误");
