@@ -88,6 +88,8 @@ public class TabFragment extends Fragment implements ITabItemContract.ITabItemVi
 
     @Override
     public void showTabItemInfomation(List<com.xuptggg.individual.tabitem.model.ForumInfo> forumInfoList) {
+        Log.d("TabFragment", "showTabItemInfomation: " + "正在加载瀑布流");
+        Log.d("TabFragment", "showTabItemInfomation: " + forumInfoList.size());
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         binding.rvIndividualTabItem.setLayoutManager(layoutManager);
         WaterFallAdapter waterFallAdapter = new WaterFallAdapter(forumInfoList,getActivity());

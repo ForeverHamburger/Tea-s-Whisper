@@ -1,4 +1,5 @@
 package com.xuptggg.home.view.adapter;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.List;
 public class TeaCardAdapter extends RecyclerView.Adapter<TeaCardAdapter.TeaCardViewHolder> {
 
     private List<TeaInfo> teaInfoList;
+    public Context mContext;
 
     public TeaCardAdapter(List<TeaInfo> teaInfoList) {
         this.teaInfoList = teaInfoList;
@@ -57,9 +59,9 @@ public class TeaCardAdapter extends RecyclerView.Adapter<TeaCardAdapter.TeaCardV
                 @Override
                 public void onClick(View v) {
                     ARouter.getInstance().build("/detail/DetailActivity").navigation();
+
                 }
             });
         }
-
     }
 }

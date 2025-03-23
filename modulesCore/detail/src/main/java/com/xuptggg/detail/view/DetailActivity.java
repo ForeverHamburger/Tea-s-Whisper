@@ -73,9 +73,44 @@ public class DetailActivity extends AppCompatActivity implements IDetailContract
             }
         });
 
+        startAnimation();
+
         setupSections();
         setPresenter(new DetailPresenter(new DetailModel(),this));
         mPresenter.getDetailInfo("西湖龙井");
+    }
+
+    private void startAnimation() {
+
+        // 获取根视图
+        View rootView = findViewById(android.R.id.content);
+
+        // 初始时将视图缩小到一个点
+        rootView.setScaleX(0f);
+        rootView.setScaleY(0f);
+        rootView.setPivotX(0);
+        rootView.setPivotY(0);
+
+        // 创建属性动画，从点击位置开始逐渐扩大
+        ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(rootView, "scaleX", 0f, 1f);
+        ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(rootView, "scaleY", 0f, 1f);
+        scaleXAnimator.setDuration(500);
+        scaleYAnimator.setDuration(500);
+        scaleXAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        scaleYAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        // 同时播放 X 和 Y 方向的缩放动画
+        scaleXAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                // 动画结束后恢复视图的正常状态
+                rootView.setScaleX(1f);
+                rootView.setScaleY(1f);
+            }
+        });
+        scaleXAnimator.start();
+        scaleYAnimator.start();
     }
 
     @Override

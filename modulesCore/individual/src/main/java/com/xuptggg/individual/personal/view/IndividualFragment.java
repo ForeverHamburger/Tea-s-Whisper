@@ -80,15 +80,10 @@ public class IndividualFragment extends Fragment implements IIndividualContract.
         fragmentList.add(new TabFragment("我的"));
         fragmentList.add(new TabFragment("赞过"));
         fragmentList.add(new TabFragment("收藏"));
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity(), fragmentList);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(requireActivity(), fragmentList);
         binding.vpMy.setAdapter(viewPagerAdapter);
         binding.vpMy.setOffscreenPageLimit(3);
-        binding.vpMy.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                updatePagerHeightForChild(fragmentList.get(binding.vpMy.getCurrentItem()).getView(),binding.vpMy);
-            }
-        });
+
 
         new TabLayoutMediator(binding.tabMy, binding.vpMy, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -144,20 +139,5 @@ public class IndividualFragment extends Fragment implements IIndividualContract.
     @Override
     public void showError() {
 
-    }
-
-    public static void updatePagerHeightForChild(View view, ViewPager2 pager) {
-        if (view != null) {
-            view.post(() -> {
-                int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
-                int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                view.measure(wMeasureSpec, hMeasureSpec);
-                if (pager.getLayoutParams().height != view.getMeasuredHeight()) {
-                    ViewGroup.LayoutParams lp = pager.getLayoutParams();
-                    lp.height = view.getMeasuredHeight();
-                    pager.setLayoutParams(lp);
-                }
-            });
-        }
     }
 }

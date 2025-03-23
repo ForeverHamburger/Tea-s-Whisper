@@ -41,7 +41,6 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
 
         holder.title.setText(info.getTitle());
 
-
         if (info.getAuthor_url().toString().equals("")) {
             Glide.with(mContext)
                     .load(R.drawable.icon_me)
