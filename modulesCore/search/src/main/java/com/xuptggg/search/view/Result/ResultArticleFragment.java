@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,10 +64,14 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     public void getToken(TokenManager tokenManager) {
         mPresenter.getToken(tokenManager.getToken());
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
-//        mPresenter.getResultInfo(getArguments().getString("CONTENT"),);
-        if (getArguments() != null){
-            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"post","3");
-        }
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                if (getArguments() != null) {
+                    mPresenter.getResultInfo(getArguments().getString("CONTENT"),"post","3");
+                }
+            }
+        });
     }
     @Override
     public void onStart() {

@@ -4,6 +4,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -79,7 +81,14 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
         mPresenter.getToken(tokenManager.getToken());
-        initDefault();
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+
+
+                initDefault();
+            }
+        });
         Log.d("CommunicateFragment", "getToken: " + tokenManager.getToken());
     }
 

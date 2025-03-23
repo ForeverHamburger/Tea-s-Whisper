@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,9 +74,15 @@ public class ResultTeaFragment extends Fragment implements ResultContract.View<T
     public void getToken(TokenManager tokenManager) {
         mPresenter.getToken(tokenManager.getToken());
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
-        if (getArguments() != null) {
-            mPresenter.getResultInfo(getArguments().getString("CONTENT"), "tea", "3");
-        }
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                if (getArguments() != null) {
+                    mPresenter.getResultInfo(getArguments().getString("CONTENT"), "tea", "3");
+                }
+            }
+        });
+
     }
 
     @Override

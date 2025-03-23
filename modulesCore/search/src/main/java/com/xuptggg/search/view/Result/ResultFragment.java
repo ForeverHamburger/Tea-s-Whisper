@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,9 +73,15 @@ public class ResultFragment extends Fragment implements ResultContract.View<Stri
         mPresenter.getToken(tokenManager.getToken());
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
 //        mPresenter.getResultInfo(getArguments().getString("CONTENT"),);
-        if (getArguments() != null){
-            initView(getArguments().getString("CONTENT"));
-        }
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                if (getArguments() != null){
+                    initView(getArguments().getString("CONTENT"));
+                }
+            }
+        });
+
     }
 
     private void initView(String content) {

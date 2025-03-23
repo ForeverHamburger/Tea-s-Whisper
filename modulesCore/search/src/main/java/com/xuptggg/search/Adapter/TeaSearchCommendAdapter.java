@@ -14,17 +14,18 @@ import com.xuptggg.libnetwork.aword.aWord;
 import com.xuptggg.libnetwork.aword.aWordHelper;
 import com.xuptggg.search.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TeaSearchCommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<String> teaSearchCommend;
+    private OnItemClickListener listener;
     private static final int TYPE_EMPTY = 0;
     private static final int TYPE_ITEM = 1;
 
-    public TeaSearchCommendAdapter(List<String> teaSearchCommend) {
+    public TeaSearchCommendAdapter(List<String> teaSearchCommend, OnItemClickListener listener) {
         this.teaSearchCommend = teaSearchCommend;
+        this.listener = listener;
     }
 
 
@@ -36,7 +37,7 @@ public class TeaSearchCommendAdapter extends RecyclerView.Adapter<RecyclerView.V
             return new EmptyViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_empty_history, parent, false));
         }
-        return new TeaSearchCommendViewHolder(view);
+        return new TeaSearchCommendViewHolder(view,listener);
     }
 
     @Override
@@ -97,12 +98,25 @@ public class TeaSearchCommendAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
 
+
+
+
     public static class TeaSearchCommendViewHolder extends RecyclerView.ViewHolder {
         TextView tvteaSearchCommend;
-
-        public TeaSearchCommendViewHolder(@NonNull View itemView) {
+        public TeaSearchCommendViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             tvteaSearchCommend = itemView.findViewById(R.id.tv_tea_search_commend);
+            tvteaSearchCommend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener!= null) {
+                        int position = getAdapterPosition(); // 获取点击的位置
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position, tvteaSearchCommend.getText().toString()); // 通知 Activity
+                        }
+                    }
+                }
+            });
         }
     }
 }
