@@ -2,7 +2,6 @@ package com.xuptggg.search.view.Result;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -12,9 +11,10 @@ import android.view.ViewGroup;
 
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.xuptggg.search.R;
+import com.xuptggg.search.base.data.Tea;
 import com.xuptggg.search.base.data.User;
 import com.xuptggg.search.contract.ResultContract;
-import com.xuptggg.search.databinding.FragmentResultBinding;
+import com.xuptggg.search.databinding.FragmentResultTeaBinding;
 import com.xuptggg.search.databinding.FragmentResultUserBinding;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,16 +23,17 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
-public class ResultUserFragment extends Fragment implements ResultContract.View<User>{
-    private ResultContract.Presenter<User> mPresenter;
-    private FragmentResultUserBinding binding;
 
-    public ResultUserFragment() {
+public class ResultTeaFragment extends Fragment implements ResultContract.View<Tea> {
+    private ResultContract.Presenter<Tea> mPresenter;
+    private FragmentResultTeaBinding binding;
+
+    public ResultTeaFragment() {
 
     }
 
-    public static ResultUserFragment newInstance(String content) {
-        ResultUserFragment fragment = new ResultUserFragment();
+    public static ResultTeaFragment newInstance(String content) {
+        ResultTeaFragment fragment = new ResultTeaFragment();
         Bundle args = new Bundle();
         args.putString("CONTENT", content);
         fragment.setArguments(args);
@@ -50,7 +51,7 @@ public class ResultUserFragment extends Fragment implements ResultContract.View<
     }
 
     @Override
-    public void showResult(List<User> data) {
+    public void showResult(List<Tea> data) {
 
     }
 
@@ -61,19 +62,21 @@ public class ResultUserFragment extends Fragment implements ResultContract.View<
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentResultUserBinding.inflate(inflater);
+        binding = FragmentResultTeaBinding.inflate(inflater);
         return binding.getRoot();
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
         mPresenter.getToken(tokenManager.getToken());
         Log.d("ResultFragment", "getToken: " + tokenManager.getToken());
-        if (getArguments() != null){
-            mPresenter.getResultInfo(getArguments().getString("CONTENT"),"user","3");
+        if (getArguments() != null) {
+            mPresenter.getResultInfo(getArguments().getString("CONTENT"), "tea", "3");
         }
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -91,8 +94,9 @@ public class ResultUserFragment extends Fragment implements ResultContract.View<
             EventBus.getDefault().unregister(this);
         }
     }
+
     @Override
-    public void setPresenter(ResultContract.Presenter<User> presenter) {
+    public void setPresenter(ResultContract.Presenter<Tea> presenter) {
         mPresenter = presenter;
     }
 

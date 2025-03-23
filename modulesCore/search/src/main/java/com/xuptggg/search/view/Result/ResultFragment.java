@@ -16,6 +16,9 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.xuptggg.module.libbase.eventbus.TokenManager;
 import com.xuptggg.search.R;
+import com.xuptggg.search.base.data.Post;
+import com.xuptggg.search.base.data.Tea;
+import com.xuptggg.search.base.data.User;
 import com.xuptggg.search.contract.ResultContract;
 
 import com.xuptggg.search.databinding.FragmentResultBinding;
@@ -77,13 +80,14 @@ public class ResultFragment extends Fragment implements ResultContract.View<Stri
         TabLayout tabLayout = binding.TabLayout;
         ViewPager2 viewPager =binding.viewPager2;
 
-        List<String> tabTitles = Arrays.asList("用户", "内容", "户用","容内","其他");
+        List<String> tabTitles = Arrays.asList("用户", "内容", "茶叶","户用","容内","叶茶");
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(initUserFragment());
         fragmentList.add(initArticleFragment());
+        fragmentList.add(initTeaFragment());
         fragmentList.add(initUserFragment());
         fragmentList.add(initArticleFragment());
-        fragmentList.add(initArticleFragment());
+        fragmentList.add(initTeaFragment());
 
         MyPagerAdapter adapter = new MyPagerAdapter(requireActivity(),fragmentList);
         viewPager.setAdapter(adapter);
@@ -96,15 +100,21 @@ public class ResultFragment extends Fragment implements ResultContract.View<Stri
 
     private Fragment initUserFragment() {
             ResultUserFragment resultUserFragment = ResultUserFragment.newInstance(getArguments().getString("CONTENT"));
-            ResultPresenter presenter = new ResultPresenter(resultUserFragment, new ResultModel());
+            ResultPresenter<User> presenter = new ResultPresenter<User>(resultUserFragment, new ResultModel());
             resultUserFragment.setPresenter(presenter);
             return resultUserFragment;
     }
     private Fragment initArticleFragment() {
         ResultArticleFragment resultArticleFragment = ResultArticleFragment.newInstance(getArguments().getString("CONTENT"));
-        ResultPresenter presenter = new ResultPresenter(resultArticleFragment, new ResultModel());
+        ResultPresenter<Post> presenter = new ResultPresenter<Post>(resultArticleFragment, new ResultModel());
         resultArticleFragment.setPresenter(presenter);
         return resultArticleFragment;
+    }
+    private Fragment initTeaFragment() {
+        ResultTeaFragment resultTeaFragment = ResultTeaFragment.newInstance(getArguments().getString("CONTENT"));
+        ResultPresenter<Tea> presenter = new ResultPresenter<Tea>(resultTeaFragment, new ResultModel());
+        resultTeaFragment.setPresenter(presenter);
+        return resultTeaFragment;
     }
 
     @Override

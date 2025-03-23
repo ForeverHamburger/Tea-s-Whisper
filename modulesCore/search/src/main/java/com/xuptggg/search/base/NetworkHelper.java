@@ -15,7 +15,6 @@ import com.xuptggg.search.base.data.BaseData;
 import com.xuptggg.search.base.data.BaseResponse;
 import com.xuptggg.search.base.data.Post;
 import com.xuptggg.search.base.data.Tea;
-import com.xuptggg.search.base.data.TeaResponse;
 import com.xuptggg.search.base.data.User;
 
 import java.lang.reflect.Type;
