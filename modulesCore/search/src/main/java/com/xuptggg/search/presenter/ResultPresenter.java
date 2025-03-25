@@ -41,6 +41,16 @@ public class ResultPresenter<T> implements ResultContract.Presenter<T>, LoadTask
     public void onSuccess(List<T> data) {
         if (mView != null && mView.isACtive()) {
             Log.i("ResultPresenter", "onSuccess: " + data.get(0).toString());
+            if (data == null || data.isEmpty()) {
+                Log.e("ResultPresenter", "data = null ");
+                mView.showError();
+            } else {
+                Log.e("ResultPresenter", "data != null ");
+                mView.showResult(data);
+                for (T mydata : data) {
+                    Log.d("ResultPresenter", mydata.toString());
+                }
+            }
         }
     }
 

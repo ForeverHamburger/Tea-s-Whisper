@@ -2,7 +2,9 @@ package com.xuptggg.search.view.Result;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -29,6 +31,7 @@ import java.util.List;
 public class ResultTeaFragment extends Fragment implements ResultContract.View<Tea> {
     private ResultContract.Presenter<Tea> mPresenter;
     private FragmentResultTeaBinding binding;
+    private MultiTypeAdapter<Tea> mAdapter;
 
     public ResultTeaFragment() {
 
@@ -54,7 +57,7 @@ public class ResultTeaFragment extends Fragment implements ResultContract.View<T
 
     @Override
     public void showResult(List<Tea> data) {
-
+        mAdapter.addAllDataList(data);
     }
 
     @Override
@@ -68,6 +71,11 @@ public class ResultTeaFragment extends Fragment implements ResultContract.View<T
                              Bundle savedInstanceState) {
         binding = FragmentResultTeaBinding.inflate(inflater);
         return binding.getRoot();
+    }
+    public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.rvTeaList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.rvTeaList.setAdapter(mAdapter);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
