@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
@@ -31,7 +32,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.Arrays;
 import java.util.List;
 
-public class ResultArticleFragment extends Fragment implements ResultContract.View<Post> {
+public class ResultArticleFragment extends Fragment implements ResultContract.View<Post>,MultiTypeAdapter.OnDataChangeListener {
     private ResultContract.Presenter<Post> mPresenter;
     private FragmentResultArticleBinding binding;
     private MultiTypeAdapter<Post> mAdapter;
@@ -82,11 +83,12 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     @Override
     public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // 设置 RecyclerView
-        binding.rvArticleList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//        int spanCount = 2;
+//        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
+//        binding.rvArticleList.setLayoutManager(layoutManager);
         binding.rvArticleList.setAdapter(mAdapter);
+        mAdapter.setOnDataChangeListener(this);
     }
-
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
         // 获取 Token 并请求数据
@@ -120,5 +122,28 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     @Override
     public void setPresenter(ResultContract.Presenter<Post> presenter) {
         mPresenter = presenter;
+    }
+
+
+    @Override
+    public void onDataChanged(boolean isEmpty) {
+        if (isEmpty) {
+            setLinearLayout();
+        } else {
+            setStaggeredGridLayout();
+        }
+    }
+
+    private void setStaggeredGridLayout() {
+        Log.d("ResultArticleFragment", "setStaggeredGridLayout: ");
+        int spanCount = 2; // 瀑布流列数
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
+        binding.rvArticleList.setLayoutManager(layoutManager);
+    }
+
+    private void setLinearLayout() {
+        Log.d("ResultArticleFragment", "setLinearLayout: ");
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        binding.rvArticleList.setLayoutManager(layoutManager);
     }
 }

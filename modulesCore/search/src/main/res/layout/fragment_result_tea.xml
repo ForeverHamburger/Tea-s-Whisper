@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:clipToPadding="false"
-        android:overScrollMode="never"
-        tools:listitem="@layout/item_tea" />
+        android:overScrollMode="never" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

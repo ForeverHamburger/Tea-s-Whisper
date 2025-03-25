@@ -63,7 +63,7 @@ public class ResultTeaFragment extends Fragment implements ResultContract.View<T
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mAdapter = new MultiTypeAdapter<>();
     }
 
     @Override

@@ -31,7 +31,12 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int TYPE_POST = 3;
 
     private List<T> Lists = new ArrayList<>();
+    private OnDataChangeListener onDataChangeListener;
 
+    // 添加回调接口
+    public void setOnDataChangeListener(OnDataChangeListener listener) {
+        this.onDataChangeListener = listener;
+    }
     @Override
     public int getItemViewType(int position) {
         if (Lists.isEmpty()) {
@@ -100,7 +105,16 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
         }
         Lists.clear();
         Lists.addAll(List);
-        notifyDataSetChanged(); // 直接刷新整个 RecyclerView
+        notifyDataSetChanged();
+        // 通知数据变化
+        if (onDataChangeListener != null) {
+            onDataChangeListener.onDataChanged(Lists.isEmpty());
+        }
+    }
+
+    // 回调接口
+    public interface OnDataChangeListener {
+        void onDataChanged(boolean isEmpty);
     }
     private static class TeaViewHolder extends RecyclerView.ViewHolder {
         public ItemTeaBinding binding;
@@ -115,6 +129,7 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.tvTeaShowDetail.setText(tea.getDetail());
             Glide.with(binding.getRoot().getContext())
                     .load(tea.getImage())
+                    .error(R.drawable.tea_item2) // 加载失败时显示的图片
                     .into(binding.ivTeaShowImage);
             binding.btnTeaShowMore.setOnClickListener(v -> {
 //                Intent intent = new Intent(binding.getRoot().getContext(), TeaDetailActivity.class);
@@ -141,6 +156,7 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
 
             Glide.with(binding.getRoot().getContext())
                     .load(user.getUrl())
+                    .error(R.drawable.tea_item2) // 加载失败时显示的图片
                     .into(binding.ivMessageIcon);
 
             binding.getRoot().setOnClickListener(v -> {
@@ -177,9 +193,11 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.tvWfLoveCount.setText(formatVotes(post.getVotes())); // 设置点赞数
             Glide.with(binding.getRoot().getContext())
                     .load(post.getUrl())
+                    .error(R.drawable.tea_item2) // 加载失败时显示的图片
                     .into(binding.ivWaterfallIcon);
             Glide.with(binding.getRoot().getContext())
                     .load(post.getAuthorUrl())
+                    .error(R.drawable.tea_item2) // 加载失败时显示的图片
                     .into(binding.ivWaterfallUserIcon);
 
             binding.ivWfLoveIcon.setOnClickListener(v -> {
