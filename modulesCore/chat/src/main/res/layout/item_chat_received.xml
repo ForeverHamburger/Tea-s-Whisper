@@ -22,7 +22,7 @@
             android:layout_height="38dp"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            android:src="@drawable/dog" />
+            android:src="@drawable/pic_luyu" />
     </androidx.cardview.widget.CardView>
 
     <TextView

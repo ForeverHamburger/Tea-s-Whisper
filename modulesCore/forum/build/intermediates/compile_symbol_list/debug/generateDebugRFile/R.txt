@@ -10,6 +10,7 @@ int color light_green 0x0
 int color transparent 0x0
 int color white 0x0
 int drawable btn_background 0x0
+int drawable cup_head 0x0
 int drawable dog_head 0x0
 int drawable et_background 0x0
 int drawable ic_add_publish 0x0

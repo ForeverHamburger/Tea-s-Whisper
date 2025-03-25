@@ -11,6 +11,7 @@ color light_green
 color transparent
 color white
 drawable btn_background
+drawable cup_head
 drawable dog_head
 drawable et_background
 drawable ic_add_publish

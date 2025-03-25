@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dog_head" />
+                android:src="@drawable/cup_head" />
         </androidx.cardview.widget.CardView>
 
         <EditText
