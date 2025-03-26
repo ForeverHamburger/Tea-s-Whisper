@@ -40,7 +40,7 @@ public class ResultPresenter<T> implements ResultContract.Presenter<T>, LoadTask
     @Override
     public void onSuccess(List<T> data) {
         if (mView != null && mView.isACtive()) {
-            Log.i("ResultPresenter", "onSuccess: " + data.get(0).toString());
+            Log.i("ResultPresenter", "onSuccess: " + data.toString());
             if (data == null || data.isEmpty()) {
                 Log.e("ResultPresenter", "data = null ");
                 mView.showError();

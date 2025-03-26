@@ -36,9 +36,11 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
     // 添加回调接口
     public void setOnDataChangeListener(OnDataChangeListener listener) {
         this.onDataChangeListener = listener;
+        Log.d("ResultArticleFragment", String.valueOf("setOnDataChange " + onDataChangeListener));
     }
     @Override
     public int getItemViewType(int position) {
+        Log.d("ResultArticleFragment", String.valueOf("llll " + onDataChangeListener));
         if (Lists.isEmpty()) {
             return TYPE_EMPTY;
         }
@@ -106,8 +108,10 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
         Lists.clear();
         Lists.addAll(List);
         notifyDataSetChanged();
+        Log.e("ResultArticleFragment", "List is null or empty"+ onDataChangeListener);
         // 通知数据变化
         if (onDataChangeListener != null) {
+            Log.e("ResultArticleFragment", "List is null or empty+++++++"+ onDataChangeListener);
             onDataChangeListener.onDataChanged(Lists.isEmpty());
         }
     }
@@ -227,6 +231,9 @@ public class MultiTypeAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
     private class EmptyViewHolder extends RecyclerView.ViewHolder {
         public EmptyViewHolder(View inflate) {
             super(inflate);
+            ViewGroup.LayoutParams params = itemView.getLayoutParams();
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            itemView.setLayoutParams(params);
         }
 
         public void bindEmptyView() {

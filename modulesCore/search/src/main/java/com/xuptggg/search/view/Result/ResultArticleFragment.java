@@ -83,11 +83,13 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     @Override
     public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        int spanCount = 2;
-//        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
-//        binding.rvArticleList.setLayoutManager(layoutManager);
-        binding.rvArticleList.setAdapter(mAdapter);
         mAdapter.setOnDataChangeListener(this);
+        setLinearLayout();
+        binding.rvArticleList.setAdapter(mAdapter);
+        if (mAdapter.getItemCount() > 1) {
+            setStaggeredGridLayout();
+        }
+
     }
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
@@ -104,7 +106,6 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
     @Override
     public void onStart() {
         super.onStart();
-        // 注册 EventBus
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
@@ -127,10 +128,11 @@ public class ResultArticleFragment extends Fragment implements ResultContract.Vi
 
     @Override
     public void onDataChanged(boolean isEmpty) {
+        Log.d("ResultArticleFragment", "onDataChanged: "+ isEmpty);
         if (isEmpty) {
-            setLinearLayout();
+            setLinearLayout(); // 数据为空时用 LinearLayoutManager
         } else {
-            setStaggeredGridLayout();
+            setStaggeredGridLayout(); // 有数据时用瀑布流
         }
     }
 
