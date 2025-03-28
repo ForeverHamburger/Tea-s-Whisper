@@ -72,7 +72,6 @@ public class MyRequest {
             }
         }
         HttpUrl httpUrl = urlBuilder.build();
-        // 创建一个Headers.Builder对象，用于构建请求头内容
         Headers.Builder mHeadersBuilder = new Headers.Builder();
         if (headers!= null) {
             // 遍历headers中的键值对，将它们添加到Headers.Builder中，以此构建请求头

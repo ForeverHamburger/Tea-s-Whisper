@@ -4,6 +4,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -52,7 +54,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     private static final String ARG_SESSION_ID = "sessionID";
     private String title;
     private boolean Send = true;
-    private boolean isFirstLaunch = true; // 标记是否首次启动
+    private boolean isFirstLaunch = true;
     private CommunicateContract.Presenter mPresenter;
     public ChatCommunicateAdapter adapter;
     public String sessionId;
@@ -79,6 +81,15 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getToken(TokenManager tokenManager) {
         mPresenter.getToken(tokenManager.getToken());
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+
+
+                initDefault();
+            }
+        });
+        Log.d("CommunicateFragment", "getToken: " + tokenManager.getToken());
     }
 
     @Override
@@ -109,8 +120,6 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
         binding.ChatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         markwon = Markwon.create(requireContext());
         adapter = new ChatCommunicateAdapter(markwon);
@@ -229,7 +238,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
             }
         });
 
-        initDefault();
+//        initDefault();
         // 初始化键盘隐藏逻辑
         setupHideKeyboardFeature();
     }
@@ -311,6 +320,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         }
 
         if (sessionId != null && !sessionId.isEmpty()) {
+            Log.d("CommunicateFragment", "initDefault: "+sessionId);
             mPresenter.getHistoryInfo(sessionId);
         } else if (isFirstLaunch) {
             showDefaultWelcomeMessage();
@@ -350,11 +360,9 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
     }
 
     private void getAIResponse(String content) {
-//        new Thread(() -> {
         mPresenter.getCommunicateInfo(content, sessionId);
         Log.d("CommunicateFragment", "getAIResponse: " + content);
         Log.d("CommunicateFragment", "getAIResponse: " + sessionId);
-//        }).start();
     }
 
     @Override
@@ -405,7 +413,7 @@ public class CommunicateFragment extends Fragment implements CommunicateContract
         mPresenter = presenter;
     }
     private View.OnTouchListener hideKeyboardListener;
-    // 添加这个方法
+
     private void setupHideKeyboardFeature() {
         // 获取根布局
         View rootView = binding.getRoot();

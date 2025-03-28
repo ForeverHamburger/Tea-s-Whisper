@@ -182,6 +182,7 @@
         android:background="@drawable/edit_shape"
         android:textSize="25dp"
         android:textColor="@android:color/black"
+        android:fontFamily="@font/content_font"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tl_confirmPassword" />

@@ -177,9 +177,9 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 48 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 34 warnings</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Tue Mar 11 14:04:46 CST 2025 by AGP (8.4.0)</nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Tue Mar 18 21:27:13 CST 2025 by AGP (8.4.0)</nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -189,7 +189,6 @@ document.getElementById(id).style.display = 'none';
       <a class="mdl-navigation__link" href="#CheckResult"><i class="material-icons warning-icon">warning</i>Ignoring results (8)</a>
       <a class="mdl-navigation__link" href="#UnusedAttribute"><i class="material-icons warning-icon">warning</i>Attribute unused on older versions (1)</a>
       <a class="mdl-navigation__link" href="#Overdraw"><i class="material-icons warning-icon">warning</i>Overdraw: Painting regions more than once (1)</a>
-      <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (14)</a>
       <a class="mdl-navigation__link" href="#RedundantNamespace"><i class="material-icons warning-icon">warning</i>Redundant namespace (6)</a>
       <a class="mdl-navigation__link" href="#IconLocation"><i class="material-icons warning-icon">warning</i>Image defined in density-independent drawable folder (5)</a>
       <a class="mdl-navigation__link" href="#ContentDescription"><i class="material-icons warning-icon">warning</i>Image without <code>contentDescription</code> (5)</a>
@@ -220,9 +219,6 @@ document.getElementById(id).style.display = 'none';
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#Overdraw">Overdraw</a>: Overdraw: Painting regions more than once</td></tr>
-<tr>
-<td class="countColumn">14</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
-<a href="#UnusedResources">UnusedResources</a>: Unused resources</td></tr>
 <tr>
 <td class="countColumn">6</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#RedundantNamespace">RedundantNamespace</a>: Redundant namespace</td></tr>
@@ -428,7 +424,7 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/res/layout/activity_detail.xml">../../src/main/res/layout/activity_detail.xml</a>:8</span>: <span class="message">Possible overdraw: Root element paints background <code>@color/white</code> with a theme that also paints a background (inferred theme is <code>@style/Theme.TeasWhisper</code>)</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/main/res/layout/activity_detail.xml">../../src/main/res/layout/activity_detail.xml</a>:8</span>: <span class="message">Possible overdraw: Root element paints background <code>@color/white</code> with a theme that also paints a background (inferred theme is <code>@android:style/Theme.Holo</code>)</span><br /><pre class="errorlines">
 <span class="lineno">   5 </span>    <span class="prefix">android:</span><span class="attribute">id</span>=<span class="value">"@+id/coordinator_detail"</span>
 <span class="lineno">   6 </span>    <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"match_parent"</span>
 <span class="lineno">   7 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"match_parent"</span>
@@ -468,177 +464,6 @@ Of course it's possible that your custom drawable is translucent and you want it
               <div class="mdl-card__actions mdl-card--border">
 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationOverdrawLink" onclick="reveal('explanationOverdraw');">
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="OverdrawCardLink" onclick="hideid('OverdrawCard');">
-Dismiss</button>            </div>
-            </div>
-          </section><a name="UnusedResources"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="UnusedResourcesCard" style="display: block;">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">Unused resources</h2>
-  </div>
-              <div class="mdl-card__supporting-text">
-<div class="issue">
-<div class="warningslist">
-<span class="location"><a href="../../src/main/res/drawable/bg_rounded_corner.xml">../../src/main/res/drawable/bg_rounded_corner.xml</a>:1</span>: <span class="message">The resource <code>R.drawable.bg_rounded_corner</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="caretline"><span class="lineno"> 1 </span><span class="warning"><span class="tag">&lt;shape</span><span class="attribute"> </span><span class="prefix">xmlns:</span><span class="attribute">android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 2 </span>    <span class="tag">&lt;solid</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">color</span>=<span class="value">"@color/light_yellow"</span>/>
-<span class="lineno"> 3 </span>    <span class="tag">&lt;corners</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">radius</span>=<span class="value">"16dp"</span>/>
-<span class="lineno"> 4 </span>    <span class="tag">&lt;stroke</span><span class="attribute">
-</span></pre>
-
-<span class="location"><a href="../../src/main/res/drawable/button_background.xml">../../src/main/res/drawable/button_background.xml</a>:2</span>: <span class="message">The resource <code>R.drawable.button_background</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 1 </span><span class="prologue">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="caretline"><span class="lineno"> 2 </span><span class="warning"><span class="tag">&lt;shape</span><span class="attribute"> </span><span class="prefix">xmlns:</span><span class="attribute">android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 3 </span>    <span class="prefix">android:</span><span class="attribute">shape</span>=<span class="value">"rectangle"</span>>
-<span class="lineno"> 4 </span>    <span class="tag">&lt;corners</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">radius</span>=<span class="value">"24dp"</span> /> <span class="comment">&lt;!-- 圆角半径，可按需调整 --></span>
-<span class="lineno"> 5 </span>    <span class="tag">&lt;solid</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">color</span>=<span class="value">"@color/tea_primary"</span> />
-</pre>
-
-<span class="location"><a href="../../src/main/res/drawable/button_background_pressed.xml">../../src/main/res/drawable/button_background_pressed.xml</a>:2</span>: <span class="message">The resource <code>R.drawable.button_background_pressed</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 1 </span><span class="prologue">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="caretline"><span class="lineno"> 2 </span><span class="warning"><span class="tag">&lt;shape</span><span class="attribute"> </span><span class="prefix">xmlns:</span><span class="attribute">android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 3 </span>    <span class="prefix">android:</span><span class="attribute">shape</span>=<span class="value">"rectangle"</span>>
-<span class="lineno"> 4 </span>    <span class="tag">&lt;corners</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">radius</span>=<span class="value">"24dp"</span> />
-<span class="lineno"> 5 </span>    <span class="tag">&lt;solid</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">color</span>=<span class="value">"@color/tea_primary"</span> /> <span class="comment">&lt;!-- 按下时的颜色，可按需调整 --></span>
-</pre>
-
-<span class="location"><a href="../../src/main/res/drawable/button_selector.xml">../../src/main/res/drawable/button_selector.xml</a>:2</span>: <span class="message">The resource <code>R.drawable.button_selector</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 1 </span><span class="prologue">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="caretline"><span class="lineno"> 2 </span><span class="warning"><span class="tag">&lt;selector</span><span class="attribute"> </span><span class="prefix">xmlns:</span><span class="attribute">android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 3 </span>    <span class="tag">&lt;item</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">drawable</span>=<span class="value">"@drawable/button_background_pressed"</span> <span class="prefix">android:</span><span class="attribute">state_pressed</span>=<span class="value">"true"</span> />
-<span class="lineno"> 4 </span>    <span class="tag">&lt;item</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">drawable</span>=<span class="value">"@drawable/button_background"</span> />
-<span class="lineno"> 5 </span><span class="tag">&lt;/selector></span></pre>
-
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:6</span>: <span class="message">The resource <code>R.color.transparent</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno">  3 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"black"</span>>#FF000000<span class="tag">&lt;/color></span>
-<span class="lineno">  4 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"white"</span>>#FFFFFFFF<span class="tag">&lt;/color></span>
-<span class="lineno">  5 </span>
-<span class="caretline"><span class="lineno">  6 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"transparent"</span></span>>#00FFFFFF<span class="tag">&lt;/color></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno">  7 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_green"</span>>#BFE1CA<span class="tag">&lt;/color></span>
-<span class="lineno">  8 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"emerald_green"</span>>#A5CEBD<span class="tag">&lt;/color></span>
-<span class="lineno">  9 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"dark_green"</span>>#608B7A<span class="tag">&lt;/color></span>
-</pre>
-
-<button class="mdl-button mdl-js-button mdl-button--primary" id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 9 More Occurrences...</button>
-<div id="UnusedResourcesDiv" style="display: none">
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:7</span>: <span class="message">The resource <code>R.color.light_green</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno">  4 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"white"</span>>#FFFFFFFF<span class="tag">&lt;/color></span>
-<span class="lineno">  5 </span>
-<span class="lineno">  6 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"transparent"</span>>#00FFFFFF<span class="tag">&lt;/color></span>
-<span class="caretline"><span class="lineno">  7 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"light_green"</span></span>>#BFE1CA<span class="tag">&lt;/color></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno">  8 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"emerald_green"</span>>#A5CEBD<span class="tag">&lt;/color></span>
-<span class="lineno">  9 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"dark_green"</span>>#608B7A<span class="tag">&lt;/color></span>
-<span class="lineno"> 10 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"bright_yellow"</span>>#FFC530<span class="tag">&lt;/color></span>
-</pre>
-
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:8</span>: <span class="message">The resource <code>R.color.emerald_green</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno">  5 </span>
-<span class="lineno">  6 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"transparent"</span>>#00FFFFFF<span class="tag">&lt;/color></span>
-<span class="lineno">  7 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_green"</span>>#BFE1CA<span class="tag">&lt;/color></span>
-<span class="caretline"><span class="lineno">  8 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"emerald_green"</span></span>>#A5CEBD<span class="tag">&lt;/color></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno">  9 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"dark_green"</span>>#608B7A<span class="tag">&lt;/color></span>
-<span class="lineno"> 10 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"bright_yellow"</span>>#FFC530<span class="tag">&lt;/color></span>
-<span class="lineno"> 11 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"red"</span>>#C62828<span class="tag">&lt;/color></span>
-</pre>
-
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:10</span>: <span class="message">The resource <code>R.color.bright_yellow</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno">  7 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_green"</span>>#BFE1CA<span class="tag">&lt;/color></span>
-<span class="lineno">  8 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"emerald_green"</span>>#A5CEBD<span class="tag">&lt;/color></span>
-<span class="lineno">  9 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"dark_green"</span>>#608B7A<span class="tag">&lt;/color></span>
-<span class="caretline"><span class="lineno"> 10 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"bright_yellow"</span></span>>#FFC530<span class="tag">&lt;/color></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 11 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"red"</span>>#C62828<span class="tag">&lt;/color></span>
-<span class="lineno"> 12 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_yellow"</span>>#FCF4E5<span class="tag">&lt;/color></span>
-<span class="lineno"> 13 </span>
-</pre>
-
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:11</span>: <span class="message">The resource <code>R.color.red</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno">  8 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"emerald_green"</span>>#A5CEBD<span class="tag">&lt;/color></span>
-<span class="lineno">  9 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"dark_green"</span>>#608B7A<span class="tag">&lt;/color></span>
-<span class="lineno"> 10 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"bright_yellow"</span>>#FFC530<span class="tag">&lt;/color></span>
-<span class="caretline"><span class="lineno"> 11 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"red"</span></span>>#C62828<span class="tag">&lt;/color></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 12 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_yellow"</span>>#FCF4E5<span class="tag">&lt;/color></span>
-<span class="lineno"> 13 </span>
-<span class="lineno"> 14 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"tea_primary"</span>>#3E2723<span class="tag">&lt;/color></span> <span class="comment">&lt;!-- 深茶色 --></span>
-</pre>
-
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:14</span>: <span class="message">The resource <code>R.color.tea_primary</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 11 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"red"</span>>#C62828<span class="tag">&lt;/color></span>
-<span class="lineno"> 12 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_yellow"</span>>#FCF4E5<span class="tag">&lt;/color></span>
-<span class="lineno"> 13 </span>
-<span class="caretline"><span class="lineno"> 14 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"tea_primary"</span></span>>#3E2723<span class="tag">&lt;/color></span> <span class="comment">&lt;!-- 深茶色 --></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 15 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"tea_dark"</span>>#2E1B16<span class="tag">&lt;/color></span>   <span class="comment">&lt;!-- 强调色 --></span>
-<span class="lineno"> 16 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"tea_light"</span>>#D7CCC8<span class="tag">&lt;/color></span> <span class="comment">&lt;!-- 浅茶色 --></span>
-<span class="lineno"> 17 </span><span class="tag">&lt;/resources></span></pre>
-
-<span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:15</span>: <span class="message">The resource <code>R.color.tea_dark</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 12 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"light_yellow"</span>>#FCF4E5<span class="tag">&lt;/color></span>
-<span class="lineno"> 13 </span>
-<span class="lineno"> 14 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"tea_primary"</span>>#3E2723<span class="tag">&lt;/color></span> <span class="comment">&lt;!-- 深茶色 --></span>
-<span class="caretline"><span class="lineno"> 15 </span>    <span class="tag">&lt;color</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"tea_dark"</span></span>>#2E1B16<span class="tag">&lt;/color></span>   <span class="comment">&lt;!-- 强调色 --></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 16 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"tea_light"</span>>#D7CCC8<span class="tag">&lt;/color></span> <span class="comment">&lt;!-- 浅茶色 --></span>
-<span class="lineno"> 17 </span><span class="tag">&lt;/resources></span></pre>
-
-<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:4</span>: <span class="message">The resource <code>R.string.hello_blank_fragment</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 1 </span><span class="tag">&lt;resources></span>
-<span class="lineno"> 2 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"app_name"</span>>detail<span class="tag">&lt;/string></span>
-<span class="lineno"> 3 </span>    <span class="comment">&lt;!-- TODO: Remove or change this placeholder text --></span>
-<span class="caretline"><span class="lineno"> 4 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"hello_blank_fragment"</span></span>>Hello blank fragment<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 5 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"string_detail_content"</span>>同样是压，高档茶叶只要压扁就行，中档茶叶就要压得扁而紧，低档茶叶则要紧，手法和力度都不同。就像年纪大了，筋骨老了，能压紧就好。西湖龙井在采摘后要竹筛上进行晾晒，一般需要半天左右时间，这样可以减少茶叶中的青草味道，使水分达到炒制的要求，同时使新茶在炒制时不至于结团。然后再对晾好的新叶进行大致分类，根据叶子的品质档次来决定下一步炒制的锅温、力道等条件。所谓晾就是刚采摘下来的茶叶得在阴凉处堆放上大半天，大约相当于机械加工的退火，也就是通过堆晾，去掉茶叶里残余的大部分刚性。<span class="tag">&lt;/string></span>
-<span class="lineno"> 6 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"string_detail_bottom_test"</span>>嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好嘻嘻你好<span class="tag">&lt;/string></span>
-<span class="lineno"> 7 </span><span class="tag">&lt;/resources></span></pre>
-
-<span class="location"><a href="../../src/main/res/values/themes.xml">../../src/main/res/values/themes.xml</a>:30</span>: <span class="message">The resource <code>R.style.detailTextStyle</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 27 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:fontFamily"</span>>@font/title_font<span class="tag">&lt;/item></span>
-<span class="lineno"> 28 </span>    <span class="tag">&lt;/style></span>
-<span class="lineno"> 29 </span>
-<span class="caretline"><span class="lineno"> 30 </span>    <span class="tag">&lt;style</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"detailTextStyle"</span></span>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 31 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:fontFamily"</span>>@font/title_font<span class="tag">&lt;/item></span>
-<span class="lineno"> 32 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:background"</span>>@drawable/button_selector<span class="tag">&lt;/item></span>
-<span class="lineno"> 33 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:textColor"</span>>@color/white<span class="tag">&lt;/item></span>
-</pre>
-
-<span class="location"><a href="../../src/main/res/values/themes.xml">../../src/main/res/values/themes.xml</a>:39</span>: <span class="message">The resource <code>R.style.detailTitleTextStyle</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 36 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:layout_margin"</span>>4dp<span class="tag">&lt;/item></span>
-<span class="lineno"> 37 </span>    <span class="tag">&lt;/style></span>
-<span class="lineno"> 38 </span>
-<span class="caretline"><span class="lineno"> 39 </span>    <span class="tag">&lt;style</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"detailTitleTextStyle"</span></span>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 40 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:fontFamily"</span>>@font/title_font<span class="tag">&lt;/item></span>
-<span class="lineno"> 41 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:textColor"</span>>@color/white<span class="tag">&lt;/item></span>
-<span class="lineno"> 42 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"android:textSize"</span>>30sp<span class="tag">&lt;/item></span>
-</pre>
-
-</div>
-</div>
-<div class="metadata"><div class="explanation" id="explanationUnusedResources" style="display: none;">
-Unused resources make applications larger and slow down builds.<br/>
-<br/>
-<br/>
-The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.<br/>
-<br/>
-You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests =true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests =true.<br/>
-,<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
-To suppress this error, use the issue id "UnusedResources" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="chips">
-<span class="mdl-chip">
-    <span class="mdl-chip__text">UnusedResources</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Performance</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Warning</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Priority 3/10</span>
-</span>
-</div>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationUnusedResourcesLink" onclick="reveal('explanationUnusedResources');">
-Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="UnusedResourcesCardLink" onclick="hideid('UnusedResourcesCard');">
 Dismiss</button>            </div>
             </div>
           </section><a name="RedundantNamespace"></a>

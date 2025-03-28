@@ -29,4 +29,7 @@ public class URL {
     public static final String PICTURE_UPLOAD_URL = BASE_URL + "api/v1/upload";
     //获取主贴信息
     public static final String FORUM_THREAD_URL = BASE_URL + "api/v1/post";
+    //获取子贴信息
+    public static final String SEARCH_URL = BASE_URL + "api/v1/search";
+
 }

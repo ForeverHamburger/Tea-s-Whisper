@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -38,6 +39,7 @@ public class JsonCallback implements Callback {
     private MyDataListener mListener;
     // 期望将网络请求返回的数据转换为的目标 Java 类类型
     private Class<?> mClass;
+    private final Type mType;
 
     // 构造函数，接收一个 MyDataHandle 对象，从中获取监听器和期望的数据类型
     public JsonCallback(MyDataHandle handle) {
@@ -47,6 +49,7 @@ public class JsonCallback implements Callback {
         this.mClass = handle.mClass;
         // 创建一个与主线程关联的 Handler，用于将结果切换到 UI 线程
         this.mHandler = new Handler(Looper.getMainLooper());
+        this.mType = handle.mType;
     }
     private boolean isValidJson(String json) {
         try {
@@ -64,6 +67,7 @@ public class JsonCallback implements Callback {
             @Override
             public void run() {
                 // 调用监听器的 onFailure 方法，并将网络错误封装成 MyHttpException 传递
+                Log.d("JsonCallback", "onFailure in JsonCallback: " + ioexception);
                 mListener.onFailure(new MyHttpException(NETWORK_ERROR, ioexception + "-网络错误onFailure"));
             }
         });
@@ -85,23 +89,33 @@ public class JsonCallback implements Callback {
     }
 
     // 处理响应结果的方法
-    private void handleResponse(Object responseObj) {
+    private void handleResponse(String responseObj) {
         // 如果响应对象为空或为空字符串，认为请求失败，调用监听器的 onFailure 方法，传递网络错误
-        if (responseObj == null || responseObj.toString().trim().equals("")) {
-            mListener.onFailure(new MyHttpException(NETWORK_ERROR, EMPTY_MSG+"-网络错误"));
+        if (responseObj == null || responseObj.trim().isEmpty()) {
+            Log.e("JsonCallback", "Response is empty");
+            mListener.onFailure(new MyHttpException(NETWORK_ERROR, EMPTY_MSG + "-网络错误"));
             return;
         }
 
         try {
             // 将响应结果转换为 JSONObject
-            Log.d("xixi", "handleResponse: " + responseObj);
+            Log.d("JsonCallback", "handleResponse in JsonCallback: " + responseObj);
             JSONObject result = new JSONObject(responseObj.toString());
             // 如果没有指定期望的数据类型，直接将结果以 JSONObject 形式传递给监听器的 onSuccess 方法
-            if (mClass == null) {
+
+            if (mClass == null&&mType==null) {
                 mListener.onSuccess(result);
             } else {
-                // 使用 Gson 将结果转换为期望的数据类型
-                Object obj = new Gson().fromJson(responseObj.toString(), mClass);
+                Object obj;
+                if (mType != null) {
+                    obj = new Gson().fromJson(responseObj, mType);
+                } else if (mClass != null) {
+                    obj = new Gson().fromJson(responseObj, mClass);
+                } else {
+                    obj = new JSONObject(responseObj);
+                }
+//                // 使用 Gson 将结果转换为期望的数据类型
+//                Object obj = new Gson().fromJson(responseObj.toString(), mClass);
                 // 如果转换成功，将转换后的对象传递给监听器的 onSuccess 方法
                 if (obj!= null) {
                     mListener.onSuccess(obj);

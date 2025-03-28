@@ -1,8 +1,12 @@
 package com.xuptggg.libnetwork.listener;
+
+import java.lang.reflect.Type;
+
 //主要用于封装与网络请求数据处理相关的一些关键信息，
 //作为一个数据传递的载体，方便在不同的网络请求处理环节中传递必要的数据，
 public class MyDataHandle {
 
+    public Type mType = null;
     //用于接收网络请求处理结果的监听器对象，外部类可以定义具体的处理逻辑，
     public MyDataListener mListener = null;
 
@@ -25,6 +29,11 @@ public class MyDataHandle {
     public MyDataHandle(MyDataListener listener, Class<?> clazz) {
         this.mListener = listener;
         this.mClass = clazz;
+    }
+    // 构造函数，传入监听器和 Type 类型
+    public MyDataHandle(MyDataListener listener, Type type) {
+        this.mListener = listener;
+        this.mType = type;
     }
 
     //构造函数，用于设置数据源相关的信息，

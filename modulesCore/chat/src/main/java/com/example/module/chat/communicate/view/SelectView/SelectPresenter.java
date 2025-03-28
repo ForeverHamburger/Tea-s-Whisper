@@ -2,8 +2,9 @@ package com.example.module.chat.communicate.view.SelectView;
 
 import android.util.Log;
 
+import com.example.module.chat.base.database.select.Agent;
 import com.example.module.chat.base.database.select.DataItem;
-import com.example.module.chat.base.other.LoadTasksCallBack;
+import com.xuptggg.libnetwork.aword.LoadTasksCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,11 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     }
 
     @Override
+    public List<Agent> getAgents() {
+        return mModel.getAgents();
+    }
+
+    @Override
     public void unSubscribe() {
         mModel = null;
         mView = null;
@@ -38,14 +44,17 @@ public class SelectPresenter implements SelectContract.Presenter, LoadTasksCallB
     @Override
     public void getToken(String token) {
         mModel.getToken(token);
+        getHistoryDataInfo();
     }
 
     @Override
     public void onSuccess(List<DataItem> data) {
         if (mView != null && mView.isACtive()) {
             if (data == null || data.isEmpty()) {
-//                mView.showEmptyHistory();
+                Log.e("select", "data = null ");
+                mView.showEmptyHistory();
             } else {
+                Log.e("select", "data != null ");
                 mView.displayHistoryData(data,null);
                 for (DataItem mydata : data) {
                     Log.d("HistoryData", mydata.getTitle());

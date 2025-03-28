@@ -1,7 +1,22 @@
 {
     "logs": [
         {
-            "outputFile": "com.xuptggg.detail-mergeReleaseResources-34:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "com.xuptggg.detail-mergeReleaseResources-33:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "64",
+                        "endOffsets": "115"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.xuptggg.detail-release-35:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",

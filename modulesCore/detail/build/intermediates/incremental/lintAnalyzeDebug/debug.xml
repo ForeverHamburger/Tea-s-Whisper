@@ -4,7 +4,7 @@
     minSdkVersion="28"
     targetSdkVersion="34"
     debuggable="true"
-    mergedManifest="build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml"
+    mergedManifest="build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml"
     proguardFiles="build\intermediates\default_proguard_files\global\proguard-android.txt-8.4.0"
     partialResultsDir="build\intermediates\lint_partial_results\debug\lintAnalyzeDebug\out"
     desugaredMethodsFiles="C:\Users\wind\.gradle\caches\transforms-4\1d4feaf7eeed5024ffa3e69669c4a559\transformed\D8BackportedDesugaredMethods.txt">
@@ -13,7 +13,7 @@
       namespacing="REQUIRED"/>
   <sourceProviders>
     <sourceProvider
-        manifests="src\main\AndroidManifest.xml"
+        manifests="src\main\release\AndroidManifest.xml"
         javaDirectories="src\main\java;src\debug\java;src\main\kotlin;src\debug\kotlin"
         resDirectories="src\main\res;src\debug\res"
         assetsDirectories="src\main\assets;src\debug\assets"/>
@@ -23,7 +23,7 @@
   <testFixturesSourceProviders>
   </testFixturesSourceProviders>
   <artifact
-      classOutputs="build\intermediates\javac\debug\compileDebugJavaWithJavac\classes;build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\debug\processDebugResources\R.jar"
+      classOutputs="build\intermediates\javac\debug\compileDebugJavaWithJavac\classes;build\intermediates\compile_r_class_jar\debug\generateDebugRFile\R.jar"
       type="MAIN"
       applicationId="com.xuptggg.detail"
       generatedSourceFolders="build\generated\ap_generated_sources\debug\out;build\generated\data_binding_base_class_source_out\debug\out"

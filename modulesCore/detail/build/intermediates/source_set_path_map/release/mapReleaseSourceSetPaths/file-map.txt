@@ -32,8 +32,8 @@ com.xuptggg.detail-release-30 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\m
 com.xuptggg.detail-release-31 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesBase\libNetwork\build\intermediates\packaged_res\release\packageReleaseResources
 com.xuptggg.detail-pngs-32 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\generated\res\pngs\release
 com.xuptggg.detail-resValues-33 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\generated\res\resValues\release
-com.xuptggg.detail-packageReleaseResources-34 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\intermediates\incremental\release\packageReleaseResources\merged.dir
-com.xuptggg.detail-packageReleaseResources-35 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+com.xuptggg.detail-mergeReleaseResources-34 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.xuptggg.detail-mergeReleaseResources-35 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
 com.xuptggg.detail-release-36 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\build\intermediates\merged_res\release\mergeReleaseResources
 com.xuptggg.detail-main-37 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res
 com.xuptggg.detail-release-38 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\release\res

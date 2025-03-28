@@ -1,7 +1,7 @@
 package com.example.module.chat.base.database;
 
 
-public abstract class BaseResponse<T> {
+public  class BaseResponse<T> {
     private int code;
     private String msg;
     private T data;
