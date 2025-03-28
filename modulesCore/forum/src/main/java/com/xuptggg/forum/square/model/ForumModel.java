@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.xuptggg.forum.R;
 import com.xuptggg.forum.square.contract.IForumContract;
-import com.xuptggg.forum.square.utils.JsonParser;
+import com.xuptggg.forum.utils.JsonParser;
 import com.xuptggg.libnetwork.MyOkHttpClient;
 import com.xuptggg.libnetwork.URL;
 import com.xuptggg.libnetwork.listener.MyDataHandle;

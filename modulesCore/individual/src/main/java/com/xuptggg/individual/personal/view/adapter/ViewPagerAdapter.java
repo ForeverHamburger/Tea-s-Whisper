@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.xuptggg.individual.personal.view.TabFragment;
+import com.xuptggg.individual.tabitem.view.TabFragment;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xuptggg.individual.personal.view.adapter;
+package com.xuptggg.individual.tabitem.view.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.xuptggg.individual.R;
-import com.xuptggg.individual.personal.model.ForumInfo;
+import com.xuptggg.individual.tabitem.model.ForumInfo;
 
 import java.util.List;
 
@@ -40,7 +40,6 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.View
         ForumInfo info = mWaterFallInfoList.get(position);
 
         holder.title.setText(info.getTitle());
-
 
         if (info.getAuthor_url().toString().equals("")) {
             Glide.with(mContext)

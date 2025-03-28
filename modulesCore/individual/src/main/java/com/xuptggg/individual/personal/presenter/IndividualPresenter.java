@@ -1,5 +1,7 @@
 package com.xuptggg.individual.personal.presenter;
 
+import android.util.Log;
+
 import com.xuptggg.individual.personal.contract.IIndividualContract;
 import com.xuptggg.individual.personal.model.IndividualInfo;
 import com.xuptggg.individual.personal.model.LoadIndividualInfoCallBack;
@@ -15,6 +17,7 @@ public class IndividualPresenter implements IIndividualContract.IIndividualPrese
 
     @Override
     public void getIndividualInfo(String info) {
+        Log.d("TAG", "onSuccessIndividualPresenter: " + "????");
         model.execute(info,this);
     }
 

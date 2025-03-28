@@ -10,6 +10,7 @@ int color light_green 0x0
 int color transparent 0x0
 int color white 0x0
 int drawable btn_background 0x0
+int drawable cup_head 0x0
 int drawable dog_head 0x0
 int drawable et_background 0x0
 int drawable ic_add_publish 0x0
@@ -81,6 +82,7 @@ int id rv_note_comments 0x0
 int id rv_water_fall 0x0
 int id tv_bottom_comment_count 0x0
 int id tv_bottom_like_count 0x0
+int id tv_cancel_publish 0x0
 int id tv_comment_count 0x0
 int id tv_dialog_publish 0x0
 int id tv_forum_name 0x0

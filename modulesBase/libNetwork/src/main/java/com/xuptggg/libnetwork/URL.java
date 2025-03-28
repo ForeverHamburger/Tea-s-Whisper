@@ -29,6 +29,16 @@ public class URL {
     public static final String PICTURE_UPLOAD_URL = BASE_URL + "api/v1/upload";
     //获取主贴信息
     public static final String FORUM_THREAD_URL = BASE_URL + "api/v1/post";
+    //获取个人基本信息
+    public static final String INDIVIDUAL_GET_URL = BASE_URL + "api/v1/user/info";
+    //修改个人信息
+    public static final String INDIVIDUAL_EDIT_POST_URL = BASE_URL + "api/v1/user/info";
+    //获取用户帖子接口
+    public static final String INDIVIDUAL_TABITEM_GETMY_URL = BASE_URL + "api/v1/user/post";
+    //获取用户收藏帖子接口
+    public static final String INDIVIDUAL_TABITEM_GETCOLLECT_URL = BASE_URL + "api/v1/user/post/collection";
+    //获取用户点赞帖子接口
+    public static final String INDIVIDUAL_TABITEM_GETVOTE_URL = BASE_URL + "api/v1/user/post/vote";
     //获取子贴信息
     public static final String SEARCH_URL = BASE_URL + "api/v1/search";
 

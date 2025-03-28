@@ -5,6 +5,7 @@
         <activity
             android:name=".view.NavigationActivity"
             android:exported="true"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
     </application>

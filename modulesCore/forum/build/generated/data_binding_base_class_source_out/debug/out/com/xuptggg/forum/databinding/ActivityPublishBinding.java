@@ -44,13 +44,17 @@ public final class ActivityPublishBinding implements ViewBinding {
   public final RecyclerView rvNineGrid;
 
   @NonNull
+  public final TextView tvCancelPublish;
+
+  @NonNull
   public final TextView tvPublish;
 
   private ActivityPublishBinding(@NonNull ConstraintLayout rootView,
       @NonNull EditText etPublishContent, @NonNull EditText etPublishTitle,
       @NonNull LinearLayout llPublish, @NonNull LinearLayout llPublishImage,
       @NonNull LinearLayout llPublishTop, @NonNull ConstraintLayout main,
-      @NonNull RecyclerView rvNineGrid, @NonNull TextView tvPublish) {
+      @NonNull RecyclerView rvNineGrid, @NonNull TextView tvCancelPublish,
+      @NonNull TextView tvPublish) {
     this.rootView = rootView;
     this.etPublishContent = etPublishContent;
     this.etPublishTitle = etPublishTitle;
@@ -59,6 +63,7 @@ public final class ActivityPublishBinding implements ViewBinding {
     this.llPublishTop = llPublishTop;
     this.main = main;
     this.rvNineGrid = rvNineGrid;
+    this.tvCancelPublish = tvCancelPublish;
     this.tvPublish = tvPublish;
   }
 
@@ -127,6 +132,12 @@ public final class ActivityPublishBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_cancel_publish;
+      TextView tvCancelPublish = ViewBindings.findChildViewById(rootView, id);
+      if (tvCancelPublish == null) {
+        break missingId;
+      }
+
       id = R.id.tv_publish;
       TextView tvPublish = ViewBindings.findChildViewById(rootView, id);
       if (tvPublish == null) {
@@ -134,7 +145,8 @@ public final class ActivityPublishBinding implements ViewBinding {
       }
 
       return new ActivityPublishBinding((ConstraintLayout) rootView, etPublishContent,
-          etPublishTitle, llPublish, llPublishImage, llPublishTop, main, rvNineGrid, tvPublish);
+          etPublishTitle, llPublish, llPublishImage, llPublishTop, main, rvNineGrid,
+          tvCancelPublish, tvPublish);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

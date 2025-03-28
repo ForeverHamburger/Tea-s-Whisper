@@ -1,68 +1,157 @@
 package com.xuptggg.forum.thread.model;
+import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
+import java.util.List;
 
-public class ThreadInfo {
-    public static final String NOTE = "NOTE";
-    private String type;
-    private int imageResource;
-    private String title;
-    private int headImage;
-    private String userName;
-    private String loveCount;
+public class ThreadInfo{
 
-    public ThreadInfo(String type, int imageResource, String title, int headImage, String userName, String loveCount) {
-        this.type = type;
-        this.imageResource = imageResource;
-        this.title = title;
-        this.headImage = headImage;
-        this.userName = userName;
-        this.loveCount = loveCount;
+    @SerializedName("post_id")
+    private Long PostId;
+
+    @SerializedName("title")
+    private String Title;
+
+    @SerializedName("url")
+    private List<String> Url;
+
+    @SerializedName("content")
+    private String Content;
+
+    @SerializedName("author_id")
+    private Long AuthorId;
+
+    @SerializedName("author_name")
+    private String AuthorName;
+
+    @SerializedName("author_url")
+    private String AuthorUrl;
+
+    @SerializedName("votes")
+    private String Votes;
+
+    @SerializedName("collection")
+    private String Collection;
+
+    @SerializedName("comments")
+    private String Comments;
+
+    @SerializedName("is_vote")
+    private String IsVote;
+
+    @SerializedName("is_collect")
+    private String IsCollect;
+
+    public Long getPostId() {
+        return PostId;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getImageResource() {
-        return imageResource;
-    }
-
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
+    public void setPostId(Long postId) {
+        PostId = postId;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
-    public int getHeadImage() {
-        return headImage;
+    public List<String> getUrl() {
+        return Url;
     }
 
-    public void setHeadImage(int headImage) {
-        this.headImage = headImage;
+    public void setUrl(List<String> url) {
+        Url = url;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getContent() {
+        return Content;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setContent(String content) {
+        Content = content;
     }
 
-    public String getLoveCount() {
-        return loveCount;
+    public Long getAuthorId() {
+        return AuthorId;
     }
 
-    public void setLoveCount(String loveCount) {
-        this.loveCount = loveCount;
+    public void setAuthorId(Long authorId) {
+        AuthorId = authorId;
+    }
+
+    public String getAuthorName() {
+        return AuthorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        AuthorName = authorName;
+    }
+
+    public String getAuthorUrl() {
+        return AuthorUrl;
+    }
+
+    public void setAuthorUrl(String authorUrl) {
+        AuthorUrl = authorUrl;
+    }
+
+    public String getVotes() {
+        return Votes;
+    }
+
+    public void setVotes(String votes) {
+        Votes = votes;
+    }
+
+    public String getCollection() {
+        return Collection;
+    }
+
+    public void setCollection(String collection) {
+        Collection = collection;
+    }
+
+    public String getComments() {
+        return Comments;
+    }
+
+    public void setComments(String comments) {
+        Comments = comments;
+    }
+
+    public String getIsVote() {
+        return IsVote;
+    }
+
+    public void setIsVote(String isVote) {
+        IsVote = isVote;
+    }
+
+    public String getIsCollect() {
+        return IsCollect;
+    }
+
+    public void setIsCollect(String isCollect) {
+        IsCollect = isCollect;
+    }
+
+    @Override
+    public String toString() {
+        return "PostData{" +
+                "PostId=" + PostId +
+                ", Title='" + Title + '\'' +
+                ", Url='" + Url + '\'' +
+                ", Content='" + Content + '\'' +
+                ", AuthorId=" + AuthorId +
+                ", AuthorName='" + AuthorName + '\'' +
+                ", AuthorUrl='" + AuthorUrl + '\'' +
+                ", Votes='" + Votes + '\'' +
+                ", Collection='" + Collection + '\'' +
+                ", Comments='" + Comments + '\'' +
+                ", IsVote='" + IsVote + '\'' +
+                ", IsCollect='" + IsCollect + '\'' +
+                '}';
     }
 }

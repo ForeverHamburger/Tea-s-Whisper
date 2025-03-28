@@ -51,7 +51,7 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textColor="@color/white"
-            android:text="保存"
+            android:text="预览"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@drawable/dog" />
     </androidx.cardview.widget.CardView>
 

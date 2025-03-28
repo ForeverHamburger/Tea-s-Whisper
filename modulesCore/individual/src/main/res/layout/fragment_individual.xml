@@ -69,6 +69,7 @@
                     android:id="@+id/iv_my_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:background="@color/bg_color"
                     android:src="@drawable/dog" />
             </androidx.cardview.widget.CardView>
@@ -101,6 +102,7 @@
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/content_font"
                 android:text="愿相知"
+                android:maxLength="8"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -123,7 +125,7 @@
                 android:id="@+id/tv_user_ip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IP属地：奶龙大陆"
+                android:text="IP属地：陕西西安"
                 android:textColor="@color/grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
@@ -179,7 +181,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="15dp"
                 android:maxEms="24"
-                android:text="10.1k"
+                android:text="106"
                 android:textColor="@color/black"
                 android:fontFamily="@font/content_font"
                 android:textSize="14sp"
@@ -262,7 +264,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_my"
                 android:layout_width="match_parent"
-                android:layout_height="1500dp"
+                android:layout_height="1400dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
