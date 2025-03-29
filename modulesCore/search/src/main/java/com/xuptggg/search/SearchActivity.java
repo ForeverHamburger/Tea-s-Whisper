@@ -60,21 +60,22 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
             Log.d("SearchActivity", "btnSearch");
             if(searchText.isEmpty()){
                 Log.d("SearchActivity", "Search is empty");
+                Log.d("SearchActivity", "Search is empty setOnClickListener");
             }else {
                 Log.d("SearchActivity", "Search is not empty");
                 FragmentManager fm = getSupportFragmentManager();
                 Fragment currentFragment = fm.findFragmentById(R.id.fragment_container);
-
+                ResultFragment resultFragment;
                 if (currentFragment instanceof ResultFragment) {
-                    ResultFragment resultFragment = (ResultFragment) currentFragment;
+                     resultFragment = (ResultFragment) currentFragment;
                 } else {
-                    ResultFragment resultFragment = ResultFragment.newInstance(searchText);
-                    ResultPresenter presenter = new ResultPresenter(resultFragment, new ResultModel());
-                    resultFragment.setPresenter(presenter);
-                    fm.beginTransaction()
-                            .replace(R.id.fragment_container, resultFragment)
-                            .commit();
+                     resultFragment = ResultFragment.newInstance(searchText);
                 }
+                ResultPresenter presenter = new ResultPresenter(resultFragment, new ResultModel());
+                resultFragment.setPresenter(presenter);
+                fm.beginTransaction()
+                        .replace(R.id.fragment_container, resultFragment)
+                        .commit();
                 SearchHistoryUtils.addSearchHistory(searchText);
             }
         });
@@ -111,17 +112,17 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
             Log.d("SearchActivity", "Search is not empty");
             FragmentManager fm = getSupportFragmentManager();
             Fragment currentFragment = fm.findFragmentById(R.id.fragment_container);
-
+            ResultFragment resultFragment;
             if (currentFragment instanceof ResultFragment) {
-                ResultFragment resultFragment = (ResultFragment) currentFragment;
+                 resultFragment = (ResultFragment) currentFragment;
             } else {
-                ResultFragment resultFragment = ResultFragment.newInstance(content);
-                ResultPresenter presenter = new ResultPresenter(resultFragment, new ResultModel());
-                resultFragment.setPresenter(presenter);
-                fm.beginTransaction()
-                        .replace(R.id.fragment_container, resultFragment)
-                        .commit();
+                 resultFragment = ResultFragment.newInstance(content);
             }
+            ResultPresenter presenter = new ResultPresenter(resultFragment, new ResultModel());
+            resultFragment.setPresenter(presenter);
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, resultFragment)
+                    .commit();
             SearchHistoryUtils.addSearchHistory(content);
         }
     }
