@@ -58,4 +58,6 @@ android {
 dependencies {
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+
+    implementation 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 }
