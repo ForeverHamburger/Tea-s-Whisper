@@ -4,7 +4,7 @@
             "outputFile": "com.xuptggg.detail-mergeReleaseResources-33:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\ff86510989a0e4f4567571f1bbc4bb00\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\76744539114a5addeff06081e7ef1044\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\57e983debdc90fa3f048f468162feee1\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",
@@ -47,7 +47,7 @@
             "outputFile": "com.xuptggg.detail-release-35:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\980cb215174d2c3aeda3293494ef4544\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\ff86510989a0e4f4567571f1bbc4bb00\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -66,7 +66,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\76744539114a5addeff06081e7ef1044\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\57e983debdc90fa3f048f468162feee1\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

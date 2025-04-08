@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/drawable-anydpi-v21/ic_call_decline_low.xml",
+        "source": "com.xuptggg.module.recognition-core-1.13.0-18:/drawable-anydpi-v21/ic_call_decline_low.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/drawable-anydpi-v21/ic_call_answer_video_low.xml",
+        "source": "com.xuptggg.module.recognition-core-1.13.0-18:/drawable-anydpi-v21/ic_call_answer_video_low.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/drawable-anydpi-v21/ic_call_answer.xml",
+        "source": "com.xuptggg.module.recognition-core-1.13.0-18:/drawable-anydpi-v21/ic_call_answer.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/drawable-anydpi-v21/ic_call_answer_low.xml",
+        "source": "com.xuptggg.module.recognition-core-1.13.0-18:/drawable-anydpi-v21/ic_call_answer_low.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/drawable-anydpi-v21/ic_call_decline.xml",
+        "source": "com.xuptggg.module.recognition-core-1.13.0-18:/drawable-anydpi-v21/ic_call_decline.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/drawable-anydpi-v21/ic_call_answer_video.xml",
+        "source": "com.xuptggg.module.recognition-core-1.13.0-18:/drawable-anydpi-v21/ic_call_answer_video.xml"
+    }
+]

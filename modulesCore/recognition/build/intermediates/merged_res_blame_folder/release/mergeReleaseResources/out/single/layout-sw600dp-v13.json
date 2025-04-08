@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/layout-sw600dp-v13/mtrl_layout_snackbar.xml",
+        "source": "com.xuptggg.module.recognition-material-1.12.0-29:/layout-sw600dp-v13/mtrl_layout_snackbar.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/layout-sw600dp-v13/design_layout_snackbar.xml",
+        "source": "com.xuptggg.module.recognition-material-1.12.0-29:/layout-sw600dp-v13/design_layout_snackbar.xml"
+    }
+]

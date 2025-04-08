@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/layout-v26/abc_screen_toolbar.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/layout-v26/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/layout-v26/mtrl_calendar_month.xml",
+        "source": "com.xuptggg.module.recognition-material-1.12.0-29:/layout-v26/mtrl_calendar_month.xml"
+    }
+]

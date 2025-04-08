@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/btn_radio_to_off_mtrl_animation_interpolator_0.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/btn_radio_to_off_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/btn_radio_to_on_mtrl_animation_interpolator_0.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/btn_radio_to_on_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/mtrl_linear.xml",
+        "source": "com.xuptggg.module.recognition-material-1.12.0-29:/interpolator/mtrl_linear.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/fast_out_slow_in.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/fast_out_slow_in.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml",
+        "source": "com.xuptggg.module.recognition-appcompat-1.7.0-10:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml"
+    }
+]

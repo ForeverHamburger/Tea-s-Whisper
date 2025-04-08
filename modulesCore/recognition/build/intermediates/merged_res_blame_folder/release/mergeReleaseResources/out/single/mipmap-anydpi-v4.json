@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/mipmap-anydpi-v4/ic_launcher_round.xml",
+        "source": "com.xuptggg.module.recognition-main-36:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/mipmap-anydpi-v4/ic_launcher.xml",
+        "source": "com.xuptggg.module.recognition-main-36:/mipmap-anydpi/ic_launcher.xml"
+    }
+]
