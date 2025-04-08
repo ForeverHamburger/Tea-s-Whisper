@@ -25,7 +25,7 @@ public class TeaShowAdapter extends RecyclerView.Adapter<TeaShowAdapter.TeaMakeV
     @NonNull
     @Override
     public TeaMakeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tea1, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tea, parent, false);
         return new TeaMakeViewHolder(view);
     }
 
