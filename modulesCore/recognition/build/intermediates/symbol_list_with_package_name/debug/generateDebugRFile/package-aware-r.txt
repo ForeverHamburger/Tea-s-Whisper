@@ -3,7 +3,10 @@ color black
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id camera_scene_layout
 id main
+id tips
+id touch_view
 layout activity_recognition
 mipmap ic_launcher
 mipmap ic_launcher_round

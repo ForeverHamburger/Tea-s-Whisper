@@ -154,7 +154,7 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
             @Override
             public void onClick(View v) {
                 if (isSelected) {
-                    ARouter.getInstance().build("/forum/PublishActivity").navigation();
+                    ARouter.getInstance().build("/recognition/RecognitionActivity").navigation();
                 } else {
                     ARouter.getInstance().build("/detection/DetectionActivity").navigation();
                 }
