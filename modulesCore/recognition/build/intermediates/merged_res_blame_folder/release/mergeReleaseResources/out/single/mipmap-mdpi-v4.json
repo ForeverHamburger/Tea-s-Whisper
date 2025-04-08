@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/mipmap-mdpi-v4/ic_launcher.webp",
+        "source": "com.xuptggg.module.recognition-main-36:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.xuptggg.module.recognition-release-35:/mipmap-mdpi-v4/ic_launcher_round.webp",
+        "source": "com.xuptggg.module.recognition-main-36:/mipmap-mdpi/ic_launcher_round.webp"
+    }
+]
