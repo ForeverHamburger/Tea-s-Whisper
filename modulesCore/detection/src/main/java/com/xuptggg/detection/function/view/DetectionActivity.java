@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xuptggg.detection.R;
+import com.xuptggg.detection.card.AoqiDialog;
 import com.xuptggg.detection.card.FlippableDialog;
 import com.xuptggg.detection.function.contract.IDetectionContract;
 import com.xuptggg.detection.databinding.ActivityDetectionBinding;
@@ -29,6 +30,7 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
     private ActivityDetectionBinding binding;
     private boolean isStartDetection = false;
     private Handler handler = new Handler();
+    private boolean aoqi = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,17 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        binding.tvWish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (aoqi) {
+                    binding.tvWish.setText("今宵更有湘江月，照出菲菲满碗花。");
+                } else {
+                    binding.tvWish.setText("江畔何人初见月？江月何年初照人。");
+                }
+                aoqi = !aoqi;
+            }
         });
 
         binding.tbDetection.setNavigationOnClickListener(new View.OnClickListener() {
@@ -111,7 +124,12 @@ public class DetectionActivity extends AppCompatActivity implements IDetectionCo
     }
 
     private void showFlippableDialog() {
-        final FlippableDialog flippableDialog = new FlippableDialog(this);
-        flippableDialog.show();
+        if (aoqi) {
+            final AoqiDialog aoqiDialog = new AoqiDialog(this);
+            aoqiDialog.show();
+        }else {
+            final FlippableDialog flippableDialog = new FlippableDialog(this);
+            flippableDialog.show();
+        }
     }
 }
