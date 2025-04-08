@@ -6,7 +6,7 @@
     mergedManifest="build\intermediates\merged_manifest\release\processReleaseManifest\AndroidManifest.xml"
     proguardFiles="build\intermediates\default_proguard_files\global\proguard-android-optimize.txt-8.4.0;proguard-rules.pro;build\intermediates\default_proguard_files\global\proguard-android-optimize.txt-8.4.0;proguard-rules.pro"
     partialResultsDir="build\intermediates\lint_vital_partial_results\release\lintVitalAnalyzeRelease\out"
-    desugaredMethodsFiles="C:\Users\wind\.gradle\caches\transforms-4\1d4feaf7eeed5024ffa3e69669c4a559\transformed\D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="C:\Users\wind\.gradle\caches\transforms-4\245cb5eebda91876c7b0857853d9ab48\transformed\D8BackportedDesugaredMethods.txt">
   <buildFeatures
       viewBinding="true"
       namespacing="REQUIRED"/>
@@ -27,6 +27,6 @@
       applicationId="com.xuptggg.detail"
       generatedSourceFolders="build\generated\ap_generated_sources\release\out;build\generated\data_binding_base_class_source_out\release\out"
       generatedResourceFolders="build\generated\res\resValues\release"
-      desugaredMethodsFiles="C:\Users\wind\.gradle\caches\transforms-4\1d4feaf7eeed5024ffa3e69669c4a559\transformed\D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="C:\Users\wind\.gradle\caches\transforms-4\245cb5eebda91876c7b0857853d9ab48\transformed\D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

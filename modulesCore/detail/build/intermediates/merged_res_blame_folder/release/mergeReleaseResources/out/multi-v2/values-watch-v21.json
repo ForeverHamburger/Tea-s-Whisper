@@ -4,7 +4,7 @@
             "outputFile": "com.xuptggg.detail-mergeReleaseResources-33:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\76744539114a5addeff06081e7ef1044\\transformed\\appcompat-1.7.0\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\57e983debdc90fa3f048f468162feee1\\transformed\\appcompat-1.7.0\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
@@ -20,7 +20,7 @@
             "outputFile": "com.xuptggg.detail-release-35:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\76744539114a5addeff06081e7ef1044\\transformed\\appcompat-1.7.0\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\wind\\.gradle\\caches\\transforms-4\\57e983debdc90fa3f048f468162feee1\\transformed\\appcompat-1.7.0\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",

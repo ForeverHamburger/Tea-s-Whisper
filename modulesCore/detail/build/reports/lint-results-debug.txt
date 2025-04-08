@@ -48,6 +48,16 @@ D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res
    can be unused too, such as the new <tag> element in layouts introduced in
    API 21.
 
+C:\Users\wind\.gradle\caches\transforms-4\6b089f58cc1bc1052dce6505438937f4\transformed\out\jars\classes.jar: Warning: checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers [TrustAllX509TrustManager]
+
+   Explanation for issues of type "TrustAllX509TrustManager":
+   This check looks for X509TrustManager implementations whose
+   checkServerTrusted or checkClientTrusted methods do nothing (thus trusting
+   any certificate chain) which could result in insecure network traffic
+   caused by trusting arbitrary TLS/SSL certificates presented by peers.
+
+   https://goo.gle/TrustAllX509TrustManager
+
 D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res\layout\activity_detail.xml:8: Warning: Possible overdraw: Root element paints background @color/white with a theme that also paints a background (inferred theme is @android:style/Theme.Holo) [Overdraw]
     android:background="@color/white"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,4 +203,4 @@ D:\jetbrains\xiangmu\suididaxiaola\Tea-s-Whisper\modulesCore\detail\src\main\res
    probably also specify padding on the right side (and vice versa) for
    right-to-left layout symmetry.
 
-0 errors, 34 warnings
+0 errors, 35 warnings

@@ -146,6 +146,20 @@
     </issue>
 
     <issue
+        id="TrustAllX509TrustManager"
+        severity="Warning"
+        message="`checkClientTrusted` is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers"
+        category="Security"
+        priority="6"
+        summary="Insecure TLS/SSL trust manager"
+        explanation="This check looks for X509TrustManager implementations whose `checkServerTrusted` or `checkClientTrusted` methods do nothing (thus trusting any certificate chain) which could result in insecure network traffic caused by trusting arbitrary TLS/SSL certificates presented by peers."
+        url="https://goo.gle/TrustAllX509TrustManager"
+        urls="https://goo.gle/TrustAllX509TrustManager">
+        <location
+            file="C:\Users\wind\.gradle\caches\transforms-4\6b089f58cc1bc1052dce6505438937f4\transformed\out\jars\classes.jar"/>
+    </issue>
+
+    <issue
         id="Overdraw"
         severity="Warning"
         message="Possible overdraw: Root element paints background `@color/white` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)"
