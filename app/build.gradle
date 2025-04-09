@@ -54,6 +54,7 @@ dependencies {
         implementation project(':modulesCore:detail')
         implementation project(':modulesCore:forum')
         implementation project(':modulesCore:search')
+        implementation project(':modulesCore:recognition')
     }
 
     api 'com.alibaba:arouter-api:1.5.2'

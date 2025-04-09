@@ -2,13 +2,18 @@ package com.xuptggg.navigation.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.BounceInterpolator;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +32,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.xuptggg.navigation.R;
 import com.xuptggg.navigation.contract.INavigationContract;
 import com.xuptggg.navigation.databinding.ActivityNavigationBinding;
@@ -41,6 +48,7 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
     private ActivityNavigationBinding binding;
     private INavigationContract.INavigationPresenter mPresenter;
     private boolean isSelected = false;
+    private FloatingActionMenu floatingActionMenu;
     private static final int DOUBLE_CLICK_TIME_DELAY = 2000;
     private long firstBackPressedTime = 0;
     private FragmentManager fragmentManager;
@@ -111,23 +119,29 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
                 isSelected = false;
                 // 根据导航项的标题进行不同的处理
                 getFragment(menuItem.getTitle(),navigationInfos);
+                if (floatingActionMenu != null && floatingActionMenu.isOpen()) {
+                    floatingActionMenu.close(true);
+                }
 
                 if ("首页".equals(menuItem.getTitle())) {
-                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    binding.fabNavigation.setImageResource(R.drawable.ic_tea_drink);
                     isSelected = false;
                 } else if ("论坛".equals(menuItem.getTitle())) {
                     performChangeAnimation();
                     isSelected = true;
                 } else if ("AI对话".equals(menuItem.getTitle())) {
-                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    binding.fabNavigation.setImageResource(R.drawable.ic_tea_drink);
                     isSelected = false;
                 } else if ("我的".equals(menuItem.getTitle())) {
-                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    binding.fabNavigation.setImageResource(R.drawable.ic_tea_drink);
                     isSelected = false;
                 } else if ("检测".equals(menuItem.getTitle())) {
-                    binding.fabNavigation.setImageResource(R.drawable.ic_detect);
+                    binding.fabNavigation.setImageResource(R.drawable.ic_tea_drink);
                     isSelected = false;
                 }
+
+                setOnSelectedChanged();
+
                 return true;
             }
 
@@ -150,16 +164,122 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
         MenuItem firstMenuItem = binding.bnvNavigation.getMenu().getItem(0);
         binding.bnvNavigation.setSelectedItemId(firstMenuItem.getItemId());
 
-        binding.fabNavigation.setOnClickListener(new View.OnClickListener() {
+        initFloatActionButton();
+
+    }
+
+    private void setOnSelectedChanged() {
+        if (isSelected) {
+            binding.fabNavigation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ARouter.getInstance().build("/forum/PublishActivity").navigation();
+                }
+            });
+        } else {
+            initFloatActionButton();
+        }
+    }
+
+    private void initFloatActionButton() {
+        SubActionButton.Builder builder = new SubActionButton.Builder(this);
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.ic_detect);
+        SubActionButton detectionButton = builder.setContentView(imageView)
+                .setLayoutParams(new FrameLayout.LayoutParams(150,150))
+                .setTheme(R.style.BnvStyle)
+                .setBackgroundDrawable(getResources().getDrawable(R.drawable.green_circle)).build();
+        detectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isSelected) {
-                    ARouter.getInstance().build("/forum/PublishActivity").navigation();
-                } else {
-                    ARouter.getInstance().build("/detection/DetectionActivity").navigation();
-                }
+                ARouter.getInstance().build("/detection/DetectionActivity").navigation();
             }
         });
+
+        ImageView imageView1 = new ImageView(this);
+        imageView1.setImageResource(R.drawable.ic_ar);
+        SubActionButton arButton = builder.setContentView(imageView1)
+                .setLayoutParams(new FrameLayout.LayoutParams(150,150))
+                .setTheme(R.style.BnvStyle)
+                .setBackgroundDrawable(getResources().getDrawable(R.drawable.green_circle)).build();
+        arButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startExitAnimation();
+                floatingActionMenu.close(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ARouter.getInstance().build("/recognition/RecognitionActivity").navigation();
+                        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startReturnAnimation();
+                            }
+                        },200);
+                    }
+                },700);
+            }
+        });
+
+        floatingActionMenu = new FloatingActionMenu.Builder(this)
+                .setStartAngle(240)
+                .setEndAngle(300)
+                .addSubActionView(arButton)
+                .addSubActionView(detectionButton)
+                .attachTo(binding.fabNavigation)
+                .build();
+
+        floatingActionMenu.setStateChangeListener(new FloatingActionMenu.MenuStateChangeListener() {
+            @Override
+            public void onMenuOpened(FloatingActionMenu floatingActionMenu) {
+                binding.fabNavigation.setImageResource(R.drawable.ic_close);
+            }
+
+            @Override
+            public void onMenuClosed(FloatingActionMenu floatingActionMenu) {
+                binding.fabNavigation.setImageResource(R.drawable.ic_tea_drink);
+            }
+        });
+    }
+
+
+    private void startExitAnimation() {
+        // 让 fcvNavigation 从上方退出屏幕
+        ObjectAnimator fcvAnimator = ObjectAnimator.ofFloat(binding.fcvNavigation, "translationY", 0f, -binding.fcvNavigation.getHeight());
+        fcvAnimator.setDuration(500);
+        fcvAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        fcvAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // fcvNavigation 动画结束后，开始其余视图从下方退出屏幕的动画
+                ObjectAnimator coordinatorAnimator = ObjectAnimator.ofFloat(binding.coordinatorLayout, "translationY", 0f, binding.coordinatorLayout.getHeight());
+                coordinatorAnimator.setDuration(300);
+                coordinatorAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                coordinatorAnimator.start();
+            }
+        });
+        fcvAnimator.start();
+    }
+
+
+    private void startReturnAnimation() {
+        // 让 coordinatorLayout 从下方归位
+        ObjectAnimator coordinatorAnimator = ObjectAnimator.ofFloat(binding.coordinatorLayout, "translationY", binding.coordinatorLayout.getHeight(), 0f);
+        coordinatorAnimator.setDuration(300);
+        coordinatorAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        coordinatorAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // coordinatorLayout 动画结束后，开始 fcvNavigation 从上方归位的动画
+                ObjectAnimator fcvAnimator = ObjectAnimator.ofFloat(binding.fcvNavigation, "translationY", -binding.fcvNavigation.getHeight(), 0f);
+                fcvAnimator.setDuration(300);
+                fcvAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                fcvAnimator.start();
+            }
+        });
+        coordinatorAnimator.start();
     }
 
 
