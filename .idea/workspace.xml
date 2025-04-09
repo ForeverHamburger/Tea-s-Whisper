@@ -237,9 +237,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95ed35fd-de88-420b-b811-c4165fff6231" name="Changes" comment="增添动效与扇形按钮菜单栏弹出">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulesCore/navigation/src/main/java/com/xuptggg/navigation/view/NavigationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/navigation/src/main/java/com/xuptggg/navigation/view/NavigationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/login/src/main/release/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/login/src/main/release/AndroidManifest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +248,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=47e52a7c)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -284,7 +283,7 @@
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="E:\STUDY\AndroidKey\xixi.jks" />
+    <option name="KEY_STORE_PATH" value="D:\jetbrains\xiangmu\suididaxiaola\key1.jks" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -318,7 +317,7 @@
     &quot;Android App.modulesCore.navigation.executor&quot;: &quot;Run&quot;,
     &quot;Android App.modulesCore.search.executor&quot;: &quot;Run&quot;,
     &quot;ApkExportedModule&quot;: &quot;Tea's_Whisper.app&quot;,
-    &quot;ExportApk.ApkPathForTea's_Whisper.app&quot;: &quot;E:\\STUDY\\Android\\TeasWhisper\\app&quot;,
+    &quot;ExportApk.ApkPathForTea's_Whisper.app&quot;: &quot;D:\\jetbrains\\xiangmu\\suididaxiaola\\Tea-s-Whisper&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -326,13 +325,13 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-recognition&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-wind&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/STUDY/Android/TeasWhisper/modulesCore/recognition/src/main/assets/gltf&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/jetbrains/xiangmu/suididaxiaola/Tea-s-Whisper&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.23921971&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
     &quot;show.do.not.copy.http.proxy.settings.to.gradle&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
