@@ -31,10 +31,13 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window window = getWindow();
-        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        //设置当前窗体为全屏展示
-        window.setFlags(flag,flag);
+//        Window window = getWindow();
+//        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+//        //设置当前窗体为全屏展示
+//        window.setFlags(flag,flag);
+        // 使用兼容性API
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
     }
 
     @Override
@@ -76,7 +79,7 @@ public class BaseActivity extends AppCompatActivity {
 //                    }
 //                });
                 Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_SHORT).show();
-                Log.i("IKKYU", "保存成功\n路径："+object.toString());
+                Log.i("TAG", "保存成功\n路径："+object.toString());
 
                 String directoryPath = object.toString();
                 Intent intent = new Intent(Intent.ACTION_VIEW);

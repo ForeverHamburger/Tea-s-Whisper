@@ -53,9 +53,7 @@ android {
 
 dependencies {
 
-    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
-    api 'com.alibaba:arouter-api:1.5.2'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+//    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
@@ -67,4 +65,7 @@ dependencies {
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
     implementation project(':modulesBase:libNetwork')
+    implementation(name: 'eq-renderer-1.0.8', ext: 'aar')
+    implementation(name: 'eq-slam-1.0.2', ext: 'aar')
+    implementation(name: 'opencv-v8a-4.5.5', ext: 'aar')
 }
