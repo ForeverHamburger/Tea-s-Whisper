@@ -226,7 +226,6 @@ public class NavigationActivity extends AppCompatActivity implements INavigation
         floatingActionMenu = new FloatingActionMenu.Builder(this)
                 .setStartAngle(240)
                 .setEndAngle(300)
-                .setRadius(100)
                 .addSubActionView(arButton)
                 .addSubActionView(detectionButton)
                 .attachTo(binding.fabNavigation)
