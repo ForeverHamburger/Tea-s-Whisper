@@ -47,7 +47,7 @@ public class ResultUserFragment extends Fragment implements ResultContract.View<
     @Override
     public void showError() {
         // 显示错误信息
-        Toast.makeText(getContext(), "加载失败，请重试", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "更多内容等你去添加", Toast.LENGTH_SHORT).show();
     }
 
     @Override
