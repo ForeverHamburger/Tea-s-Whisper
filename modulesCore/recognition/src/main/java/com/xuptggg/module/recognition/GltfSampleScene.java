@@ -23,8 +23,8 @@ import com.google.sceneform.rendering.ModelRenderable;
 import java.util.function.Function;
 
 public class GltfSampleScene implements ISampleScene{
-    private String modelPath = "gltf/cup_tea.glb";
-    public float distance = 0.6f;
+    private String modelPath = "gltf/tea_table.glb";
+    public float distance = 1.6f;
 
     /**
      * 模型节点

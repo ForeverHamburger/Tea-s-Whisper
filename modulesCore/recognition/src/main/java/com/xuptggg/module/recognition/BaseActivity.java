@@ -31,10 +31,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Window window = getWindow();
-//        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-//        //设置当前窗体为全屏展示
-//        window.setFlags(flag,flag);
+        Window window = getWindow();
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        //设置当前窗体为全屏展示
+        window.setFlags(flag,flag);
         // 使用兼容性API
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 

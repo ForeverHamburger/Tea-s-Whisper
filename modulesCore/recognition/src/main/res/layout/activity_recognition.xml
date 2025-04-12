@@ -17,7 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/pic_re_bg_left"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/pic_re_bg_right"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tips"
@@ -27,13 +41,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:text="拍照"
+    <ImageView
+        android:id="@+id/iv_takephoto"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:src="@drawable/pic"
         android:onClick="capture"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拍照"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/head_font"
+        app:layout_constraintStart_toStartOf="@id/iv_takephoto"
+        app:layout_constraintEnd_toEndOf="@id/iv_takephoto"
+        app:layout_constraintTop_toTopOf="@id/iv_takephoto"
+        app:layout_constraintBottom_toBottomOf="@id/iv_takephoto"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

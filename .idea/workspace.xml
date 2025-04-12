@@ -237,9 +237,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95ed35fd-de88-420b-b811-c4165fff6231" name="Changes" comment="增添动效与扇形按钮菜单栏弹出">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/assets/gltf/tea_table.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/drawable/pic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/drawable/pic_re_bg_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/drawable/pic_re_bg_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/font/content_font.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/font/head_font.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/font/title_font.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulesCore/navigation/src/main/java/com/xuptggg/navigation/view/NavigationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/navigation/src/main/java/com/xuptggg/navigation/view/NavigationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/login/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/login/src/main/res/layout/fragment_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/login/src/main/res/layout/fragment_verify_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/login/src/main/res/layout/fragment_verify_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/recognition/src/main/java/com/xuptggg/module/recognition/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/java/com/xuptggg/module/recognition/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/recognition/src/main/java/com/xuptggg/module/recognition/GltfSampleScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/java/com/xuptggg/module/recognition/GltfSampleScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/layout/activity_recognition.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/recognition/src/main/res/layout/activity_recognition.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/search/src/main/java/com/xuptggg/search/view/Result/ResultArticleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/search/src/main/java/com/xuptggg/search/view/Result/ResultArticleFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulesCore/search/src/main/java/com/xuptggg/search/view/Result/ResultUserFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/modulesCore/search/src/main/java/com/xuptggg/search/view/Result/ResultUserFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +261,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=57f5bded)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -326,9 +338,9 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-recognition&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/STUDY/Android/TeasWhisper/modulesCore/recognition/src/main/assets/gltf&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/STUDY/Android/TeasWhisper/modulesCore/recognition/src/main/res&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.23921971&quot;,
@@ -353,11 +365,11 @@
       <recent name="com.xuptggg.home.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\recognition\src\main\res" />
+      <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\recognition\src\main\res\drawable" />
       <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\recognition\src\main\assets\gltf" />
       <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\recognition\libs" />
       <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\detection\src\main\res\layout" />
-      <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\detection\src\main\res\drawable" />
-      <recent name="E:\STUDY\Android\TeasWhisper\modulesCore\forum\src\main\res\drawable" />
     </key>
     <key name="android.template.-929630084">
       <recent name="com.xuptggg.detection.card" />
@@ -1556,7 +1568,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修改个人主页的UI" />
     <MESSAGE value="完善发帖以及展示的逻辑" />
     <MESSAGE value="解决一些Git的Bug" />
     <MESSAGE value="增添帖子删除的逻辑" />
@@ -1581,6 +1592,7 @@
     <MESSAGE value="完成AR模块的编写" />
     <MESSAGE value="完成AR板块的开发" />
     <MESSAGE value="增添动效与扇形按钮菜单栏弹出" />
-    <option name="LAST_COMMIT_MESSAGE" value="增添动效与扇形按钮菜单栏弹出" />
+    <MESSAGE value="UI调优" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI调优" />
   </component>
 </project>
